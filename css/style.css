@@ -10,6 +10,15 @@
 * 	Template Style 
 *
 * ======================================================= */
+
+/* #nav1{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+} */
+
 body {
   font-family: "Space Mono", Arial, serif;
   font-weight: 400;
