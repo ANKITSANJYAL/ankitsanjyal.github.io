@@ -5,84 +5,104 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ankit Sanjyal - Data Science Portfolio</title>
     <link rel="stylesheet" href="assets/css/styles.css">
-    <script defer src="assets/js/script.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+		<div class="container">
+			<h1 class="navbar-brand">Ankit Sanjyal</h1>
+			<div class="navbar-links">
+				<a href="index.html" class="nav-link">Home</a>
+				<a href="projects.html" class="nav-link">Projects</a>
+				<a href="blogs.html" class="nav-link">Blogs</a>
+				<a href="contact.html" class="nav-link">Contact</a>
+			</div>
+		</div>
+	</nav>
 
-    <!-- ======= Hero Section ======= -->
-    <section id="hero">
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <h1>Ankit Sanjyal</h1>
-                    <h2>Transforming Data into Insights & Intelligence</h2> <!-- (Tagline) -->
-                    <p>MS Data Science student at Fordham University. Passionate about simplifying ML solutions and storytelling with data.</p>
-                    <a href="https://docs.google.com/document/d/16JNbQmgIkW4i4sMzV2Puqk-Z_euGGevoe7GGywhC8yg/edit?tab=t.0" target="_blank" class="btn">View Resume</a>
+                    <h1 class="hero-title">Ankit Sanjyal</h1>
+                    <h2 class="hero-tagline">Transforming Data into Insights & Intelligence</h2>
+                    <p class="hero-description">MS Data Science student at Fordham University. Passionate about simplifying ML solutions and storytelling with data.</p>
+                    <a href="https://docs.google.com/document/d/16JNbQmgIkW4i4sMzV2Puqk-Z_euGGevoe7GGywhC8yg/edit?tab=t.0" target="_blank" class="btn-hero">View Resume</a>
                 </div>
                 <div class="hero-image">
-                    <img src="assets/images/profile.jpg" alt="Ankit Sanjyal"> <!-- Add your profile image -->
+                    <img src="assets/images/profile.jpg" alt="Ankit Sanjyal" class="profile-image">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ======= About Me Section ======= -->
-    <section id="about">
+    <!-- About Me Section -->
+    <section id="about" class="about-section">
         <div class="container">
-            <h2>About Me</h2>
-            <p>
-                I am an MS Data Science student at Fordham University with expertise in Machine Learning, Statistics, and all essential skills required for a Data Science, Data Analyst, or Data Engineer role.
-                My strength lies in simplifying complex ML solutions and using data to tell compelling stories.
-            </p>
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="about-description">
+                        I am an MS Data Science student at Fordham University with expertise in Machine Learning, Statistics, and all essential skills required for a Data Science, Data Analyst, or Data Engineer role.
+                        My strength lies in simplifying complex ML solutions and using data to tell compelling stories.
+                    </p>
+                    <p class="about-description">
+                        I am passionate about leveraging data to solve real-world problems and creating impactful visualizations that drive decision-making. With a strong foundation in Python, SQL, and Machine Learning, I am always eager to learn and apply new technologies.
+                    </p>
+                </div>
+                <div class="about-image">
+                    <img src="assets/images/about-me.jpg" alt="About Me Image">
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- ======= Skills Section ======= -->
-    <section id="skills">
+    <!-- Skills Section -->
+    <section id="skills" class="skills-section">
         <div class="container">
-            <h2>Skills</h2>
+            <h2 class="section-title">Skills</h2>
             <div class="skills-list">
-                <span>Python</span>
-                <span>SQL</span>
-                <span>Machine Learning</span>
-                <span>Data Visualization</span>
-                <span>Deep Learning</span>
-                <span>BigQuery</span>
-                <span>TensorFlow</span>
-                <span>Tableau</span>
-                <span>Scikit-learn</span>
+                <span class="skill-item">Python</span>
+                <span class="skill-item">SQL</span>
+                <span class="skill-item">Machine Learning</span>
+                <span class="skill-item">Data Visualization</span>
+                <span class="skill-item">Deep Learning</span>
+                <span class="skill-item">BigQuery</span>
+                <span class="skill-item">TensorFlow</span>
+                <span class="skill-item">Tableau</span>
+                <span class="skill-item">Scikit-learn</span>
             </div>
         </div>
     </section>
 
-    <!-- ======= Featured Project Section ======= -->
-    <section id="projects">
+    <!-- Featured Project Section -->
+    <section id="projects" class="projects-section">
         <div class="container">
-            <h2>Featured Project</h2>
+            <h2 class="section-title">Featured Project</h2>
             <div class="project-item">
-                <h3>AI-Generated vs Real Image Classification</h3>
-                <p>A binary image classification model using SVM to detect whether an image is AI-generated or real.</p>
+                <h3 class="project-title">AI-Generated vs Real Image Classification</h3>
+                <p class="project-description">A binary image classification model using SVM to detect whether an image is AI-generated or real.</p>
                 <div class="project-links">
-                    <a href="https://your-demo-link.com" target="_blank" class="btn">Demo</a>
-                    <a href="https://github.com/ANKITSANJYAL/AI-Image-Detector" target="_blank" class="btn">Read More</a>
+                    <a href="https://your-demo-link.com" target="_blank" class="btn-project">Demo</a>
+                    <a href="https://github.com/ANKITSANJYAL/AI-Image-Detector" target="_blank" class="btn-project">Read More</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ======= Footer (Contact Info) ======= -->
-    <footer>
+    <!-- Footer -->
+    <footer class="footer-section">
         <div class="container">
-            <p>© 2025 Ankit Sanjyal</p>
-            <!-- Add your actual contact links below -->
-            <p>
-                <a href="asanjyal82@gmail.com">Email</a> |
-                <a href="https://www.linkedin.com/in/ankit-sanjyal/" target="_blank">LinkedIn</a> |
-                <a href="https://github.com/ANKITSANJYAL" target="_blank">GitHub</a> |
-                <a href="https://www.kaggle.com/ankitdata1" target="_blank">Kaggle</a>
-            </p>
+            <p class="footer-text">© 2025 Ankit Sanjyal</p>
+            <div class="social-links">
+                <a href="mailto:asanjyal82@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/ankit-sanjyal/" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/ANKITSANJYAL" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
+                <a href="https://www.kaggle.com/ankitdata1" target="_blank" class="social-link"><i class="fab fa-kaggle"></i></a>
+            </div>
         </div>
     </footer>
-
 </body>
 </html>
