@@ -3,99 +3,273 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ankit Sanjyal - Data Science Portfolio</title>
-    <link rel="stylesheet" href="../assets/css/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Ankit Sanjyal | Data Science Portfolio</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar">
+    <!-- Navigation -->
+    <nav id="navbar">
         <div class="container">
-            <h1 class="navbar-brand">Ankit Sanjyal</h1>
-            <div class="navbar-links">
-                <a href="/Home/index.html" class="nav-link">Home</a>
-                <a href="/Projects/index.html" class="nav-link">Projects</a>
-                <a href="/Blogs/index.html" class="nav-link">Blogs</a>
-                <a href="/Contact/index.html" class="nav-link">Contact</a>
+            <a href="#home" class="logo">Ankit<span>Sanjyal</span></a>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#blogs">Blogs</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="hero" class="hero-section">
+    <!-- Home Section -->
+    <section id="home" class="section">
         <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1 class="hero-title">Ankit Sanjyal</h1>
-                    <h2 class="hero-tagline">Transforming Data into Insights & Intelligence</h2>
-                    <p class="hero-description">MS Data Science student at Fordham University. Passionate about simplifying ML solutions and storytelling with data.</p>
-                    <a href="https://drive.google.com/file/d/1HSBCfW3MAy0dFlfqmxVVecdX0mElDGNH/view?usp=sharing" target="_blank" class="btn-hero">View Resume</a>
+            <div class="home-content">
+                <div class="home-text">
+                    <h1>Hi, I'm <span>Ankit Sanjyal</span></h1>
+                    <h2>Data Science | Machine Learning | Analytics</h2>
+                    <p>Passionate about extracting insights from data and building intelligent systems. Currently seeking internship opportunities to apply my skills in real-world scenarios.</p>
+                    
+                    <div class="skills">
+                        <h3>Technical Skills</h3>
+                        <h4>Programming Languages:</h4>
+                        <div class="skill-tags">
+                            <span>Python</span>
+                            <span>SQL</span>
+                            <span>R programming</span>
+                        </div>
+                        <h4>Analytics and Data Engineering:</h4>
+                        <div class="skill-tags">
+                            <span>Excel</span>
+                            <span>Tableau</span>
+                            <span>MongoDB</span>
+                            <span>PySpark</span>
+                            <span>Hadoop</span>
+                            <span>Google Cloud Platform</span>
+                        </div>
+                        <h4>Machine Learning:</h4>
+                        <div class="skill-tags">
+                            <span>Scikit-learn</span>
+                            <span>TensorFlow/Keras</span>
+                            <span>PyTorch</span>
+                            <span>Transformers</span>
+                            <span>Generative Models</span>
+                        </div>
+            
+                    </div>
+                    
+                    <div class="cta-buttons">
+                        <a href="#contact" class="btn">Hire Me</a>
+                        <a href="https://drive.google.com/file/d/1HSBCfW3MAy0dFlfqmxVVecdX0mElDGNH/view?usp=drive_link" class="btn secondary" download>Download CV</a>
+                    </div>
                 </div>
-                <div class="hero-image">
-                    <img src="https://github.com/ANKITSANJYAL/ankitsanjyal.github.io/blob/master/assets/images/profile.JPG" alt="Ankit Sanjyal" class="profile-image">
+                <div class="home-image">
+                    <img src="/assets/images/profile.JPG" alt="Your Name">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Me Section -->
-    <section id="about" class="about-section">
+    <!-- Projects Section -->
+    <section id="projects" class="section">
         <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p class="about-description">
-                        I am an MS Data Science student at Fordham University with expertise in Python, MySQL, Ms-Excel, Tableau, Statistics, R-Programming, Machine Learning, LLMs, Hadoop Architecture, Yarn, Spark.
-                        My strength lies in simplifying complex ML solutions and using data to tell compelling stories.
-                    </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="skills-section">
-        <div class="container">
-            <h2 class="section-title">Skills</h2>
-            <div class="skills-list">
-                <span class="skill-item">Python</span>
-                <span class="skill-item">SQL</span>
-                <span class="skill-item">Machine Learning</span>
-                <span class="skill-item">Tableau</span>
-                <span class="skill-item">Data Visualization</span>
-                <span class="skill-item">Deep Learning</span>
-                <span class="skill-item">BigQuery</span>
-                <span class="skill-item">TensorFlow</span>
-                <span class="skill-item">Scikit-learn</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- Featured Project Section -->
-    <section id="projects" class="projects-section">
-        <div class="container">
-            <h2 class="section-title">Featured Project</h2>
-            <div class="project-item">
-                <h3 class="project-title">AI-Generated vs Real Image Classification</h3>
-                <p class="project-description">A binary image classification model using Feature Extraction rather than vector embedding of the image, to detect whether an image is AI-generated or real.</p>
-                <div class="project-links">
-                    <a href="https://ai-image-detector-n39p.onrender.com/" target="_blank" class="btn-project">Demo</a>
-                    <a href="https://github.com/ANKITSANJYAL/AI-Image-Detector/blob/main/README.md" target="_blank" class="btn-project">Read More</a>
+            <h2 class="section-title">My Projects</h2>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/project1.jpg" alt="Project 1">
+                    </div>
+                    <div class="project-info">
+                        <h3>AI-Generated Image Classification</h3>
+                        <p>CNN model to distinguish between real and AI-generated images with 95% accuracy.</p>
+                        <div class="project-tech">
+                            <span>Python</span>
+                            <span>TensorFlow</span>
+                            <span>Computer Vision</span>
+                        </div>
+                        <a href="#" class="btn small">View Project</a>
+                    </div>
                 </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/project2.jpg" alt="Project 2">
+                    </div>
+                    <div class="project-info">
+                        <h3>Customer Churn Prediction</h3>
+                        <p>Predicting customer churn using machine learning with 89% recall.</p>
+                        <div class="project-tech">
+                            <span>Python</span>
+                            <span>Scikit-learn</span>
+                            <span>XGBoost</span>
+                        </div>
+                        <a href="#" class="btn small">View Project</a>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/project3.jpg" alt="Project 3">
+                    </div>
+                    <div class="project-info">
+                        <h3>Big Data Analysis Pipeline</h3>
+                        <p>ETL pipeline for processing large datasets using Spark on AWS.</p>
+                        <div class="project-tech">
+                            <span>Spark</span>
+                            <span>AWS</span>
+                            <span>PySpark</span>
+                        </div>
+                        <a href="#" class="btn small">View Project</a>
+                    </div>
+                </div>
+                
+                <!-- Project 4 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/project4.jpg" alt="Project 4">
+                    </div>
+                    <div class="project-info">
+                        <h3>Sentiment Analysis Dashboard</h3>
+                        <p>Real-time sentiment analysis of social media data with visualization.</p>
+                        <div class="project-tech">
+                            <span>NLP</span>
+                            <span>Flask</span>
+                            <span>Plotly</span>
+                        </div>
+                        <a href="#" class="btn small">View Project</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blogs Section -->
+    <section id="blogs" class="section">
+        <div class="container">
+            <h2 class="section-title">My Blogs</h2>
+            <div class="blogs-grid">
+                <!-- Blog 1 -->
+                <div class="blog-card">
+                    <div class="blog-image">
+                        <img src="images/blog1.jpg" alt="Blog 1">
+                    </div>
+                    <div class="blog-info">
+                        <span class="blog-date">May 15, 2023</span>
+                        <h3>Understanding CNN Architectures for Image Classification</h3>
+                        <p>A deep dive into different CNN architectures and their applications in computer vision tasks.</p>
+                        <a href="https://medium.com/your-blog-link" target="_blank" class="btn small">Read on Medium</a>
+                    </div>
+                </div>
+                
+                <!-- Blog 2 -->
+                <div class="blog-card">
+                    <div class="blog-image">
+                        <img src="images/blog2.jpg" alt="Blog 2">
+                    </div>
+                    <div class="blog-info">
+                        <span class="blog-date">March 22, 2023</span>
+                        <h3>Feature Engineering for Machine Learning</h3>
+                        <p>Practical techniques to create better features for your ML models.</p>
+                        <a href="https://medium.com/your-blog-link" target="_blank" class="btn small">Read on Medium</a>
+                    </div>
+                </div>
+                
+                <!-- Blog 3 -->
+                <div class="blog-card">
+                    <div class="blog-image">
+                        <img src="images/blog3.jpg" alt="Blog 3">
+                    </div>
+                    <div class="blog-info">
+                        <span class="blog-date">January 10, 2023</span>
+                        <h3>Building Data Pipelines with Apache Airflow</h3>
+                        <p>How to orchestrate complex data workflows using Airflow.</p>
+                        <a href="https://medium.com/your-blog-link" target="_blank" class="btn small">Read on Medium</a>
+                    </div>
+                </div>
+                
+                <!-- Blog 4 -->
+                <div class="blog-card">
+                    <div class="blog-image">
+                        <img src="images/blog4.jpg" alt="Blog 4">
+                    </div>
+                    <div class="blog-info">
+                        <span class="blog-date">November 5, 2022</span>
+                        <h3>Hyperparameter Tuning with Optuna</h3>
+                        <p>A guide to efficient hyperparameter optimization for your ML models.</p>
+                        <a href="https://medium.com/your-blog-link" target="_blank" class="btn small">Read on Medium</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Let's Connect</h3>
+                    <p>I'm currently looking for internship opportunities in data science and machine learning. Feel free to reach out!</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>your.email@example.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+1 (123) 456-7890</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Your City, Country</span>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="https://linkedin.com/in/ankit-sanjyal" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/ANKITSANJYAL" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://medium.com/@yourusername" target="_blank"><i class="fab fa-medium"></i></a>
+                        <a href="https://twitter.com/yourusername" target="_blank"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <form id="contact-form" class="contact-form">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="subject" name="subject" placeholder="Subject" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send Message</button>
+                    <div id="form-message"></div>
+                </form>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer-section">
+    <footer>
         <div class="container">
-            <p class="footer-text">© 2025 Ankit Sanjyal</p>
-            <div class="social-links">
-                <a href="mailto:asanjyal82@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a>
-                <a href="https://www.linkedin.com/in/ankit-sanjyal/" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/ANKITSANJYAL" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
-                <a href="https://www.kaggle.com/ankitdata1" target="_blank" class="social-link"><i class="fab fa-kaggle"></i></a>
-            </div>
+            <p>&copy; <span id="year"></span> Ankit Sanjyal All rights reserved.</p>
         </div>
     </footer>
+
+    <script src="assets/js/script.js"></script>
 </body>
 </html>
