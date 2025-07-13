@@ -35,45 +35,12 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
-    document.getElementById('contact-form').addEventListener('submit', function (e) {
-        e.preventDefault();
-        const form = e.target;
-        const formData = new FormData(form);
-        const messageDiv = document.getElementById('form-message');
 
-        fetch(form.action, {
-            method: 'POST',
-            body: formData,
-            headers: {
-                'Accept': 'application/json'
-            }
-        })
-            .then(response => {
-                if (response.ok) {
-                    messageDiv.textContent = 'Message sent successfully!';
-                    messageDiv.style.color = '#4CAF50';
-                    messageDiv.style.display = 'block';
-                    form.reset();
-
-                    // Hide message after 5 seconds
-                    setTimeout(() => {
-                        messageDiv.style.display = 'none';
-                    }, 5000);
-                } else {
-                    throw new Error('Failed to send message');
-                }
-            })
-            .catch(error => {
-                messageDiv.textContent = 'Error: ' + error.message;
-                messageDiv.style.color = '#f44336';
-                messageDiv.style.display = 'block';
-            });
-    });
     // Sticky navbar on scroll
     window.addEventListener('scroll', function () {
         const navbar = document.getElementById('navbar');
         if (window.scrollY > 100) {
-            navbar.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
+            navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.08)';
         } else {
             navbar.style.boxShadow = 'none';
         }
@@ -93,26 +60,52 @@ document.addEventListener('DOMContentLoaded', function () {
             const subject = document.getElementById('subject').value;
             const message = document.getElementById('message').value;
 
-            // Here you would typically send the form data to a server
-            // For demonstration, we'll just show a success message
-            formMessage.textContent = 'Thank you for your message! I will get back to you soon.';
-            formMessage.classList.add('success');
-            formMessage.style.display = 'block';
+            // Show loading state
+            const submitButton = contactForm.querySelector('button[type="submit"]');
+            const originalText = submitButton.textContent;
+            submitButton.textContent = 'Sending...';
+            submitButton.disabled = true;
 
-            // Reset form
-            contactForm.reset();
+            // Submit to Formspree
+            fetch(contactForm.action, {
+                method: 'POST',
+                body: new FormData(contactForm),
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    formMessage.textContent = 'Thank you for your message! I will get back to you soon.';
+                    formMessage.classList.add('success');
+                    formMessage.style.display = 'block';
+                    contactForm.reset();
+                } else {
+                    throw new Error('Failed to send message');
+                }
+            })
+            .catch(error => {
+                formMessage.textContent = 'Sorry, there was an error sending your message. Please try again or email me directly at asanjyal82@gmail.com';
+                formMessage.classList.add('error');
+                formMessage.style.display = 'block';
+            })
+            .finally(() => {
+                // Reset button state
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
 
-            // Hide message after 5 seconds
-            setTimeout(() => {
-                formMessage.style.display = 'none';
-                formMessage.classList.remove('success');
-            }, 5000);
+                // Hide message after 8 seconds
+                setTimeout(() => {
+                    formMessage.style.display = 'none';
+                    formMessage.classList.remove('success', 'error');
+                }, 8000);
+            });
         });
     }
 
-    // Project and blog card animations
+    // Research and project card animations
     const animateOnScroll = function () {
-        const elements = document.querySelectorAll('.project-card, .blog-card');
+        const elements = document.querySelectorAll('.research-card, .project-card');
 
         elements.forEach(element => {
             const elementPosition = element.getBoundingClientRect().top;
@@ -126,7 +119,7 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     // Set initial state for animation
-    document.querySelectorAll('.project-card, .blog-card').forEach(element => {
+    document.querySelectorAll('.research-card, .project-card').forEach(element => {
         element.style.opacity = '0';
         element.style.transform = 'translateY(20px)';
         element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';

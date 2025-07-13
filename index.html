@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ankit Sanjyal | Data Science Portfolio</title>
+    <title>Ankit Sanjyal | Data Science & Machine Learning</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -11,11 +14,11 @@
     <!-- Navigation -->
     <nav id="navbar">
         <div class="container">
-            <a href="#home" class="logo">Ankit<span>Sanjyal</span></a>
+            <a href="#home" class="logo">Ankit Sanjyal</a>
             <ul>
                 <li><a href="#home">Home</a></li>
+                <li><a href="#research">Research</a></li>
                 <li><a href="#projects">Projects</a></li>
-                <li><a href="#blogs">Blogs</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <div class="hamburger">
@@ -31,45 +34,90 @@
         <div class="container">
             <div class="home-content">
                 <div class="home-text">
-                    <h1>Hi, I'm <span>Ankit Sanjyal</span></h1>
-                    <h2>Data Science | Machine Learning | Analytics</h2>
-                    <p>Passionate about extracting insights from data and building intelligent systems. Currently seeking internship opportunities to apply my skills in real-world scenarios.</p>
-                    
-                    <div class="skills">
-                        <h3>Technical Skills</h3>
-                        <h4>Programming Languages:</h4>
-                        <div class="skill-tags">
-                            <span>Python</span>
-                            <span>SQL</span>
-                            <span>R programming</span>
-                        </div>
-                        <h4>Analytics and Data Engineering:</h4>
-                        <div class="skill-tags">
-                            <span>Excel</span>
-                            <span>Tableau</span>
-                            <span>MongoDB</span>
-                            <span>PySpark</span>
-                            <span>Hadoop</span>
-                            <span>Google Cloud Platform</span>
-                        </div>
-                        <h4>Machine Learning:</h4>
-                        <div class="skill-tags">
-                            <span>Scikit-learn</span>
-                            <span>TensorFlow/Keras</span>
-                            <span>PyTorch</span>
-                            <span>Transformers</span>
-                            <span>Generative Models</span>
-                        </div>
-            
-                    </div>
-                    
+                    <h1>Ankit Sanjyal</h1>
+                    <h2>Data Science & Machine Learning Researcher</h2>
+                    <p>Hi! I'm currently based in New York, pursuing my Master’s in Data Science at Fordham University. I spend most of my time working on ways to make machine learning systems more efficient, understandable, and flexible in how they generate and interpret information.</p> <p>Lately, I’ve been diving into areas like diffusion models, NeRF, and visual grounding using tools like CLIP and DINO. A lot of my work touches on things like 3D scene generation, spatial understanding, and healthcare-related use cases.</p> <p>I care about building things that are clean, reproducible, and easy to build on — whether it’s a research project, a model, or a tool. I’m also actively writing and sharing my research to contribute to open, meaningful progress in the field.</p>
                     <div class="cta-buttons">
-                        <a href="#contact" class="btn">Hire Me</a>
-                        <a href="https://drive.google.com/file/d/1D9dZFjNMuHqcdEtZCWccooqZvWwbQCHI/view?usp=sharing" class="btn secondary" download>Download CV</a>
+                        <a href="#contact" class="btn">Get in Touch</a>
+                        <a href="https://drive.google.com/file/d/1D9dZFjNMuHqcdEtZCWccooqZvWwbQCHI/view?usp=sharing" class="btn secondary" target="_blank">CV</a>
                     </div>
                 </div>
                 <div class="home-image">
-                    <img src="/assets/images/profile.JPG" alt="Your Name">
+                    <img src="assets/images/profile.JPG" alt="Ankit Sanjyal">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Section -->
+    <section id="research" class="section">
+        <div class="container">
+            <h2 class="section-title">Research</h2>
+            <div class="research-grid">
+                <!-- Research 1 -->
+                <div class="research-card">
+                    <div class="research-image">
+                        <img src="assets/images/adaptive_linear_increasing_cfg7.0_512_prompt3_20250712_121334.png" alt="RectifiedHR Research">
+                    </div>
+                    <div class="research-info">
+                        <h3>RectifiedHR: High-Resolution Diffusion via Energy Profiling and Adaptive Guidance Scheduling</h3>
+                        <!-- <p class="research-authors">Ankit Sanjyal</p> -->
+                        <p class="research-abstract">A research project focused on improving high-resolution image quality generated by latent diffusion models (Stable Diffusion 1.5) through energy profiling and adaptive guidance scheduling. The work analyzes latent energy evolution across denoising steps and proposes rectified/adaptive guidance schedules for producing visually and quantitatively better high-res images.</p>
+                        <div class="research-tech">
+                            <span>Stable Diffusion</span>
+                            <span>Energy Profiling</span>
+                            <span>Adaptive CFG</span>
+                            <span>High-Resolution</span>
+                        </div>
+                        <div class="research-links">
+                            <a href="https://github.com/ANKITSANJYAL/RectifiedHR" class="btn small" target="_blank">Code</a>
+                            <a href="#" class="btn small secondary">Paper</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Research 2 -->
+                <div class="research-card">
+                    <div class="research-image">
+                        <img src="assets/images/workinprogress.webp" alt="Local Style Diffusion">
+                    </div>
+                    <div class="research-info">
+                        <h3>Local Style Diffusion: Controllable Image Generation with Localized Style Control</h3>
+                        <!-- <p class="research-authors">Ankit Sanjyal</p> -->
+                        <p class="research-abstract">Research on local style diffusion models that enable fine-grained control over image generation by applying style transformations to specific regions while maintaining global coherence. This work explores techniques for localized style transfer and region-aware diffusion processes.</p>
+                        <div class="research-tech">
+                            <span>Style Diffusion</span>
+                            <span>Local Control</span>
+                            <span>Region-Aware</span>
+                            <span>Image Generation</span>
+                        </div>
+                        <div class="research-links">
+                            <a href="https://github.com/ANKITSANJYAL/local-style-diffusion" class="btn small" target="_blank">Code</a>
+                            <a href="#" class="btn small secondary">Paper</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Research 3 -->
+                <div class="research-card">
+                    <div class="research-image">
+                        <img src="assets/images/rendered_comparison.png" alt="NeRF Few-Shot Limitations">
+                    </div>
+                    <div class="research-info">
+                        <h3>NeRF Few-Shot Limitations: Analysis of Neural Radiance Fields in Low-Data Scenarios</h3>
+                        <!-- <p class="research-authors">Ankit Sanjyal</p> -->
+                        <p class="research-abstract">Investigation into the limitations and challenges of Neural Radiance Fields (NeRF) when trained with limited training data. This research analyzes the performance degradation, generalization issues, and potential solutions for few-shot NeRF training scenarios.</p>
+                        <div class="research-tech">
+                            <span>Neural Radiance Fields</span>
+                            <span>Few-Shot Learning</span>
+                            <span>3D Reconstruction</span>
+                            <span>View Synthesis</span>
+                        </div>
+                        <div class="research-links">
+                            <a href="https://github.com/ANKITSANJYAL/nerf-few-shot-limitations" class="btn small" target="_blank">Code</a>
+                            <a href="https://arxiv.org/abs/2506.18208" class="btn small secondary" target="_blank">Paper</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -78,54 +126,16 @@
     <!-- Projects Section -->
     <section id="projects" class="section">
         <div class="container">
-            <h2 class="section-title">My Projects</h2>
+            <h2 class="section-title">Projects</h2>
             <div class="projects-grid">
                 <!-- Project 1 -->
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="../assets/images/MnistNoProp.png" alt="Project 1">
+                        <img src="assets/images/MAESTRO.png" alt="MAESTRO Project">
                     </div>
                     <div class="project-info">
-                        <h3>NoPropagation: Backpropagation-Free Deep Learning</h3>
-                        <p>Implemented a research-grade PyTorch version of the No-Propagation Diffusion Transformer (NoPropDT)
-                            from scratch.</p>
-                        <div class="project-tech">
-                            <span>Python</span>
-                            <span>PyTorch</span>
-                            <span>Github</span>
-                            <span>Deep Learning</span>
-                        </div>
-                        <a href="https://github.com/ANKITSANJYAL/NoPropagation/" class="btn small">View Project</a>
-                    </div>
-                </div>
-                
-                <!-- Project 2 -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="../assets/images/project2.webp" alt="Project 2">
-                    </div>
-                    <div class="project-info">
-                        <h3>MapReduce and LLM optimization</h3>
-                        <p>Implementing document processing pipeline that combines MapReduce architecture with LLM </p>
-                        <div class="project-tech">
-                            <span>Python</span>
-                            <span>Map Reduce</span>
-                            <span>Google Cloud Platform</span>
-                            <span>Large Language Models</span>
-                        </div>
-                        <a href="#" class="btn small">View Project</a>
-                    </div>
-                </div>
-                
-                <!-- Project 3 -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="../assets/images/MAESTRO.png" alt="Project 3">
-                    </div>
-                    <div class="project-info">
-                        <h3>MASTERO: AI-Powered Text-to-Video Generation</h3>
-                        <p>Contributed to the full pipeline of MAESTRO, a text-to-video lecture generation system, covering backend
-                            Flask APIs, frontend interactions, audio/video synthesis, and integration with OpenAI and PlayHT APIs.</p>
+                        <h3>MAESTRO: AI-Powered Text-to-Video Generation</h3>
+                        <p>Contributed to the full pipeline of MAESTRO, a text-to-video lecture generation system, covering backend Flask APIs, frontend interactions, audio/video synthesis, and integration with OpenAI and PlayHT APIs.</p>
                         <div class="project-tech">
                             <span>Python</span>
                             <span>LLM</span>
@@ -133,88 +143,61 @@
                             <span>Flask</span>
                             <span>MongoDB</span>
                         </div>
-                        <a href="https://github.com/Fordham-EDM-Lab/MAESTRO?tab=readme-ov-file" class="btn small">View Project</a>
+                        <a href="https://github.com/Fordham-EDM-Lab/MAESTRO?tab=readme-ov-file" class="btn small" target="_blank">View Project</a>
                     </div>
                 </div>
                 
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="assets/images/MnistNoProp.png" alt="NoPropagation Project">
+                    </div>
+                    <div class="project-info">
+                        <h3>NoPropagation: Backpropagation-Free Deep Learning</h3>
+                        <p>Implementation of the No-Propagation Diffusion Transformer (NoPropDT) from scratch in PyTorch. This project demonstrates training deep models using local layer-wise targets and diffusion-based denoising without traditional backpropagation, achieving ~99% accuracy on MNIST and ~76% on CIFAR-10.</p>
+                        <div class="project-tech">
+                            <span>PyTorch</span>
+                            <span>Diffusion Models</span>
+                            <span>Transformers</span>
+                            <span>Deep Learning</span>
+                        </div>
+                        <a href="https://github.com/ANKITSANJYAL/NoPropagation" class="btn small" target="_blank">View Project</a>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="assets/images/Hamm10000.png" alt="Skin Disease Detection">
+                    </div>
+                    <div class="project-info">
+                        <h3>Skin Disease Detection: Multi-Model CNN Ensemble</h3>
+                        <p>Comprehensive skin disease classification system using transfer learning with multiple pre-trained CNNs (DenseNet201, VGG16, InceptionV3, InceptionV2) on the HAM10000 dataset. Achieved 85% validation accuracy and implemented ensemble methods for improved diagnostic performance.</p>
+                        <div class="project-tech">
+                            <span>TensorFlow/Keras</span>
+                            <span>Transfer Learning</span>
+                            <span>CNN</span>
+                            <span>Medical AI</span>
+                        </div>
+                        <a href="https://github.com/ANKITSANJYAL/SkinDisease" class="btn small" target="_blank">View Project</a>
+                    </div>
+                </div>
+
                 <!-- Project 4 -->
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="../assets/images/Hamm10000.png" alt="Predictive Maintenance System">
+                        <img src="assets/images/edge_detection.png" alt="AI Image Detector">
                     </div>
                     <div class="project-info">
-                        <h3>Transfer Learning Pipeline for Early Detection of Skin Cancers</h3>
-                        <p>Fine-tuned DenseNet201 , Vgg16, InceptionV3, InceptionV2 and other pretrained CNNs on the HAM10000
-                            skin lesion dataset for multi-class classification.(85% validation accuracy)</p>
+                        <h3>AI Image Detector: Deepfake and Synthetic Image Detection</h3>
+                        <p>Advanced computer vision system for detecting AI-generated, deepfake, and synthetic images. Implements state-of-the-art detection algorithms to distinguish between real and artificially generated visual content with high accuracy.</p>
                         <div class="project-tech">
-                            <span>DenseNet201</span>
-                            <span>CNN</span>
-                            <span>Transfer Learning</span>
-                            <span>Medical Data Science</span>
-                            
+                            <span>Computer Vision</span>
+                            <span>Deep Learning</span>
+                            <span>Image Analysis</span>
+                            <span>Deepfake Detection</span>
                         </div>
-                        <a href="https://github.com/ANKITSANJYAL/SkinDisease" class="btn small">View Project</a>
-                    </div>
-                </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Blogs Section -->
-    <section id="blogs" class="section">
-        <div class="container">
-            <h2 class="section-title">My Blogs</h2>
-            <div class="blogs-grid">
-                <!-- Blog 1 -->
-                <div class="blog-card">
-                    <div class="blog-image">
-                        <img src="../assets/images/blog1.png" alt="Blog 1">
-                    </div>
-                    <div class="blog-info">
-                        <span class="blog-date">XX/XX/XXXX</span>
-                        <h3>Understanding CNN Architectures for Image Classification</h3>
-                        <p>Understanding Structure, Training Process and Loss Calculation in CNN and using the concept to detect skin cancer.</p>
-                        <a href="https://medium.com/your-blog-link" target="_blank" class="btn small">Read on Medium</a>
-                    </div>
-                </div>
-                
-                <!-- Blog 2 -->
-                <div class="blog-card">
-                    <div class="blog-image">
-                        <img src="../assets/images/blog2.jpeg" alt="Blog 2">
-                    </div>
-                    <div class="blog-info">
-                        <span class="blog-date">XX/XX/XXXX</span>
-                        <h3>Machine Learning Project Work Flow</h3>
-                        <p>Practical Guide on Data Exploration, Data Cleaning, Data Preprocessing, Feature Engineering, Feature Selection and Algorithm Selection</p>
-                        <a href="https://medium.com/your-blog-link" target="_blank" class="btn small">Read on Medium</a>
-                    </div>
-                </div>
-                
-                <!-- Blog 3 -->
-                <div class="blog-card">
-                    <div class="blog-image">
-                        <img src="../assets/images/Project3.webp"  alt="Blog 3">
-                    </div>
-                    <div class="blog-info">
-                        <span class="blog-date">XX/XX/XXXX</span>
-                        <h3>Map Reduce Practical Implementation</h3>
-                        <p>Practical guide to use of Big Data and Hadoop Cluster for Data Analysis on Real Time data (>10 Million Rows)</p>
-                        <a href="https://medium.com/your-blog-link" target="_blank" class="btn small">Read on Medium</a>
-                    </div>
-                </div>
-                
-                <!-- Blog 4 -->
-                <div class="blog-card">
-                    <div class="blog-image">
-                        <img src="../assets/images/blog4.png" alt="Blog 4">
-                    </div>
-                    <div class="blog-info">
-                        <span class="blog-date">XX/XX/XXXX</span>
-                        <h3>All About Gradient Descent and Back Propagation</h3>
-                        <p>A complete guide on Gradient Descent Algotithm and it's use case in machine learning and Deep Neural Network Application(Theory and Practise).</p>
-                        <a href="https://medium.com/your-blog-link" target="_blank" class="btn small">Read on Medium</a>
+                        <a href="https://github.com/ANKITSANJYAL/AI-Image-Detector" class="btn small" target="_blank">View Project</a>
                     </div>
                 </div>
             </div>
@@ -224,11 +207,11 @@
     <!-- Contact Section -->
     <section id="contact" class="section">
         <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
+            <h2 class="section-title">Contact</h2>
             <div class="contact-container">
                 <div class="contact-info">
-                    <h3>Let's Connect</h3>
-                    <p>I'm currently looking for internship opportunities in data science and machine learning. Feel free to reach out!</p>
+                    <h3>Get in Touch</h3>
+                    <p>I'm currently seeking research opportunities and collaborations in data science and machine learning. Feel free to reach out!</p>
                     
                     <div class="contact-details">
                         <div class="contact-item">
@@ -237,7 +220,7 @@
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-phone"></i>
-                            <span>+1 (929)4714290</span>
+                            <span>+1 (929) 471-4290</span>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-map-marker-alt"></i>
@@ -252,7 +235,7 @@
                     </div>
                 </div>
                 
-                <form id="contact-form" class="contact-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+                <form id="contact-form" class="contact-form" action="https://formspree.io/f/xyzpgjeq" method="POST">
                     <div class="form-group">
                         <input type="text" id="name" name="name" placeholder="Your Name" required>
                     </div>
@@ -275,7 +258,7 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; <span id="year"></span> Ankit Sanjyal All rights reserved.</p>
+            <p>&copy; <span id="year"></span> Ankit Sanjyal. All rights reserved.</p>
         </div>
     </footer>
 
