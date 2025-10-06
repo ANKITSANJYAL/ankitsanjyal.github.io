@@ -2,23 +2,6 @@ document.addEventListener('DOMContentLoaded', function () {
     // Set current year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Mobile navigation toggle
-    const hamburger = document.querySelector('.hamburger');
-    const navMenu = document.querySelector('#navbar ul');
-
-    hamburger.addEventListener('click', function () {
-        hamburger.classList.toggle('active');
-        navMenu.classList.toggle('active');
-    });
-
-    // Close mobile menu when clicking a link
-    document.querySelectorAll('#navbar ul li a').forEach(link => {
-        link.addEventListener('click', function () {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
-        });
-    });
-
     // Smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -28,23 +11,123 @@ document.addEventListener('DOMContentLoaded', function () {
             const targetElement = document.querySelector(targetId);
 
             if (targetElement) {
+                // Scroll to target with offset for fixed elements
+                const offset = window.innerWidth <= 768 ? 20 : 40;
+                const elementPosition = targetElement.offsetTop - offset;
+                
                 window.scrollTo({
-                    top: targetElement.offsetTop - 80,
+                    top: elementPosition,
                     behavior: 'smooth'
                 });
+                
+                // Update active navigation state
+                updateActiveNav(targetId);
             }
         });
     });
 
-    // Sticky navbar on scroll
-    window.addEventListener('scroll', function () {
-        const navbar = document.getElementById('navbar');
-        if (window.scrollY > 100) {
-            navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.08)';
-        } else {
-            navbar.style.boxShadow = 'none';
+    // Update active navigation item
+    function updateActiveNav(targetId) {
+        document.querySelectorAll('.sidebar-nav a').forEach(link => {
+            link.classList.remove('active');
+        });
+        
+        const activeLink = document.querySelector(`.sidebar-nav a[href="${targetId}"]`);
+        if (activeLink) {
+            activeLink.classList.add('active');
         }
+    }
+
+    // Portfolio filtering
+    const categoryFilters = document.querySelectorAll('.category-filter');
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+    categoryFilters.forEach(filter => {
+        filter.addEventListener('click', function() {
+            const category = this.getAttribute('data-category');
+            
+            // Update active filter
+            categoryFilters.forEach(f => f.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Filter portfolio items
+            portfolioItems.forEach(item => {
+                const itemCategories = item.getAttribute('data-category').split(' ');
+                
+                if (category === 'all' || itemCategories.includes(category)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
     });
+
+    // Mobile sidebar toggle (for responsive design)
+    function createMobileToggle() {
+        if (window.innerWidth <= 768) {
+            let mobileToggle = document.querySelector('.mobile-toggle');
+            
+            if (!mobileToggle) {
+                mobileToggle = document.createElement('button');
+                mobileToggle.className = 'mobile-toggle';
+                mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                mobileToggle.style.cssText = `
+                    position: fixed;
+                    top: 1rem;
+                    left: 1rem;
+                    z-index: 1001;
+                    background: var(--accent-color);
+                    color: white;
+                    border: none;
+                    padding: 0.75rem;
+                    border-radius: 4px;
+                    cursor: pointer;
+                `;
+                
+                document.body.appendChild(mobileToggle);
+                
+                mobileToggle.addEventListener('click', function() {
+                    const sidebar = document.querySelector('.sidebar');
+                    sidebar.classList.toggle('active');
+                });
+            }
+        }
+    }
+
+    // Scroll spy for navigation
+    function scrollSpy() {
+        const sections = document.querySelectorAll('.content-section');
+        const navLinks = document.querySelectorAll('.sidebar-nav a');
+        
+        let current = '';
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            
+            if (window.pageYOffset >= sectionTop - 100) {
+                current = section.getAttribute('id');
+            }
+        });
+        
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('active');
+            }
+        });
+    }
+
+    // Initialize mobile features
+    createMobileToggle();
+    
+    // Event listeners
+    window.addEventListener('scroll', scrollSpy);
+    window.addEventListener('resize', createMobileToggle);
+    
+    // Initialize scroll spy
+    scrollSpy();
 
     // Contact form submission
     const contactForm = document.getElementById('contact-form');
