@@ -38,30 +38,47 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Portfolio filtering
-    const categoryFilters = document.querySelectorAll('.category-filter');
+    // Enhanced Portfolio filtering with dropdown
+    const projectFilter = document.getElementById('projectFilter');
     const portfolioItems = document.querySelectorAll('.portfolio-item');
+    const projectCount = document.getElementById('projectCount');
 
-    categoryFilters.forEach(filter => {
-        filter.addEventListener('click', function() {
-            const category = this.getAttribute('data-category');
+    function filterProjects(category) {
+        let visibleCount = 0;
+        
+        portfolioItems.forEach((item, index) => {
+            const itemCategories = item.getAttribute('data-category').split(' ');
             
-            // Update active filter
-            categoryFilters.forEach(f => f.classList.remove('active'));
-            this.classList.add('active');
-            
-            // Filter portfolio items
-            portfolioItems.forEach(item => {
-                const itemCategories = item.getAttribute('data-category').split(' ');
-                
+            // Add slight delay for staggered animation
+            setTimeout(() => {
                 if (category === 'all' || itemCategories.includes(category)) {
-                    item.style.display = 'block';
+                    item.classList.remove('hidden');
+                    item.classList.add('visible');
+                    visibleCount++;
                 } else {
-                    item.style.display = 'none';
+                    item.classList.add('hidden');
+                    item.classList.remove('visible');
                 }
-            });
+            }, index * 30);
         });
-    });
+        
+        // Update project count with animation
+        setTimeout(() => {
+            projectCount.textContent = visibleCount;
+        }, 300);
+    }
+
+    // Dropdown filter event listener
+    if (projectFilter) {
+        projectFilter.addEventListener('change', function() {
+            filterProjects(this.value);
+        });
+    }
+
+    // Initialize with all projects visible
+    if (projectCount) {
+        projectCount.textContent = portfolioItems.length;
+    }
 
     // Mobile sidebar toggle (for responsive design)
     function createMobileToggle() {

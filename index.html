@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/academic-styles.css">
+    <link rel="stylesheet" href="assets/css/enhanced-portfolio.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.1/css/academicons.min.css">
 </head>
@@ -273,57 +274,121 @@
             <!-- Projects Section -->
             <section id="projects" class="content-section">
                 <div class="page-header">
-                    <h1>Portfolio</h1>
+                    <h1>Featured Projects</h1>
+                    <p class="section-subtitle">Research-driven AI/ML projects demonstrating end-to-end system design and implementation</p>
                 </div>
                 
                 <div class="content-body">
-                    <p>A collection of research projects, software development, and data science applications spanning AI, machine learning, and computer vision.</p>
-                    
-                    <div class="project-categories">
-                        <div class="category-filter active" data-category="all">All</div>
-                        <div class="category-filter" data-category="ai-ml">AI/ML</div>
-                        <div class="category-filter" data-category="web-apps">Web Applications</div>
-                        <div class="category-filter" data-category="research">Research Tools</div>
+                    <div class="project-filter-section">
+                        <div class="filter-header">
+                            <div class="filter-label">
+                                <i class="fas fa-filter"></i>
+                                <span>Filter Projects</span>
+                            </div>
+                            <select id="projectFilter" class="project-dropdown">
+                                <option value="all">All Projects</option>
+                                <option value="research">ML Research & Publications</option>
+                                <option value="ai-production">AI Production Systems</option>
+                                <option value="ai-ml">AI/ML Engineering</option>
+                            </select>
+                        </div>
+                        <div class="project-count">
+                            <span id="projectCount">15</span> projects
+                        </div>
                     </div>
                     
-                    <div class="portfolio-item" data-category="ai-ml research">
+                    <!-- High-Impact Projects Grid -->
+                    <div class="portfolio-grid" id="projectsGrid">
+                        
+                        <!-- 1. No-Propagation Research (Highest Impact - Novel Research) -->
+                        <div class="portfolio-item" data-category="research" data-priority="1">
+                            <div class="portfolio-badge research-badge">Research</div>
                             <div class="portfolio-image">
                                 <img src="assets/images/MnistNoProp.png" alt="No-Propagation Learning">
                             </div>
                             <div class="portfolio-content">
-                                <h3>No-Propagation Linear Probing</h3>
-                                <p>Reproduced and extended No-Propagation Diffusion Transformer (NoPropDT) from scratch, achieving 99% accuracy on MNIST without backpropagation.</p>
+                                <h3>No-Propagation Diffusion Transformers</h3>
+                                <p>Reproduced and extended cutting-edge NoPropDT architecture from scratch. Achieved 99% accuracy on MNIST without backpropagation, demonstrating novel training paradigms for transformers.</p>
                                 <div class="portfolio-tech">
-                                    <span>Transformers</span>
+                                    <span class="tech-primary">Transformers</span>
+                                    <span class="tech-primary">PyTorch</span>
                                     <span>Computer Vision</span>
-                                    <span>PyTorch</span>
                                     <span>Statistical Learning</span>
                                 </div>
                                 <div class="portfolio-links">
-                                    <a href="https://github.com/ANKITSANJYAL/NoPropagation" target="_blank">
+                                    <a href="https://github.com/ANKITSANJYAL/NoPropagation" target="_blank" class="link-primary">
                                         <i class="fab fa-github"></i> Code
                                     </a>
                                 </div>
                             </div>
-                    </div>
+                        </div>
 
-                    <div class="portfolio-grid">
-                        <div class="portfolio-item" data-category="ai-ml web-apps">
+                        <!-- 2. Diffusion Detective (High Impact - Production ML System) -->
+                        <div class="portfolio-item" data-category="ai-production research" data-priority="2">
+                            <div class="portfolio-badge production-badge">Production ML</div>
+                            <div class="portfolio-image">
+                                <img src="assets/images/workinprogress.webp" alt="Diffusion Detective">
+                            </div>
+                            <div class="portfolio-content">
+                                <h3>Diffusion Detective: Interpretable Stable Diffusion</h3>
+                                <p>Production-grade interpretable AI system with real-time attention extraction and latent steering. Full-stack implementation with FastAPI backend and React frontend for analyzing diffusion model internals.</p>
+                                <div class="portfolio-tech">
+                                    <span class="tech-primary">Diffusion Models</span>
+                                    <span class="tech-primary">PyTorch</span>
+                                    <span>FastAPI</span>
+                                    <span>React</span>
+                                    <span>XAI</span>
+                                </div>
+                                <div class="portfolio-links">
+                                    <a href="https://github.com/ANKITSANJYAL/Diffusion-Detective" target="_blank" class="link-primary">
+                                        <i class="fab fa-github"></i> Code
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 3. H-KFX Autonomous Agent (High Impact - LLM Agents) -->
+                        <div class="portfolio-item" data-category="ai-production ai-ml" data-priority="3">
+                            <div class="portfolio-badge ai-badge">AI Agent</div>
+                            <div class="portfolio-image">
+                                <img src="assets/images/workinprogress.webp" alt="H-KFX">
+                            </div>
+                            <div class="portfolio-content">
+                                <h3>H-KFX: Autonomous Bug-Fixing Agent</h3>
+                                <p>End-to-end autonomous AI agent using GPT-4o, MongoDB RAG, and Tavily AI. Automatically analyzes Jira tickets, generates validated code fixes, and creates PRs—achieving 90% reduction in debugging time.</p>
+                                <div class="portfolio-tech">
+                                    <span class="tech-primary">GPT-4o</span>
+                                    <span class="tech-primary">RAG</span>
+                                    <span>MongoDB</span>
+                                    <span>FastAPI</span>
+                                    <span>CI/CD</span>
+                                </div>
+                                <div class="portfolio-links">
+                                    <a href="https://github.com/ANKITSANJYAL/MUGHackthon" target="_blank" class="link-primary">
+                                        <i class="fab fa-github"></i> Code
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 4. AutomatedBI (High Impact - Enterprise AI) -->
+                        <div class="portfolio-item" data-category="ai-production ai-ml" data-priority="4">
+                            <div class="portfolio-badge production-badge">Enterprise AI</div>
                             <div class="portfolio-image">
                                 <img src="assets/images/AutoBI.png" alt="AutomatedBI Project">
                             </div>
                             <div class="portfolio-content">
-                                <h3>AutomatedBI – AI-Powered Business Intelligence Dashboard</h3>
-                                <p>End-to-end platform transforming raw CSV/Excel data into interactive dashboards using AI agents (CrewAI, Gemini), reducing manual reporting time by 80%.</p>
+                                <h3>AutomatedBI – AI-Powered BI Dashboard Generator</h3>
+                                <p>Enterprise platform using CrewAI and Gemini to transform raw CSV/Excel data into interactive dashboards. Reduces manual reporting time by 80% with multi-agent orchestration.</p>
                                 <div class="portfolio-tech">
-                                    <span>Python</span>
-                                    <span>LLM</span>
-                                    <span>CrewAI</span>
+                                    <span class="tech-primary">LLM Agents</span>
+                                    <span class="tech-primary">CrewAI</span>
                                     <span>Flask</span>
                                     <span>PostgreSQL</span>
+                                    <span>Data Viz</span>
                                 </div>
                                 <div class="portfolio-links">
-                                    <a href="https://github.com/ANKITSANJYAL/AutomatedBI" target="_blank">
+                                    <a href="https://github.com/ANKITSANJYAL/AutomatedBI" target="_blank" class="link-primary">
                                         <i class="fab fa-github"></i> Code
                                     </a>
                                     <a href="https://drive.google.com/file/d/1EnY2wfSkUXcyAJEg5-wLtURVdGLqiEO4/view?usp=sharing" target="_blank">
@@ -333,22 +398,24 @@
                             </div>
                         </div>
 
-                        <div class="portfolio-item" data-category="web-apps ai-ml">
+                        <!-- 5. MAESTRO (High Impact - Educational AI) -->
+                        <div class="portfolio-item" data-category="ai-production ai-ml" data-priority="5">
+                            <div class="portfolio-badge ai-badge">Educational AI</div>
                             <div class="portfolio-image">
                                 <img src="assets/images/MAESTRO.png" alt="MAESTRO Project">
                             </div>
                             <div class="portfolio-content">
-                                <h3>MAESTRO: AI-Powered Text-to-Video Generation</h3>
-                                <p>Contributed to full pipeline of text-to-video lecture generation system, covering backend Flask APIs, frontend interactions, and audio/video synthesis.</p>
+                                <h3>MAESTRO: AI Text-to-Video Lecture System</h3>
+                                <p>Full-stack text-to-video generation platform for educational content. Implemented backend Flask APIs, LangChain pipelines, and MongoDB integration for automated lecture synthesis.</p>
                                 <div class="portfolio-tech">
-                                    <span>Python</span>
-                                    <span>LLM</span>
-                                    <span>Langchain</span>
+                                    <span class="tech-primary">LangChain</span>
+                                    <span class="tech-primary">LLM</span>
                                     <span>Flask</span>
                                     <span>MongoDB</span>
+                                    <span>Video Gen</span>
                                 </div>
                                 <div class="portfolio-links">
-                                    <a href="https://github.com/Fordham-EDM-Lab/MAESTRO?tab=readme-ov-file" target="_blank">
+                                    <a href="https://github.com/Fordham-EDM-Lab/MAESTRO?tab=readme-ov-file" target="_blank" class="link-primary">
                                         <i class="fab fa-github"></i> Code
                                     </a>
                                     <a href="https://erdos.dsm.fordham.edu/" target="_blank">
@@ -358,64 +425,93 @@
                             </div>
                         </div>
 
-                        <div class="portfolio-item" data-category="ai-ml web-apps">
+                        <!-- 6. RamsNavigator (Medium-High Impact - Graph ML + NLP) -->
+                        <div class="portfolio-item" data-category="ai-ml" data-priority="6">
+                            <div class="portfolio-badge ai-badge">Graph + NLP</div>
+                            <div class="portfolio-image">
+                                <img src="assets/images/workinprogress.webp" alt="RamsNavigator">
+                            </div>
+                            <div class="portfolio-content">
+                                <h3>RamsNavigator: AI Campus Navigation</h3>
+                                <p>Hybrid Neo4j + MongoDB system with OpenAI for natural language indoor navigation. Combines graph algorithms, RAG, and conversational AI for intelligent pathfinding.</p>
+                                <div class="portfolio-tech">
+                                    <span class="tech-primary">Neo4j</span>
+                                    <span class="tech-primary">OpenAI</span>
+                                    <span>MongoDB</span>
+                                    <span>React</span>
+                                    <span>Node.js</span>
+                                </div>
+                                <div class="portfolio-links">
+                                    <a href="https://github.com/ANKITSANJYAL/RamsNavigator" target="_blank" class="link-primary">
+                                        <i class="fab fa-github"></i> Code
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 7. Wildfire Intelligence (Medium-High Impact - Real-time ML) -->
+                        <div class="portfolio-item" data-category="ai-ml" data-priority="7">
+                            <div class="portfolio-badge ai-badge">Geospatial AI</div>
                             <div class="portfolio-image">
                                 <img src="assets/images/Wildfire.png" alt="Wildfire Intelligence">
                             </div>
                             <div class="portfolio-content">
                                 <h3>Wildfire Intelligence Dashboard</h3>
-                                <p>Real-time AI dashboard for wildfire prediction and emergency response, visualizing 1M+ data points with NASA FIRMS-style detection and 3D geospatial analytics.</p>
+                                <p>Real-time ML dashboard for wildfire prediction with NASA FIRMS-style detection. Processes 1M+ geospatial data points with CrewAI for emergency response coordination.</p>
                                 <div class="portfolio-tech">
-                                    <span>Python</span>
-                                    <span>LLM</span>
-                                    <span>CrewAI</span>
+                                    <span class="tech-primary">CrewAI</span>
                                     <span>FastAPI</span>
                                     <span>PostgreSQL</span>
+                                    <span>Geospatial ML</span>
                                 </div>
                                 <div class="portfolio-links">
-                                    <a href="https://github.com/ANKITSANJYAL/Wildfire-Intelligence-Dashboard" target="_blank">
+                                    <a href="https://github.com/ANKITSANJYAL/Wildfire-Intelligence-Dashboard" target="_blank" class="link-primary">
                                         <i class="fab fa-github"></i> Code
                                     </a>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="portfolio-item" data-category="ai-ml research">
+                        <!-- 8. YJarvis Voice Assistant -->
+                        <div class="portfolio-item" data-category="ai-ml" data-priority="8">
+                            <div class="portfolio-badge ai-badge">Voice AI</div>
                             <div class="portfolio-image">
-                                <img src="assets/images/MnistNoProp.png" alt="No-Propagation Learning">
+                                <img src="assets/images/workinprogress.webp" alt="YJarvis">
                             </div>
                             <div class="portfolio-content">
-                                <h3>No-Propagation Linear Probing</h3>
-                                <p>Reproduced and extended No-Propagation Diffusion Transformer (NoPropDT) from scratch, achieving 99% accuracy on MNIST without backpropagation.</p>
+                                <h3>YJarvis: AI Voice Assistant for YouTube</h3>
+                                <p>Chrome extension with whistle activation, real-time NLP, and voice control. Features GPT-powered summarization and <2s latency for seamless interaction.</p>
                                 <div class="portfolio-tech">
-                                    <span>Transformers</span>
-                                    <span>Computer Vision</span>
-                                    <span>PyTorch</span>
-                                    <span>Statistical Learning</span>
+                                    <span class="tech-primary">OpenAI</span>
+                                    <span>Web Speech API</span>
+                                    <span>Chrome Extension</span>
+                                    <span>TTS</span>
                                 </div>
                                 <div class="portfolio-links">
-                                    <a href="https://github.com/ANKITSANJYAL/NoPropagation" target="_blank">
+                                    <a href="https://github.com/ANKITSANJYAL/YJarvis" target="_blank" class="link-primary">
                                         <i class="fab fa-github"></i> Code
                                     </a>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="portfolio-item" data-category="ai-ml research">
+                        <!-- 9. Causal Finance ML -->
+                        <div class="portfolio-item" data-category="research ai-ml" data-priority="9">
+                            <div class="portfolio-badge research-badge">Research</div>
                             <div class="portfolio-image">
                                 <img src="assets/images/project5.png" alt="Causal Finance Project">
                             </div>
                             <div class="portfolio-content">
                                 <h3>Causal Factor Discovery in S&P 500 Returns</h3>
-                                <p>End-to-end pipeline for uncovering causal relationships in financial markets using Double Machine Learning (DML) with ablation studies for deep architectures.</p>
+                                <p>End-to-end pipeline for uncovering causal relationships in financial markets using Double Machine Learning (DML) with deep architecture ablation studies.</p>
                                 <div class="portfolio-tech">
+                                    <span class="tech-primary">Causal Inference</span>
+                                    <span class="tech-primary">Deep Learning</span>
                                     <span>Financial ML</span>
-                                    <span>Causal Inference</span>
-                                    <span>Deep Learning</span>
                                     <span>Time Series</span>
                                 </div>
                                 <div class="portfolio-links">
-                                    <a href="https://github.com/ANKITSANJYAL/Causal-Factor-Discovery-in-S-P-500-Returns-" target="_blank">
+                                    <a href="https://github.com/ANKITSANJYAL/Causal-Factor-Discovery-in-S-P-500-Returns-" target="_blank" class="link-primary">
                                         <i class="fab fa-github"></i> Code
                                     </a>
                                     <a href="https://github.com/ANKITSANJYAL/Causal-Factor-Discovery-in-S-P-500-Returns-/blob/main/Causal_Factor_Discovery_in_S_P_500_Returns.pdf" target="_blank">
@@ -425,34 +521,37 @@
                             </div>
                         </div>
 
-                        <div class="portfolio-item" data-category="ai-ml">
+                        <!-- 10. Medical AI - Skin Disease Detection -->
+                        <div class="portfolio-item" data-category="ai-ml" data-priority="10">
+                            <div class="portfolio-badge ai-badge">Medical AI</div>
                             <div class="portfolio-image">
                                 <img src="assets/images/Hamm10000.png" alt="Skin Disease Detection">
                             </div>
                             <div class="portfolio-content">
                                 <h3>Skin Disease Detection: Multi-Model CNN Ensemble</h3>
-                                <p>Comprehensive skin disease classification system using transfer learning with multiple pre-trained CNNs on the HAM10000 dataset. Achieved 85% validation accuracy.</p>
+                                <p>Transfer learning system with multiple pre-trained CNNs on HAM10000 dataset. Achieved 85% validation accuracy using ensemble methods for medical diagnosis.</p>
                                 <div class="portfolio-tech">
-                                    <span>TensorFlow</span>
-                                    <span>Transfer Learning</span>
+                                    <span class="tech-primary">TensorFlow</span>
+                                    <span class="tech-primary">Transfer Learning</span>
                                     <span>CNN</span>
                                     <span>Medical AI</span>
                                 </div>
                                 <div class="portfolio-links">
-                                    <a href="https://github.com/ANKITSANJYAL/SkinDisease" target="_blank">
+                                    <a href="https://github.com/ANKITSANJYAL/SkinDisease" target="_blank" class="link-primary">
                                         <i class="fab fa-github"></i> Code
                                     </a>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="portfolio-item" data-category="web-apps ai-ml">
+                        <!-- 11. YouTube Comment Analyzer -->
+                        <div class="portfolio-item" data-category="ai-ml" data-priority="11">
                             <div class="portfolio-image">
                                 <img src="assets/images/youtube-analyzer.png" alt="YouTube Comment Analyzer">
                             </div>
                             <div class="portfolio-content">
                                 <h3>YouTube Comment Analyzer</h3>
-                                <p>Tool to fetch, analyze, and visualize YouTube comments using NLP. Performs sentiment analysis to provide insights into audience engagement.</p>
+                                <p>NLP tool for fetching, analyzing, and visualizing YouTube comments with sentiment analysis. Provides insights into audience engagement patterns.</p>
                                 <div class="portfolio-tech">
                                     <span>Python</span>
                                     <span>YouTube API</span>
@@ -460,7 +559,7 @@
                                     <span>Sentiment Analysis</span>
                                 </div>
                                 <div class="portfolio-links">
-                                    <a href="https://github.com/ANKITSANJYAL/YoutubeCommentAnalyzer" target="_blank">
+                                    <a href="https://github.com/ANKITSANJYAL/YoutubeCommentAnalyzer" target="_blank" class="link-primary">
                                         <i class="fab fa-github"></i> Code
                                     </a>
                                     <a href="https://drive.google.com/file/d/1wycIOmOM7T2ANFDBVqETRE31u5sXil86/view?usp=sharing" target="_blank">
@@ -470,26 +569,28 @@
                             </div>
                         </div>
 
-                        <div class="portfolio-item" data-category="ai-ml">
+                        <!-- 12. Deepfake Detection -->
+                        <div class="portfolio-item" data-category="ai-ml" data-priority="12">
                             <div class="portfolio-image">
                                 <img src="assets/images/edge_detection.png" alt="AI Image Detector">
                             </div>
                             <div class="portfolio-content">
                                 <h3>AI Image Detector: Deepfake Detection</h3>
-                                <p>Advanced computer vision system for detecting AI-generated, deepfake, and synthetic images with state-of-the-art detection algorithms.</p>
+                                <p>Computer vision system for detecting AI-generated, deepfake, and synthetic images using state-of-the-art detection algorithms.</p>
                                 <div class="portfolio-tech">
-                                    <span>Computer Vision</span>
+                                    <span class="tech-primary">Computer Vision</span>
                                     <span>Deep Learning</span>
                                     <span>Image Analysis</span>
                                     <span>Deepfake Detection</span>
                                 </div>
                                 <div class="portfolio-links">
-                                    <a href="https://github.com/ANKITSANJYAL/AI-Image-Detector" target="_blank">
+                                    <a href="https://github.com/ANKITSANJYAL/AI-Image-Detector" target="_blank" class="link-primary">
                                         <i class="fab fa-github"></i> Code
                                     </a>
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </section>
