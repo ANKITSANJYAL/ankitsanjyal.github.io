@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NoPropagation: Ankit Sanjyal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/academic.css">
+  <style>
+    .proj-hero { background: #f8f8f8; border: 1px solid #e8e8e8; border-radius: 6px; padding: 28px 32px; margin-bottom: 32px; }
+    .proj-title { font-size: 1.5rem; font-weight: 700; color: #111; margin-bottom: 8px; }
+    .proj-tagline { color: #555; font-size: 1rem; margin-bottom: 14px; }
+    .proj-links a { display: inline-block; margin-right: 10px; margin-bottom: 6px; padding: 5px 14px; border: 1px solid #1772d0; border-radius: 3px; font-size: 0.88rem; color: #1772d0; }
+    .proj-links a:hover { background: #1772d0; color: #fff; text-decoration: none; }
+    .tag-pill { display: inline-block; background: #eef4ff; color: #1772d0; border: 1px solid #c8daf8; border-radius: 12px; font-size: 0.8rem; padding: 2px 10px; margin: 2px; }
+    .result-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; margin: 16px 0; }
+    .result-table th { background: #f0f0f0; padding: 8px 12px; text-align: left; border: 1px solid #ddd; font-weight: 700; }
+    .result-table td { padding: 7px 12px; border: 1px solid #ddd; color: #444; }
+    .result-table tr:nth-child(even) td { background: #fafafa; }
+    .highlight-row td { background: #e8f5e9 !important; font-weight: 700; }
+    .code-block { background: #f5f5f5; border: 1px solid #e0e0e0; border-radius: 4px; padding: 12px 16px; font-family: monospace; font-size: 0.85rem; color: #333; overflow-x: auto; margin: 12px 0; white-space: pre; }
+    .back-link { font-size: 0.9rem; margin-bottom: 24px; display: block; }
+    .teaser-img { width: 100%; max-width: 600px; border-radius: 4px; border: 1px solid #e8e8e8; display: block; margin: 16px auto; }
+    .insight-box { background: #e8f5e9; border: 1px solid #4caf50; border-radius: 4px; padding: 14px 18px; margin: 16px 0; font-size: 0.95rem; color: #1b5e20; }
+  </style>
+</head>
+<body>
+<nav id="site-nav">
+  <div id="nav-inner">
+    <a href="../index.html" class="nav-name">Ankit Sanjyal</a>
+    <div id="nav-links">
+      <a href="../index.html#news">News</a>
+      <a href="../index.html#publications">Publications</a>
+      <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#experience">Experience</a>
+      <a href="../blog/index.html">Blog</a>
+    </div>
+  </div>
+</nav>
+
+<div id="page-wrap">
+
+  <a class="back-link" href="../index.html">← Back to homepage</a>
+
+  <div class="proj-hero">
+    <div class="proj-title">No-Propagation Diffusion Transformers (NoPropDT)</div>
+    <div class="proj-tagline">A clean PyTorch implementation of a backpropagation-free training algorithm: achieving 99% accuracy on MNIST using only local layer-wise denoising targets.</div>
+    <div>
+      <span class="tag-pill">PyTorch</span>
+      <span class="tag-pill">Diffusion</span>
+      <span class="tag-pill">Backprop-Free Learning</span>
+      <span class="tag-pill">MNIST</span>
+      <span class="tag-pill">CIFAR-10</span>
+      <span class="tag-pill">Python 100%</span>
+      <span class="tag-pill">5 ⭐ on GitHub</span>
+    </div>
+    <div class="proj-links" style="margin-top:14px;">
+      <a href="https://github.com/ANKITSANJYAL/NoPropagation" target="_blank">GitHub</a>
+      <a href="https://arxiv.org/pdf/2503.24322" target="_blank">Original Paper (Oxford)</a>
+    </div>
+  </div>
+
+  <img src="../assets/images/MnistNoProp.png" alt="NoPropDT accuracy on MNIST" class="teaser-img">
+
+  <div class="insight-box">
+    ✅ <strong>Result:</strong> ~99% validation accuracy on MNIST by epoch 7 and ~76% on CIFAR-10 by epoch 50 —
+    achieved without a single gradient flowing backward through the network.
+  </div>
+
+  <h2 class="section-heading">The Big Idea</h2>
+  <p>
+    Every modern neural network is trained with backpropagation: computing gradients of a global loss
+    and pushing them backward through every layer. Backprop is powerful, but it is:
+  </p>
+  <ul style="margin: 8px 0 12px 20px; color: #444; font-size: 0.95rem; line-height: 1.9;">
+    <li><strong>Biologically implausible</strong>: real neurons don't receive error signals from the future</li>
+    <li><strong>Memory-intensive</strong>: requires storing all intermediate activations for the backward pass</li>
+    <li><strong>Hard to parallelize layer-wise</strong>: each layer waits for the layer above to finish its backward pass</li>
+  </ul>
+  <p>
+    NoPropDT (from researchers at the University of Oxford) replaces backprop with a stack of
+    <em>local denoising blocks</em>. Each block learns to denoise a class embedding toward the correct label —
+    no global gradient, no backward pass through the whole network.
+  </p>
+
+  <h2 class="section-heading">How NoPropDT Works</h2>
+  <p>
+    The intuition maps directly to diffusion models: start with a noisy guess and iteratively denoise it.
+  </p>
+  <ol style="margin: 8px 0 16px 20px; color: #444; font-size: 0.95rem; line-height: 1.9;">
+    <li>Start with a <strong>noisy class embedding</strong> (Gaussian noise added to the label embedding)</li>
+    <li>A <strong>DenoiseBlock</strong> (CNN + MLP) processes the image alongside the noisy embedding and predicts a cleaner version</li>
+    <li>This is repeated <strong>T times</strong>: each block is trained with a local MSE loss only (no chain rule across blocks)</li>
+    <li>A final <strong>linear classifier</strong> reads the fully denoised embedding and predicts the class</li>
+  </ol>
+
+  <div class="code-block">Code flow:
+main.py
+ └─→ experiments/run_mnist_dt.py
+     ├─→ data/mnist_loader.py         # MNIST DataLoaders
+     ├─→ models/no_prop_dt.py         # NoPropDT model + DenoiseBlock
+     └─→ trainer/train_nopropdt.py    # Layer-wise local MSE training</div>
+
+  <h2 class="section-heading">Results</h2>
+  <table class="result-table">
+    <tr>
+      <th>Dataset</th>
+      <th>Variant</th>
+      <th>Accuracy</th>
+      <th>Epochs to convergence</th>
+    </tr>
+    <tr class="highlight-row">
+      <td>MNIST</td>
+      <td>With nonlinear decoder</td>
+      <td>~99%</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <td>MNIST</td>
+      <td>No decoder</td>
+      <td>~97%</td>
+      <td>10</td>
+    </tr>
+    <tr class="highlight-row">
+      <td>CIFAR-10</td>
+      <td>With nonlinear decoder</td>
+      <td>~76%</td>
+      <td>50</td>
+    </tr>
+    <tr>
+      <td>CIFAR-10</td>
+      <td>No decoder</td>
+      <td>~68%</td>
+      <td>50</td>
+    </tr>
+  </table>
+  <p style="font-size: 0.85rem; color: #888;">All results achieved without backpropagation. Training uses only local per-layer MSE losses.</p>
+
+  <h2 class="section-heading">Why I Built This</h2>
+  <p>
+    This was a deep-dive reproduction exercise: reading a research paper (Oxford, 2025) and rebuilding it
+    from scratch in a clean, modular PyTorch codebase, extending it to CIFAR-10 and adding a nonlinear decoder
+    variant. The goal was to deeply understand an alternative training paradigm that could matter for
+    neuromorphic hardware, federated learning, and biologically plausible AI.
+  </p>
+  <p>
+    The repo has earned 5 ⭐ and is actively watched by researchers interested in backprop-free learning.
+  </p>
+
+  <div id="footer" style="margin-top:40px;">
+    <p><a href="../index.html">← Ankit Sanjyal</a></p>
+  </div>
+
+</div>
+</body>
+</html>

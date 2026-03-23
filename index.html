@@ -1,803 +1,305 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ankit Sanjyal | AI Engineer & ML Researcher</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.1/css/academicons.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ankit Sanjyal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.1/css/academicons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/academic.css">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#hero" class="nav-logo">
-                <span class="logo-text">AS</span>
-            </a>
-            <ul class="nav-menu">
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#experience" class="nav-link">Experience</a></li>
-                <li><a href="#research" class="nav-link">Research</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
-            <div class="nav-actions">
-                <a href="https://docs.google.com/document/d/1BrKcFnbUT_K0XsD9evtcpIcb19MbPr4eOjXAKE27qfU/edit?usp=sharing" class="btn-nav" target="_blank">
-                    <i class="fas fa-file-pdf"></i> Resume
-                </a>
-            </div>
-            <button class="mobile-menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+
+<!-- NAV -->
+<nav id="site-nav">
+  <div id="nav-inner">
+    <a href="index.html" class="nav-name">Ankit Sanjyal</a>
+    <div id="nav-links">
+      <a href="index.html#news">News</a>
+      <a href="index.html#publications">Publications</a>
+      <a href="index.html#projects">Projects</a>
+      <a href="index.html#experience">Experience</a>
+      <a href="blog/index.html">Blog</a>
+    </div>
+  </div>
+</nav>
+
+<div id="page-wrap">
+
+  <!-- HEADER / BIO -->
+  <div id="header">
+    <div id="header-text">
+      <h1>Ankit Sanjyal</h1>
+      <p>
+        I am an M.S. Data Science researcher at <a href="https://www.fordham.edu/" target="_blank">Fordham University</a>,
+        where I work as a Graduate Research Assistant in the
+        <a href="https://www.cis.fordham.edu/edmlab" target="_blank">Educational Data Mining Lab</a>
+        and as a Teaching Assistant for graduate Machine Learning courses.
+      </p>
+      <p>
+        My research focuses on <strong>flow and diffusion models</strong>, <strong>multimodal learning</strong>,
+        and <strong>causal interpretability</strong>.
+        I study how score-based and flow-matching generative models behave in structured latent spaces,
+        asking questions like: how does energy evolve during a diffusion trajectory, when does classifier-free
+        guidance hurt high-resolution quality, and can a causal graph over modalities make multimodal
+        predictions explainable?
+        My current work (<em>Affect-Diff</em>) couples a VAE over text/audio/video with a conditional 1D diffusion
+        U-Net and a Gumbel-Softmax causal attention graph, targeting emotion recognition with
+        counterfactual explainability.
+        I have authored three preprints on arXiv covering energy dynamics in diffusion sampling
+        (<a href="https://arxiv.org/abs/2507.09441" target="_blank">RectifiedHR</a>),
+        training-free local style control in SDXL
+        (<a href="https://arxiv.org/abs/2507.20094" target="_blank">Local Prompt Adaptation</a>),
+        and a systematic negative-result study of DINO feature reuse for few-shot NeRF
+        (<a href="https://arxiv.org/abs/2506.18208" target="_blank">NeRF Few-Shot</a>).
+      </p>
+      <p>
+        Before Fordham, I was an Associate Data Consultant at
+        <a href="https://www.decisionfoundry.com/" target="_blank">Decision Foundry</a> (Bangalore)
+        and an undergraduate researcher at Jain University, where I worked on medical image segmentation
+        and multiclass skin lesion classification.
+        I am actively looking for <strong>research internships, gen ai/ ml research jobs and Ph.D. positions</strong>
+        in generative modeling, multimodal AI, and representation learning.
+      </p>
+      <p class="affiliation">M.S. Data Science, Fordham University &nbsp;&middot;&nbsp; New York, NY</p>
+      <div class="social-links">
+        <a href="mailto:asanjyal82@gmail.com">Email</a>
+        <span>/</span>
+        <a href="https://docs.google.com/document/d/1TMZIwZrJOhgFt0d9Bo7IqrXks_pImuV3IJmOxfbm52c/edit?usp=sharing" target="_blank">CV</a>
+        <span>/</span>
+        <a href="https://github.com/ANKITSANJYAL" target="_blank">GitHub</a>
+        <span>/</span>
+        <a href="https://linkedin.com/in/ankit-sanjyal" target="_blank">LinkedIn</a>
+        <span>/</span>
+        <a href="blog/index.html">Blog</a>
+      </div>
+    </div>
+    <div id="header-image">
+      <img src="assets/images/profile.JPG" alt="Ankit Sanjyal">
+    </div>
+  </div>
+
+  <!-- NEWS -->
+  <div id="news">
+    <h2 class="section-heading">News</h2>
+    <ul>
+      <li><span class="news-date">03/26</span> Actively working on <a href="projects/affect-diff.html">Affect-Diff</a>, a multimodal emotion recognition system with a causal attention graph and conditional 1D diffusion prior on CMU-MOSEI.</li>
+      <li><span class="news-date">01/26</span> Teaching <em>Machine Learning for Finance</em> (Spring 2026) as TA at Fordham University.</li>
+      <li><span class="news-date">07/25</span> Preprint <a href="https://arxiv.org/abs/2507.20094" target="_blank">Local Prompt Adaptation for Style-Consistent Generation</a> on arXiv.</li>
+      <li><span class="news-date">07/25</span> Preprint <a href="https://arxiv.org/abs/2507.09441" target="_blank">RectifiedHR: High-Resolution Diffusion via Energy Profiling</a> on arXiv.</li>
+      <li><span class="news-date">06/25</span> Preprint <a href="https://arxiv.org/abs/2506.18208" target="_blank">NeRF Few-Shot Limitations Analysis</a> on arXiv.</li>
+      <li><span class="news-date">08/25</span> Teaching <em>Data Mining</em> (Fall 2025) as TA at Fordham University.</li>
+      <li><span class="news-date">08/24</span> Started as Graduate Research Assistant at Fordham University (MAESTRO project).</li>
+    </ul>
+  </div>
+
+  <!-- PUBLICATIONS -->
+  <div id="publications">
+    <h2 class="section-heading">Publications</h2>
+
+    <div class="pub-row">
+      <div class="pub-image">
+        <img src="assets/images/adaptive_linear_increasing_cfg7.0_512_prompt3_20250712_121334.png" alt="RectifiedHR">
+      </div>
+      <div class="pub-details">
+        <div class="pub-title"><a href="papers/rectifiedhr.html">RectifiedHR: High-Resolution Diffusion via Energy Profiling</a></div>
+        <div class="pub-authors"><strong>Ankit Sanjyal</strong></div>
+        <div class="pub-venue"><span class="venue-name">arXiv</span>, 2025.</div>
+        <div class="pub-links">
+          <a href="https://arxiv.org/abs/2507.09441" target="_blank">arXiv</a>
+          <span class="separator">/</span>
+          <a href="https://github.com/ANKITSANJYAL/RectifiedHR" target="_blank">code</a>
         </div>
-    </nav>
+      </div>
+    </div>
 
-    <!-- Hero Section -->
-    <section id="hero" class="hero">
-        <div class="hero-particles"></div>
-        <div class="hero-container">
-            <div class="hero-content">
-                <div class="hero-label">
-                    <span class="status-indicator"></span>
-                    Available for Researh Internships & Full time roles
-                </div>
-                <h1 class="hero-title">
-                    Hi, I'm <span class="gradient-text">Ankit Sanjyal</span>
-                </h1>
-                <p class="hero-subtitle">
-                    AI Researcher & Engineer building <span class="highlight">interpretable AI systems</span> from
-                    <span class="highlight">reasoning-aware diffusion models</span> to <span class="highlight">production-scale multi-agent workflows</span>
-                </p>
-                <p class="hero-description">
-                    Bridging deep research in LLMs, VLMs, and Generative AI with enterprise systems that deliver 80-90% efficiency gains.
-                    From novel architectures without backpropagation to autonomous debugging agents.
-                </p>
-                <div class="hero-cta">
-                    <a href="#projects" class="btn-primary">
-                        <span>View Projects</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                    <a href="#contact" class="btn-secondary">
-                        <span>Get in Touch</span>
-                    </a>
-                </div>
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <span class="stat-number">3+</span>
-                        <span class="stat-label">Publications</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">12+</span>
-                        <span class="stat-label">AI Projects</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">90%</span>
-                        <span class="stat-label">Time Saved</span>
-                    </div>
-                </div>
-            </div>
-            <div class="hero-image">
-                <div class="profile-card">
-                    <img src="assets/images/profile.JPG" alt="Ankit Sanjyal">
-                    <div class="profile-card-glow"></div>
-                </div>
-                <div class="social-float">
-                    <a href="https://linkedin.com/in/ankit-sanjyal" target="_blank" class="social-icon">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="https://github.com/ANKITSANJYAL" target="_blank" class="social-icon">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://scholar.google.com/citations?user=DvpqhqcAAAAJ&hl=en" target="_blank" class="social-icon">
-                        <i class="ai ai-google-scholar"></i>
-                    </a>
-                    <a href="https://medium.com/@asanjyal81" target="_blank" class="social-icon">
-                        <i class="fab fa-medium"></i>
-                    </a>
-                    <a href="mailto:asanjyal82@gmail.com" class="social-icon">
-                        <i class="fas fa-envelope"></i>
-                    </a>
-                </div>
-            </div>
+    <div class="pub-row">
+      <div class="pub-image">
+        <img src="assets/images/local-style-diffusion.png" alt="Local Style Diffusion">
+      </div>
+      <div class="pub-details">
+        <div class="pub-title"><a href="papers/local-style-diffusion.html">Local Prompt Adaptation for Style-Consistent Generation</a></div>
+        <div class="pub-authors"><strong>Ankit Sanjyal</strong></div>
+        <div class="pub-venue"><span class="venue-name">arXiv</span>, 2025.</div>
+        <div class="pub-links">
+          <a href="https://arxiv.org/abs/2507.20094" target="_blank">arXiv</a>
+          <span class="separator">/</span>
+          <a href="https://github.com/ANKITSANJYAL/local-style-diffusion" target="_blank">code</a>
         </div>
-        <div class="scroll-indicator">
-            <span>Scroll to explore</span>
-            <i class="fas fa-chevron-down"></i>
+      </div>
+    </div>
+
+    <div class="pub-row">
+      <div class="pub-image">
+        <img src="assets/images/rendered_comparison.png" alt="NeRF Few-Shot">
+      </div>
+      <div class="pub-details">
+        <div class="pub-title"><a href="papers/nerf-few-shot.html">NeRF Few-Shot Limitations Analysis</a></div>
+        <div class="pub-authors"><strong>Ankit Sanjyal</strong></div>
+        <div class="pub-venue"><span class="venue-name">arXiv</span>, 2025.</div>
+        <div class="pub-links">
+          <a href="https://arxiv.org/abs/2506.18208" target="_blank">arXiv</a>
+          <span class="separator">/</span>
+          <a href="https://github.com/ANKITSANJYAL/nerf-few-shot-limitations" target="_blank">code</a>
         </div>
-    </section>
+      </div>
+    </div>
 
-    <!-- Main Content -->
-    <main class="main-content">
+  </div>
 
-        <!-- About Section -->
-        <section id="about" class="section">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-label">Who I Am</span>
-                    <h2 class="section-title">About Me</h2>
-                </div>
+  <!-- PROJECTS -->
+  <div id="projects">
+    <h2 class="section-heading">Selected Projects</h2>
+    <ul class="project-list">
 
-                <div class="about-grid">
-                    <div class="about-content">
-                        <p class="text-large">
-                            I'm an M.S. Data Science researcher at <strong>Fordham University</strong> with a unique foundation: I don't just build AI systems I understand them from first principles. My work spans <strong>interpretable diffusion models</strong>, <strong>multimodal emotion recognition</strong>, and <strong>training paradigms without backpropagation</strong>, alongside enterprise-grade <strong>multi-agent systems</strong> and <strong>production ML infrastructure</strong>.
-                        </p>
-                        <p>
-                            <strong>My research philosophy:</strong> Before scaling AI, understand why it works. I've reproduced cutting-edge architectures (NoPropDT achieving 99% accuracy without gradient descent), designed reasoning-aware diffusion systems that expose internal decision processes, and built robust multimodal models that intelligently handle sensory failures work that bridges experimental innovation with real-world reliability.
-                        </p>
-                        <p>
-                            <strong>My engineering impact:</strong> From research to production, I architect systems that deliver measurable value. I've engineered autonomous bug-fixing agents with RAG and MongoDB (90% debugging time reduction), built AI-powered BI platforms using CrewAI (80% manual reporting time saved), and deployed graph-based navigation systems with Neo4j and OpenAI. I've also worked as a Data Consultant optimizing SQL queries on Amazon Redshift (40% faster retrieval) and automating ETL workflows with DBT, bringing both analytical rigor and production expertise.
-                        </p>
-
-                        <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Current Research Focus</h3>
-                        <div class="research-focus">
-                            <div class="focus-item">
-                                <h4><i class="fas fa-microscope"></i> Diffusion Detective: Reasoning-Guided Interpretability</h4>
-                                <p>Integrating chain-of-thought (CoT) supervision with Stable Diffusion to make image generation interpretable. Designing compact reasoning-aware architectures that generate explicit reasoning traces before synthesis, enabling users to visualize and edit the model's decision steps. Bridging multimodal reasoning frameworks (CoT-VLA, UniFusion) with diffusion modeling for transparent AI creativity.</p>
-                            </div>
-                            <div class="focus-item">
-                                <h4><i class="fas fa-brain"></i> Robust Multimodal Emotion Recognition</h4>
-                                <p>Building emotion recognition systems that mimic human intuition trusting vision when audio is corrupted by noise. Combining audio, video, and text models with a self-correcting "reliability filter" that detects sensor failures and shifts attention to clear signals. Engineering real-world robustness for autonomous vehicles and service robotics.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="about-sidebar">
-                        <div class="info-card">
-                            <h3>Education</h3>
-                            <div class="education-item">
-                                <div class="edu-icon">
-                                    <i class="fas fa-graduation-cap"></i>
-                                </div>
-                                <div class="edu-content">
-                                    <h4>M.S. Data Science</h4>
-                                    <p class="institution">Fordham University</p>
-                                    <p class="date">2024 - Present</p>
-                                </div>
-                            </div>
-                            <div class="education-item">
-                                <div class="edu-icon">
-                                    <i class="fas fa-graduation-cap"></i>
-                                </div>
-                                <div class="edu-content">
-                                    <h4>B.Tech Computer Science</h4>
-                                    <p class="institution">Jain University</p>
-                                    <p class="date">2019 - 2023</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="info-card">
-                            <h3>Tech Stack</h3>
-                            <div class="tech-stack">
-                                <span class="tech-badge primary">Python</span>
-                                <span class="tech-badge primary">PyTorch</span>
-                                <span class="tech-badge primary">TensorFlow</span>
-                                <span class="tech-badge">LangChain</span>
-                                <span class="tech-badge">CrewAI</span>
-                                <span class="tech-badge">FastAPI</span>
-                                <span class="tech-badge">React</span>
-                                <span class="tech-badge">PostgreSQL</span>
-                                <span class="tech-badge">MongoDB</span>
-                                <span class="tech-badge">Neo4j</span>
-                                <span class="tech-badge">Docker</span>
-                                <span class="tech-badge">AWS</span>
-                                <span class="tech-badge">GCP</span>
-                            </div>
-                        </div>
-                        
-                        <div class="info-card">
-                            <h3>Areas of Expertise</h3>
-                            <div class="expertise-list">
-                                <div class="expertise-category">
-                                    <h4><i class="fas fa-atom"></i> Deep Learning</h4>
-                                    <p>PyTorch, TensorFlow, Novel architectures, Training paradigms</p>
-                                </div>
-                                <div class="expertise-category">
-                                    <h4><i class="fas fa-brain"></i> LLMs & VLMs</h4>
-                                    <p>GPT-4, Claude, Multimodal reasoning, CoT-guided generation</p>
-                                </div>
-                                <div class="expertise-category">
-                                    <h4><i class="fas fa-image"></i> Generative AI</h4>
-                                    <p>Diffusion models, Text-to-image, Reasoning-aware generation</p>
-                                </div>
-                                <div class="expertise-category">
-                                    <h4><i class="fas fa-project-diagram"></i> Databases</h4>
-                                    <p>Graph DBs (Neo4j), Vector DBs (Pinecone, Weaviate), SQL optimization</p>
-                                </div>
-                                <div class="expertise-category">
-                                    <h4><i class="fas fa-code"></i> Full-Stack</h4>
-                                    <p>FastAPI, React, Node.js, PostgreSQL, MongoDB, RESTful APIs</p>
-                                </div>
-                                <div class="expertise-category">
-                                    <h4><i class="fas fa-cloud"></i> Cloud & MLOps</h4>
-                                    <p>Docker, AWS, GCP, Model deployment, Monitoring</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Experience Section -->
-        <section id="experience" class="section section-dark">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-label">Professional Journey</span>
-                    <h2 class="section-title">Experience</h2>
-                    <p class="section-subtitle">From research labs to production systems building AI that works in the real world</p>
-                </div>
-
-                <div class="timeline">
-                    <!-- Teaching Assistant -->
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-header">
-                                <div>
-                                    <h3>Teaching Assistant</h3>
-                                    <p class="company">Fordham University · New York, NY</p>
-                                </div>
-                                <span class="timeline-date">Aug 2025 - Present</span>
-                            </div>
-                            <p class="timeline-desc">
-                                Teaching graduate-level courses in <strong>Data Mining (Fall 2025)</strong> and <strong>Machine Learning for Finance (Spring 2026)</strong>. Leading weekly office hours, providing 1:1 mentoring on research projects, and delivering guest lectures on advanced ML topics including classification, clustering, and financial modeling techniques.
-                            </p>
-                            <div class="timeline-tags">
-                                <span>Data Mining</span>
-                                <span>Machine Learning</span>
-                                <span>Mentorship</span>
-                                <span>Finance ML</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Graduate Research Assistant -->
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-header">
-                                <div>
-                                    <h3>Graduate Research Assistant</h3>
-                                    <p class="company">Fordham University · New York, NY</p>
-                                </div>
-                                <span class="timeline-date">Aug 2024 - Present</span>
-                            </div>
-                            <p class="timeline-desc">
-                                <strong>Leading MAESTRO project:</strong> Developed a multimodal learning platform generating lecture videos via OpenAI (script synthesis), PlayHT (neural voice), and FFmpeg (video rendering). Integrated retrieval-augmented QA bots using LangChain and OpenAI embeddings for interactive learning.
-                            </p>
-                            <p class="timeline-desc">
-                                <strong>Current research:</strong> Engineering novel few-shot 2D-3D reconstruction pipelines on medical imaging data (OASIS dataset), exploring efficient neural representations for sparse-view medical volumetric reconstruction.
-                            </p>
-                            <div class="timeline-tags">
-                                <span>LangChain</span>
-                                <span>OpenAI</span>
-                                <span>3D Reconstruction</span>
-                                <span>Medical AI</span>
-                                <span>RAG</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Data Consultant -->
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-header">
-                                <div>
-                                    <h3>Associate Data Consultant</h3>
-                                    <p class="company">Decision Foundry · Bangalore, India</p>
-                                </div>
-                                <span class="timeline-date">Jan 2023 - Jul 2024</span>
-                            </div>
-                            <p class="timeline-desc">
-                                Designed and automated <strong>ETL workflows</strong> using DBT and Tableau Prep, cutting processing time by <strong>30%</strong> and boosting data accuracy. Optimized complex SQL queries on <strong>Amazon Redshift</strong>, reducing retrieval time by <strong>40%</strong> for 1TB+ datasets. Delivered 25+ interactive dashboards in Tableau and Salesforce CRMA, accelerating stakeholder reporting by 20%.
-                            </p>
-                            <div class="timeline-tags">
-                                <span>SQL</span>
-                                <span>Amazon Redshift</span>
-                                <span>DBT</span>
-                                <span>Tableau</span>
-                                <span>ETL</span>
-                                <span>Salesforce CRMA</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Undergraduate Research -->
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-header">
-                                <div>
-                                    <h3>Undergraduate Research Assistant</h3>
-                                    <p class="company">Jain University · Bangalore, India</p>
-                                </div>
-                                <span class="timeline-date">Jan 2022 - Jul 2023</span>
-                            </div>
-                            <p class="timeline-desc">
-                                Designed deep learning pipelines for <strong>medical imaging tasks</strong>, including multiclass skin lesion detection with CNNs achieving 85% validation accuracy. Collaborated with faculty on published research addressing toxic language detection and medical AI applications.
-                            </p>
-                            <div class="timeline-tags">
-                                <span>Deep Learning</span>
-                                <span>Medical Imaging</span>
-                                <span>CNNs</span>
-                                <span>Computer Vision</span>
-                                <span>Research</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Research Section -->
-        <section id="research" class="section section-dark">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-label">Research & Publications</span>
-                    <h2 class="section-title">Featured Research</h2>
-                    <p class="section-subtitle">Published work in diffusion models, neural rendering, and AI systems</p>
-                </div>
-
-                <div class="research-grid">
-                    <div class="research-card">
-                        <div class="research-image">
-                            <img src="assets/images/adaptive_linear_increasing_cfg7.0_512_prompt3_20250712_121334.png" alt="RectifiedHR">
-                            <div class="research-badge">arXiv 2025</div>
-                        </div>
-                        <div class="research-content">
-                            <h3>RectifiedHR: High-Resolution Diffusion via Energy Profiling</h3>
-                            <p class="research-desc">
-                                Novel approach to improving high-resolution image generation through energy profiling and adaptive guidance scheduling in latent diffusion models.
-                            </p>
-                            <div class="research-tags">
-                                <span class="tag">Diffusion Models</span>
-                                <span class="tag">Computer Vision</span>
-                                <span class="tag">PyTorch</span>
-                            </div>
-                            <div class="research-links">
-                                <a href="https://arxiv.org/abs/2507.09441" target="_blank" class="link-icon">
-                                    <i class="fas fa-file-pdf"></i> Paper
-                                </a>
-                                <a href="https://github.com/ANKITSANJYAL/RectifiedHR" target="_blank" class="link-icon">
-                                    <i class="fab fa-github"></i> Code
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="research-card">
-                        <div class="research-image">
-                            <img src="assets/images/local-style-diffusion.png" alt="Local Style Diffusion">
-                            <div class="research-badge">arXiv 2025</div>
-                        </div>
-                        <div class="research-content">
-                            <h3>Local Prompt Adaptation for Style-Consistent Generation</h3>
-                            <p class="research-desc">
-                                Research on fine-grained control over image generation through localized style transfer while maintaining global coherence in diffusion models.
-                            </p>
-                            <div class="research-tags">
-                                <span class="tag">Style Transfer</span>
-                                <span class="tag">Generative AI</span>
-                                <span class="tag">Deep Learning</span>
-                            </div>
-                            <div class="research-links">
-                                <a href="https://arxiv.org/abs/2507.20094" target="_blank" class="link-icon">
-                                    <i class="fas fa-file-pdf"></i> Paper
-                                </a>
-                                <a href="https://github.com/ANKITSANJYAL/local-style-diffusion" target="_blank" class="link-icon">
-                                    <i class="fab fa-github"></i> Code
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="research-card">
-                        <div class="research-image">
-                            <img src="assets/images/rendered_comparison.png" alt="NeRF Research">
-                            <div class="research-badge">arXiv 2025</div>
-                        </div>
-                        <div class="research-content">
-                            <h3>NeRF Few-Shot Limitations Analysis</h3>
-                            <p class="research-desc">
-                                Comprehensive analysis of Neural Radiance Fields performance degradation in low-data scenarios and potential optimization strategies.
-                            </p>
-                            <div class="research-tags">
-                                <span class="tag">3D Vision</span>
-                                <span class="tag">NeRF</span>
-                                <span class="tag">Few-Shot Learning</span>
-                            </div>
-                            <div class="research-links">
-                                <a href="https://arxiv.org/abs/2506.18208" target="_blank" class="link-icon">
-                                    <i class="fas fa-file-pdf"></i> Paper
-                                </a>
-                                <a href="https://github.com/ANKITSANJYAL/nerf-few-shot-limitations" target="_blank" class="link-icon">
-                                    <i class="fab fa-github"></i> Code
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects" class="section">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-label">What I've Built</span>
-                    <h2 class="section-title">Featured Projects</h2>
-                    <p class="section-subtitle">Enterprise AI systems demonstrating technical depth and business impact</p>
-                </div>
-
-                <div class="project-filter">
-                    <button class="filter-btn active" data-filter="all">All Projects</button>
-                    <button class="filter-btn" data-filter="ai-production">AI Production</button>
-                    <button class="filter-btn" data-filter="ai-ml">AI/ML Engineering</button>
-                    <button class="filter-btn" data-filter="research">Research</button>
-                </div>
-
-                <div class="projects-grid">
-
-                    <!-- AutomatedBI -->
-                    <div class="project-card featured" data-category="ai-production ai-ml">
-                        <div class="project-badge featured-badge">Featured</div>
-                        <div class="project-image">
-                            <img src="assets/images/AutoBI.png" alt="AutomatedBI">
-                            <div class="project-overlay">
-                                <a href="https://github.com/ANKITSANJYAL/AutomatedBI" target="_blank" class="overlay-btn">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                                <a href="https://drive.google.com/file/d/1EnY2wfSkUXcyAJEg5-wLtURVdGLqiEO4/view?usp=sharing" target="_blank" class="overlay-btn">
-                                    <i class="fas fa-play"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <h3>AutomatedBI – AI-Powered BI Dashboard Generator</h3>
-                            <p>Enterprise platform using CrewAI and Gemini to transform raw data into interactive dashboards. <strong>80% reduction in manual reporting time</strong>.</p>
-                            <div class="project-tech">
-                                <span class="tech-tag primary">CrewAI</span>
-                                <span class="tech-tag primary">LLM Agents</span>
-                                <span class="tech-tag">Flask</span>
-                                <span class="tech-tag">PostgreSQL</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Causal Finance -->
-                    <div class="project-card featured" data-category="research ai-ml">
-                        <div class="project-badge research-badge">Research</div>
-                        <div class="project-image">
-                            <img src="assets/images/project5.png" alt="Causal Finance">
-                            <div class="project-overlay">
-                                <a href="https://github.com/ANKITSANJYAL/Causal-Factor-Discovery-in-S-P-500-Returns-" target="_blank" class="overlay-btn">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <h3>Causal Factor Discovery in S&P 500 Returns</h3>
-                            <p>End-to-end pipeline using Double Machine Learning for uncovering causal market relationships. Deep learning for financial forecasting.</p>
-                            <div class="project-tech">
-                                <span class="tech-tag primary">Causal Inference</span>
-                                <span class="tech-tag primary">Deep Learning</span>
-                                <span class="tech-tag">Financial ML</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- H-KFX -->
-                    <div class="project-card featured" data-category="ai-production ai-ml">
-                        <div class="project-badge ai-badge">AI Agent</div>
-                        <div class="project-image">
-                            <img src="assets/images/H-KFX.png" alt="H-KFX">
-                            <div class="project-overlay">
-                                <a href="https://github.com/ANKITSANJYAL/MUGHackthon" target="_blank" class="overlay-btn">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                                <a href="https://www.youtube.com/watch?v=YB1gHWcOpz0&t=4s" target="_blank" class="overlay-btn">
-                                    <i class="fas fa-play"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <h3>H-KFX: Autonomous Bug-Fixing Agent</h3>
-                            <p>Autonomous AI agent with GPT-4o, MCP, and MongoDB RAG. <strong>90% reduction in debugging time</strong> with automated code fixes.</p>
-                            <div class="project-tech">
-                                <span class="tech-tag primary">GPT-4o</span>
-                                <span class="tech-tag primary">MCP</span>
-                                <span class="tech-tag">RAG</span>
-                                <span class="tech-tag">MongoDB</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Wildfire Intelligence -->
-                    <div class="project-card" data-category="ai-ml">
-                        <div class="project-image">
-                            <img src="assets/images/Wildfire.png" alt="Wildfire Intelligence">
-                            <div class="project-overlay">
-                                <a href="https://github.com/ANKITSANJYAL/Wildfire-Intelligence-Dashboard" target="_blank" class="overlay-btn">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <h3>Wildfire Intelligence Dashboard</h3>
-                            <p>Real-time ML dashboard for wildfire prediction with NASA FIRMS-style detection. Processes 1M+ geospatial data points.</p>
-                            <div class="project-tech">
-                                <span class="tech-tag primary">CrewAI</span>
-                                <span class="tech-tag">FastAPI</span>
-                                <span class="tech-tag">Geospatial ML</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- MAESTRO -->
-                    <div class="project-card" data-category="ai-production ai-ml">
-                        <div class="project-image">
-                            <img src="assets/images/MAESTRO.png" alt="MAESTRO">
-                            <div class="project-overlay">
-                                <a href="https://github.com/Fordham-EDM-Lab/MAESTRO?tab=readme-ov-file" target="_blank" class="overlay-btn">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                                <a href="https://erdos.dsm.fordham.edu/" target="_blank" class="overlay-btn">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <h3>MAESTRO: AI Text-to-Video Lecture System</h3>
-                            <p>Full-stack text-to-video generation platform for educational content. Automated lecture synthesis with LangChain pipelines.</p>
-                            <div class="project-tech">
-                                <span class="tech-tag primary">LangChain</span>
-                                <span class="tech-tag">Flask</span>
-                                <span class="tech-tag">MongoDB</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- RamsNavigator -->
-                    <div class="project-card" data-category="ai-ml">
-                        <div class="project-image">
-                            <img src="assets/images/project2.webp" alt="RamsNavigator">
-                            <div class="project-overlay">
-                                <a href="https://github.com/ANKITSANJYAL/RamsNavigator" target="_blank" class="overlay-btn">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <h3>RamsNavigator: AI Campus Navigation</h3>
-                            <p>Hybrid Neo4j + MongoDB system with OpenAI for natural language indoor navigation and intelligent pathfinding.</p>
-                            <div class="project-tech">
-                                <span class="tech-tag primary">Neo4j</span>
-                                <span class="tech-tag primary">OpenAI</span>
-                                <span class="tech-tag">React</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Diffusion Detective -->
-                    <div class="project-card" data-category="ai-production research">
-                        <div class="project-image">
-                            <img src="assets/images/Diff-Det.png" alt="Diffusion Detective">
-                            <div class="project-overlay">
-                                <a href="https://github.com/ANKITSANJYAL/Diffusion-Detective" target="_blank" class="overlay-btn">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <h3>Diffusion Detective: Interpretable Stable Diffusion</h3>
-                            <p>Interpretable AI system with real-time attention extraction. Full-stack FastAPI backend and React frontend.</p>
-                            <div class="project-tech">
-                                <span class="tech-tag primary">Diffusion Models</span>
-                                <span class="tech-tag">PyTorch</span>
-                                <span class="tech-tag">FastAPI</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- No-Propagation -->
-                    <div class="project-card" data-category="research">
-                        <div class="project-image">
-                            <img src="assets/images/MnistNoProp.png" alt="No-Propagation">
-                            <div class="project-overlay">
-                                <a href="https://github.com/ANKITSANJYAL/NoPropagation" target="_blank" class="overlay-btn">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <h3>No-Propagation Diffusion Transformers</h3>
-                            <p>Reproduced NoPropDT architecture from scratch. <strong>99% accuracy on MNIST without backpropagation</strong>.</p>
-                            <div class="project-tech">
-                                <span class="tech-tag primary">Transformers</span>
-                                <span class="tech-tag">PyTorch</span>
-                                <span class="tech-tag">Computer Vision</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Skin Disease Detection -->
-                    <div class="project-card" data-category="ai-ml">
-                        <div class="project-image">
-                            <img src="assets/images/Hamm10000.png" alt="Skin Disease Detection">
-                            <div class="project-overlay">
-                                <a href="https://github.com/ANKITSANJYAL/SkinDisease" target="_blank" class="overlay-btn">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <h3>Skin Disease Detection: Multi-Model CNN Ensemble</h3>
-                            <p>Transfer learning system with multiple pre-trained CNNs. <strong>85% validation accuracy</strong> for medical diagnosis.</p>
-                            <div class="project-tech">
-                                <span class="tech-tag primary">TensorFlow</span>
-                                <span class="tech-tag">Transfer Learning</span>
-                                <span class="tech-tag">Medical AI</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- YJarvis -->
-                    <div class="project-card" data-category="ai-ml">
-                        <div class="project-image">
-                            <img src="assets/images/jarvis.png" alt="YJarvis">
-                            <div class="project-overlay">
-                                <a href="https://github.com/ANKITSANJYAL/YJarvis" target="_blank" class="overlay-btn">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <h3>YJarvis: AI Voice Assistant for YouTube</h3>
-                            <p>Chrome extension with whistle activation and GPT-powered summarization. <strong><2s latency</strong>.</p>
-                            <div class="project-tech">
-                                <span class="tech-tag primary">OpenAI</span>
-                                <span class="tech-tag">JavaScript</span>
-                                <span class="tech-tag">Chrome Extension</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- YouTube Analyzer -->
-                    <div class="project-card" data-category="ai-ml">
-                        <div class="project-image">
-                            <img src="assets/images/youtube-analyzer.png" alt="YouTube Analyzer">
-                            <div class="project-overlay">
-                                <a href="https://github.com/ANKITSANJYAL/YoutubeCommentAnalyzer" target="_blank" class="overlay-btn">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <h3>YouTube Comment Analyzer</h3>
-                            <p>NLP tool for analyzing YouTube comments with sentiment analysis and engagement insights.</p>
-                            <div class="project-tech">
-                                <span class="tech-tag">Python</span>
-                                <span class="tech-tag">NLP</span>
-                                <span class="tech-tag">YouTube API</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Deepfake Detection -->
-                    <div class="project-card" data-category="ai-ml">
-                        <div class="project-image">
-                            <img src="assets/images/edge_detection.png" alt="Deepfake Detection">
-                            <div class="project-overlay">
-                                <a href="https://github.com/ANKITSANJYAL/AI-Image-Detector" target="_blank" class="overlay-btn">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <h3>AI Image Detector: Deepfake Detection</h3>
-                            <p>Computer vision system for detecting AI-generated, deepfake, and synthetic images.</p>
-                            <div class="project-tech">
-                                <span class="tech-tag primary">Computer Vision</span>
-                                <span class="tech-tag">Deep Learning</span>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="section section-dark">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-label">Get In Touch</span>
-                    <h2 class="section-title">Let's Work Together</h2>
-                    <p class="section-subtitle">Available for Spring 2025 Internships and Full-time Roles (May 2026)</p>
-                </div>
-
-                <div class="contact-container">
-                    <div class="contact-info-grid">
-                        <div class="contact-card">
-                            <div class="contact-icon">
-                                <i class="fas fa-briefcase"></i>
-                            </div>
-                            <h3>Career Opportunities</h3>
-                            <p>Seeking roles in AI Engineering, Data Science, and ML Research. Specialized in production systems, multi-agent workflows, and quantitative finance.</p>
-                        </div>
-
-                        <div class="contact-card">
-                            <div class="contact-icon">
-                                <i class="fas fa-code"></i>
-                            </div>
-                            <h3>Research Collaboration</h3>
-                            <p>Open to collaborating on impactful projects in LLMs, generative AI, and enterprise AI systems.</p>
-                        </div>
-
-                        <div class="contact-card">
-                            <div class="contact-icon">
-                                <i class="fas fa-microphone"></i>
-                            </div>
-                            <h3>Speaking & Workshops</h3>
-                            <p>Available for talks and workshops on AI, machine learning, and production ML systems.</p>
-                        </div>
-                    </div>
-
-                    <div class="contact-form-wrapper">
-                        <form id="contact-form" action="https://formspree.io/f/xyzpgjeq" method="POST">
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="name">Name</label>
-                                    <input type="text" id="name" name="name" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <input type="email" id="email" name="_replyto" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="subject">Subject</label>
-                                <input type="text" id="subject" name="_subject" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="message">Message</label>
-                                <textarea id="message" name="message" rows="5" required></textarea>
-                            </div>
-                            <button type="submit" class="btn-submit">
-                                <span>Send Message</span>
-                                <i class="fas fa-paper-plane"></i>
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <p>&copy; <span id="year"></span> Ankit Sanjyal. Crafted with passion for AI & ML.</p>
-                <div class="footer-social">
-                    <a href="https://linkedin.com/in/ankit-sanjyal" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://github.com/ANKITSANJYAL" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="https://scholar.google.com/citations?user=DvpqhqcAAAAJ&hl=en" target="_blank"><i class="ai ai-google-scholar"></i></a>
-                    <a href="https://medium.com/@asanjyal81" target="_blank"><i class="fab fa-medium"></i></a>
-                </div>
-            </div>
+      <li>
+        <div class="project-name"><a href="projects/affect-diff.html">Affect-Diff: Multimodal Emotion Recognition with Diffusion Prior <span style="font-size:0.78rem;color:#856404;background:#fff3cd;border:1px solid #ffc107;border-radius:10px;padding:1px 8px;font-weight:700;vertical-align:middle;">In Progress</span></a></div>
+        <div class="project-desc">Couples a causal attention graph (Gumbel-Softmax, T↔A↔V) with a VAE latent bottleneck and a conditional 1D diffusion U-Net (CFG + causal conditioning) for interpretable affect recognition on CMU-MOSEI. Counterfactual hallucination provides modality-level causal attribution.</div>
+        <div class="project-links">
+          <a href="https://github.com/ANKITSANJYAL/Multimodal-Emotion-Recognition" target="_blank">GitHub</a>
         </div>
-    </footer>
+      </li>
 
+      <li>
+        <div class="project-name"><a href="projects/diffusion-detective.html">Diffusion Detective: Interpretable Stable Diffusion</a></div>
+        <div class="project-desc">Real-time cross-attention extraction from SD 2.1 with MAE &lt; 10⁻⁶. CLIP embedding algebra for semantic steering (94% success). GPT-4o-mini chain-of-thought narratives. FastAPI + React 18 frontend.</div>
+        <div class="project-links">
+          <a href="https://github.com/ANKITSANJYAL/Diffusion-Detective" target="_blank">GitHub</a>
+        </div>
+      </li>
+
+      <li>
+        <div class="project-name"><a href="projects/nopropagation.html">No-Propagation Diffusion Transformers</a></div>
+        <div class="project-desc">Clean PyTorch reproduction of NoPropDT (Oxford, arXiv:2503.24322). Stack of local denoising blocks, each trained with per-layer MSE, zero gradient backward through the network. <strong>~99% on MNIST, ~76% on CIFAR-10 without backpropagation.</strong></div>
+        <div class="project-links">
+          <a href="https://github.com/ANKITSANJYAL/NoPropagation" target="_blank">GitHub</a>
+        </div>
+      </li>
+
+      <li>
+        <div class="project-name"><a href="projects/causal-finance.html">Causal Factor Discovery in S&amp;P 500 Returns</a></div>
+        <div class="project-desc">Double Machine Learning (DML) pipeline for causal ATE/CATE estimation of momentum on next-day returns. Benchmarks: OLS, Random Forest, LSTM ablation (base/deep/wide). yfinance data for AAPL, MSFT, JPM, AMZN, XOM.</div>
+        <div class="project-links">
+          <a href="https://github.com/ANKITSANJYAL/Causal-Factor-Discovery-in-S-P-500-Returns-" target="_blank">GitHub</a>
+        </div>
+      </li>
+
+      <li>
+        <div class="project-name"><a href="projects/maestro.html">MAESTRO: AI Text-to-Video Lecture System</a></div>
+        <div class="project-desc">Full-stack platform (OpenAI script synthesis + PlayHT TTS + FFmpeg rendering) that auto-generates educational video lectures with retrieval-augmented QA bots. Live at Fordham University.</div>
+        <div class="project-links">
+          <a href="https://github.com/Fordham-EDM-Lab/MAESTRO" target="_blank">GitHub</a>
+          <a href="https://erdos.dsm.fordham.edu/" target="_blank">Live</a>
+        </div>
+      </li>
+
+      <li>
+        <div class="project-name"><a href="projects/automatedbi.html">AutomatedBI: Agentic BI Dashboard Generator</a></div>
+        <div class="project-desc">CrewAI multi-agent system (4 specialized agents) + Gemini that transforms raw data into interactive dashboards. <strong>80% reduction in manual reporting time.</strong> Flask + React + PostgreSQL + Docker.</div>
+        <div class="project-links">
+          <a href="https://github.com/ANKITSANJYAL/AutomatedBI" target="_blank">GitHub</a>
+          <a href="https://drive.google.com/file/d/1EnY2wfSkUXcyAJEg5-wLtURVdGLqiEO4/view?usp=sharing" target="_blank">Demo</a>
+        </div>
+      </li>
+
+      <li>
+        <div class="project-name"><a href="projects/h-kfx.html">H-KFX: Autonomous Bug-Fixing Agent</a></div>
+        <div class="project-desc">GPT-4o + MCP + MongoDB Atlas RAG autonomous agent that closes Jira tickets end-to-end: reads ticket, writes fix, opens PR. <strong>60–90 second ticket-to-PR cycle.</strong> MUG Hackathon 2025.</div>
+        <div class="project-links">
+          <a href="https://github.com/ANKITSANJYAL/MUGHackthon" target="_blank">GitHub</a>
+          <a href="https://www.youtube.com/watch?v=YB1gHWcOpz0&t=4s" target="_blank">Demo</a>
+        </div>
+      </li>
+
+      <li>
+        <div class="project-name"><a href="projects/ramsnavigator.html">RamsNavigator: AI Campus Navigation</a></div>
+        <div class="project-desc">Hybrid Neo4j (Dijkstra routing) + MongoDB + GPT-4o-mini natural language parsing for indoor campus navigation. React + Cytoscape.js interactive graph map.</div>
+        <div class="project-links">
+          <a href="https://github.com/ANKITSANJYAL/RamsNavigator" target="_blank">GitHub</a>
+        </div>
+      </li>
+
+    </ul>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <div id="experience">
+    <h2 class="section-heading">Experience</h2>
+    <table class="exp-table">
+      <tr>
+        <td class="exp-date">Jan 2025 &ndash; Present</td>
+        <td>
+          <div class="exp-role">Teaching Assistant</div>
+          <div class="exp-org">Fordham University, New York, NY</div>
+          <div class="exp-desc">Graduate courses: <em>Data Mining</em> (Fall 2025) and <em>Machine Learning for Finance</em> (Spring 2026). Weekly office hours, 1:1 research mentoring, and guest lectures.</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="exp-date">Aug 2024 &ndash; Present</td>
+        <td>
+          <div class="exp-role">Graduate Research Assistant</div>
+          <div class="exp-org">Fordham University, Educational Data Mining Lab, New York, NY</div>
+          <div class="exp-desc">Leading the MAESTRO project; exploring few-shot 2D-to-3D reconstruction on medical imaging data (OASIS dataset) using efficient neural representations.</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="exp-date">Jan 2023 &ndash; Jul 2024</td>
+        <td>
+          <div class="exp-role">Associate Data Consultant</div>
+          <div class="exp-org"><a href="https://www.decisionfoundry.com/" target="_blank">Decision Foundry</a>, Bangalore, India</div>
+          <div class="exp-desc">Designed ETL workflows (DBT, Tableau Prep), optimized SQL on Amazon Redshift (40% faster retrieval on 1 TB+ datasets), delivered 25+ Tableau / Salesforce CRMA dashboards.</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="exp-date">Jan 2022 &ndash; Jul 2023</td>
+        <td>
+          <div class="exp-role">Undergraduate Research Assistant</div>
+          <div class="exp-org">Jain University, Bangalore, India</div>
+          <div class="exp-desc">Deep learning pipelines for medical imaging; published work on toxic language detection and multiclass skin lesion classification (85% validation accuracy).</div>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- EDUCATION -->
+  <div id="education">
+    <h2 class="section-heading">Education</h2>
+    <table class="edu-table">
+      <tr>
+        <td class="edu-date">2024 &ndash; Present</td>
+        <td>
+          <div class="edu-degree">M.S. Data Science</div>
+          <div class="edu-institution"><a href="https://www.fordham.edu/" target="_blank">Fordham University</a>, New York, NY</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="edu-date">2019 &ndash; 2023</td>
+        <td>
+          <div class="edu-degree">B.Tech Computer Science</div>
+          <div class="edu-institution"><a href="https://www.jainuniversity.ac.in/" target="_blank">Jain University</a>, Bangalore, India</div>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- FOOTER -->
+  <div id="footer">
+    <p>
+      &copy; <span id="year"></span> Ankit Sanjyal &nbsp;&middot;&nbsp;
+      Template inspired by
+      <a href="https://jonbarron.info/" target="_blank">Jon Barron</a> &amp;
+      <a href="https://keshik6.github.io/" target="_blank">Keshigeyan Chandrasegaran</a>
+    </p>
+  </div>
+
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
 
 </body>
 </html>

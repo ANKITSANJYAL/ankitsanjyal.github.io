@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AutomatedBI: Ankit Sanjyal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/academic.css">
+  <style>
+    .proj-hero { background: #f8f8f8; border: 1px solid #e8e8e8; border-radius: 6px; padding: 28px 32px; margin-bottom: 32px; }
+    .proj-title { font-size: 1.5rem; font-weight: 700; color: #111; margin-bottom: 8px; }
+    .proj-tagline { color: #555; font-size: 1rem; margin-bottom: 14px; }
+    .proj-links a { display: inline-block; margin-right: 10px; margin-bottom: 6px; padding: 5px 14px; border: 1px solid #1772d0; border-radius: 3px; font-size: 0.88rem; color: #1772d0; }
+    .proj-links a:hover { background: #1772d0; color: #fff; text-decoration: none; }
+    .tag-pill { display: inline-block; background: #eef4ff; color: #1772d0; border: 1px solid #c8daf8; border-radius: 12px; font-size: 0.8rem; padding: 2px 10px; margin: 2px; }
+    .metric-row { display: flex; gap: 20px; flex-wrap: wrap; margin: 20px 0; }
+    .metric-card { flex: 1; min-width: 130px; background: #fff; border: 1px solid #e0e0e0; border-radius: 6px; padding: 16px; text-align: center; }
+    .metric-num { font-size: 1.6rem; font-weight: 700; color: #1772d0; }
+    .metric-label { font-size: 0.82rem; color: #777; margin-top: 4px; }
+    .arch-box { background: #f5f5f5; border: 1px solid #e0e0e0; border-radius: 4px; padding: 14px 18px; font-family: monospace; font-size: 0.85rem; color: #333; overflow-x: auto; white-space: pre; margin: 16px 0; }
+    .back-link { font-size: 0.9rem; margin-bottom: 24px; display: block; }
+    .teaser-img { width: 100%; max-width: 700px; border-radius: 4px; border: 1px solid #e8e8e8; display: block; margin: 16px auto; }
+    .feature-grid { display: flex; flex-wrap: wrap; gap: 14px; margin: 16px 0; }
+    .feature-item { flex: 1; min-width: 200px; background: #f8f8f8; border: 1px solid #e8e8e8; border-radius: 4px; padding: 12px 14px; }
+    .feature-item h4 { font-size: 0.9rem; font-weight: 700; color: #111; margin-bottom: 4px; }
+    .feature-item p { font-size: 0.88rem; color: #555; margin: 0; }
+  </style>
+</head>
+<body>
+<nav id="site-nav">
+  <div id="nav-inner">
+    <a href="../index.html" class="nav-name">Ankit Sanjyal</a>
+    <div id="nav-links">
+      <a href="../index.html#news">News</a>
+      <a href="../index.html#publications">Publications</a>
+      <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#experience">Experience</a>
+      <a href="../blog/index.html">Blog</a>
+    </div>
+  </div>
+</nav>
+
+<div id="page-wrap">
+
+  <a class="back-link" href="../index.html">← Back to homepage</a>
+
+  <div class="proj-hero">
+    <div class="proj-title">AutomatedBI: AI-Powered Business Intelligence Dashboard Generator</div>
+    <div class="proj-tagline">Transforms raw CSV/Excel data into professional, interactive dashboards using a multi-agent AI pipeline.</div>
+    <div>
+      <span class="tag-pill">CrewAI</span>
+      <span class="tag-pill">Gemini AI</span>
+      <span class="tag-pill">Flask</span>
+      <span class="tag-pill">React</span>
+      <span class="tag-pill">PostgreSQL</span>
+      <span class="tag-pill">Docker</span>
+      <span class="tag-pill">Python 61% / JS 37%</span>
+    </div>
+    <div class="proj-links" style="margin-top:14px;">
+      <a href="https://github.com/ANKITSANJYAL/AutomatedBI" target="_blank">GitHub</a>
+      <a href="https://drive.google.com/file/d/14qR91S5oXuK8-uSUE_KsVBuFnQd_dMFO/view?usp=sharing" target="_blank">Demo Video</a>
+    </div>
+  </div>
+
+  <img src="../assets/images/AutoBI.png" alt="AutomatedBI dashboard screenshot" class="teaser-img">
+
+  <div class="metric-row">
+    <div class="metric-card">
+      <div class="metric-num">80%</div>
+      <div class="metric-label">Reduction in manual reporting time</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-num">50MB</div>
+      <div class="metric-label">Max file size supported</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-num">4</div>
+      <div class="metric-label">Specialized CrewAI agents</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-num">6+</div>
+      <div class="metric-label">Business domains recognized</div>
+    </div>
+  </div>
+
+  <h2 class="section-heading">What It Does</h2>
+  <p>
+    AutomatedBI is an end-to-end platform that takes any CSV or Excel file as input and produces a
+    <em>ready-to-present, interactive business intelligence dashboard</em>: with zero manual configuration.
+    It automatically detects the business domain of your data (sales, finance, logistics, HR, etc.),
+    selects the most appropriate KPIs, and designs optimal visualizations using AI agents.
+  </p>
+  <p>
+    The platform produces two distinct dashboard modes:
+  </p>
+  <ul style="margin: 8px 0 16px 20px; color: #444; font-size: 0.95rem; line-height: 1.9;">
+    <li><strong>ML Engineering Dashboard</strong>: data quality scores, missing value analysis, ML readiness rating, preprocessing recommendations, and feature engineering suggestions for data scientists.</li>
+    <li><strong>Business Insights Dashboard</strong>: domain-specific KPIs, AI-generated natural language insights, interactive charts (bar, donut, scatter, treemap, gauge), and export capabilities for business stakeholders.</li>
+  </ul>
+
+  <h2 class="section-heading">Architecture</h2>
+  <div class="arch-box">Frontend (React + Tailwind)     Backend (Flask)            AI Layer (CrewAI + Gemini)
+├── Upload Interface        →   ├── File Processing       →   ├── Data Quality Agent
+├── Progress Tracking       →   ├── API Endpoints         →   ├── Domain Expert Agent
+├── Dashboard Display       →   ├── Database Layer        →   ├── KPI Strategist Agent
+└── Export Features         →   └── Background Tasks      →   └── Dashboard Designer Agent
+
+                              PostgreSQL (JSONB) + Redis + Docker Compose</div>
+
+  <h2 class="section-heading">How It Was Built</h2>
+  <div class="feature-grid">
+    <div class="feature-item">
+      <h4>Multi-Agent Pipeline</h4>
+      <p>Four specialized CrewAI agents collaborate: one profiles data quality, one classifies the business domain, one selects KPIs, and one designs the visualization layout.</p>
+    </div>
+    <div class="feature-item">
+      <h4>Real-Time Progress Tracking</h4>
+      <p>WebSocket-like server-sent events stream processing stages to the frontend: Upload → Quality Analysis → Domain Classification → KPI Selection → Dashboard Design → Complete.</p>
+    </div>
+    <div class="feature-item">
+      <h4>Flexible Storage</h4>
+      <p>PostgreSQL with JSONB columns stores datasets and analysis results flexibly. Automatic cleanup of datasets older than 30 days. Redis for background task queueing.</p>
+    </div>
+    <div class="feature-item">
+      <h4>Dockerized Deployment</h4>
+      <p>Full Docker Compose setup with separate containers for frontend, backend, PostgreSQL, and Redis. One command to launch the entire stack.</p>
+    </div>
+  </div>
+
+  <h2 class="section-heading">Tech Stack</h2>
+  <ul style="margin: 8px 0 16px 20px; color: #444; font-size: 0.95rem; line-height: 1.9;">
+    <li><strong>AI:</strong> CrewAI multi-agent framework, Google Gemini AI (domain detection, insight generation)</li>
+    <li><strong>Backend:</strong> Python 3.11, Flask, SQLAlchemy, Pandas, Numpy</li>
+    <li><strong>Frontend:</strong> React 18, Tailwind CSS (mobile-first responsive design)</li>
+    <li><strong>Database:</strong> PostgreSQL (JSONB), Redis</li>
+    <li><strong>DevOps:</strong> Docker, Docker Compose, GitHub Actions CI</li>
+  </ul>
+
+  <div id="footer" style="margin-top:40px;">
+    <p><a href="../index.html">← Ankit Sanjyal</a></p>
+  </div>
+
+</div>
+</body>
+</html>

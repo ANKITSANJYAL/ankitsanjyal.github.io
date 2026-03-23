@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>H-KFX: Ankit Sanjyal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/academic.css">
+  <style>
+    .proj-hero { background: #f8f8f8; border: 1px solid #e8e8e8; border-radius: 6px; padding: 28px 32px; margin-bottom: 32px; }
+    .proj-title { font-size: 1.5rem; font-weight: 700; color: #111; margin-bottom: 8px; }
+    .proj-tagline { color: #555; font-size: 1rem; margin-bottom: 14px; }
+    .proj-links a { display: inline-block; margin-right: 10px; margin-bottom: 6px; padding: 5px 14px; border: 1px solid #1772d0; border-radius: 3px; font-size: 0.88rem; color: #1772d0; }
+    .proj-links a:hover { background: #1772d0; color: #fff; text-decoration: none; }
+    .tag-pill { display: inline-block; background: #eef4ff; color: #1772d0; border: 1px solid #c8daf8; border-radius: 12px; font-size: 0.8rem; padding: 2px 10px; margin: 2px; }
+    .metric-row { display: flex; gap: 20px; flex-wrap: wrap; margin: 20px 0; }
+    .metric-card { flex: 1; min-width: 130px; background: #fff; border: 1px solid #e0e0e0; border-radius: 6px; padding: 16px; text-align: center; }
+    .metric-num { font-size: 1.6rem; font-weight: 700; color: #1772d0; }
+    .metric-label { font-size: 0.82rem; color: #777; margin-top: 4px; }
+    .pipeline-step { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 14px; }
+    .step-num { flex-shrink: 0; width: 28px; height: 28px; background: #1772d0; color: #fff; border-radius: 50%; font-size: 0.85rem; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+    .step-content h4 { font-size: 0.9rem; font-weight: 700; color: #111; margin-bottom: 3px; }
+    .step-content p { font-size: 0.88rem; color: #555; margin: 0; }
+    .back-link { font-size: 0.9rem; margin-bottom: 24px; display: block; }
+    .teaser-img { width: 100%; max-width: 700px; border-radius: 4px; border: 1px solid #e8e8e8; display: block; margin: 16px auto; }
+  </style>
+</head>
+<body>
+<nav id="site-nav">
+  <div id="nav-inner">
+    <a href="../index.html" class="nav-name">Ankit Sanjyal</a>
+    <div id="nav-links">
+      <a href="../index.html#news">News</a>
+      <a href="../index.html#publications">Publications</a>
+      <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#experience">Experience</a>
+      <a href="../blog/index.html">Blog</a>
+    </div>
+  </div>
+</nav>
+
+<div id="page-wrap">
+
+  <a class="back-link" href="../index.html">← Back to homepage</a>
+
+  <div class="proj-hero">
+    <div class="proj-title">H-KFX: Hybrid Knowledge Fixer: Autonomous Bug-Fixing Agent</div>
+    <div class="proj-tagline">An AI agent that reads a Jira ticket, finds the buggy code, generates a validated fix, and opens a pull request: in under 90 seconds.</div>
+    <div>
+      <span class="tag-pill">GPT-4o</span>
+      <span class="tag-pill">MCP</span>
+      <span class="tag-pill">MongoDB RAG</span>
+      <span class="tag-pill">Tavily AI</span>
+      <span class="tag-pill">Jira API</span>
+      <span class="tag-pill">GitHub API</span>
+      <span class="tag-pill">Python 86% / TypeScript 13%</span>
+    </div>
+    <div class="proj-links" style="margin-top:14px;">
+      <a href="https://github.com/ANKITSANJYAL/MUGHackthon" target="_blank">GitHub</a>
+      <a href="https://www.youtube.com/watch?v=YB1gHWcOpz0&t=4s" target="_blank">Demo Video</a>
+    </div>
+  </div>
+
+  <img src="../assets/images/H-KFX.png" alt="H-KFX pipeline visualization" class="teaser-img">
+
+  <div class="metric-row">
+    <div class="metric-card">
+      <div class="metric-num">90%</div>
+      <div class="metric-label">Reduction in debugging time</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-num">60–90s</div>
+      <div class="metric-label">Ticket to merged PR</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-num">3×</div>
+      <div class="metric-label">Self-correction retries before escalation</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-num">MUG 2025</div>
+      <div class="metric-label">Hackathon project</div>
+    </div>
+  </div>
+
+  <h2 class="section-heading">What It Does</h2>
+  <p>
+    H-KFX (Hybrid Knowledge Fixer) is a fully autonomous bug-fixing agent. A developer creates a Jira ticket
+    describing a bug and pointing to the relevant file. H-KFX takes it from there: it analyzes the problem
+    with GPT-4o, searches a <em>RAG knowledge base of past fixes</em> stored in MongoDB, augments this with
+    external best practices via Tavily AI, generates a code fix, runs the relevant test suite in isolation to
+    validate the fix, and: if approved: opens and merges a GitHub pull request. The Jira ticket is then
+    automatically marked Done.
+  </p>
+
+  <h2 class="section-heading">End-to-End Pipeline</h2>
+  <div class="pipeline-step">
+    <div class="step-num">1</div>
+    <div class="step-content">
+      <h4>Webhook Trigger</h4>
+      <p>A new Jira ticket is created → webhook fires to the Flask backend (exposed via ngrok). Ticket metadata (summary, description, repo URL, branch, file) is parsed.</p>
+    </div>
+  </div>
+  <div class="pipeline-step">
+    <div class="step-num">2</div>
+    <div class="step-content">
+      <h4>AI Analysis (GPT-4o)</h4>
+      <p>GPT-4o reads the ticket and the relevant source file to understand the root cause and formulate a fix strategy.</p>
+    </div>
+  </div>
+  <div class="pipeline-step">
+    <div class="step-num">3</div>
+    <div class="step-content">
+      <h4>RAG Search (MongoDB Atlas)</h4>
+      <p>Vector search over a knowledge base of past bug fixes. Similar historical fixes are retrieved and injected as context into the code generation prompt.</p>
+    </div>
+  </div>
+  <div class="pipeline-step">
+    <div class="step-num">4</div>
+    <div class="step-content">
+      <h4>External Knowledge (Tavily AI)</h4>
+      <p>Tavily searches the web for external best practices, library documentation, and community solutions relevant to the bug type.</p>
+    </div>
+  </div>
+  <div class="pipeline-step">
+    <div class="step-num">5</div>
+    <div class="step-content">
+      <h4>Code Generation &amp; Validation</h4>
+      <p>GPT-4o generates the fix. The agent derives and runs only the relevant tests in an isolated environment. If validation fails, the agent self-corrects (up to 3 retries).</p>
+    </div>
+  </div>
+  <div class="pipeline-step">
+    <div class="step-num">6</div>
+    <div class="step-content">
+      <h4>Human Approval &amp; Auto-Merge</h4>
+      <p>A review link is posted on the Jira ticket. The developer inspects the diff in the React frontend and approves. H-KFX creates and merges the GitHub PR, then closes the Jira ticket.</p>
+    </div>
+  </div>
+
+  <h2 class="section-heading">Key Design Decisions</h2>
+  <ul style="margin: 8px 0 16px 20px; color: #444; font-size: 0.95rem; line-height: 1.9;">
+    <li><strong>Smart test selection:</strong> Rather than running the full test suite, the agent derives the minimal set of tests relevant to the changed code: fast and targeted.</li>
+    <li><strong>Self-correcting loop:</strong> If tests fail, the agent feeds the error output back to GPT-4o and tries again (max 3 iterations) before escalating to the developer.</li>
+    <li><strong>RAG over past fixes:</strong> The MongoDB knowledge base grows with every fix the system makes, making it smarter over time.</li>
+    <li><strong>Human-in-the-loop:</strong> Approval is always required before merge: the agent assists, it doesn't replace developer judgment.</li>
+  </ul>
+
+  <h2 class="section-heading">Tech Stack</h2>
+  <ul style="margin: 8px 0 16px 20px; color: #444; font-size: 0.95rem; line-height: 1.9;">
+    <li><strong>AI:</strong> GPT-4o (analysis + code generation), GPT-4o-mini (analysis), Tavily AI (web search)</li>
+    <li><strong>RAG:</strong> MongoDB Atlas with vector embeddings for past-fix retrieval</li>
+    <li><strong>Backend:</strong> Python 3.11, Flask, SSE for real-time progress streaming</li>
+    <li><strong>Frontend:</strong> React (Vite), TypeScript: pipeline visualization + code review UI</li>
+    <li><strong>Integrations:</strong> Jira Cloud API (webhooks, ticket updates), GitHub REST API (PR creation + merge)</li>
+    <li><strong>Networking:</strong> ngrok for local webhook exposure during development</li>
+  </ul>
+
+  <div id="footer" style="margin-top:40px;">
+    <p><a href="../index.html">← Ankit Sanjyal</a></p>
+  </div>
+
+</div>
+</body>
+</html>

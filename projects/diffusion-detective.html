@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diffusion Detective: Ankit Sanjyal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/academic.css">
+  <style>
+    .proj-hero { background: #f8f8f8; border: 1px solid #e8e8e8; border-radius: 6px; padding: 28px 32px; margin-bottom: 32px; }
+    .proj-title { font-size: 1.5rem; font-weight: 700; color: #111; margin-bottom: 8px; }
+    .proj-tagline { color: #555; font-size: 1rem; margin-bottom: 14px; }
+    .proj-links a { display: inline-block; margin-right: 10px; margin-bottom: 6px; padding: 5px 14px; border: 1px solid #1772d0; border-radius: 3px; font-size: 0.88rem; color: #1772d0; }
+    .proj-links a:hover { background: #1772d0; color: #fff; text-decoration: none; }
+    .tag-pill { display: inline-block; background: #eef4ff; color: #1772d0; border: 1px solid #c8daf8; border-radius: 12px; font-size: 0.8rem; padding: 2px 10px; margin: 2px; }
+    .metric-row { display: flex; gap: 20px; flex-wrap: wrap; margin: 20px 0; }
+    .metric-card { flex: 1; min-width: 130px; background: #fff; border: 1px solid #e0e0e0; border-radius: 6px; padding: 16px; text-align: center; }
+    .metric-num { font-size: 1.6rem; font-weight: 700; color: #1772d0; }
+    .metric-label { font-size: 0.82rem; color: #777; margin-top: 4px; }
+    .code-block { background: #f5f5f5; border: 1px solid #e0e0e0; border-radius: 4px; padding: 12px 16px; font-family: monospace; font-size: 0.85rem; color: #333; overflow-x: auto; margin: 12px 0; }
+    .back-link { font-size: 0.9rem; margin-bottom: 24px; display: block; }
+    .teaser-img { width: 100%; max-width: 700px; border-radius: 4px; border: 1px solid #e8e8e8; display: block; margin: 16px auto; }
+    .capability-grid { display: flex; flex-wrap: wrap; gap: 14px; margin: 16px 0; }
+    .cap-item { flex: 1; min-width: 200px; background: #f8f8f8; border: 1px solid #e8e8e8; border-radius: 4px; padding: 14px; }
+    .cap-item h4 { font-size: 0.9rem; font-weight: 700; color: #1772d0; margin-bottom: 5px; }
+    .cap-item p { font-size: 0.88rem; color: #555; margin: 0; }
+  </style>
+</head>
+<body>
+<nav id="site-nav">
+  <div id="nav-inner">
+    <a href="../index.html" class="nav-name">Ankit Sanjyal</a>
+    <div id="nav-links">
+      <a href="../index.html#news">News</a>
+      <a href="../index.html#publications">Publications</a>
+      <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#experience">Experience</a>
+      <a href="../blog/index.html">Blog</a>
+    </div>
+  </div>
+</nav>
+
+<div id="page-wrap">
+
+  <a class="back-link" href="../index.html">← Back to homepage</a>
+
+  <div class="proj-hero">
+    <div class="proj-title">Diffusion Detective: Interpretable Stable Diffusion</div>
+    <div class="proj-tagline">A research system that extracts cross-attention maps, applies semantic steering via CLIP embedding arithmetic, and generates natural language explanations for every image generated.</div>
+    <div>
+      <span class="tag-pill">Stable Diffusion 2.1</span>
+      <span class="tag-pill">PyTorch</span>
+      <span class="tag-pill">FastAPI</span>
+      <span class="tag-pill">React</span>
+      <span class="tag-pill">CLIP</span>
+      <span class="tag-pill">GPT-4o-mini</span>
+      <span class="tag-pill">Python 67% / JS 31%</span>
+    </div>
+    <div class="proj-links" style="margin-top:14px;">
+      <a href="https://github.com/ANKITSANJYAL/Diffusion-Detective" target="_blank">GitHub</a>
+    </div>
+  </div>
+
+  <img src="../assets/images/Diff-Det.png" alt="Diffusion Detective interface" class="teaser-img">
+
+  <div class="metric-row">
+    <div class="metric-card">
+      <div class="metric-num">100%</div>
+      <div class="metric-label">Attention extraction accuracy (MAE &lt; 10⁻⁶)</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-num">94%</div>
+      <div class="metric-label">Semantic steering success rate</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-num">2.7%</div>
+      <div class="metric-label">Overhead from attention extraction</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-num">250ms</div>
+      <div class="metric-label">Narrative generation (GPT-4o-mini)</div>
+    </div>
+  </div>
+
+  <h2 class="section-heading">What It Does</h2>
+  <p>
+    Diffusion Detective makes Stable Diffusion <em>interpretable</em>. For any generated image it provides three
+    capabilities that standard diffusion pipelines lack entirely:
+  </p>
+  <div class="capability-grid">
+    <div class="cap-item">
+      <h4>Zero-Approximation Attention Extraction</h4>
+      <p>Cross-attention probabilities are extracted directly from the UNet's transformer layers at <em>every</em> denoising timestep: no approximation, validated via probability sum = 1.0 (MAE &lt; 10⁻⁶). Shows exactly which tokens the model attends to while drawing each part of the image.</p>
+    </div>
+    <div class="cap-item">
+      <h4>Semantic Steering via CLIP Algebra</h4>
+      <p>Edit images <em>after</em> the prompt, without rerunning: by adding or subtracting CLIP embedding vectors to the latent space during denoising. E.g., inject "impressionist" style by computing <code>embed("impressionist") − embed("photorealistic")</code> and adding it at the right timestep.</p>
+    </div>
+    <div class="cap-item">
+      <h4>LLM-Powered Explanations</h4>
+      <p>GPT-4o-mini reads the raw attention logs and writes a three-stage narrative: Setup (what the model focused on first), Comparison (how intervention changed attention), Insight (what it means). Human-readable transparency.</p>
+    </div>
+  </div>
+
+  <h2 class="section-heading">How It Works</h2>
+  <p><strong>Attention extraction</strong> hooks into the UNet's attention computation during each denoising step:</p>
+  <div class="code-block"># During denoising step t
+attention_probs = softmax(Q @ K.T / sqrt(d_k))  # [H, W, num_tokens]
+# Hooked and stored at every timestep: zero approximation</div>
+  <p style="margin-top:12px;"><strong>Semantic steering</strong> uses CLIP embedding arithmetic to compute a steering vector applied mid-generation:</p>
+  <div class="code-block">steering_vector = clip_encode(attribute) - clip_encode(concept)
+latents_t = latents_t + steering_vector * strength
+# Optimal window: steps 40–20 (semantic attributes form before fine details)</div>
+  <p style="margin-top:12px;">The <strong>React frontend</strong> shows side-by-side comparison of the baseline and steered image, with the attention heatmap and narrative overlaid.</p>
+
+  <h2 class="section-heading">Architecture</h2>
+  <ul style="margin: 8px 0 16px 20px; color: #444; font-size: 0.95rem; line-height: 1.9;">
+    <li><strong>Custom SD Pipeline:</strong> Extends HuggingFace's <code>StableDiffusionPipeline</code> with attention hooks: two-pass generation (baseline + intervention) for side-by-side comparison.</li>
+    <li><strong>Backend:</strong> Python 3.13, FastAPI, PyTorch 2.9, Diffusers 0.30, Transformers 4.45. Runs on CUDA (RTX 3090: 2.7s/image) or MPS (M4 Pro: 28s/image).</li>
+    <li><strong>Frontend:</strong> React 18 + Vite + Tailwind CSS + Framer Motion for smooth attention visualization animations.</li>
+    <li><strong>Memory:</strong> 7.2GB VRAM peak, 1.8GB post-cleanup with attention slicing and float16 precision.</li>
+  </ul>
+
+  <h2 class="section-heading">Why This Matters</h2>
+  <p>
+    Standard diffusion models are black boxes: users have no insight into <em>why</em> an image looks the way it does.
+    Diffusion Detective is a prototype for a future where generative AI is auditable: you can see what the model
+    attended to, steer it without retraining, and read a plain-English explanation of its decisions.
+    This is foundational work toward <em>trustworthy generative AI</em>.
+  </p>
+
+  <div id="footer" style="margin-top:40px;">
+    <p><a href="../index.html">← Ankit Sanjyal</a></p>
+  </div>
+
+</div>
+</body>
+</html>

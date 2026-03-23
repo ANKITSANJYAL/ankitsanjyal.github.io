@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post — Ankit Sanjyal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/academic.css">
+
+  <!-- Marked.js for Markdown rendering -->
+  <script src="https://cdn.jsdelivr.net/npm/marked@9/marked.min.js"></script>
+
+  <!-- KaTeX for math -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+  <!-- highlight.js for code blocks -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+  <style>
+    /* Post reading typography */
+    .post-header { margin-bottom: 32px; padding-bottom: 20px; border-bottom: 1px solid #eee; }
+    .post-title { font-size: 2rem; font-weight: 700; color: #111; line-height: 1.3; margin-bottom: 10px; }
+    .post-meta { font-size: 0.85rem; color: #999; margin-bottom: 10px; }
+    .post-tags { margin-top: 6px; }
+    .post-tag { display: inline-block; background: #eef4ff; color: #1772d0; border: 1px solid #c8daf8; border-radius: 10px; font-size: 0.75rem; padding: 1px 8px; margin-right: 4px; }
+
+    /* Post body */
+    .post-body { font-family: 'Merriweather', Georgia, serif; font-size: 1.02rem; line-height: 1.9; color: #333; }
+    .post-body h1 { font-size: 1.7rem; margin: 1.4em 0 0.4em; color: #111; font-family: 'Lato', sans-serif; }
+    .post-body h2 { font-size: 1.3rem; margin: 1.4em 0 0.4em; color: #111; font-family: 'Lato', sans-serif; border-bottom: 2px solid #1772d0; padding-bottom: 4px; }
+    .post-body h3 { font-size: 1.05rem; margin: 1.2em 0 0.3em; color: #222; font-family: 'Lato', sans-serif; }
+    .post-body p { margin-bottom: 1em; }
+    .post-body ul, .post-body ol { margin: 0.6em 0 1em 1.5em; }
+    .post-body li { margin-bottom: 0.3em; }
+    .post-body blockquote { border-left: 3px solid #1772d0; margin: 1.2em 0; padding: 4px 18px; color: #666; font-style: italic; background: #fafafa; }
+    .post-body table { border-collapse: collapse; width: 100%; margin: 1.2em 0; font-size: 0.92rem; }
+    .post-body table th { background: #f0f0f0; padding: 8px 12px; border: 1px solid #ddd; text-align: left; font-family: 'Lato', sans-serif; }
+    .post-body table td { padding: 7px 12px; border: 1px solid #ddd; }
+    .post-body code { background: #f5f5f5; padding: 2px 5px; border-radius: 3px; font-size: 0.88em; font-family: 'Courier New', monospace; }
+    .post-body pre { background: #f5f5f5; padding: 14px 16px; border-radius: 4px; overflow-x: auto; margin: 1em 0; }
+    .post-body pre code { background: none; padding: 0; font-size: 0.87rem; }
+    .post-body img { max-width: 100%; border-radius: 4px; border: 1px solid #eee; display: block; margin: 1em auto; }
+    .post-body a { color: #1772d0; }
+    .post-body a:hover { color: #f09228; }
+    .post-body hr { border: none; border-top: 1px solid #eee; margin: 2em 0; }
+
+    /* KaTeX display blocks */
+    .post-body .katex-display { overflow-x: auto; overflow-y: hidden; padding: 4px 0; }
+
+    /* Not found state */
+    .not-found { text-align: center; padding: 60px 0; color: #999; }
+
+    /* Edit link */
+    .post-edit-link { font-size: 0.82rem; color: #bbb; margin-left: 12px; }
+    .post-edit-link:hover { color: #1772d0; }
+
+    .post-nav { display: flex; justify-content: space-between; margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; font-size: 0.88rem; }
+  </style>
+</head>
+<body>
+
+<nav id="site-nav">
+  <div id="nav-inner">
+    <a href="../index.html" class="nav-name">Ankit Sanjyal</a>
+    <div id="nav-links">
+      <a href="../index.html#news">News</a>
+      <a href="../index.html#publications">Publications</a>
+      <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#experience">Experience</a>
+      <a href="index.html">Blog</a>
+    </div>
+  </div>
+</nav>
+
+<div id="page-wrap" style="max-width:720px;">
+
+  <div id="post-container"></div>
+
+</div>
+
+<div id="footer" style="max-width:720px; margin:20px auto 30px; padding:0 20px; font-size:0.82rem; color:#999; text-align:center;">
+  <p><a href="index.html" style="color:#999;">Back to blog</a> &nbsp;|&nbsp; <a href="../index.html" style="color:#999;">Ankit Sanjyal</a></p>
+</div>
+
+<script>
+  // Configure marked
+  marked.setOptions({
+    breaks: false,
+    gfm: true,
+  });
+
+  // Custom renderer for syntax highlighting
+  const renderer = new marked.Renderer();
+  renderer.code = function(code, language) {
+    const lang = language || 'plaintext';
+    let highlighted;
+    try {
+      highlighted = hljs.highlight(code, { language: lang, ignoreIllegals: true }).value;
+    } catch (e) {
+      highlighted = hljs.highlightAuto(code).value;
+    }
+    return `<pre><code class="hljs language-${lang}">${highlighted}</code></pre>`;
+  };
+  marked.use({ renderer });
+
+  function getPosts() {
+    return JSON.parse(localStorage.getItem('blog_posts') || '[]');
+  }
+
+  function renderPost() {
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+    const container = document.getElementById('post-container');
+
+    if (!id) {
+      container.innerHTML = '<div class="not-found"><p>No post specified.</p><p><a href="index.html">Back to blog</a></p></div>';
+      return;
+    }
+
+    const posts = getPosts();
+    const post = posts.find(p => p.id === id);
+
+    if (!post) {
+      container.innerHTML = '<div class="not-found"><p>Post not found.</p><p><a href="index.html">Back to blog</a></p></div>';
+      return;
+    }
+
+    // Set page title
+    document.title = post.title + ' — Ankit Sanjyal';
+
+    const date = new Date(post.date).toLocaleDateString('en-US', {
+      year: 'numeric', month: 'long', day: 'numeric'
+    });
+
+    const tags = (post.tags || []).map(t =>
+      `<span class="post-tag">${t}</span>`
+    ).join('');
+
+    const tagsHtml = tags ? `<div class="post-tags">${tags}</div>` : '';
+
+    // Check if authenticated (show edit link)
+    const isAuthed = sessionStorage.getItem('blog_auth') === 'ok';
+    const editLink = isAuthed
+      ? `<a href="edit.html?id=${id}" class="post-edit-link">Edit</a>`
+      : '';
+
+    const bodyHtml = marked.parse(post.content);
+
+    container.innerHTML = `
+      <div class="post-header" style="margin-top:16px;">
+        <div class="post-title">${post.title}${editLink}</div>
+        <div class="post-meta">${date}</div>
+        ${tagsHtml}
+      </div>
+      <div class="post-body" id="post-body">${bodyHtml}</div>
+      <div class="post-nav">
+        <a href="index.html">All posts</a>
+        <span></span>
+      </div>
+    `;
+
+    // Render math with KaTeX
+    renderMathInElement(document.getElementById('post-body'), {
+      delimiters: [
+        { left: '$$', right: '$$', display: true },
+        { left: '$', right: '$', display: false },
+        { left: '\\(', right: '\\)', display: false },
+        { left: '\\[', right: '\\]', display: true },
+      ],
+      throwOnError: false,
+    });
+  }
+
+  renderPost();
+</script>
+</body>
+</html>

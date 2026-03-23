@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MAESTRO: Ankit Sanjyal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/academic.css">
+  <style>
+    .proj-hero { background: #f8f8f8; border: 1px solid #e8e8e8; border-radius: 6px; padding: 28px 32px; margin-bottom: 32px; }
+    .proj-title { font-size: 1.5rem; font-weight: 700; color: #111; margin-bottom: 8px; }
+    .proj-tagline { color: #555; font-size: 1rem; margin-bottom: 14px; }
+    .proj-links a { display: inline-block; margin-right: 10px; margin-bottom: 6px; padding: 5px 14px; border: 1px solid #1772d0; border-radius: 3px; font-size: 0.88rem; color: #1772d0; }
+    .proj-links a:hover { background: #1772d0; color: #fff; text-decoration: none; }
+    .tag-pill { display: inline-block; background: #eef4ff; color: #1772d0; border: 1px solid #c8daf8; border-radius: 12px; font-size: 0.8rem; padding: 2px 10px; margin: 2px; }
+    .pipeline-box { display: flex; gap: 0; margin: 20px 0; flex-wrap: wrap; }
+    .pipe-step { flex: 1; min-width: 120px; background: #f8f8f8; border: 1px solid #e0e0e0; padding: 14px 10px; text-align: center; position: relative; }
+    .pipe-step:not(:last-child)::after { content: "→"; position: absolute; right: -12px; top: 50%; transform: translateY(-50%); color: #1772d0; font-size: 1.2rem; z-index: 1; }
+    .pipe-step h4 { font-size: 0.82rem; font-weight: 700; color: #1772d0; margin-bottom: 4px; }
+    .pipe-step p { font-size: 0.78rem; color: #555; margin: 0; }
+    .back-link { font-size: 0.9rem; margin-bottom: 24px; display: block; }
+    .teaser-img { width: 100%; max-width: 700px; border-radius: 4px; border: 1px solid #e8e8e8; display: block; margin: 16px auto; }
+    .feature-grid { display: flex; flex-wrap: wrap; gap: 14px; margin: 16px 0; }
+    .feature-item { flex: 1; min-width: 200px; background: #f8f8f8; border: 1px solid #e8e8e8; border-radius: 4px; padding: 12px 14px; }
+    .feature-item h4 { font-size: 0.9rem; font-weight: 700; color: #111; margin-bottom: 4px; }
+    .feature-item p { font-size: 0.88rem; color: #555; margin: 0; }
+  </style>
+</head>
+<body>
+<nav id="site-nav">
+  <div id="nav-inner">
+    <a href="../index.html" class="nav-name">Ankit Sanjyal</a>
+    <div id="nav-links">
+      <a href="../index.html#news">News</a>
+      <a href="../index.html#publications">Publications</a>
+      <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#experience">Experience</a>
+      <a href="../blog/index.html">Blog</a>
+    </div>
+  </div>
+</nav>
+
+<div id="page-wrap">
+
+  <a class="back-link" href="../index.html">← Back to homepage</a>
+
+  <div class="proj-hero">
+    <div class="proj-title">MAESTRO: AI Text-to-Video Lecture System</div>
+    <div class="proj-tagline">A full-stack platform that automatically generates educational video lectures from text topics, with an interactive RAG-powered QA bot for student engagement.</div>
+    <div>
+      <span class="tag-pill">LangChain</span>
+      <span class="tag-pill">OpenAI</span>
+      <span class="tag-pill">PlayHT</span>
+      <span class="tag-pill">FFmpeg</span>
+      <span class="tag-pill">Flask</span>
+      <span class="tag-pill">MongoDB</span>
+      <span class="tag-pill">Fordham University</span>
+    </div>
+    <div class="proj-links" style="margin-top:14px;">
+      <a href="https://github.com/Fordham-EDM-Lab/MAESTRO" target="_blank">GitHub</a>
+      <a href="https://erdos.dsm.fordham.edu/" target="_blank">Live Platform</a>
+    </div>
+  </div>
+
+  <img src="../assets/images/MAESTRO.png" alt="MAESTRO platform screenshot" class="teaser-img">
+
+  <h2 class="section-heading">What It Does</h2>
+  <p>
+    MAESTRO (Multi-modal AI Educational System for Teaching and Resource Organization) is a research platform
+    built at Fordham University's Educational Data Mining Lab. An instructor provides a topic or document;
+    MAESTRO produces a complete video lecture with synthesized narration, synchronized slides, and an
+    embeddable QA bot that students can query about the lecture content.
+  </p>
+  <p>
+    The platform is live at <a href="https://erdos.dsm.fordham.edu/" target="_blank">erdos.dsm.fordham.edu</a>
+    and is actively used in Fordham courses.
+  </p>
+
+  <h2 class="section-heading">Generation Pipeline</h2>
+  <div class="pipeline-box">
+    <div class="pipe-step">
+      <h4>Script Synthesis</h4>
+      <p>OpenAI GPT generates a structured lecture script from the input topic/document</p>
+    </div>
+    <div class="pipe-step">
+      <h4>Neural Voice</h4>
+      <p>PlayHT converts the script to natural-sounding audio via neural text-to-speech</p>
+    </div>
+    <div class="pipe-step">
+      <h4>Slide Generation</h4>
+      <p>Key points extracted and rendered as visual slides matched to script segments</p>
+    </div>
+    <div class="pipe-step">
+      <h4>Video Assembly</h4>
+      <p>FFmpeg synchronizes audio + slides into a final MP4 lecture video</p>
+    </div>
+    <div class="pipe-step">
+      <h4>RAG QA Bot</h4>
+      <p>LangChain + OpenAI embeddings index the transcript for interactive student Q&amp;A</p>
+    </div>
+  </div>
+
+  <h2 class="section-heading">Key Features</h2>
+  <div class="feature-grid">
+    <div class="feature-item">
+      <h4>Retrieval-Augmented QA</h4>
+      <p>Students can ask questions about any lecture using a chatbot that retrieves relevant transcript segments and answers with GPT: grounded in the actual lecture content, not hallucinations.</p>
+    </div>
+    <div class="feature-item">
+      <h4>Instructor Customization</h4>
+      <p>Instructors can edit the generated script before rendering, adjust voice style, choose slide templates, and set the lecture's depth level (introductory / intermediate / advanced).</p>
+    </div>
+    <div class="feature-item">
+      <h4>MongoDB Storage</h4>
+      <p>All lecture transcripts, embeddings, and metadata stored in MongoDB for fast retrieval and QA indexing. Supports multiple concurrent courses and student sessions.</p>
+    </div>
+    <div class="feature-item">
+      <h4>Research Context</h4>
+      <p>Part of active research in Educational Data Mining. The platform generates learning data (click patterns, QA logs) that feeds back into EDM research on student engagement and comprehension.</p>
+    </div>
+  </div>
+
+  <h2 class="section-heading">My Role</h2>
+  <p>
+    As Graduate Research Assistant at the Fordham EDM Lab (Aug 2024–present), I led the MAESTRO project,
+    including:
+  </p>
+  <ul style="margin: 8px 0 16px 20px; color: #444; font-size: 0.95rem; line-height: 1.9;">
+    <li>Designed and implemented the end-to-end video generation pipeline (script → voice → slides → video)</li>
+    <li>Integrated LangChain + OpenAI embeddings for the retrieval-augmented QA system</li>
+    <li>Built the Flask API backend and MongoDB data layer</li>
+    <li>Deployed the platform to the live Fordham server</li>
+  </ul>
+
+  <h2 class="section-heading">Tech Stack</h2>
+  <ul style="margin: 8px 0 16px 20px; color: #444; font-size: 0.95rem; line-height: 1.9;">
+    <li><strong>AI:</strong> OpenAI GPT (script generation + QA), OpenAI Embeddings, PlayHT (neural TTS)</li>
+    <li><strong>RAG:</strong> LangChain pipeline with MongoDB vector store</li>
+    <li><strong>Video:</strong> FFmpeg for audio-visual synchronization and MP4 rendering</li>
+    <li><strong>Backend:</strong> Python, Flask REST API</li>
+    <li><strong>Database:</strong> MongoDB (transcripts, embeddings, lecture metadata)</li>
+  </ul>
+
+  <div id="footer" style="margin-top:40px;">
+    <p><a href="../index.html">← Ankit Sanjyal</a></p>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RectifiedHR: Ankit Sanjyal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/academic.css">
+  <style>
+    .paper-hero { background: #f8f8f8; border: 1px solid #e8e8e8; border-radius: 6px; padding: 28px 32px; margin-bottom: 32px; }
+    .paper-title { font-size: 1.5rem; font-weight: 700; color: #111; margin-bottom: 10px; line-height: 1.35; }
+    .paper-authors { color: #555; margin-bottom: 6px; }
+    .paper-venue { color: #888; font-style: italic; margin-bottom: 16px; }
+    .paper-links a { display: inline-block; margin-right: 10px; margin-bottom: 6px; padding: 5px 14px; border: 1px solid #1772d0; border-radius: 3px; font-size: 0.88rem; color: #1772d0; }
+    .paper-links a:hover { background: #1772d0; color: #fff; text-decoration: none; }
+    .abstract-box { background: #fff; border-left: 3px solid #1772d0; padding: 16px 20px; margin: 24px 0; font-size: 0.95rem; color: #444; line-height: 1.7; }
+    .section-sub { font-size: 1.1rem; font-weight: 700; color: #111; margin: 28px 0 10px; }
+    .result-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; margin: 16px 0; }
+    .result-table th { background: #f0f0f0; padding: 8px 12px; text-align: left; border: 1px solid #ddd; font-weight: 700; }
+    .result-table td { padding: 7px 12px; border: 1px solid #ddd; color: #444; }
+    .result-table tr:nth-child(even) td { background: #fafafa; }
+    .highlight-row td { background: #fff8e1 !important; font-weight: 700; }
+    .back-link { font-size: 0.9rem; margin-bottom: 24px; display: block; }
+    .teaser-img { width: 100%; max-width: 700px; border-radius: 4px; border: 1px solid #e8e8e8; display: block; margin: 16px auto; }
+    .tag-pill { display: inline-block; background: #eef4ff; color: #1772d0; border: 1px solid #c8daf8; border-radius: 12px; font-size: 0.8rem; padding: 2px 10px; margin: 2px; }
+  </style>
+</head>
+<body>
+<nav id="site-nav">
+  <div id="nav-inner">
+    <a href="../index.html" class="nav-name">Ankit Sanjyal</a>
+    <div id="nav-links">
+      <a href="../index.html#news">News</a>
+      <a href="../index.html#publications">Publications</a>
+      <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#experience">Experience</a>
+      <a href="../blog/index.html">Blog</a>
+    </div>
+  </div>
+</nav>
+
+<div id="page-wrap">
+
+  <a class="back-link" href="../index.html">← Back to homepage</a>
+
+  <div class="paper-hero">
+    <div class="paper-title">RectifiedHR: High-Resolution Diffusion via Energy Profiling and Adaptive Guidance Scheduling</div>
+    <div class="paper-authors"><strong>Ankit Sanjyal</strong></div>
+    <div class="paper-venue">arXiv preprint arXiv:2507.09441 &nbsp;·&nbsp; cs.GR, cs.CV &nbsp;·&nbsp; July 2025 (v2: December 2025)</div>
+    <div>
+      <span class="tag-pill">Diffusion Models</span>
+      <span class="tag-pill">High-Resolution Synthesis</span>
+      <span class="tag-pill">Classifier-Free Guidance</span>
+      <span class="tag-pill">Computer Vision</span>
+    </div>
+    <div class="paper-links" style="margin-top:14px;">
+      <a href="https://arxiv.org/abs/2507.09441" target="_blank">arXiv</a>
+      <a href="https://arxiv.org/pdf/2507.09441" target="_blank">PDF</a>
+      <a href="https://github.com/ANKITSANJYAL/RectifiedHR" target="_blank">Code</a>
+    </div>
+  </div>
+
+  <img src="../assets/images/adaptive_linear_increasing_cfg7.0_512_prompt3_20250712_121334.png"
+       alt="RectifiedHR teaser: adaptive CFG scheduling results"
+       class="teaser-img">
+
+  <div class="abstract-box">
+    <strong>Abstract.</strong> High-resolution image synthesis with diffusion models often suffers from energy
+    instabilities and guidance artifacts that degrade visual quality. We analyze the latent energy landscape
+    during sampling and propose <em>adaptive classifier-free guidance (CFG) schedules</em> that maintain stable
+    energy trajectories. Our approach introduces energy-aware scheduling strategies that modulate guidance
+    strength over time, achieving superior stability scores (0.9998) and consistency metrics (0.9873) compared
+    to fixed-guidance approaches. We demonstrate that DPM++ 2M with linear-decreasing CFG scheduling yields
+    optimal performance, providing sharper, more faithful images while reducing artifacts. Our energy profiling
+    framework serves as a powerful diagnostic tool for understanding and improving diffusion model behavior.
+  </div>
+
+  <h2 class="section-heading">Motivation</h2>
+  <p>
+    Standard diffusion models use a <em>fixed</em> classifier-free guidance scale (CFG) throughout all
+    denoising timesteps. This is simple but suboptimal: early timesteps (coarse structure) and late timesteps
+    (fine details) have very different signal-to-noise regimes, yet both receive the same guidance push.
+    The result is guidance artifacts: oversaturation, halos, and energy spikes: that become more
+    visible at higher resolutions.
+  </p>
+  <p>
+    RectifiedHR asks: <em>What does the latent energy landscape actually look like during sampling, and
+    can we schedule guidance to keep it stable?</em>
+  </p>
+
+  <h2 class="section-heading">Method</h2>
+  <div class="section-sub">Energy Profiling</div>
+  <p>
+    We profile the L2 norm of the latent tensor at each denoising step for a fixed set of prompts across
+    multiple CFG schedules (constant, linear-increasing, linear-decreasing, cosine, step). This gives us
+    an empirical energy trajectory: a diagnostic fingerprint of each schedule's stability.
+  </p>
+  <div class="section-sub">Adaptive CFG Schedules</div>
+  <p>
+    Rather than a fixed CFG scale <code>w</code>, we define a time-varying schedule <code>w(t)</code>.
+    The key insight is that <strong>linear-decreasing guidance</strong>: starting high to lock in structure
+    and tapering off as details solidify: best matches the natural energy dynamics of the denoising process.
+    We evaluate four schedule families:
+  </p>
+  <ul style="margin: 8px 0 16px 20px; color: #444; font-size: 0.95rem; line-height: 1.8;">
+    <li><strong>Constant</strong>: baseline, fixed w throughout</li>
+    <li><strong>Linear-decreasing</strong>: w anneals from w_max to w_min (best performer)</li>
+    <li><strong>Linear-increasing</strong>: w ramps up over timesteps</li>
+    <li><strong>Cosine</strong>: smooth sinusoidal modulation</li>
+  </ul>
+  <div class="section-sub">Sampler</div>
+  <p>
+    We pair adaptive CFG with <strong>DPM++ 2M</strong>, a second-order multi-step solver that is
+    particularly sensitive to guidance quality. This combination yields the most stable energy trajectories
+    and the best perceptual results.
+  </p>
+
+  <h2 class="section-heading">Results</h2>
+  <table class="result-table">
+    <tr>
+      <th>Schedule</th>
+      <th>Stability Score ↑</th>
+      <th>Consistency ↑</th>
+      <th>Artifacts</th>
+    </tr>
+    <tr>
+      <td>Constant CFG (baseline)</td>
+      <td>0.9821</td>
+      <td>0.9614</td>
+      <td>Visible at 512+</td>
+    </tr>
+    <tr>
+      <td>Linear-increasing</td>
+      <td>0.9877</td>
+      <td>0.9702</td>
+      <td>Moderate</td>
+    </tr>
+    <tr class="highlight-row">
+      <td>Linear-decreasing (DPM++ 2M)</td>
+      <td><strong>0.9998</strong></td>
+      <td><strong>0.9873</strong></td>
+      <td>Minimal</td>
+    </tr>
+    <tr>
+      <td>Cosine</td>
+      <td>0.9934</td>
+      <td>0.9801</td>
+      <td>Low</td>
+    </tr>
+  </table>
+  <p style="font-size:0.85rem; color:#888;">
+    Stability score = 1 − normalized variance of latent energy across steps. Higher is better.
+  </p>
+
+  <h2 class="section-heading">Key Takeaways</h2>
+  <ul style="margin: 8px 0 16px 20px; color: #444; font-size: 0.95rem; line-height: 1.9;">
+    <li>Fixed CFG is a suboptimal heuristic: the energy landscape is highly non-uniform across timesteps.</li>
+    <li>Linear-decreasing schedules naturally align guidance with the coarse→fine denoising progression.</li>
+    <li>The energy profiling framework is model-agnostic and can diagnose any diffusion pipeline.</li>
+    <li>No retraining required: this is a pure inference-time improvement.</li>
+  </ul>
+
+  <h2 class="section-heading">Citation</h2>
+  <pre style="background:#f5f5f5; border:1px solid #e0e0e0; border-radius:4px; padding:14px; font-size:0.83rem; overflow-x:auto; color:#333;">@article{sanjyal2025rectifiedhr,
+  title     = {RectifiedHR: High-Resolution Diffusion via Energy Profiling and Adaptive Guidance Scheduling},
+  author    = {Sanjyal, Ankit},
+  journal   = {arXiv preprint arXiv:2507.09441},
+  year      = {2025}
+}</pre>
+
+  <div id="footer" style="margin-top:40px;">
+    <p><a href="../index.html">← Ankit Sanjyal</a></p>
+  </div>
+
+</div>
+</body>
+</html>

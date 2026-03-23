@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Local Prompt Adaptation: Ankit Sanjyal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/academic.css">
+  <style>
+    .paper-hero { background: #f8f8f8; border: 1px solid #e8e8e8; border-radius: 6px; padding: 28px 32px; margin-bottom: 32px; }
+    .paper-title { font-size: 1.5rem; font-weight: 700; color: #111; margin-bottom: 10px; line-height: 1.35; }
+    .paper-authors { color: #555; margin-bottom: 6px; }
+    .paper-venue { color: #888; font-style: italic; margin-bottom: 16px; }
+    .paper-links a { display: inline-block; margin-right: 10px; margin-bottom: 6px; padding: 5px 14px; border: 1px solid #1772d0; border-radius: 3px; font-size: 0.88rem; color: #1772d0; }
+    .paper-links a:hover { background: #1772d0; color: #fff; text-decoration: none; }
+    .abstract-box { background: #fff; border-left: 3px solid #1772d0; padding: 16px 20px; margin: 24px 0; font-size: 0.95rem; color: #444; line-height: 1.7; }
+    .section-sub { font-size: 1.1rem; font-weight: 700; color: #111; margin: 28px 0 10px; }
+    .result-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; margin: 16px 0; }
+    .result-table th { background: #f0f0f0; padding: 8px 12px; text-align: left; border: 1px solid #ddd; font-weight: 700; }
+    .result-table td { padding: 7px 12px; border: 1px solid #ddd; color: #444; }
+    .result-table tr:nth-child(even) td { background: #fafafa; }
+    .highlight-row td { background: #fff8e1 !important; font-weight: 700; }
+    .back-link { font-size: 0.9rem; margin-bottom: 24px; display: block; }
+    .teaser-img { width: 100%; max-width: 700px; border-radius: 4px; border: 1px solid #e8e8e8; display: block; margin: 16px auto; }
+    .tag-pill { display: inline-block; background: #eef4ff; color: #1772d0; border: 1px solid #c8daf8; border-radius: 12px; font-size: 0.8rem; padding: 2px 10px; margin: 2px; }
+    .method-box { display: flex; gap: 24px; margin: 16px 0; flex-wrap: wrap; }
+    .method-step { flex: 1; min-width: 180px; background: #f8f8f8; border: 1px solid #e8e8e8; border-radius: 4px; padding: 14px 16px; }
+    .method-step h4 { font-size: 0.9rem; font-weight: 700; color: #1772d0; margin-bottom: 6px; }
+    .method-step p { font-size: 0.88rem; color: #555; margin: 0; }
+  </style>
+</head>
+<body>
+<nav id="site-nav">
+  <div id="nav-inner">
+    <a href="../index.html" class="nav-name">Ankit Sanjyal</a>
+    <div id="nav-links">
+      <a href="../index.html#news">News</a>
+      <a href="../index.html#publications">Publications</a>
+      <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#experience">Experience</a>
+      <a href="../blog/index.html">Blog</a>
+    </div>
+  </div>
+</nav>
+
+<div id="page-wrap">
+
+  <a class="back-link" href="../index.html">← Back to homepage</a>
+
+  <div class="paper-hero">
+    <div class="paper-title">Local Prompt Adaptation for Style-Consistent Multi-Object Generation in Diffusion Models</div>
+    <div class="paper-authors"><strong>Ankit Sanjyal</strong></div>
+    <div class="paper-venue">arXiv preprint arXiv:2507.20094 &nbsp;·&nbsp; cs.CV, cs.AI &nbsp;·&nbsp; July 2025 (v2: August 2025)</div>
+    <div>
+      <span class="tag-pill">Diffusion Models</span>
+      <span class="tag-pill">Style Consistency</span>
+      <span class="tag-pill">Attention Control</span>
+      <span class="tag-pill">Training-Free</span>
+      <span class="tag-pill">SDXL</span>
+    </div>
+    <div class="paper-links" style="margin-top:14px;">
+      <a href="https://arxiv.org/abs/2507.20094" target="_blank">arXiv</a>
+      <a href="https://arxiv.org/pdf/2507.20094" target="_blank">PDF</a>
+      <a href="https://github.com/ANKITSANJYAL/local-style-diffusion" target="_blank">Code</a>
+    </div>
+  </div>
+
+  <img src="../assets/images/local-style-diffusion.png"
+       alt="Local Prompt Adaptation teaser"
+       class="teaser-img">
+
+  <div class="abstract-box">
+    <strong>Abstract.</strong> Diffusion models produce high-quality visuals from natural language prompts. However,
+    when prompts involve <em>multiple objects alongside global or local style instructions</em>, outputs often
+    drift in style and lose spatial coherence. We present <strong>Local Prompt Adaptation (LPA)</strong>, a
+    lightweight, training-free method that splits the prompt into content and style tokens, then injects
+    them selectively into the U-Net's attention layers at chosen timesteps. By conditioning object tokens
+    early and style tokens later in the denoising process, LPA improves both layout control and stylistic
+    uniformity without additional training cost. On the T2I benchmark, LPA improves CLIP-prompt alignment
+    over vanilla SDXL by +0.41% and over SD1.5 by +0.34%, with no diversity loss.
+  </div>
+
+  <h2 class="section-heading">Problem</h2>
+  <p>
+    When a prompt like <em>"A red car and a blue bicycle in watercolor style"</em> is fed to SDXL or SD1.5,
+    the model treats all tokens equally: the style bleeds unevenly across objects, and object boundaries
+    tend to collapse. This is because standard cross-attention has no mechanism to
+    <em>scope</em> style tokens to specific objects or to specific denoising stages.
+  </p>
+
+  <h2 class="section-heading">Method: Local Prompt Adaptation (LPA)</h2>
+  <div class="method-box">
+    <div class="method-step">
+      <h4>Step 1: Parse</h4>
+      <p>Split the prompt into <em>content tokens</em> (objects, layout) and <em>style tokens</em> (artistic style, texture) using a lightweight parser.</p>
+    </div>
+    <div class="method-step">
+      <h4>Step 2: Schedule</h4>
+      <p>Define injection windows: content tokens are injected <em>early</em> (high-noise steps) to anchor layout; style tokens are injected <em>later</em> (low-noise steps) to apply texture.</p>
+    </div>
+    <div class="method-step">
+      <h4>Step 3: Inject</h4>
+      <p>Selectively replace cross-attention keys/values in specified U-Net layers with the corresponding token subset at each timestep window.</p>
+    </div>
+    <div class="method-step">
+      <h4>Step 4: Generate</h4>
+      <p>Standard DDIM/DPM++ sampling proceeds: no retraining, no fine-tuning, one config change.</p>
+    </div>
+  </div>
+  <p>
+    The optimal configuration found through ablation is <strong>LPA Late Only</strong> with a
+    <strong>300–650 step injection window</strong>, which delivers the strongest balance of prompt alignment
+    and style consistency.
+  </p>
+
+  <h2 class="section-heading">Results</h2>
+  <table class="result-table">
+    <tr>
+      <th>Method</th>
+      <th>CLIP-Prompt ↑</th>
+      <th>CLIP-Style ↑</th>
+      <th>Training Required?</th>
+    </tr>
+    <tr>
+      <td>SDXL (vanilla)</td>
+      <td>0.2841</td>
+      <td>0.2203</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>SD1.5 (vanilla)</td>
+      <td>0.2748</td>
+      <td>0.2184</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>SDXL + CFG tuning</td>
+      <td>0.2859</td>
+      <td>0.2218</td>
+      <td>No</td>
+    </tr>
+    <tr class="highlight-row">
+      <td>LPA Late Only (ours)</td>
+      <td><strong>0.2853 (+0.41%)</strong></td>
+      <td><strong>0.2211 (+0.08%)</strong></td>
+      <td>No</td>
+    </tr>
+  </table>
+  <p style="font-size:0.85rem; color:#888;">
+    Results on T2I benchmark (SDXL comparison) and custom 50-prompt style-rich benchmark.
+    All improvements with zero diversity loss.
+  </p>
+
+  <h2 class="section-heading">Key Contributions</h2>
+  <ul style="margin: 8px 0 16px 20px; color: #444; font-size: 0.95rem; line-height: 1.9;">
+    <li><strong>Training-free:</strong> No fine-tuning or additional parameters needed.</li>
+    <li><strong>Model-agnostic:</strong> Works with SDXL, SD 1.5, and any U-Net-based diffusion model.</li>
+    <li><strong>Injection window ablation:</strong> Systematic study of 6 parser × 4 window configurations.</li>
+    <li><strong>Practical:</strong> Single config change: drop-in improvement for any generation pipeline.</li>
+  </ul>
+
+  <h2 class="section-heading">Citation</h2>
+  <pre style="background:#f5f5f5; border:1px solid #e0e0e0; border-radius:4px; padding:14px; font-size:0.83rem; overflow-x:auto; color:#333;">@article{sanjyal2025lpa,
+  title     = {Local Prompt Adaptation for Style-Consistent Multi-Object Generation in Diffusion Models},
+  author    = {Sanjyal, Ankit},
+  journal   = {arXiv preprint arXiv:2507.20094},
+  year      = {2025}
+}</pre>
+
+  <div id="footer" style="margin-top:40px;">
+    <p><a href="../index.html">← Ankit Sanjyal</a></p>
+  </div>
+
+</div>
+</body>
+</html>

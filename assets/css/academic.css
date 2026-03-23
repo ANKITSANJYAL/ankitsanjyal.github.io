@@ -1,0 +1,459 @@
+/* ============================================================
+   academic.css — Minimal academic personal page stylesheet
+   Inspired by Jon Barron / keshik6 style
+   ============================================================ */
+
+/* ---------- Reset & Base ---------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 58px;
+}
+
+body {
+  font-family: 'Lato', Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #333;
+  background: #fff;
+}
+
+a {
+  color: #1772d0;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #f09228;
+  text-decoration: underline;
+}
+
+/* ---------- Navigation Bar ---------- */
+#site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #fff;
+  border-bottom: 1px solid #e8e8e8;
+  height: 48px;
+}
+
+#nav-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 20px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-name {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #111;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+}
+
+.nav-name:hover {
+  color: #1772d0;
+  text-decoration: none;
+}
+
+#nav-links {
+  display: flex;
+  gap: 24px;
+}
+
+#nav-links a {
+  font-size: 0.88rem;
+  color: #555;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+#nav-links a:hover {
+  color: #1772d0;
+  text-decoration: none;
+}
+
+/* ---------- Page Container ---------- */
+#page-wrap {
+  max-width: 860px;
+  margin: 40px auto 60px auto;
+  padding: 0 20px;
+}
+
+/* ---------- Header / Bio ---------- */
+#header {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+  padding-bottom: 32px;
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 40px;
+}
+
+#header-text {
+  flex: 1;
+}
+
+#header-text h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 12px;
+}
+
+#header-text p {
+  margin-bottom: 10px;
+  color: #444;
+}
+
+#header-text .affiliation {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 14px;
+}
+
+.social-links {
+  margin-top: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 0;
+  font-size: 0.95rem;
+}
+
+.social-links a {
+  margin-right: 8px;
+}
+
+.social-links span {
+  color: #aaa;
+  margin-right: 8px;
+}
+
+#header-image {
+  flex-shrink: 0;
+}
+
+#header-image img {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+
+/* ---------- Section headings ---------- */
+.section-heading {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #111;
+  border-bottom: 2px solid #1772d0;
+  padding-bottom: 6px;
+  margin-bottom: 20px;
+  margin-top: 44px;
+}
+
+/* ---------- News ---------- */
+#news ul {
+  list-style: none;
+  padding: 0;
+}
+
+#news ul li {
+  padding: 5px 0;
+  border-bottom: 1px solid #f2f2f2;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+#news ul li .news-date {
+  font-weight: 600;
+  color: #1772d0;
+  min-width: 56px;
+  display: inline-block;
+}
+
+/* ---------- Publications ---------- */
+.pub-row {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  padding: 18px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.pub-row:last-child {
+  border-bottom: none;
+}
+
+.pub-image {
+  flex-shrink: 0;
+  width: 160px;
+}
+
+.pub-image img {
+  width: 160px;
+  height: 108px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid #e8e8e8;
+}
+
+.pub-details {
+  flex: 1;
+}
+
+.pub-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+
+.pub-authors {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 4px;
+}
+
+.pub-authors strong {
+  color: #111;
+  font-weight: 700;
+}
+
+.pub-venue {
+  font-size: 0.9rem;
+  color: #888;
+  font-style: italic;
+  margin-bottom: 8px;
+}
+
+.pub-venue .venue-name {
+  color: #c00;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.pub-badge {
+  display: inline-block;
+  background: #fff3cd;
+  color: #856404;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border: 1px solid #ffc107;
+  border-radius: 3px;
+  padding: 1px 6px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+.pub-links {
+  font-size: 0.88rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 0;
+}
+
+.pub-links a {
+  margin-right: 8px;
+  color: #1772d0;
+}
+
+.pub-links a:hover {
+  color: #f09228;
+}
+
+.pub-links .separator {
+  color: #ccc;
+  margin-right: 8px;
+}
+
+/* ---------- Projects ---------- */
+.project-list {
+  list-style: none;
+  padding: 0;
+}
+
+.project-list li {
+  padding: 10px 0;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 0.95rem;
+}
+
+.project-list li:last-child {
+  border-bottom: none;
+}
+
+.project-name {
+  font-weight: 700;
+  color: #111;
+}
+
+.project-desc {
+  color: #555;
+  font-size: 0.9rem;
+  margin-top: 2px;
+}
+
+.project-links {
+  font-size: 0.88rem;
+  margin-top: 4px;
+}
+
+.project-links a {
+  margin-right: 8px;
+}
+
+/* ---------- Experience / Education ---------- */
+.exp-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.exp-table tr {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.exp-table tr:last-child {
+  border-bottom: none;
+}
+
+.exp-table td {
+  padding: 10px 0;
+  vertical-align: top;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.exp-table .exp-date {
+  width: 140px;
+  color: #888;
+  font-size: 0.88rem;
+  padding-right: 16px;
+  white-space: nowrap;
+}
+
+.exp-table .exp-role {
+  font-weight: 700;
+  color: #111;
+}
+
+.exp-table .exp-org {
+  color: #1772d0;
+}
+
+.exp-table .exp-desc {
+  color: #555;
+  font-size: 0.9rem;
+  margin-top: 2px;
+}
+
+/* ---------- Education ---------- */
+.edu-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.edu-table tr {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.edu-table tr:last-child {
+  border-bottom: none;
+}
+
+.edu-table td {
+  padding: 10px 0;
+  vertical-align: top;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.edu-table .edu-date {
+  width: 140px;
+  color: #888;
+  font-size: 0.88rem;
+  padding-right: 16px;
+  white-space: nowrap;
+}
+
+.edu-table .edu-degree {
+  font-weight: 700;
+  color: #111;
+}
+
+.edu-table .edu-institution {
+  color: #1772d0;
+}
+
+/* ---------- Footer ---------- */
+#footer {
+  margin-top: 60px;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0;
+  font-size: 0.82rem;
+  color: #999;
+  text-align: center;
+}
+
+#footer a {
+  color: #999;
+}
+
+#footer a:hover {
+  color: #1772d0;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 640px) {
+  #nav-links {
+    gap: 14px;
+  }
+
+  #nav-links a {
+    font-size: 0.8rem;
+  }
+
+  #header {
+    flex-direction: column-reverse;
+    align-items: center;
+    text-align: center;
+  }
+
+  #header-image img {
+    width: 130px;
+    height: 130px;
+  }
+
+  .social-links {
+    justify-content: center;
+  }
+
+  .pub-row {
+    flex-direction: column;
+  }
+
+  .pub-image {
+    width: 100%;
+  }
+
+  .pub-image img {
+    width: 100%;
+    height: 160px;
+  }
+
+  .exp-table .exp-date,
+  .edu-table .edu-date {
+    display: none;
+  }
+}

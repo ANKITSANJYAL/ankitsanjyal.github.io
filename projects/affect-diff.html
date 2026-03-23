@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Affect-Diff: Ankit Sanjyal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/academic.css">
+  <style>
+    .proj-hero { background: #f8f8f8; border: 1px solid #e8e8e8; border-radius: 6px; padding: 28px 32px; margin-bottom: 32px; }
+    .proj-title { font-size: 1.5rem; font-weight: 700; color: #111; margin-bottom: 8px; }
+    .proj-tagline { color: #555; font-size: 1rem; margin-bottom: 14px; }
+    .proj-links a { display: inline-block; margin-right: 10px; margin-bottom: 6px; padding: 5px 14px; border: 1px solid #1772d0; border-radius: 3px; font-size: 0.88rem; color: #1772d0; }
+    .proj-links a:hover { background: #1772d0; color: #fff; text-decoration: none; }
+    .tag-pill { display: inline-block; background: #eef4ff; color: #1772d0; border: 1px solid #c8daf8; border-radius: 12px; font-size: 0.8rem; padding: 2px 10px; margin: 2px; }
+    .wip-badge { display: inline-block; background: #fff3cd; color: #856404; border: 1px solid #ffc107; border-radius: 12px; font-size: 0.8rem; padding: 3px 12px; margin-left: 8px; font-weight: 700; }
+    .arch-pipeline { display: flex; flex-direction: column; gap: 0; margin: 20px 0; }
+    .arch-row { display: flex; gap: 12px; align-items: stretch; flex-wrap: wrap; }
+    .arch-row + .arch-row { margin-top: 12px; }
+    .arch-block { flex: 1; min-width: 160px; border-radius: 4px; padding: 14px 16px; }
+    .arch-block.input { background: #e8f5e9; border: 1px solid #81c784; }
+    .arch-block.encoder { background: #e3f2fd; border: 1px solid #64b5f6; }
+    .arch-block.fusion { background: #f3e5f5; border: 1px solid #ba68c8; }
+    .arch-block.diffusion { background: #fff3e0; border: 1px solid #ffb74d; }
+    .arch-block.output { background: #fce4ec; border: 1px solid #f48fb1; }
+    .arch-block h4 { font-size: 0.82rem; font-weight: 700; margin-bottom: 4px; }
+    .arch-block p { font-size: 0.78rem; color: #555; margin: 0; line-height: 1.5; }
+    .arch-arrow { text-align: center; font-size: 1.3rem; color: #1772d0; line-height: 1; margin: 4px 0; }
+    .code-block { background: #f5f5f5; border: 1px solid #e0e0e0; border-radius: 4px; padding: 12px 16px; font-family: monospace; font-size: 0.85rem; color: #333; overflow-x: auto; margin: 12px 0; white-space: pre; }
+    .back-link { font-size: 0.9rem; margin-bottom: 24px; display: block; }
+    .insight-box { background: #e8f5e9; border: 1px solid #66bb6a; border-radius: 4px; padding: 14px 18px; margin: 16px 0; font-size: 0.95rem; color: #1b5e20; }
+    .module-grid { display: flex; flex-wrap: wrap; gap: 14px; margin: 16px 0; }
+    .module-card { flex: 1; min-width: 200px; background: #f8f8f8; border: 1px solid #e8e8e8; border-radius: 4px; padding: 12px 14px; }
+    .module-card h4 { font-size: 0.9rem; font-weight: 700; color: #1772d0; margin-bottom: 4px; }
+    .module-card p { font-size: 0.86rem; color: #555; margin: 0; line-height: 1.5; }
+  </style>
+</head>
+<body>
+
+<nav id="site-nav">
+  <div id="nav-inner">
+    <a href="../index.html" class="nav-name">Ankit Sanjyal</a>
+    <div id="nav-links">
+      <a href="../index.html#news">News</a>
+      <a href="../index.html#publications">Publications</a>
+      <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#experience">Experience</a>
+      <a href="../blog/index.html">Blog</a>
+    </div>
+  </div>
+</nav>
+
+<div id="page-wrap">
+
+  <a class="back-link" href="../index.html">← Back to homepage</a>
+
+  <div class="proj-hero">
+    <div class="proj-title">
+      Affect-Diff: Multimodal Emotion Recognition with a Diffusion Generative Prior
+      <span class="wip-badge">Work in Progress</span>
+    </div>
+    <div class="proj-tagline">
+      A research system that fuses text, audio, and video into a shared VAE latent space,
+      then uses a causal graph + 1D diffusion U-Net to model the distribution of affect,
+      with explainability via counterfactual generation and Gumbel-Softmax causal edges.
+    </div>
+    <div>
+      <span class="tag-pill">Diffusion Models</span>
+      <span class="tag-pill">Multimodal Fusion</span>
+      <span class="tag-pill">Causal Reasoning</span>
+      <span class="tag-pill">VAE</span>
+      <span class="tag-pill">CMU-MOSEI</span>
+      <span class="tag-pill">PyTorch Lightning</span>
+      <span class="tag-pill">Classifier-Free Guidance</span>
+      <span class="tag-pill">Wandb / SLURM</span>
+      <span class="tag-pill">Python 99%</span>
+    </div>
+    <div class="proj-links" style="margin-top:14px;">
+      <a href="https://github.com/ANKITSANJYAL/Multimodal-Emotion-Recognition" target="_blank">GitHub</a>
+      <a href="https://github.com/ANKITSANJYAL/Multimodal-Emotion-Recognition/blob/main/Affect-Diff.pdf" target="_blank">Paper (PDF)</a>
+    </div>
+  </div>
+
+  <h2 class="section-heading">Motivation</h2>
+  <p>
+    Emotion recognition from multimodal signals (speech, language, face) is a core problem in affective
+    computing, HCI, and clinical AI. Existing methods mostly treat it as a <em>classification</em> problem.
+    they fuse modalities and predict a label. This ignores two critical questions:
+  </p>
+  <ul style="margin: 8px 0 16px 20px; color: #444; font-size: 0.95rem; line-height: 1.9;">
+    <li><strong>Which modality actually caused this emotion?</strong> (Text? Tone? Facial expression?)</li>
+    <li><strong>What would the emotion have been if one modality had been different?</strong> (Counterfactual explainability)</li>
+  </ul>
+  <p>
+    Affect-Diff addresses both. A causal attention graph learns which modality drives each prediction.
+    A conditional diffusion model then allows <em>counterfactual hallucination</em>, sampling what the latent
+    affect would look like under a different emotion label, enabling model-level interpretability.
+  </p>
+
+  <h2 class="section-heading">Architecture Overview</h2>
+
+  <div class="arch-pipeline">
+    <div class="arch-row">
+      <div class="arch-block input">
+        <h4>Text</h4>
+        <p>CMU-MOSEI transcripts → TextEncoder (transformer projection, seq × hidden)</p>
+      </div>
+      <div class="arch-block input">
+        <h4>Audio</h4>
+        <p>wav2vec features → AudioEncoder (Conv1D + projection, seq × hidden)</p>
+      </div>
+      <div class="arch-block input">
+        <h4>Video</h4>
+        <p>Facial action units → VideoEncoder (FC + projection, seq × hidden)</p>
+      </div>
+    </div>
+    <div class="arch-arrow">↓ LayerNorm per modality (energy-level normalization) ↓</div>
+    <div class="arch-row">
+      <div class="arch-block fusion">
+        <h4>CausalAttentionGraph</h4>
+        <p>Differentiable 3×3 adjacency matrix (T↔A↔V) via Gumbel-Softmax with temperature annealing. Masks self-loops. Returns causal influence weights per modality.</p>
+      </div>
+    </div>
+    <div class="arch-arrow">↓ Causal-weighted modality fusion → VAE bottleneck ↓</div>
+    <div class="arch-row">
+      <div class="arch-block encoder">
+        <h4>VAE Latent Bottleneck</h4>
+        <p>fc_mu + fc_logvar → reparameterize → z (B, T, latent_dim=256). β-KL loss for regularization. Logvar clamped [−10, 2] for stability.</p>
+      </div>
+    </div>
+    <div class="arch-arrow">↓ DDPM forward process: q(z_t | z_0) ↓</div>
+    <div class="arch-row">
+      <div class="arch-block diffusion">
+        <h4>1D U-Net Diffusion (AffectiveDiffusion)</h4>
+        <p>Cosine β-schedule. ResnetBlock1D with SiLU + GroupNorm. Time embeddings + label embeddings (CFG) + causal influence projection, all summed into a single conditioning vector. Classifier-Free Guidance at inference (cfg_scale > 1.0).</p>
+      </div>
+    </div>
+    <div class="arch-arrow">↓ p_sample_loop → reconstructed z → classifier ↓</div>
+    <div class="arch-row">
+      <div class="arch-block output">
+        <h4>Emotion Classifier + Counterfactual</h4>
+        <p>Linear classifier on denoised z. Counterfactual hallucination: sample z under a different label to explain why the model changed its prediction.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="section-heading">Key Technical Contributions</h2>
+  <div class="module-grid">
+    <div class="module-card">
+      <h4>Causal Attention Graph</h4>
+      <p>Learns a differentiable adjacency matrix (T↔A↔V) using scaled dot-product + Gumbel-Softmax. Temperature anneals over training from soft to hard edges. Self-loops masked. Output: per-sample causal influence weights injected into the diffusion U-Net.</p>
+    </div>
+    <div class="module-card">
+      <h4>1D Diffusion U-Net</h4>
+      <p>Custom UNet1D with down/upsample ResnetBlock1D stacks operating on the temporal latent sequence. Conditions simultaneously on: (1) sinusoidal timestep embedding, (2) label embedding for CFG, (3) causal influence projection. Skip connections at all resolutions.</p>
+    </div>
+    <div class="module-card">
+      <h4>Classifier-Free Guidance</h4>
+      <p>At inference, the model runs two forward passes (conditioned + unconditional using a null label) and interpolates: <code>pred_noise = uncond + scale × (cond − uncond)</code>. Enables controllable emotion-conditioned generation.</p>
+    </div>
+    <div class="module-card">
+      <h4>Counterfactual Explainability</h4>
+      <p>Given a predicted emotion, sample z under a different target label. The delta between the two reconstructions reveals which features drove the original decision, providing causal attribution beyond standard attention visualization.</p>
+    </div>
+  </div>
+
+  <h2 class="section-heading">Training Setup</h2>
+  <div class="code-block">Dataset : CMU-MOSEI (23,454 utterances, 6 emotion categories)
+Backbone: RoBERTa (text) · wav2vec (audio) · facial AUs (video)
+Training: PyTorch Lightning, DDP (multi-GPU, SLURM cluster)
+Optimizer: AdamW, gradient clipping (norm=1.0, DeepMind standard)
+Logging : Weights & Biases (project: "Affect-Diff-CVPR")
+Monitor : val_loss (patience=50), EarlyStopping + LR warmup
+
+Combined Loss = CE (classification)
+              + λ₁ · MSE (diffusion noise prediction)
+              + λ₂ · β-KL (VAE regularization)</div>
+
+  <h2 class="section-heading">Module Structure</h2>
+  <div class="code-block">models/
+  encoders/
+    text_encoder.py      # Transformer projection for transcript features
+    audio_encoder.py     # Conv1D projection for wav2vec features
+    video_encoder.py     # FC projection for facial action units
+  fusion/
+    latent_bottleneck.py # VAE + CausalAttentionGraph + weighted fusion
+  diffusion/
+    unet_1d.py           # 1D U-Net with time/label/causal conditioning
+    diffusion_utils.py   # DDPM forward/reverse, CFG, cosine schedule
+  causal_graph.py        # CausalAttentionGraph (standalone, reusable)
+modules/
+  affect_diff_module.py  # PyTorch Lightning training module</div>
+
+  <div class="insight-box">
+    <strong>Research angle:</strong> This project bridges three active areas: multimodal representation learning,
+    score-based generative models for structured latent spaces, and causal explainability.
+    The counterfactual generation capability positions it as an interpretability tool, not just a classifier.
+    Target venue: CVPR / EMNLP 2026.
+  </div>
+
+  <h2 class="section-heading">Tech Stack</h2>
+  <ul style="margin: 8px 0 16px 20px; color: #444; font-size: 0.95rem; line-height: 1.9;">
+    <li><strong>Core:</strong> PyTorch 2.x, PyTorch Lightning (DDP, multi-GPU), Hydra (config management)</li>
+    <li><strong>Pretrained backbones:</strong> RoBERTa (text), wav2vec 2.0 (audio), facial action units (video)</li>
+    <li><strong>Dataset:</strong> CMU-MOSEI (6-class sentiment/emotion, ~23K utterances)</li>
+    <li><strong>Training infra:</strong> SLURM cluster, W&amp;B logging, ModelCheckpoint + EarlyStopping</li>
+    <li><strong>Explainability:</strong> Gumbel-Softmax causal graph, counterfactual hallucination via DDPM</li>
+  </ul>
+
+  <div id="footer" style="margin-top:40px;">
+    <p><a href="../index.html">← Ankit Sanjyal</a></p>
+  </div>
+
+</div>
+</body>
+</html>
