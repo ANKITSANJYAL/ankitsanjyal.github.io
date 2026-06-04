@@ -3,13 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ankit Sanjyal</title>
+  <title>Ankit Sanjyal — AI Safety &amp; Interpretability Researcher</title>
+  <meta name="description" content="Ankit Sanjyal — interpretability and AI safety researcher working on mechanistic interpretability, internals-based monitoring, and automating interpretability with tool-using agents.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.1/css/academicons.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="assets/css/academic.css">
+  <style>
+    .research-interest-list { list-style: none; padding: 0; }
+    .research-interest-list li { padding: 6px 0; border-bottom: 1px solid #f2f2f2; font-size: 0.95rem; color: #444; }
+    .research-interest-list li:last-child { border-bottom: none; }
+    .ri-topic { font-weight: 700; color: #111; }
+    .project-group-label { padding: 14px 0 4px; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.06em; color: #888; text-transform: uppercase; border-bottom: none !important; }
+    .writing-list { list-style: none; padding: 0; }
+    .writing-list li { padding: 8px 0; border-bottom: 1px solid #f0f0f0; font-size: 0.95rem; color: #444; }
+    .writing-list li:last-child { border-bottom: none; }
+    .writing-title { font-weight: 700; color: #111; }
+    .writing-stub { color: #999; font-size: 0.88rem; font-style: italic; }
+    .placeholder { background: #fffbea; border: 1px dashed #f0c040; border-radius: 3px; padding: 1px 5px; font-size: 0.88rem; color: #b8860b; font-style: italic; }
+  </style>
 </head>
 <body>
 
@@ -19,8 +33,10 @@
     <a href="index.html" class="nav-name">Ankit Sanjyal</a>
     <div id="nav-links">
       <a href="index.html#news">News</a>
+      <a href="index.html#research-interests">Research</a>
       <a href="index.html#publications">Publications</a>
       <a href="index.html#projects">Projects</a>
+      <a href="index.html#writing">Writing</a>
       <a href="index.html#experience">Experience</a>
     </div>
   </div>
@@ -33,35 +49,35 @@
     <div id="header-text">
       <h1>Ankit Sanjyal</h1>
       <p>
-        I am an M.S. Data Science researcher at <a href="https://www.fordham.edu/" target="_blank">Fordham University</a>,
-        where I work as a Graduate Research Assistant in the
-        <a href="https://www.cis.fordham.edu/edmlab" target="_blank">Educational Data Mining Lab</a>
-        and as a Teaching Assistant for graduate Machine Learning courses.
+        I am an interpretability and AI safety researcher (M.S. Data Science,
+        <a href="https://www.fordham.edu/" target="_blank">Fordham University</a>).
+        I work on understanding the internals of modern AI systems so we can tell what they are
+        actually doing  with a focus on reasoning-model interpretability, internals-based
+        monitoring, and automating interpretability with tool-using agents.
       </p>
       <p>
-        My research focuses on <strong>flow and diffusion models</strong>, <strong>multimodal learning</strong>,
-        and <strong>causal interpretability</strong>.
-        I study how score-based and flow-matching generative models behave in structured latent spaces,
-        asking questions like: how does energy evolve during a diffusion trajectory, when does classifier-free
-        guidance hurt high-resolution quality, and can a causal graph over modalities make multimodal
-        predictions explainable?
-        My current work (<em>Affect-Diff</em>) couples a VAE over text/audio/video with a conditional 1D diffusion
-        U-Net and a Gumbel-Softmax causal attention graph, targeting emotion recognition with
-        counterfactual explainability.
-        I have authored three preprints on arXiv covering energy dynamics in diffusion sampling
+        My path here runs through hands-on work in model interpretability (extracting and causally
+        intervening on internal representations), causal inference, and building autonomous
+        multi-agent systems. I completed
+        <a href="https://aisafetyfundamentals.com/" target="_blank">BlueDot Impact</a>'s
+        Technical AI Safety course and am now working on interpretability research full-time.
+      </p>
+      <p>
+        Previously I have authored four arXiv preprints covering 
+        multimodal emotion recognition via causal-diffusion bridge 
+        (<a href="https://arxiv.org/abs/2605.08252" target="_blank">Affect Diff</a>),
+        energy dynamics in diffusion sampling 
         (<a href="https://arxiv.org/abs/2507.09441" target="_blank">RectifiedHR</a>),
         training-free local style control in SDXL
         (<a href="https://arxiv.org/abs/2507.20094" target="_blank">Local Prompt Adaptation</a>),
-        and a systematic negative-result study of DINO feature reuse for few-shot NeRF
-        (<a href="https://arxiv.org/abs/2506.18208" target="_blank">NeRF Few-Shot</a>).
+        and a systematic study of DINO feature reuse for few-shot NeRF
+        (<a href="https://arxiv.org/abs/2506.18208" target="_blank">NeRF Few-Shot</a>),
+        and served as Graduate Research Assistant in the
+        <a href="https://www.cis.fordham.edu/edmlab" target="_blank">Educational Data Mining Lab</a>.
       </p>
       <p>
-        Before Fordham, I was an Associate Data Consultant at
-        <a href="https://www.decisionfoundry.com/" target="_blank">Decision Foundry</a> (Bangalore)
-        and an undergraduate researcher at Jain University, where I worked on medical image segmentation
-        and multiclass skin lesion classification.
-        I am actively looking for <strong>research internships, gen ai/ ml research jobs and Ph.D. positions</strong>
-        in generative modeling, multimodal AI, and representation learning.
+        I am focused on AI safety and interpretability research and open to collaboration,
+        mentorship, and fellowship or research roles in the area.
       </p>
       <p class="affiliation">M.S. Data Science, Fordham University &nbsp;&middot;&nbsp; New York, NY</p>
       <div class="social-links">
@@ -83,19 +99,72 @@
   <div id="news">
     <h2 class="section-heading">News</h2>
     <ul>
-      <li><span class="news-date">03/26</span> Actively working on <a href="projects/affect-diff.html">Affect-Diff</a>, a multimodal emotion recognition system with a causal attention graph and conditional 1D diffusion prior on CMU-MOSEI.</li>
+      <li><span class="news-date">05/26</span> Completed <a href="https://bluedot.org/courses/technical-ai-safety" target="_blank">BlueDot Impact</a>'s Technical AI Safety course.</li>
+      <li><span class="news-date">05/26</span> Preprint <a href="https://arxiv.org/abs/2605.08252" target="_blank">Multimodal Emotion Recognition via Causal-Diffusion Bridge (Affect-Diff)</a> on arXiv. </li>
       <li><span class="news-date">01/26</span> Teaching <em>Machine Learning for Finance</em> (Spring 2026) as TA at Fordham University.</li>
+      <li><span class="news-date">08/25</span> Teaching <em>Data Mining</em> (Fall 2025) as TA at Fordham University.</li>
       <li><span class="news-date">07/25</span> Preprint <a href="https://arxiv.org/abs/2507.20094" target="_blank">Local Prompt Adaptation for Style-Consistent Generation</a> on arXiv.</li>
       <li><span class="news-date">07/25</span> Preprint <a href="https://arxiv.org/abs/2507.09441" target="_blank">RectifiedHR: High-Resolution Diffusion via Energy Profiling</a> on arXiv.</li>
       <li><span class="news-date">06/25</span> Preprint <a href="https://arxiv.org/abs/2506.18208" target="_blank">NeRF Few-Shot Limitations Analysis</a> on arXiv.</li>
-      <li><span class="news-date">08/25</span> Teaching <em>Data Mining</em> (Fall 2025) as TA at Fordham University.</li>
       <li><span class="news-date">08/24</span> Started as Graduate Research Assistant at Fordham University (MAESTRO project).</li>
+    </ul>
+  </div>
+
+  <!-- RESEARCH INTERESTS -->
+  <div id="research-interests">
+    <h2 class="section-heading">Research Interests</h2>
+    <p style="color:#555; font-size:0.95rem; margin-bottom:14px;">
+      I am interested in interpretability as a concrete path toward making advanced AI go well.
+      The four directions below map the problems I am currently thinking about and building toward.
+    </p>
+    <ul class="research-interest-list">
+      <li>
+        <span class="ri-topic">Reasoning-model interpretability</span> —
+        Causal analysis of chain-of-thought: which reasoning steps actually drive a model's answer,
+        identified via counterfactual resampling and intervention.
+      </li>
+      <li>
+        <span class="ri-topic">Internals-based monitoring</span> —
+        Cheap linear probes trained on internal activations to detect behaviors like deception and
+        evaluation-awareness, as a first layer of defense in model control schemes.
+      </li>
+      <li>
+        <span class="ri-topic">Automating interpretability</span> —
+        Autonomous "investigator agents" that use interpretability tools to explain why a model
+        behaved a certain way, closing the loop between tool-using agents and mechanistic analysis.
+      </li>
+      <li>
+        <span class="ri-topic">Latent-reasoning &amp; diffusion-LLM interpretability</span> —
+        Keeping models interpretable as the field moves toward vector-based and diffusion-based
+        reasoning that breaks chain-of-thought monitoring.
+      </li>
     </ul>
   </div>
 
   <!-- PUBLICATIONS -->
   <div id="publications">
     <h2 class="section-heading">Publications</h2>
+    <p style="color:#666; font-size:0.88rem; margin-bottom:14px; font-style:italic;">
+      Four arXiv preprints (2025–2026). The most recent - Affect-Diff directly demonstrates causal interpretability. The earlier three are diffusion-model papers; the transferable skills are internal-representation extraction, causal intervention, and systematic empirical evaluation.
+    </p>
+
+    <div class="pub-row">
+      <div class="pub-image">
+        <img src="/Users/ankitsanjyal/Desktop/projects/ankitsanjyal.github.io/assets/images/multimodal_emotion.png" alt="Multimodal-Emotion-Recognition">
+      </div>
+      <div class="pub-details">
+        <div class="pub-title"><a href="papers/affect-diff.html">Multimodal Emotion Recognition via Causal-Diffusion Bridge (Affect-Diff)</a></div>
+        <div class="pub-authors"><strong>Ankit Sanjyal</strong></div>
+        <div class="pub-venue"><span class="venue-name">arXiv</span>, May 2026.</div>
+        <!-- <div style="font-size:0.88rem;color:#555;margin-bottom:8px;line-height:1.5;">NOTEARS causal graph + β-VAE + stop-gradiented 1D DDPM prior for interpretable multimodal emotion recognition. 18% relative improvement over the strongest baseline; the only system to achieve non-trivial performance on minority emotion classes where baselines fail entirely.</div> -->
+        <div class="pub-links">
+          <a href="https://arxiv.org/abs/2605.08252" target="_blank">arXiv</a>
+          <span class="separator">/</span>
+          <a href="https://github.com/ANKITSANJYAL/Multimodal-Emotion-Recognition" target="_blank">code</a>
+          
+        </div>
+      </div>
+    </div>
 
     <div class="pub-row">
       <div class="pub-image">
@@ -153,41 +222,48 @@
     <ul class="project-list">
 
       <li>
-        <div class="project-name"><a href="projects/affect-diff.html">Affect-Diff: Multimodal Emotion Recognition with Diffusion Prior <span style="font-size:0.78rem;color:#856404;background:#fff3cd;border:1px solid #ffc107;border-radius:10px;padding:1px 8px;font-weight:700;vertical-align:middle;">In Progress</span></a></div>
-        <div class="project-desc">Couples a causal attention graph (Gumbel-Softmax, T↔A↔V) with a VAE latent bottleneck and a conditional 1D diffusion U-Net (CFG + causal conditioning) for interpretable affect recognition on CMU-MOSEI. Counterfactual hallucination provides modality-level causal attribution.</div>
-        <div class="project-links">
-          <a href="https://github.com/ANKITSANJYAL/Multimodal-Emotion-Recognition" target="_blank">GitHub</a>
-          <a href="https://github.com/ANKITSANJYAL/Multimodal-Emotion-Recognition/blob/main/Affect-Diff-Draft.pdf" target="_blank">Paper[Draft]</a>
-        </div>
-      </li>
-
-      <li>
-        <div class="project-name"><a href="projects/diffusion-detective.html">Diffusion Detective: Interpretable Stable Diffusion</a></div>
-        <div class="project-desc">Real-time cross-attention extraction from SD 2.1 with MAE &lt; 10⁻⁶. CLIP embedding algebra for semantic steering (94% success). GPT-4o-mini chain-of-thought narratives. FastAPI + React 18 frontend.</div>
+        <div class="project-name"><a href="projects/diffusion-detective.html">Diffusion Detective: Interpretability Tooling for a Generative Model</a></div>
+        <div class="project-desc">A research toolkit for peering inside a generative AI model as it draws: it shows what the model "focuses on" at each step, lets you nudge its behavior by adding a concept vector mid-generation (94% steering success rate), and writes a plain-English explanation of what changed and why. The same three operations - extract internals, intervene causally, explain in natural language are the core primitives of LLM mechanistic interpretability (activation steering, patchscopes).</div>
         <div class="project-links">
           <a href="https://github.com/ANKITSANJYAL/Diffusion-Detective" target="_blank">GitHub</a>
         </div>
       </li>
 
       <li>
-        <div class="project-name"><a href="projects/nopropagation.html">No-Propagation Diffusion Transformers</a></div>
-        <div class="project-desc">Clean PyTorch reproduction of NoPropDT (Oxford, arXiv:2503.24322). Stack of local denoising blocks, each trained with per-layer MSE, zero gradient backward through the network. <strong>~99% on MNIST, ~76% on CIFAR-10 without backpropagation.</strong></div>
+        <div class="project-name"><a href="projects/affect-diff.html">Affect-Diff: Causal-Diffusion Bridge for Interpretable Emotion Recognition</a></div>
+        <div class="project-desc">An AI model that doesn't just predict emotion, it tells you <em>which part</em> of a person's communication (words, tone, or face) causally drove that prediction. A NOTEARS-learned causal graph re-weights modalities, a β-VAE compresses them to a shared latent space, and a stop-gradiented 1D DDPM prior structures it for generation; counterfactual sampling then makes attributions explicit. Result: 18% relative improvement over the strongest baseline on CMU-MOSEI, with non-trivial performance on minority emotions where all baselines fail entirely.</div>
         <div class="project-links">
-          <a href="https://github.com/ANKITSANJYAL/NoPropagation" target="_blank">GitHub</a>
+          <a href="https://arxiv.org/abs/2605.08252" target="_blank">arXiv</a>
+          <a href="papers/affect-diff.html">Paper page</a>
+          <a href="https://github.com/ANKITSANJYAL/Multimodal-Emotion-Recognition" target="_blank">GitHub</a>
         </div>
       </li>
 
       <li>
         <div class="project-name"><a href="projects/causal-finance.html">Causal Factor Discovery in S&amp;P 500 Returns</a></div>
-        <div class="project-desc">Double Machine Learning (DML) pipeline for causal ATE/CATE estimation of momentum on next-day returns. Benchmarks: OLS, Random Forest, LSTM ablation (base/deep/wide). yfinance data for AAPL, MSFT, JPM, AMZN, XOM.</div>
+        <div class="project-desc">Causal-inference toolkit: Double Machine Learning (DML) for ATE/CATE estimation of momentum on next-day returns. The same counterfactual machinery now central to reasoning-model interpretability, orthogonalizing out confounders to isolate which factors causally drive an outcome.</div>
         <div class="project-links">
           <a href="https://github.com/ANKITSANJYAL/Causal-Factor-Discovery-in-S-P-500-Returns-" target="_blank">GitHub</a>
         </div>
       </li>
 
       <li>
+        <div class="project-name"><a href="projects/nopropagation.html">No-Propagation Diffusion Transformers</a></div>
+        <div class="project-desc">From-scratch reproduction and extension of a recent Oxford paper (NoPropDT, arXiv:2503.24322). Demonstrates the empirical reproduction skill that interpretability research runs on rebuilding an architecture layer by layer to understand it mechanically. (~99% MNIST, ~76% CIFAR-10 without backpropagation.)</div>
+        <div class="project-links">
+          <a href="https://github.com/ANKITSANJYAL/NoPropagation" target="_blank">GitHub</a>
+        </div>
+      </li>
+
+      <li class="project-group-label">Autonomous Tool-Using Systems
+        <span style="font-weight:400; text-transform:none; font-size:0.82rem; color:#aaa; letter-spacing:0;">
+          — the same read-reason-act pattern underlying autonomous interpretability investigator agents
+        </span>
+      </li>
+
+      <li>
         <div class="project-name"><a href="projects/maestro.html">MAESTRO: AI Text-to-Video Lecture System</a></div>
-        <div class="project-desc">Full-stack platform (OpenAI script synthesis + PlayHT TTS + FFmpeg rendering) that auto-generates educational video lectures with retrieval-augmented QA bots. Live at Fordham University.</div>
+        <div class="project-desc">Autonomous pipeline (OpenAI script synthesis + PlayHT TTS + FFmpeg rendering) that generates educational video lectures from text and answers student questions via RAG. Demonstrates end-to-end multi-agent orchestration, same architecture pattern underlying autonomous interpretability investigators. Live at Fordham University.</div>
         <div class="project-links">
           <a href="https://github.com/Fordham-EDM-Lab/MAESTRO" target="_blank">GitHub</a>
           <a href="https://erdos.dsm.fordham.edu/" target="_blank">Live</a>
@@ -196,7 +272,7 @@
 
       <li>
         <div class="project-name"><a href="projects/automatedbi.html">AutomatedBI: Agentic BI Dashboard Generator</a></div>
-        <div class="project-desc">CrewAI multi-agent system (4 specialized agents) + Gemini that transforms raw data into interactive dashboards. <strong>80% reduction in manual reporting time.</strong> Flask + React + PostgreSQL + Docker.</div>
+        <div class="project-desc">CrewAI multi-agent system (4 specialized agents) + Gemini: reads raw data, reasons with domain-expert and KPI-strategist agents, and produces an interactive dashboard. An instance of the general read-input / reason-with-tools / produce-result pattern that underlies autonomous interpretability agents. 80% reduction in manual reporting time.</div>
         <div class="project-links">
           <a href="https://github.com/ANKITSANJYAL/AutomatedBI" target="_blank">GitHub</a>
           <a href="https://drive.google.com/file/d/1EnY2wfSkUXcyAJEg5-wLtURVdGLqiEO4/view?usp=sharing" target="_blank">Demo</a>
@@ -205,7 +281,7 @@
 
       <li>
         <div class="project-name"><a href="projects/h-kfx.html">H-KFX: Autonomous Bug-Fixing Agent</a></div>
-        <div class="project-desc">GPT-4o + MCP + MongoDB Atlas RAG autonomous agent that closes Jira tickets end-to-end: reads ticket, writes fix, opens PR. <strong>60–90 second ticket-to-PR cycle.</strong> MUG Hackathon 2025.</div>
+        <div class="project-desc">GPT-4o + MCP + MongoDB Atlas RAG agent that closes Jira tickets end-to-end: reads the ticket, retrieves context, generates and validates a fix, and opens the PR , 60–90 second ticket-to-PR cycle. A working instance of the autonomous investigator architecture: the same scaffold needed for agents that probe why a model behaved a certain way. MUG Hackathon 2025.</div>
         <div class="project-links">
           <a href="https://github.com/ANKITSANJYAL/MUGHackthon" target="_blank">GitHub</a>
           <a href="https://www.youtube.com/watch?v=YB1gHWcOpz0&t=4s" target="_blank">Demo</a>
@@ -223,12 +299,36 @@
     </ul>
   </div>
 
+  <!-- WRITING -->
+  <div id="writing">
+    <h2 class="section-heading">Writing</h2>
+    <p style="color:#555; font-size:0.95rem; margin-bottom:14px;">
+      The AI safety field runs on public write-ups. I plan to post research notes and
+      Alignment-Forum-style essays here as my interpretability work develops.
+    </p>
+    <ul class="writing-list">
+      <li>
+        <div class="writing-title">
+          From diffusion cross-attention steering to LLM residual-stream steering:
+          what transfers and what doesn't
+          <span class="placeholder">[coming soon]</span>
+        </div>
+        <div class="writing-stub">Draft in progress</div>
+      </li>
+      <li>
+        <!-- <div class="writing-title">
+          <span class="placeholder">[ANKIT: add additional posts here as you publish them — Alignment Forum posts, LessWrong essays, substack, etc.]</span>
+        </div> -->
+      </li>
+    </ul>
+  </div>
+
   <!-- EXPERIENCE -->
   <div id="experience">
     <h2 class="section-heading">Experience</h2>
     <table class="exp-table">
       <tr>
-        <td class="exp-date">Aug 2025 &ndash; Present</td>
+        <td class="exp-date">Aug 2025 &ndash; May 2026</td>
         <td>
           <div class="exp-role">Teaching Assistant</div>
           <div class="exp-org">Fordham University, New York, NY</div>
@@ -236,11 +336,11 @@
         </td>
       </tr>
       <tr>
-        <td class="exp-date">Aug 2024 &ndash; Present</td>
+        <td class="exp-date">Aug 2024 &ndash; May 2026</td>
         <td>
           <div class="exp-role">Graduate Research Assistant</div>
           <div class="exp-org">Fordham University, Educational Data Mining Lab, New York, NY</div>
-          <div class="exp-desc">Leading the MAESTRO project; exploring few-shot 2D-to-3D reconstruction on medical imaging data (OASIS dataset) using efficient neural representations.</div>
+          <div class="exp-desc">Led the MAESTRO project; explored few-shot 2D-to-3D reconstruction on medical imaging data (OASIS dataset) using efficient neural representations.</div>
         </td>
       </tr>
       <tr>
@@ -264,13 +364,20 @@
 
   <!-- EDUCATION -->
   <div id="education">
-    <h2 class="section-heading">Education</h2>
+    <h2 class="section-heading">Education &amp; Training</h2>
     <table class="edu-table">
       <tr>
-        <td class="edu-date">2024 &ndash; Present</td>
+        <td class="edu-date">2024 &ndash; May 2026</td>
         <td>
           <div class="edu-degree">M.S. Data Science</div>
           <div class="edu-institution"><a href="https://www.fordham.edu/" target="_blank">Fordham University</a>, New York, NY</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="edu-date">May 2026</td>
+        <td>
+          <div class="edu-degree">Technical AI Safety Course (Completed)</div>
+          <div class="edu-institution"><a href="https://aisafetyfundamentals.com/" target="_blank">BlueDot Impact</a></div>
         </td>
       </tr>
       <tr>

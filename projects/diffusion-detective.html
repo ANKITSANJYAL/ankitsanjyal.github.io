@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Diffusion Detective: Ankit Sanjyal</title>
+  <title>Diffusion Detective — Interpretability Tooling: Ankit Sanjyal</title>
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/academic.css">
   <style>
@@ -35,7 +35,7 @@
       <a href="../index.html#publications">Publications</a>
       <a href="../index.html#projects">Projects</a>
       <a href="../index.html#experience">Experience</a>
-      <a href="../blog/index.html">Blog</a>
+      <a href="../index.html#writing">Writing</a>
     </div>
   </div>
 </nav>
@@ -45,8 +45,8 @@
   <a class="back-link" href="../index.html">← Back to homepage</a>
 
   <div class="proj-hero">
-    <div class="proj-title">Diffusion Detective: Interpretable Stable Diffusion</div>
-    <div class="proj-tagline">A research system that extracts cross-attention maps, applies semantic steering via CLIP embedding arithmetic, and generates natural language explanations for every image generated.</div>
+    <div class="proj-title">Diffusion Detective: Interpretability Tooling for a Generative Model</div>
+    <div class="proj-tagline">Real-time extraction of internal representations (cross-attention), causal steering of behavior via representation-space interventions (94% success), and automated natural-language explanation of what each intervention did — mechanically a precursor to LLM activation steering and patchscopes-style self-explanation.</div>
     <div>
       <span class="tag-pill">Stable Diffusion 2.1</span>
       <span class="tag-pill">PyTorch</span>
@@ -121,12 +121,24 @@ latents_t = latents_t + steering_vector * strength
     <li><strong>Memory:</strong> 7.2GB VRAM peak, 1.8GB post-cleanup with attention slicing and float16 precision.</li>
   </ul>
 
-  <h2 class="section-heading">Why This Matters</h2>
+  <h2 class="section-heading">Connection to LLM Interpretability</h2>
   <p>
-    Standard diffusion models are black boxes: users have no insight into <em>why</em> an image looks the way it does.
-    Diffusion Detective is a prototype for a future where generative AI is auditable: you can see what the model
-    attended to, steer it without retraining, and read a plain-English explanation of its decisions.
-    This is foundational work toward <em>trustworthy generative AI</em>.
+    The three capabilities in this system map directly onto core LLM interpretability methods:
+  </p>
+  <ul style="margin: 8px 0 16px 20px; color: #444; font-size: 0.95rem; line-height: 1.9;">
+    <li><strong>Cross-attention extraction</strong> is the diffusion analogue of <em>activation patching</em> and
+      <em>attention head analysis</em> in transformer interpretability — hooking into internal representations
+      at runtime to see what the model is "looking at."</li>
+    <li><strong>CLIP-space steering vectors</strong> (adding/subtracting concept embeddings in the latent space
+      during generation) are the direct precursor to <em>activation steering</em> in residual-stream LLMs:
+      the same add-a-vector / subtract-a-vector paradigm for causal behavioral intervention.</li>
+    <li><strong>LLM-generated natural-language explanations</strong> of internal state correspond to
+      <em>patchscopes-style self-explanation</em>, where the model is used to interpret its own internals.</li>
+  </ul>
+  <p>
+    Standard diffusion models are black boxes. Diffusion Detective is a working prototype of an interpretability
+    toolkit for such a system — and the transferable skill is exactly the pipeline that LLM interpretability
+    research builds on: hook into internals → intervene causally → explain in natural language.
   </p>
 
   <div id="footer" style="margin-top:40px;">
