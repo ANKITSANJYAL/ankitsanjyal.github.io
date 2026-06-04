@@ -33,7 +33,7 @@
       <a href="../index.html#publications">Publications</a>
       <a href="../index.html#projects">Projects</a>
       <a href="../index.html#experience">Experience</a>
-      <a href="../blog/index.html">Blog</a>
+      <a href="../index.html#writing">Writing</a>
     </div>
   </div>
 </nav>
@@ -44,7 +44,7 @@
 
   <div class="proj-hero">
     <div class="proj-title">No-Propagation Diffusion Transformers (NoPropDT)</div>
-    <div class="proj-tagline">A clean PyTorch implementation of a backpropagation-free training algorithm: achieving 99% accuracy on MNIST using only local layer-wise denoising targets.</div>
+    <div class="proj-tagline">From-scratch reproduction and extension of a recent Oxford paper. Demonstrates the empirical reproduction skill that interpretability research runs on — rebuilding an architecture layer by layer to understand it mechanically. (~99% MNIST, ~76% CIFAR-10 without backpropagation.)</div>
     <div>
       <span class="tag-pill">PyTorch</span>
       <span class="tag-pill">Diffusion</span>
@@ -139,9 +139,15 @@ main.py
   <h2 class="section-heading">Why I Built This</h2>
   <p>
     This was a deep-dive reproduction exercise: reading a research paper (Oxford, 2025) and rebuilding it
-    from scratch in a clean, modular PyTorch codebase, extending it to CIFAR-10 and adding a nonlinear decoder
-    variant. The goal was to deeply understand an alternative training paradigm that could matter for
-    neuromorphic hardware, federated learning, and biologically plausible AI.
+    from scratch in a clean, modular PyTorch codebase, then extending it to CIFAR-10 and adding a nonlinear
+    decoder variant.
+  </p>
+  <p>
+    <strong>Relevance to interpretability research:</strong> Interpretability work depends heavily on the
+    ability to reproduce and extend existing architectures precisely enough to probe their internals.
+    The skill being practiced here — reading a paper, reconstructing it layer by layer, verifying that
+    your numbers match, then extending it — is exactly the empirical reproduction skill that
+    mechanistic interpretability research runs on.
   </p>
   <p>
     The repo has earned 5 ⭐ and is actively watched by researchers interested in backprop-free learning.

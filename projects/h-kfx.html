@@ -34,7 +34,7 @@
       <a href="../index.html#publications">Publications</a>
       <a href="../index.html#projects">Projects</a>
       <a href="../index.html#experience">Experience</a>
-      <a href="../blog/index.html">Blog</a>
+      <a href="../index.html#writing">Writing</a>
     </div>
   </div>
 </nav>
@@ -45,7 +45,7 @@
 
   <div class="proj-hero">
     <div class="proj-title">H-KFX: Hybrid Knowledge Fixer: Autonomous Bug-Fixing Agent</div>
-    <div class="proj-tagline">An AI agent that reads a Jira ticket, finds the buggy code, generates a validated fix, and opens a pull request: in under 90 seconds.</div>
+    <div class="proj-tagline">A fully autonomous tool-using agent: reads a task description, retrieves context (RAG), reasons, generates and validates a solution, and acts — 60–90s ticket-to-PR. A working instance of the autonomous investigator architecture that underlies agents for automating interpretability.</div>
     <div>
       <span class="tag-pill">GPT-4o</span>
       <span class="tag-pill">MCP</span>
@@ -143,6 +143,16 @@
     <li><strong>RAG over past fixes:</strong> The MongoDB knowledge base grows with every fix the system makes, making it smarter over time.</li>
     <li><strong>Human-in-the-loop:</strong> Approval is always required before merge: the agent assists, it doesn't replace developer judgment.</li>
   </ul>
+
+  <h2 class="section-heading">Relevance to Automating Interpretability</h2>
+  <p>
+    The architecture of H-KFX — <em>read a task description → retrieve relevant context → reason →
+    use tools → validate the output → report</em> — is the same scaffold needed for an autonomous
+    interpretability investigator agent. Such an agent would: read a model behavior anomaly,
+    retrieve prior circuit analyses, use interpretability tools (activation patching, probing) to
+    investigate, validate a mechanistic hypothesis, and produce an explanation.
+    H-KFX demonstrates that this loop works end-to-end at production speed.
+  </p>
 
   <h2 class="section-heading">Tech Stack</h2>
   <ul style="margin: 8px 0 16px 20px; color: #444; font-size: 0.95rem; line-height: 1.9;">

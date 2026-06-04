@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Affect-Diff — Causal-Diffusion Bridge: Ankit Sanjyal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/academic.css">
+  <style>
+    .paper-hero { background: #f8f8f8; border: 1px solid #e8e8e8; border-radius: 6px; padding: 28px 32px; margin-bottom: 32px; }
+    .paper-title { font-size: 1.5rem; font-weight: 700; color: #111; margin-bottom: 10px; line-height: 1.35; }
+    .paper-authors { color: #555; margin-bottom: 6px; }
+    .paper-venue { color: #888; font-style: italic; margin-bottom: 16px; }
+    .paper-links a { display: inline-block; margin-right: 10px; margin-bottom: 6px; padding: 5px 14px; border: 1px solid #1772d0; border-radius: 3px; font-size: 0.88rem; color: #1772d0; }
+    .paper-links a:hover { background: #1772d0; color: #fff; text-decoration: none; }
+    .abstract-box { background: #fff; border-left: 3px solid #1772d0; padding: 16px 20px; margin: 24px 0; font-size: 0.95rem; color: #444; line-height: 1.7; }
+    .result-box { background: #e8f5e9; border: 1px solid #66bb6a; border-radius: 4px; padding: 16px 20px; margin: 20px 0; font-size: 0.95rem; color: #1b5e20; }
+    .insight-box { background: #fff8e1; border: 1px solid #ffc107; border-radius: 4px; padding: 14px 18px; margin: 16px 0; font-size: 0.95rem; color: #444; }
+    .insight-box strong { color: #856404; }
+    .section-sub { font-size: 1.05rem; font-weight: 700; color: #111; margin: 24px 0 8px; }
+    .result-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; margin: 16px 0; }
+    .result-table th { background: #f0f0f0; padding: 8px 12px; text-align: left; border: 1px solid #ddd; font-weight: 700; }
+    .result-table td { padding: 7px 12px; border: 1px solid #ddd; color: #444; }
+    .result-table tr:nth-child(even) td { background: #fafafa; }
+    .highlight-row td { background: #e8f5e9 !important; font-weight: 700; }
+    .back-link { font-size: 0.9rem; margin-bottom: 24px; display: block; }
+    .tag-pill { display: inline-block; background: #eef4ff; color: #1772d0; border: 1px solid #c8daf8; border-radius: 12px; font-size: 0.8rem; padding: 2px 10px; margin: 2px; }
+    .method-grid { display: flex; gap: 14px; flex-wrap: wrap; margin: 16px 0; }
+    .method-card { flex: 1; min-width: 200px; background: #f8f8f8; border: 1px solid #e8e8e8; border-radius: 4px; padding: 14px; }
+    .method-card h4 { font-size: 0.9rem; font-weight: 700; color: #1772d0; margin-bottom: 6px; }
+    .method-card p { font-size: 0.88rem; color: #555; margin: 0; line-height: 1.5; }
+  </style>
+</head>
+<body>
+<nav id="site-nav">
+  <div id="nav-inner">
+    <a href="../index.html" class="nav-name">Ankit Sanjyal</a>
+    <div id="nav-links">
+      <a href="../index.html#news">News</a>
+      <a href="../index.html#publications">Publications</a>
+      <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#experience">Experience</a>
+      <a href="../index.html#writing">Writing</a>
+    </div>
+  </div>
+</nav>
+
+<div id="page-wrap">
+
+  <a class="back-link" href="../index.html">← Back to homepage</a>
+
+  <div class="paper-hero">
+    <div class="paper-title">Multimodal Emotion Recognition via Causal-Diffusion Bridge (Affect-Diff)</div>
+    <div class="paper-authors"><strong>Ankit Sanjyal</strong></div>
+    <div class="paper-venue">arXiv preprint arXiv:2605.08252 &nbsp;·&nbsp; cs.LG, cs.AI &nbsp;·&nbsp; May 2026</div>
+    <div>
+      <span class="tag-pill">Causal Interpretability</span>
+      <span class="tag-pill">NOTEARS</span>
+      <span class="tag-pill">Diffusion Models</span>
+      <span class="tag-pill">Multimodal Learning</span>
+      <span class="tag-pill">Class Imbalance</span>
+      <span class="tag-pill">CMU-MOSEI</span>
+    </div>
+    <div class="paper-links" style="margin-top:14px;">
+      <a href="https://arxiv.org/abs/2605.08252" target="_blank">arXiv</a>
+      <a href="https://arxiv.org/pdf/2605.08252" target="_blank">PDF</a>
+      <a href="https://github.com/ANKITSANJYAL/Multimodal-Emotion-Recognition" target="_blank">Code</a>
+      <a href="../projects/affect-diff.html">Project page</a>
+    </div>
+  </div>
+
+  <div class="result-box">
+    <strong>Key result:</strong> 0.384 validation balanced accuracy on CMU-MOSEI &nbsp;·&nbsp;
+    <strong>18% relative improvement</strong> over the strongest baseline &nbsp;·&nbsp;
+    The only system to achieve non-trivial performance on minority emotion classes where all baselines fail entirely.
+  </div>
+
+  <div class="abstract-box">
+    <strong>Abstract.</strong> We address extreme class imbalance in emotion recognition on CMU-MOSEI,
+    where Happy represents 65.9% of samples while three Ekman categories comprise under 7%.
+    The Affect-Diff framework combines three mechanisms: a NOTEARS-learned causal graph for modality
+    re-weighting, a β-VAE bottleneck for latent compression, and a stop-gradiented 1D DDPM prior for
+    latent space structuring. Testing on 3,292 aligned samples achieved 0.384 validation balanced
+    accuracy, representing an 18% relative improvement over the strongest baseline, while baselines
+    failed entirely on minority emotions.
+  </div>
+
+  <h2 class="section-heading">What This Paper Does — Plain English</h2>
+  <p>
+    Most AI emotion recognition models take a shortcut: they learn that "Happy" is the right answer
+    most of the time (it's 65.9% of the training data) and rarely predict anything else. They also
+    can't tell you <em>why</em> they made a prediction — did the person's words matter most? Their
+    tone of voice? Their facial expression?
+  </p>
+  <p>
+    Affect-Diff fixes both problems. It explicitly models <em>which</em> communication channel caused
+    the emotion prediction (using a learned causal graph), and it uses a generative prior to keep the
+    latent space meaningful even for rare emotion categories. The result is a model that actually works
+    on minority emotions, not just the majority class.
+  </p>
+
+  <h2 class="section-heading">The Problem in Detail</h2>
+  <div class="insight-box">
+    <strong>Class imbalance on CMU-MOSEI:</strong> Happy = 65.9% of samples. Three Ekman categories
+    (disgust, fear, surprise) each under 7%. Standard classifiers optimize overall accuracy and
+    effectively ignore minority classes — balanced accuracy exposes this failure.
+  </div>
+  <p>
+    Standard multimodal fusion models (concatenation, attention-based fusion) have two gaps:
+  </p>
+  <ul style="margin: 8px 0 16px 20px; color: #444; font-size: 0.95rem; line-height: 1.9;">
+    <li><strong>No causal attribution:</strong> They fuse text, audio, and video into a joint representation, but there's no mechanism to identify which modality was the causal driver of any particular prediction.</li>
+    <li><strong>Discriminative collapse:</strong> Trained with cross-entropy on imbalanced data, they collapse to predicting the majority class. No structural incentive to represent minority classes in latent space.</li>
+  </ul>
+
+  <h2 class="section-heading">Method: The Causal-Diffusion Bridge</h2>
+  <div class="method-grid">
+    <div class="method-card">
+      <h4>NOTEARS Causal Graph</h4>
+      <p>Learns a directed acyclic graph (DAG) over modalities (Text ↔ Audio ↔ Video) by casting structure learning as a continuous optimization problem with an acyclicity constraint. Output: per-sample causal influence weights for each modality. This is what makes attribution possible.</p>
+    </div>
+    <div class="method-card">
+      <h4>β-VAE Bottleneck</h4>
+      <p>Compresses the causal-weighted modality fusion to a shared latent space z. The β-KL term regularizes the latent space toward a prior, preventing collapse. Logvar clamped for numerical stability.</p>
+    </div>
+    <div class="method-card">
+      <h4>Stop-Gradiented DDPM Prior</h4>
+      <p>A 1D denoising diffusion model structures the latent space so minority emotion classes have meaningful latent regions. Critically, the diffusion prior is <em>stop-gradiented</em> during classifier training — it shapes the space without interfering with the classification objective.</p>
+    </div>
+    <div class="method-card">
+      <h4>Counterfactual Sampling</h4>
+      <p>At inference, sample z under a different emotion label and compute the delta. This is the explainability mechanism: the change in reconstruction reveals what features drove the original prediction — causal attribution, not just correlation.</p>
+    </div>
+  </div>
+
+  <div class="section-sub">Combined Training Objective</div>
+  <pre style="background:#f5f5f5; border:1px solid #e0e0e0; border-radius:4px; padding:12px 16px; font-size:0.85rem; color:#333; overflow-x:auto;">Loss = CE(classification)
+     + λ₁ · MSE(DDPM noise prediction, stop-gradient)
+     + λ₂ · β-KL(VAE regularization)</pre>
+
+  <h2 class="section-heading">Results</h2>
+  <table class="result-table">
+    <tr>
+      <th>System</th>
+      <th>Balanced Accuracy ↑</th>
+      <th>Minority Emotions</th>
+    </tr>
+    <tr>
+      <td>Standard fusion baselines</td>
+      <td>~0.33 (best)</td>
+      <td>Fail entirely (&lt; chance)</td>
+    </tr>
+    <tr class="highlight-row">
+      <td>Affect-Diff (ours)</td>
+      <td><strong>0.384</strong></td>
+      <td>Non-trivial performance</td>
+    </tr>
+  </table>
+  <p style="font-size:0.85rem; color:#888;">Evaluated on CMU-MOSEI, 3,292 aligned samples, 6 Ekman emotion categories. Balanced accuracy weights all classes equally, exposing majority-class collapse.</p>
+
+  <h2 class="section-heading">Interpretability Connections</h2>
+  <p>
+    This paper demonstrates causal interpretability in a multimodal model — one of the earliest
+    instances I know of in the emotion recognition literature. The core idea maps directly to
+    mechanistic interpretability in language models:
+  </p>
+  <ul style="margin: 8px 0 16px 20px; color: #444; font-size: 0.95rem; line-height: 1.9;">
+    <li><strong>NOTEARS causal graph over modalities</strong> → causal graph over attention heads and MLP layers in a transformer. Same question: which component causally drove this output?</li>
+    <li><strong>Counterfactual sampling</strong> (run model under different causal condition, measure delta) → causal scrubbing and activation patching. Same operation, different substrate.</li>
+    <li><strong>Stop-gradiented prior</strong> → related to the practice of freezing interpretability components during fine-tuning to preserve structure.</li>
+  </ul>
+
+  <h2 class="section-heading">Citation</h2>
+  <pre style="background:#f5f5f5; border:1px solid #e0e0e0; border-radius:4px; padding:14px; font-size:0.83rem; overflow-x:auto; color:#333;">@article{sanjyal2026affectdiff,
+  title   = {Multimodal Emotion Recognition via Causal-Diffusion Bridge (Affect-Diff)},
+  author  = {Sanjyal, Ankit},
+  journal = {arXiv preprint arXiv:2605.08252},
+  year    = {2026}
+}</pre>
+
+  <div id="footer" style="margin-top:40px;">
+    <p><a href="../index.html">← Ankit Sanjyal</a></p>
+  </div>
+
+</div>
+</body>
+</html>
