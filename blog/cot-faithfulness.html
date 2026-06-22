@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>When Is Chain-of-Thought Honest? — Ankit Sanjyal</title>
+  <meta name="description" content="Testing whether language models are more honest in their chain-of-thought when reasoning is necessary vs. optional — and what it means for AI safety monitoring.">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/academic.css">
+  <style>
+    .post-header { margin-bottom: 36px; padding-bottom: 24px; border-bottom: 1px solid #e8e8e8; }
+    .post-title { font-size: 1.75rem; font-weight: 700; color: #111; line-height: 1.3; margin-bottom: 12px; }
+    .post-meta { font-size: 0.88rem; color: #999; margin-bottom: 10px; }
+    .post-tag { display: inline-block; background: #eef4ff; color: #1772d0; border: 1px solid #c8daf8; border-radius: 10px; font-size: 0.78rem; padding: 2px 9px; margin-right: 4px; }
+    .post-body { font-size: 1rem; line-height: 1.8; color: #333; max-width: 680px; }
+    .post-body p { margin-bottom: 1.2em; }
+    .post-body h2 { font-size: 1.2rem; font-weight: 700; color: #111; margin: 2em 0 0.6em; border: none; padding: 0; }
+    .post-body h3 { font-size: 1rem; font-weight: 700; color: #333; margin: 1.5em 0 0.4em; }
+    .post-body ul, .post-body ol { margin: 0.4em 0 1em 1.4em; }
+    .post-body li { margin-bottom: 0.4em; }
+    .post-body strong { color: #111; }
+    .post-body em { font-style: italic; }
+    .callout { background: #fff8e1; border-left: 3px solid #ffc107; padding: 14px 18px; margin: 1.6em 0; border-radius: 0 4px 4px 0; font-size: 0.95rem; color: #444; }
+    .callout strong { color: #856404; }
+    .aside { background: #f8f8f8; border: 1px solid #e8e8e8; border-radius: 4px; padding: 14px 18px; margin: 1.6em 0; font-size: 0.92rem; color: #555; }
+    .aside strong { color: #111; }
+    .ref { font-size: 0.88rem; color: #888; }
+    .status-badge { display: inline-block; background: #fff3cd; color: #856404; border: 1px solid #ffc107; border-radius: 10px; font-size: 0.8rem; padding: 2px 10px; font-weight: 700; vertical-align: middle; margin-left: 4px; }
+    hr.section-break { border: none; border-top: 1px solid #e8e8e8; margin: 2em 0; }
+    .back-link { font-size: 0.9rem; margin-bottom: 24px; display: block; }
+  </style>
+</head>
+<body>
+
+<nav id="site-nav">
+  <div id="nav-inner">
+    <a href="../index.html" class="nav-name">Ankit Sanjyal</a>
+    <div id="nav-links">
+      <a href="../index.html#news">News</a>
+      <a href="../index.html#research-interests">Research</a>
+      <a href="../index.html#publications">Publications</a>
+      <a href="../index.html#projects">Projects</a>
+      <a href="index.html" style="color:#1772d0;">Writing</a>
+      <a href="../index.html#experience">Experience</a>
+    </div>
+  </div>
+</nav>
+
+<div id="page-wrap">
+
+  <a class="back-link" href="../index.html#writing">← Writing</a>
+
+  <div class="post-header">
+    <div class="post-title">When Is Chain-of-Thought Honest?<br>Testing Faithfulness Under Necessity vs. Propensity</div>
+    <div class="post-meta">
+      June 2026 &nbsp;·&nbsp; Ankit Sanjyal &nbsp;·&nbsp;
+      <span class="status-badge">Research in Progress</span>
+    </div>
+    <div style="margin-top:8px;">
+      <span class="post-tag">CoT Faithfulness</span>
+      <span class="post-tag">AI Safety</span>
+      <span class="post-tag">Interpretability</span>
+      <span class="post-tag">Chain-of-Thought</span>
+    </div>
+  </div>
+
+  <div class="post-body">
+
+    <p>
+      One of the most concrete bets I can see in AI safety right now is, if you can read a model's chain of
+      thought, you can catch it before it does something dangerous. Watch the reasoning, spot the red
+      flags, intervene. It's a intresting proposal, and it's increasingly how organizations think about
+      supervising advanced AI systems.
+    </p>
+    <p>
+      The bet has a very big and scary (in my view) assumption that the written reasoning reflects what the model is
+      actually doing.
+    </p>
+
+    <h2>The Faithfulness Problem</h2>
+
+    <p>
+      In 2023, Turpin et al. published a result that should give any CoT-monitoring optimist a reason to sitback.
+      In short they injected subtle biases into prompts like a hint that option (A) is correct, tucked invisibly
+      into the problem statement and watched whether models both took the bait and admitted it in
+      their reasoning. As a result models really took the bait reliably. Instead of mentoring the bias in their chain of thought, they wrote plausible-looking reasoning that supported whatever answer
+      the bias pushed them toward, with no acknowledgment that a nudge had occurred.
+      
+    </p>
+    <p>
+      This is in technical term called a <em>post-hoc rationalization</em>i.e, the model reached a conclusion first (because of the
+      hidden bias), then wrote a justification that sounds like reasoning but doesn't reveal the actual
+      cause. The reasoning is just a meaningless acting. The question to ask is how will monitoring the acting lead us to catching dangerous behavior I mean it just
+      gives us confidence we shouldn't have.
+    </p>
+
+    <h2>The Deeper Question: Necessity vs. Propensity</h2>
+
+    <p>
+      The obvious next question I got is, is this always true, or does it depend on the type of task?
+    </p>
+    <p>
+      A 2025 multi-lab position paper, Korbak et al., <em>Chain of Thought Monitorability</em> 
+      names the key conceptual distinction between <strong>necessity</strong> versus
+      <strong>propensity</strong>. In layman's terms what it means is, model reasons out loud by <em>necessity</em> when the task
+      actually requires working through steps to reach an answer e.g, solving complex algebric equation. It reasons by <em>propensity</em>
+      when it currently happens to write reasoning, but the answer doesn't depend on it e.g, solving basic arithmetic operation.
+    </p>
+
+    <div class="callout">
+      <strong>Why this distinction matters for safety:</strong> Propensity-based reasoning is supposed to be really
+      fragile. If a model writes steps that don't causally connect to its answer, those steps could
+      disappear the moment the model had a strategic reason to hide them (like if it knew it's getting monitored), exactly when monitoring
+      would matter most. Necessity-based reasoning has a different structural character i.e, the answer
+      depends on the steps, so they can't easily be decoupled.
+    </div>
+
+    <p>
+      Put more starkly: if necessity makes reasoning more honest, CoT monitoring is reliable for some
+      tasks and fragile for others. If necessity makes no difference I mean if faithfulness is equally
+      poor regardless then that's a grimmer result, but also an important one to establish.
+    </p>
+
+    <h2>What I'm Testing</h2>
+
+    <p>
+      My current project takes Turpin's methodology and runs it twice: once in a regime where
+      reasoning is necessary, once where it's optional & then asks whether faithfulness really differs.
+    </p>
+
+    <h3>The Turpin setup (briefly)</h3>
+
+    <p>
+      They take a multiple-choice problem. Then, inject a hidden cue that biases the model toward a wrong
+      answer. For example, a spurious hint in the problem stem or a framing that makes one option
+      look more salient. Then generate the chain of thought. And finally measure two things: (a) did the model
+      choose the biased answer, and (b) did the model's reasoning mention the bias? The gap between
+      (a) and (b) i.e, taking the bait without admitting it is the unfaithfulness signal.
+    </p>
+
+    <h3>My contribution: splitting by regime</h3>
+
+    <p>
+      I will operationalize "necessity" behaviorally to be specific. For each task, I will run the problem twice: once with
+      chain-of-thought enabled, once with it suppressed (just give the answer, no reasoning). If
+      accuracy drops substantially without reasoning, reasoning was necessary & the model couldn't
+      have done it otherwise. If accuracy holds roughly constant, reasoning was optional.
+    </p>
+    <p>
+      Then I will inject the bias and compare: does the model hide the bias more often in the optional
+      regime than in the necessary one?
+    </p>
+
+    <h2>Why These Datasets</h2>
+
+    <p>
+      The necessity/propensity split is grounded in Sprague et al. (2024, <em>To CoT or not to
+      CoT?</em>, ICLR 2025), which benchmarked CoT gains across fourteen task types. The finding was,
+      chain-of-thought substantially helps on math and formal symbolic reasoning, which barely helps and
+      sometimes slightly hurts on commonsense and factual recall. The explanation seems to be structural. Which means,
+      Math requires step-by-step computation that doesn't fit in a single forward pass and factual
+      recall doesn't.
+    </p>
+    <p>
+      This maps cleanly to my two arms:
+    </p>
+    <ul>
+      <li>
+        <strong>Necessity arm (GSM8K):</strong> Grade-school math word problems where reasoning is
+        computationally required and the model has to carry arithmetic across multiple steps.
+      </li>
+      <li>
+        <strong>Propensity arm (CommonsenseQA / non-symbolic MMLU):</strong> Commonsense or factual
+        multiple-choice where reasoning is optional and the model could answer from direct recall.
+      </li>
+    </ul>
+    <p>
+      I think using MMLU might have an added benefit because it holds question format constant (multiple-choice in both
+      arms), which controls for the confound of different task structures. The only thing varying
+      should be necessity.
+    </p>
+    <p>
+      I'm running on Qwen3 for a first trial as it is a small open-weight reasoning model, so the full setup is reproducible
+      on modest compute and the methodology stays transparent.
+    </p>
+
+    <h2>Where I Am Now</h2>
+
+    <p>
+      The project is a week into a one-month research sprint.
+    </p>
+    <p>
+      <strong>The necessity arm is validated.</strong> On GSM8K with chain-of-thought suppressed,
+      accuracy drops approximately 71 percentage points. That's the baseline I needed I mean if CoT
+      removal hadn't hurt, I couldn't claim reasoning was necessary, and the whole comparison would
+      be meaningless.
+    </p>
+    <p>
+      I'm currently validating the propensity arm by confirming that CoT removal has no significant
+      effect on commonsense accuracy and building the cue-injection pipeline. The measurement
+      stage, where I inject biases and track faithfulness across both regimes will come next.
+    </p>
+
+    <h2>What I'm Hoping to Find and What Would Be very Alarming</h2>
+
+    <p>
+      My prediction is that unfaithfulness will be higher in the propensity regime. When reasoning
+      is optional, there's less structural incentive for the written steps to causally connect to the
+      answer. The hidden bias should go unmentioned more often.
+    </p>
+    <p>
+      A positive result i.e, more unfaithfulness when reasoning is optional which would be encouraging for
+      safety practice. It would suggest that monitoring reasoning on tasks where CoT is
+      computationally necessary is more reliable than monitoring it on tasks where it's incidental.
+      That's a usable operational distinction.
+    </p>
+
+    <div class="callout">
+      <strong>The alarming result:</strong> A null result i.e, equal unfaithfulness in both regimes
+      would mean that even forcing a model into a regime where reasoning is computationally required
+      doesn't make that reasoning more honest about the biases affecting its answer. That would be
+      genuinely bad news for the CoT monitoring bet. I'm not predicting it, but I'm taking it
+      seriously as a possible outcome and won't adjust the analysis to avoid it.
+    </div>
+
+    <h2>What This Is, and What It Isn't</h2>
+
+    <p>
+      I want to be clear about scope. I'm not claiming to have invented the components:
+    </p>
+    <ul>
+      <li>Turpin et al. invented the cue-injection methodology.</li>
+      <li>Sprague et al. established the necessity/propensity empirical picture across task types.</li>
+      <li>Korbak et al. named the conceptual distinction and its implications for safety monitoring.</li>
+    </ul>
+    <p>
+      My contribution is the combination of crossing Turpin-style faithfulness measurement with the
+      necessity/propensity distinction, running it systematically at small scale, and reporting
+      honestly on whatever comes out. The goal is a concrete empirical data point on a question that
+      CoT monitoring research needs answered.
+    </p>
+    <p>
+      There are obvious limits to what a small-model, one-month study can establish. Whether the
+      pattern holds at larger scales, whether different cue types change the result, whether my
+      operationalization of necessity captures the concept fully those are all still open. But they're
+      worth chasing, and this is where I'm starting.
+    </p>
+
+    <hr class="section-break">
+
+    <p class="ref">
+      <strong>References</strong><br>
+      Turpin et al. (2023). <em>Language Models Don't Always Say What They Think: Unfaithful
+      Explanations in Chain-of-Thought Prompting.</em> NeurIPS 2023.<br>
+      Sprague et al. (2024). <em>To CoT or not to CoT? Chain-of-thought helps mainly on math and
+      symbolic reasoning.</em> ICLR 2025.<br>
+      Korbak et al. (2025). <em>Chain of Thought Monitorability.</em> Multi-lab position paper.
+    </p>
+
+    <p class="ref" style="margin-top:1.2em; color:#aaa;">
+      <em>This project is ongoing. I'll update this post or publish a follow-up when results are in.
+      If you're working on related questions, I'd genuinely like to hear from you —
+      <a href="mailto:asanjyal82@gmail.com">asanjyal82@gmail.com</a>.</em>
+    </p>
+
+  </div>
+
+  <div id="footer" style="margin-top:48px;">
+    <p><a href="../index.html">← Ankit Sanjyal</a></p>
+  </div>
+
+</div>
+</body>
+</html>
