@@ -99,8 +99,9 @@
   <div id="news">
     <h2 class="section-heading">News</h2>
     <ul>
-      <li><span class="news-date">05/26</span> Completed <a href="https://bluedot.org/courses/technical-ai-safety" target="_blank">BlueDot Impact</a>'s Technical AI Safety course.</li>
+      <li><span class="news-date">07/26</span> New post on <a href="https://www.lesswrong.com/posts/4EvWpvFvHzmPvuiF5/necessity-protects-chain-of-thought-monitoring-by-prevention" target="_blank">LessWrong</a>: <a href="blog/necessity-protects-cot-monitoring.html">Necessity Protects Chain-of-Thought Monitoring by Prevention, Not Disclosure</a> — cue-injection results across three model families; capture falls to 0–2.2% when reasoning is necessary but reaches 41% when it is optional.</li>
       <li><span class="news-date">06/26</span> New writing: <a href="blog/cot-faithfulness.html">When Is Chain-of-Thought Honest?</a> — testing CoT faithfulness under necessity vs. propensity as a step toward understanding when CoT monitoring can be trusted.</li>
+      <li><span class="news-date">05/26</span> Completed <a href="https://bluedot.org/courses/technical-ai-safety" target="_blank">BlueDot Impact</a>'s Technical AI Safety course.</li>
       <li><span class="news-date">05/26</span> Preprint <a href="https://arxiv.org/abs/2605.08252" target="_blank">Multimodal Emotion Recognition via Causal-Diffusion Bridge (Affect-Diff)</a> on arXiv. </li>
       <li><span class="news-date">01/26</span> Teaching <em>Machine Learning for Finance</em> (Spring 2026) as TA at Fordham University.</li>
       <li><span class="news-date">08/25</span> Teaching <em>Data Mining</em> (Fall 2025) as TA at Fordham University.</li>
@@ -223,6 +224,16 @@
     <ul class="project-list">
 
       <li>
+        <div class="project-name"><a href="projects/cot-faithfulness.html">CoT Faithfulness Under Necessity vs. Propensity</a></div>
+        <div class="project-desc">An empirical test of the chain-of-thought monitoring bet. Misleading "authority" cues were injected into 1,700 problems per model across Qwen3-4B, DeepSeek-R1-Distill-8B, and Gemma-3-4B, and every trace where the cue flipped the answer was scored — by LLM judge and by hand — for whether the reasoning admitted it. Where reasoning is computationally necessary (GSM8K), capture is near-zero (0.0–2.2%); where it is optional (MMLU, CommonsenseQA), cues land up to 41% of the time, and one model disclosed the cue once in 489 captured traces. Conclusion: necessity protects monitoring by <em>prevention</em>, not disclosure. Five-week BlueDot Impact project; published on LessWrong.</div>
+        <div class="project-links">
+          <a href="https://www.lesswrong.com/posts/4EvWpvFvHzmPvuiF5/necessity-protects-chain-of-thought-monitoring-by-prevention" target="_blank">LessWrong</a>
+          <a href="blog/necessity-protects-cot-monitoring.html">Write-up</a>
+          <a href="https://github.com/ANKITSANJYAL/Cot_faithfulness" target="_blank">GitHub</a>
+        </div>
+      </li>
+
+      <li>
         <div class="project-name"><a href="projects/diffusion-detective.html">Diffusion Detective: Interpretability Tooling for a Generative Model</a></div>
         <div class="project-desc">A research toolkit for peering inside a generative AI model as it draws: it shows what the model "focuses on" at each step, lets you nudge its behavior by adding a concept vector mid-generation (94% steering success rate), and writes a plain-English explanation of what changed and why. The same three operations - extract internals, intervene causally, explain in natural language are the core primitives of LLM mechanistic interpretability (activation steering, patchscopes).</div>
         <div class="project-links">
@@ -310,10 +321,25 @@
     <ul class="writing-list">
       <li>
         <div class="writing-title">
-          <a href="blog/cot-faithfulness.html">When Is Chain-of-Thought Honest? Testing Faithfulness Under Necessity vs. Propensity</a>
-          <span style="font-size:0.78rem;color:#856404;background:#fff3cd;border:1px solid #ffc107;border-radius:10px;padding:1px 8px;font-weight:700;vertical-align:middle;margin-left:6px;">In Progress</span>
+          <a href="blog/necessity-protects-cot-monitoring.html">Necessity Protects Chain-of-Thought Monitoring by Prevention, Not Disclosure</a>
+          <span style="font-size:0.78rem;color:#1b5e20;background:#e8f5e9;border:1px solid #66bb6a;border-radius:10px;padding:1px 8px;font-weight:700;vertical-align:middle;margin-left:6px;">LessWrong</span>
         </div>
-        <div style="font-size:0.88rem;color:#666;margin-top:3px;">June 2026 &nbsp;·&nbsp; Testing whether models are more honest in their chain-of-thought when reasoning is necessary to solve the problem versus when it's optional — and what that means for CoT monitoring as a safety tool.</div>
+        <div style="font-size:0.88rem;color:#666;margin-top:3px;">
+          July 2026 &nbsp;·&nbsp; Cue-injection experiments across three model families: when reasoning is
+          computationally necessary a misleading cue almost never flips the answer (0.0–2.2% capture), but
+          when reasoning is optional cues land up to 41% of the time — and in the worst case the model
+          disclosed the cue once in 489 captured traces.
+          &nbsp;<a href="https://www.lesswrong.com/posts/4EvWpvFvHzmPvuiF5/necessity-protects-chain-of-thought-monitoring-by-prevention" target="_blank">LessWrong</a> ·
+          <a href="https://github.com/ANKITSANJYAL/Cot_faithfulness" target="_blank">code</a> ·
+          <a href="projects/cot-faithfulness.html">project page</a>
+        </div>
+      </li>
+      <li>
+        <div class="writing-title">
+          <a href="blog/cot-faithfulness.html">When Is Chain-of-Thought Honest? Testing Faithfulness Under Necessity vs. Propensity</a>
+          <span style="font-size:0.78rem;color:#666;background:#f0f0f0;border:1px solid #ccc;border-radius:10px;padding:1px 8px;font-weight:700;vertical-align:middle;margin-left:6px;">Results In</span>
+        </div>
+        <div style="font-size:0.88rem;color:#666;margin-top:3px;">June 2026 &nbsp;·&nbsp; The design note written before results — motivation, the necessity/propensity distinction, and what would count as an alarming outcome. <a href="blog/necessity-protects-cot-monitoring.html">See the results write-up →</a></div>
       </li>
       <li>
         <div class="writing-title">
