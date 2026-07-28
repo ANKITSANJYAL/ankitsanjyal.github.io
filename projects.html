@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects — Ankit Sanjyal</title>
+  <meta name="description" content="Research and engineering projects — interpretability tooling, causal inference, and autonomous tool-using systems.">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/academic.css">
+  <style>
+    .group-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 34px 0 12px;
+    }
+    .group-label:first-of-type { margin-top: 20px; }
+    .group-label span { font-weight: 400; text-transform: none; letter-spacing: 0; color: #aaa; }
+  </style>
+</head>
+<body>
+
+<nav id="site-nav">
+  <div id="nav-inner">
+    <a href="index.html" class="nav-name">Ankit Sanjyal</a>
+    <div id="nav-links">
+      <a href="index.html#about">About</a>
+      <a href="news.html">News</a>
+      <a href="index.html#publications">Publications</a>
+      <a href="projects.html" class="active">Projects</a>
+      <a href="blog/index.html">Writing</a>
+      <a href="cv.html">CV</a>
+    </div>
+  </div>
+</nav>
+
+<div id="page-wrap">
+
+  <a class="back-link" href="index.html">← Back to homepage</a>
+
+  <h2 class="section-title">Projects</h2>
+  <p class="section-note">
+    Research projects first, then autonomous tool-using systems. Each has its own page with
+    architecture, results, and links to code.
+  </p>
+
+  <div class="group-label">Interpretability &amp; Safety Research</div>
+  <div class="card-stack">
+
+    <article class="item-card">
+      <div class="card-rail">
+        <img src="assets/images/cot.png" alt="CoT Faithfulness" class="card-thumb">
+        <a class="card-action" href="https://github.com/ANKITSANJYAL/Cot_faithfulness" target="_blank">GitHub</a>
+      </div>
+      <div class="card-body">
+        <div class="card-title"><a href="projects/cot-faithfulness.html">CoT Faithfulness Under Necessity vs. Propensity</a></div>
+        <div class="card-meta">
+          <span class="pill pill-venue">AI Safety</span>
+          <span class="pill pill-status">LessWrong</span>
+        </div>
+        <p class="card-desc">
+          Misleading "authority" cues injected into 1,700 problems per model across Qwen3-4B,
+          DeepSeek-R1-Distill-8B, and Gemma-3-4B, with every captured trace scored — by LLM judge and by
+          hand — for whether the reasoning admitted the cue. Capture is near-zero (0.0–2.2%) where
+          reasoning is computationally necessary and reaches 41% where it is optional. Five-week BlueDot
+          Impact project.
+        </p>
+        <div class="card-links">
+          <a href="projects/cot-faithfulness.html">Project page</a><span class="sep">/</span>
+          <a href="https://www.lesswrong.com/posts/4EvWpvFvHzmPvuiF5/necessity-protects-chain-of-thought-monitoring-by-prevention" target="_blank">LessWrong</a><span class="sep">/</span>
+          <a href="blog/necessity-protects-cot-monitoring.html">write-up</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="item-card">
+      <div class="card-rail">
+        <img src="assets/images/Diff-Det.png" alt="Diffusion Detective" class="card-thumb">
+        <a class="card-action" href="https://github.com/ANKITSANJYAL/Diffusion-Detective" target="_blank">GitHub</a>
+      </div>
+      <div class="card-body">
+        <div class="card-title"><a href="projects/diffusion-detective.html">Diffusion Detective: Interpretability Tooling for a Generative Model</a></div>
+        <div class="card-meta"><span class="pill pill-venue">Interpretability</span></div>
+        <p class="card-desc">
+          Surfaces what a generative model attends to at each denoising step, steers it by injecting a
+          concept vector mid-generation (94% steering success rate), and writes a plain-English
+          explanation of what changed. Extract, intervene, explain — the core primitives of activation
+          steering and patchscopes.
+        </p>
+        <div class="card-links"><a href="projects/diffusion-detective.html">Project page</a></div>
+      </div>
+    </article>
+
+    <article class="item-card">
+      <div class="card-rail">
+        <img src="assets/images/multimodal_emotion.png" alt="Affect-Diff" class="card-thumb contain">
+        <a class="card-action" href="https://github.com/ANKITSANJYAL/Multimodal-Emotion-Recognition" target="_blank">GitHub</a>
+      </div>
+      <div class="card-body">
+        <div class="card-title"><a href="projects/affect-diff.html">Affect-Diff: Causal-Diffusion Bridge for Interpretable Emotion Recognition</a></div>
+        <div class="card-meta"><span class="pill pill-venue">Causal Interpretability</span></div>
+        <p class="card-desc">
+          A NOTEARS causal graph re-weights modalities, a β-VAE compresses them, and a stop-gradiented
+          1D DDPM prior structures the latent space; counterfactual sampling then makes attribution
+          explicit. 18% relative improvement on CMU-MOSEI, with non-trivial performance on minority
+          emotions where all baselines fail.
+        </p>
+        <div class="card-links">
+          <a href="projects/affect-diff.html">Project page</a><span class="sep">/</span>
+          <a href="papers/affect-diff.html">paper</a><span class="sep">/</span>
+          <a href="https://arxiv.org/abs/2605.08252" target="_blank">arXiv</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="item-card">
+      <div class="card-rail">
+        <img src="assets/images/project5.png" alt="Causal Factor Discovery" class="card-thumb">
+        <a class="card-action" href="https://github.com/ANKITSANJYAL/Causal-Factor-Discovery-in-S-P-500-Returns-" target="_blank">GitHub</a>
+      </div>
+      <div class="card-body">
+        <div class="card-title"><a href="projects/causal-finance.html">Causal Factor Discovery in S&amp;P 500 Returns</a></div>
+        <div class="card-meta"><span class="pill pill-venue">Causal Inference</span></div>
+        <p class="card-desc">
+          Double Machine Learning for ATE/CATE estimation of momentum on next-day returns —
+          orthogonalizing out confounders to isolate which factors causally drive an outcome.
+        </p>
+        <div class="card-links"><a href="projects/causal-finance.html">Project page</a></div>
+      </div>
+    </article>
+
+    <article class="item-card">
+      <div class="card-rail">
+        <img src="assets/images/MnistNoProp.png" alt="No-Propagation Diffusion Transformers" class="card-thumb">
+        <a class="card-action" href="https://github.com/ANKITSANJYAL/NoPropagation" target="_blank">GitHub</a>
+      </div>
+      <div class="card-body">
+        <div class="card-title"><a href="projects/nopropagation.html">No-Propagation Diffusion Transformers</a></div>
+        <div class="card-meta"><span class="pill pill-venue">Reproduction</span></div>
+        <p class="card-desc">
+          From-scratch reproduction and extension of NoPropDT (arXiv:2503.24322) — rebuilding an
+          architecture layer by layer to understand it mechanically. ~99% MNIST and ~76% CIFAR-10
+          without backpropagation.
+        </p>
+        <div class="card-links"><a href="projects/nopropagation.html">Project page</a></div>
+      </div>
+    </article>
+
+  </div>
+
+  <div class="group-label">
+    Autonomous Tool-Using Systems
+    <span>— the read / reason / act pattern behind interpretability investigator agents</span>
+  </div>
+  <div class="card-stack">
+
+    <article class="item-card">
+      <div class="card-rail">
+        <img src="assets/images/MAESTRO.png" alt="MAESTRO" class="card-thumb">
+        <a class="card-action" href="https://github.com/Fordham-EDM-Lab/MAESTRO" target="_blank">GitHub</a>
+      </div>
+      <div class="card-body">
+        <div class="card-title"><a href="projects/maestro.html">MAESTRO: AI Text-to-Video Lecture System</a></div>
+        <div class="card-meta"><span class="pill pill-venue">Multi-Agent</span></div>
+        <p class="card-desc">
+          Autonomous pipeline (script synthesis + TTS + FFmpeg rendering) that generates educational
+          video lectures from text and answers student questions via RAG. Live at Fordham University.
+        </p>
+        <div class="card-links">
+          <a href="projects/maestro.html">Project page</a><span class="sep">/</span>
+          <a href="https://erdos.dsm.fordham.edu/" target="_blank">live site</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="item-card">
+      <div class="card-rail">
+        <img src="assets/images/AutoBI.png" alt="AutomatedBI" class="card-thumb">
+        <a class="card-action" href="https://github.com/ANKITSANJYAL/AutomatedBI" target="_blank">GitHub</a>
+      </div>
+      <div class="card-body">
+        <div class="card-title"><a href="projects/automatedbi.html">AutomatedBI: Agentic BI Dashboard Generator</a></div>
+        <div class="card-meta"><span class="pill pill-venue">Multi-Agent</span></div>
+        <p class="card-desc">
+          A CrewAI system of four specialized agents that reads raw data, reasons with domain-expert and
+          KPI-strategist agents, and produces an interactive dashboard. 80% reduction in manual
+          reporting time.
+        </p>
+        <div class="card-links">
+          <a href="projects/automatedbi.html">Project page</a><span class="sep">/</span>
+          <a href="https://drive.google.com/file/d/1EnY2wfSkUXcyAJEg5-wLtURVdGLqiEO4/view?usp=sharing" target="_blank">demo</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="item-card">
+      <div class="card-rail">
+        <img src="assets/images/H-KFX.png" alt="H-KFX" class="card-thumb">
+        <a class="card-action" href="https://github.com/ANKITSANJYAL/MUGHackthon" target="_blank">GitHub</a>
+      </div>
+      <div class="card-body">
+        <div class="card-title"><a href="projects/h-kfx.html">H-KFX: Autonomous Bug-Fixing Agent</a></div>
+        <div class="card-meta">
+          <span class="pill pill-venue">Agentic</span>
+          <span class="pill pill-honor">🏅 MUG Hackathon 2025</span>
+        </div>
+        <p class="card-desc">
+          An MCP + RAG agent that closes Jira tickets end-to-end: reads the ticket, retrieves context,
+          generates and validates a fix, and opens the PR — a 60–90 second ticket-to-PR cycle.
+        </p>
+        <div class="card-links">
+          <a href="projects/h-kfx.html">Project page</a><span class="sep">/</span>
+          <a href="https://www.youtube.com/watch?v=YB1gHWcOpz0&t=4s" target="_blank">demo</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="item-card">
+      <div class="card-rail">
+        <img src="assets/images/project2.webp" alt="RamsNavigator" class="card-thumb">
+        <a class="card-action" href="https://github.com/ANKITSANJYAL/RamsNavigator" target="_blank">GitHub</a>
+      </div>
+      <div class="card-body">
+        <div class="card-title"><a href="projects/ramsnavigator.html">RamsNavigator: AI Campus Navigation</a></div>
+        <div class="card-meta"><span class="pill pill-venue">Applied ML</span></div>
+        <p class="card-desc">
+          Hybrid Neo4j (Dijkstra routing) + MongoDB + LLM natural-language parsing for indoor campus
+          navigation, with a React + Cytoscape.js interactive graph map.
+        </p>
+        <div class="card-links"><a href="projects/ramsnavigator.html">Project page</a></div>
+      </div>
+    </article>
+
+  </div>
+
+</div>
+
+<div id="footer">
+  <p>&copy; <span id="year"></span> Ankit Sanjyal</p>
+  <p>
+    <a href="index.html">Home</a> ·
+    <a href="https://github.com/ANKITSANJYAL" target="_blank">GitHub</a> ·
+    <a href="mailto:asanjyal82@gmail.com">Email</a>
+  </p>
+</div>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
