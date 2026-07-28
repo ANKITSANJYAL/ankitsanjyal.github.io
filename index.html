@@ -4,11 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ankit Sanjyal — AI Safety &amp; Interpretability Researcher</title>
-  <meta name="description" content="Ankit Sanjyal — interpretability and AI safety researcher working on chain-of-thought monitoring, internals-based monitoring, and automating interpretability with tool-using agents.">
+  <meta name="description" content="Ankit Sanjyal — interpretability and AI safety researcher working on mechanistic interpretability, internals-based monitoring, and automating interpretability with tool-using agents.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.1/css/academicons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="assets/css/academic.css">
+  <style>
+    .research-interest-list { list-style: none; padding: 0; }
+    .research-interest-list li { padding: 6px 0; border-bottom: 1px solid #f2f2f2; font-size: 0.95rem; color: #444; }
+    .research-interest-list li:last-child { border-bottom: none; }
+    .ri-topic { font-weight: 700; color: #111; }
+    .project-group-label { padding: 14px 0 4px; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.06em; color: #888; text-transform: uppercase; border-bottom: none !important; }
+    .writing-list { list-style: none; padding: 0; }
+    .writing-list li { padding: 8px 0; border-bottom: 1px solid #f0f0f0; font-size: 0.95rem; color: #444; }
+    .writing-list li:last-child { border-bottom: none; }
+    .writing-title { font-weight: 700; color: #111; }
+    .writing-stub { color: #999; font-size: 0.88rem; font-style: italic; }
+    .placeholder { background: #fffbea; border: 1px dashed #f0c040; border-radius: 3px; padding: 1px 5px; font-size: 0.88rem; color: #b8860b; font-style: italic; }
+  </style>
 </head>
 <body>
 
@@ -17,178 +32,123 @@
   <div id="nav-inner">
     <a href="index.html" class="nav-name">Ankit Sanjyal</a>
     <div id="nav-links">
-      <a href="#about">About</a>
-      <a href="#news">News</a>
-      <a href="#publications">Publications</a>
-      <a href="#projects">Projects</a>
-      <a href="#writing">Writing</a>
-      <a href="cv.html">CV</a>
+      <a href="index.html#news">News</a>
+      <a href="index.html#research-interests">Research</a>
+      <a href="index.html#publications">Publications</a>
+      <a href="index.html#projects">Projects</a>
+      <a href="index.html#writing">Writing</a>
+      <a href="index.html#experience">Experience</a>
     </div>
   </div>
 </nav>
 
-<div class="layout-grid">
+<div id="page-wrap">
 
-  <!-- ============ LEFT RAIL ============ -->
-  <aside class="rail">
-
-    <section id="profile">
-      <div class="profile-block">
-        <img src="assets/images/profile.JPG" alt="Ankit Sanjyal" class="profile-photo">
-        <div>
-          <h1 class="profile-name">Ankit Sanjyal</h1>
-          <p class="profile-role">
-            AI Safety &amp; Interpretability Researcher<br>
-            M.S. Data Science, Fordham University<br>
-            New York, NY
-          </p>
-          <p class="profile-contact">asanjyal82 [at] gmail [dot] com</p>
-          <p class="profile-links">
-            <a href="https://docs.google.com/document/d/1iLOd3weF8ErrZbXsRrUp5AjiW-H7to-MsZ9Qjo1kETg/edit?usp=sharing" target="_blank">CV</a> ·
-            <a href="https://docs.google.com/document/d/1xhv7jW235QPCo-AbFjMcOLMQA-ElxxYzHf6HNmd3XEY/edit?usp=sharing" target="_blank">Research statement</a> ·
-            <a href="https://github.com/ANKITSANJYAL" target="_blank">GitHub</a> ·
-            <a href="https://linkedin.com/in/ankit-sanjyal" target="_blank">LinkedIn</a> ·
-            <a href="mailto:asanjyal82@gmail.com">Email</a>
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section id="news">
-      <h2 class="section-title">News</h2>
-      <ul class="news-list">
-        <li>
-          <span class="news-date">07/26</span>
-          <span>Posted <a href="blog/necessity-protects-cot-monitoring.html">Necessity Protects Chain-of-Thought Monitoring by Prevention, Not Disclosure</a> on <a href="https://www.lesswrong.com/posts/4EvWpvFvHzmPvuiF5/necessity-protects-chain-of-thought-monitoring-by-prevention" target="_blank">LessWrong</a>.</span>
-        </li>
-        <li>
-          <span class="news-date">06/26</span>
-          <span>Research note: <a href="blog/cot-faithfulness.html">When Is Chain-of-Thought Honest?</a></span>
-        </li>
-        <li>
-          <span class="news-date">05/26</span>
-          <span>Completed <a href="https://bluedot.org/courses/technical-ai-safety" target="_blank">BlueDot Impact</a>'s Technical AI Safety course.</span>
-        </li>
-        <li>
-          <span class="news-date">05/26</span>
-          <span>Preprint <a href="https://arxiv.org/abs/2605.08252" target="_blank">Affect-Diff</a> on arXiv.</span>
-        </li>
-        <li>
-          <span class="news-date">01/26</span>
-          <span>Teaching <em>Machine Learning for Finance</em> (Spring 2026) as TA at Fordham.</span>
-        </li>
-      </ul>
-      <a class="see-all" href="news.html">See all news →</a>
-    </section>
-
-  </aside>
-
-  <!-- ============ MAIN COLUMN ============ -->
-  <main class="main-col">
-
-    <!-- ABOUT -->
-    <section id="about">
-      <h2 class="section-title">About</h2>
+  <!-- HEADER / BIO -->
+  <div id="header">
+    <div id="header-text">
+      <h1>Ankit Sanjyal</h1>
       <p>
         I am an interpretability and AI safety researcher (M.S. Data Science,
-        <a href="https://www.fordham.edu/" target="_blank">Fordham University</a>). The question I keep
-        coming back to is: <strong>when can we say a system's externalized computation is a reliable
-        window into its actual decision process — and what breaks that reliability?</strong> Chain-of-thought
-        monitoring is cheap, scalable, and increasingly treated as a first line of defence, but the
-        behavioral results keep showing that written reasoning does not track the features actually
-        driving outputs. I want to work the mechanistic layer underneath those results, and then ask what
-        survives when a system stops being one model and becomes many talking to each other.
+        <a href="https://www.fordham.edu/" target="_blank">Fordham University</a>).
+        I work on understanding the internals of modern AI systems so we can tell what they are
+        actually doing  with a focus on reasoning-model interpretability, internals-based
+        monitoring, and automating interpretability with tool-using agents.
       </p>
       <p>
         My path here runs through hands-on work in model interpretability (extracting and causally
-        intervening on internal representations), causal inference, and building autonomous multi-agent
-        systems, alongside four arXiv preprints and a stint as Graduate Research Assistant in the
+        intervening on internal representations), causal inference, and building autonomous
+        multi-agent systems. I completed
+        <a href="https://aisafetyfundamentals.com/" target="_blank">BlueDot Impact</a>'s
+        Technical AI Safety course and am now working on interpretability research full-time.
+      </p>
+      <p>
+        Previously I have authored four arXiv preprints covering 
+        multimodal emotion recognition via causal-diffusion bridge 
+        (<a href="https://arxiv.org/abs/2605.08252" target="_blank">Affect Diff</a>),
+        energy dynamics in diffusion sampling 
+        (<a href="https://arxiv.org/abs/2507.09441" target="_blank">RectifiedHR</a>),
+        training-free local style control in SDXL
+        (<a href="https://arxiv.org/abs/2507.20094" target="_blank">Local Prompt Adaptation</a>),
+        and a systematic study of DINO feature reuse for few-shot NeRF
+        (<a href="https://arxiv.org/abs/2506.18208" target="_blank">NeRF Few-Shot</a>),
+        and served as Graduate Research Assistant in the
         <a href="https://www.cis.fordham.edu/edmlab" target="_blank">Educational Data Mining Lab</a>.
-        I completed <a href="https://bluedot.org/courses/technical-ai-safety" target="_blank">BlueDot
-        Impact</a>'s Technical AI Safety course and now work on interpretability research full-time.
-        I am open to collaboration, mentorship, and fellowship or research roles in the area.
       </p>
-    </section>
+      <p>
+        I am focused on AI safety and interpretability research and open to collaboration,
+        mentorship, and fellowship or research roles in the area.
+      </p>
+      <p class="affiliation">M.S. Data Science, Fordham University &nbsp;&middot;&nbsp; New York, NY</p>
+      <div class="social-links">
+        <a href="mailto:asanjyal82@gmail.com">Email</a>
+        <span>/</span>
+        <a href="https://docs.google.com/document/d/1TMZIwZrJOhgFt0d9Bo7IqrXks_pImuV3IJmOxfbm52c/edit?usp=sharing" target="_blank">CV</a>
+        <span>/</span>
+        <a href="https://github.com/ANKITSANJYAL" target="_blank">GitHub</a>
+        <span>/</span>
+        <a href="https://linkedin.com/in/ankit-sanjyal" target="_blank">LinkedIn</a>
+      </div>
+    </div>
+    <div id="header-image">
+      <img src="assets/images/profile.JPG" alt="Ankit Sanjyal">
+    </div>
+  </div>
 
-    <!-- RESEARCH INTERESTS -->
-    <section id="research">
-      <h2 class="section-title">Research Interests</h2>
-      <p class="keyword-line">
-        <strong>Keywords</strong>: Mechanistic Interpretability, Chain-of-Thought Monitoring, AI Safety,
-        Model Internals, Causal Inference, Activation Steering, Agentic Systems, Multi-Agent Safety
-      </p>
-      <p class="statement-box">
-        I am interested in a question with two halves. When can we say a system's externalized
-        computation is a reliable window into its actual decision process, and what breaks that
-        reliability? CoT monitoring is cheap and scalable, but Turpin, Lanham, and Chen keep showing that
-        the written reasoning does not reflect the features driving the output, and Korbak frames it as
-        a fragile opportunity. I want the mechanistic layer beneath those results.
-        The second half is what happens when systems stop being one model and become many
-        talking to each other — the trace becomes a delegation graph, the messages become a second
-        reasoning channel with its own faithfulness problem, and watching each agent stops adding up to
-        watching the system.
-      </p>
-      <p class="statement-link">
-        <a href="https://docs.google.com/document/d/1xhv7jW235QPCo-AbFjMcOLMQA-ElxxYzHf6HNmd3XEY/edit?usp=sharing" target="_blank">Read the full research statement →</a>
-      </p>
-      <ul class="interest-list">
-        <li>
-          <span class="ri-topic">Reasoning-model interpretability</span> — which reasoning steps
-          actually drive a model's answer, identified via counterfactual resampling and intervention.
-        </li>
-        <li>
-          <span class="ri-topic">Internals-based monitoring</span> — cheap linear probes on activations
-          to detect deception and evaluation-awareness, as a first layer of model control.
-        </li>
-        <li>
-          <span class="ri-topic">Automating interpretability</span> — autonomous investigator agents
-          that use interpretability tools to explain why a model behaved a certain way.
-        </li>
-        <li>
-          <span class="ri-topic">Latent-reasoning interpretability</span> — keeping models legible as
-          the field moves toward vector- and diffusion-based reasoning that breaks CoT monitoring.
-        </li>
-        <li>
-          <span class="ri-topic">Multi-agent monitorability</span> — whether faithfulness survives
-          composition: secret collusion, inter-agent messages as a second externalized channel, and what
-          a faithfulness metric even means once the trace is a delegation graph.
-        </li>
-      </ul>
-    </section>
+  <!-- NEWS -->
+  <div id="news">
+    <h2 class="section-heading">News</h2>
+    <ul>
+      <li><span class="news-date">07/26</span> New post on <a href="https://www.lesswrong.com/posts/4EvWpvFvHzmPvuiF5/necessity-protects-chain-of-thought-monitoring-by-prevention" target="_blank">LessWrong</a>: <a href="blog/necessity-protects-cot-monitoring.html">Necessity Protects Chain-of-Thought Monitoring by Prevention, Not Disclosure</a> — cue-injection results across three model families; capture falls to 0–2.2% when reasoning is necessary but reaches 41% when it is optional.</li>
+      <li><span class="news-date">06/26</span> New writing: <a href="blog/cot-faithfulness.html">When Is Chain-of-Thought Honest?</a> — testing CoT faithfulness under necessity vs. propensity as a step toward understanding when CoT monitoring can be trusted.</li>
+      <li><span class="news-date">05/26</span> Completed <a href="https://bluedot.org/courses/technical-ai-safety" target="_blank">BlueDot Impact</a>'s Technical AI Safety course.</li>
+      <li><span class="news-date">05/26</span> Preprint <a href="https://arxiv.org/abs/2605.08252" target="_blank">Multimodal Emotion Recognition via Causal-Diffusion Bridge (Affect-Diff)</a> on arXiv. </li>
+      <li><span class="news-date">01/26</span> Teaching <em>Machine Learning for Finance</em> (Spring 2026) as TA at Fordham University.</li>
+      <li><span class="news-date">08/25</span> Teaching <em>Data Mining</em> (Fall 2025) as TA at Fordham University.</li>
+      <li><span class="news-date">07/25</span> Preprint <a href="https://arxiv.org/abs/2507.20094" target="_blank">Local Prompt Adaptation for Style-Consistent Generation</a> on arXiv.</li>
+      <li><span class="news-date">07/25</span> Preprint <a href="https://arxiv.org/abs/2507.09441" target="_blank">RectifiedHR: High-Resolution Diffusion via Energy Profiling</a> on arXiv.</li>
+      <li><span class="news-date">06/25</span> Preprint <a href="https://arxiv.org/abs/2506.18208" target="_blank">NeRF Few-Shot Limitations Analysis</a> on arXiv.</li>
+      <li><span class="news-date">08/24</span> Started as Graduate Research Assistant at Fordham University (MAESTRO project).</li>
+    </ul>
+  </div>
 
-    <!-- PUBLICATIONS -->
-    <section id="publications">
-      <h2 class="section-title">Selected Publications</h2>
-      <p class="section-note">
-        Four arXiv preprints (2025–2026). Affect-Diff demonstrates causal interpretability directly;
-        the diffusion papers carry the transferable skills — internal-representation extraction, causal
-        intervention, systematic empirical evaluation.
-      </p>
+  <!-- RESEARCH INTERESTS -->
+  <div id="research-interests">
+    <h2 class="section-heading">Research Interests</h2>
+    <p style="color:#555; font-size:0.95rem; margin-bottom:14px;">
+      I am interested in interpretability as a concrete path toward making advanced AI go well.
+      The four directions below map the problems I am currently thinking about and building toward.
+    </p>
+    <ul class="research-interest-list">
+      <li>
+        <span class="ri-topic">Reasoning-model interpretability</span> —
+        Causal analysis of chain-of-thought: which reasoning steps actually drive a model's answer,
+        identified via counterfactual resampling and intervention.
+      </li>
+      <li>
+        <span class="ri-topic">Internals-based monitoring</span> —
+        Cheap linear probes trained on internal activations to detect behaviors like deception and
+        evaluation-awareness, as a first layer of defense in model control schemes.
+      </li>
+      <li>
+        <span class="ri-topic">Automating interpretability</span> —
+        Autonomous "investigator agents" that use interpretability tools to explain why a model
+        behaved a certain way, closing the loop between tool-using agents and mechanistic analysis.
+      </li>
+      <li>
+        <span class="ri-topic">Latent-reasoning &amp; diffusion-LLM interpretability</span> —
+        Keeping models interpretable as the field moves toward vector-based and diffusion-based
+        reasoning that breaks chain-of-thought monitoring.
+      </li>
+    </ul>
+  </div>
 
-      <div class="card-stack">
-
-        <article class="item-card">
-          <div class="card-rail">
-            <img src="assets/images/multimodal_emotion.png" alt="Affect-Diff" class="card-thumb contain">
-            <a class="card-action" href="https://arxiv.org/abs/2605.08252" target="_blank">arXiv</a>
-          </div>
-          <div class="card-body">
-            <div class="card-title"><a href="papers/affect-diff.html">Multimodal Emotion Recognition via Causal-Diffusion Bridge (Affect-Diff)</a></div>
-            <div class="card-authors"><strong>Ankit Sanjyal</strong></div>
-            <div class="card-meta"><span class="pill pill-venue">arXiv · May 2026</span></div>
-            <p class="card-desc">
-              A NOTEARS causal graph re-weights modalities, a β-VAE compresses them, and a
-              stop-gradiented 1D DDPM prior structures the latent space — so the model reports
-              <em>which</em> channel drove each prediction. 18% relative improvement over the strongest
-              baseline on CMU-MOSEI, and the only system with non-trivial performance on minority
-              emotions.
-            </p>
-            <div class="card-links">
-              <a href="papers/affect-diff.html">Paper page</a><span class="sep">/</span>
-              <a href="https://github.com/ANKITSANJYAL/Multimodal-Emotion-Recognition" target="_blank">code</a>
-            </div>
-          </div>
-        </article>
+  <!-- PUBLICATIONS -->
+  <div id="publications">
+    <h2 class="section-heading">Publications</h2>
+    <p style="color:#666; font-size:0.88rem; margin-bottom:14px; font-style:italic;">
+      Four arXiv preprints (2025–2026). The most recent - Affect-Diff directly demonstrates causal interpretability. The earlier three are diffusion-model papers; the transferable skills are internal-representation extraction, causal intervention, and systematic empirical evaluation.
+    </p>
 
     <div class="pub-row">
       <div class="pub-image">
@@ -208,178 +168,272 @@
       </div>
     </div>
 
-        <article class="item-card">
-          <div class="card-rail">
-            <img src="assets/images/local-style-diffusion.png" alt="Local Prompt Adaptation" class="card-thumb">
-            <a class="card-action" href="https://arxiv.org/abs/2507.20094" target="_blank">arXiv</a>
-          </div>
-          <div class="card-body">
-            <div class="card-title"><a href="papers/local-style-diffusion.html">Local Prompt Adaptation for Style-Consistent Generation</a></div>
-            <div class="card-authors"><strong>Ankit Sanjyal</strong></div>
-            <div class="card-meta"><span class="pill pill-venue">arXiv · 2025</span></div>
-            <p class="card-desc">
-              Training-free local style control in SDXL by routing prompt tokens to different
-              cross-attention layers.
-            </p>
-            <div class="card-links">
-              <a href="papers/local-style-diffusion.html">Paper page</a><span class="sep">/</span>
-              <a href="https://github.com/ANKITSANJYAL/local-style-diffusion" target="_blank">code</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="item-card">
-          <div class="card-rail">
-            <img src="assets/images/rendered_comparison.png" alt="NeRF Few-Shot" class="card-thumb">
-            <a class="card-action" href="https://arxiv.org/abs/2506.18208" target="_blank">arXiv</a>
-          </div>
-          <div class="card-body">
-            <div class="card-title"><a href="papers/nerf-few-shot.html">NeRF Few-Shot Limitations Analysis</a></div>
-            <div class="card-authors"><strong>Ankit Sanjyal</strong></div>
-            <div class="card-meta"><span class="pill pill-venue">arXiv · 2025</span></div>
-            <p class="card-desc">
-              A systematic study of when DINO feature reuse helps few-shot NeRF — and where it stops
-              helping.
-            </p>
-            <div class="card-links">
-              <a href="papers/nerf-few-shot.html">Paper page</a><span class="sep">/</span>
-              <a href="https://github.com/ANKITSANJYAL/nerf-few-shot-limitations" target="_blank">code</a>
-            </div>
-          </div>
-        </article>
-
+    <div class="pub-row">
+      <div class="pub-image">
+        <img src="assets/images/adaptive_linear_increasing_cfg7.0_512_prompt3_20250712_121334.png" alt="RectifiedHR">
       </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section id="projects">
-      <h2 class="section-title">Selected Projects</h2>
-
-      <div class="card-stack">
-
-        <article class="item-card">
-          <div class="card-rail">
-            <img src="assets/images/cot.png" alt="CoT Faithfulness" class="card-thumb">
-            <a class="card-action" href="https://github.com/ANKITSANJYAL/Cot_faithfulness" target="_blank">GitHub</a>
-          </div>
-          <div class="card-body">
-            <div class="card-title"><a href="projects/cot-faithfulness.html">CoT Faithfulness Under Necessity vs. Propensity</a></div>
-            <div class="card-meta">
-              <span class="pill pill-venue">AI Safety</span>
-              <span class="pill pill-status">LessWrong</span>
-            </div>
-            <p class="card-desc">
-              Misleading cues injected into 1,700 problems per model across three families. Where
-              reasoning is computationally necessary, capture is near-zero (0.0–2.2%); where it is
-              optional, cues land up to 41% of the time — and one model disclosed the cue once in 489
-              captured traces. Necessity protects monitoring by <em>prevention</em>, not disclosure.
-            </p>
-            <div class="card-links">
-              <a href="https://www.lesswrong.com/posts/4EvWpvFvHzmPvuiF5/necessity-protects-chain-of-thought-monitoring-by-prevention" target="_blank">LessWrong</a><span class="sep">/</span>
-              <a href="blog/necessity-protects-cot-monitoring.html">write-up</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="item-card">
-          <div class="card-rail">
-            <img src="assets/images/Diff-Det.png" alt="Diffusion Detective" class="card-thumb">
-            <a class="card-action" href="https://github.com/ANKITSANJYAL/Diffusion-Detective" target="_blank">GitHub</a>
-          </div>
-          <div class="card-body">
-            <div class="card-title"><a href="projects/diffusion-detective.html">Diffusion Detective: Interpretability Tooling for a Generative Model</a></div>
-            <div class="card-meta"><span class="pill pill-venue">Interpretability</span></div>
-            <p class="card-desc">
-              A toolkit for looking inside a generative model as it draws: surface what it attends to at
-              each step, steer it by injecting a concept vector mid-generation (94% steering success),
-              and explain the change in plain English.
-            </p>
-            <div class="card-links">
-              <a href="projects/diffusion-detective.html">Project page</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="item-card">
-          <div class="card-rail">
-            <img src="assets/images/multimodal_emotion.png" alt="Affect-Diff" class="card-thumb contain">
-            <a class="card-action" href="https://github.com/ANKITSANJYAL/Multimodal-Emotion-Recognition" target="_blank">GitHub</a>
-          </div>
-          <div class="card-body">
-            <div class="card-title"><a href="projects/affect-diff.html">Affect-Diff: Causal-Diffusion Bridge for Interpretable Emotion Recognition</a></div>
-            <div class="card-meta"><span class="pill pill-venue">Causal Interpretability</span></div>
-            <p class="card-desc">
-              Counterfactual sampling over a learned causal graph makes modality attribution explicit —
-              which of words, tone, or face drove the prediction. 18% relative improvement on CMU-MOSEI.
-            </p>
-            <div class="card-links">
-              <a href="projects/affect-diff.html">Project page</a><span class="sep">/</span>
-              <a href="https://arxiv.org/abs/2605.08252" target="_blank">arXiv</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="item-card">
-          <div class="card-rail">
-            <img src="assets/images/project5.png" alt="Causal Factor Discovery" class="card-thumb">
-            <a class="card-action" href="https://github.com/ANKITSANJYAL/Causal-Factor-Discovery-in-S-P-500-Returns-" target="_blank">GitHub</a>
-          </div>
-          <div class="card-body">
-            <div class="card-title"><a href="projects/causal-finance.html">Causal Factor Discovery in S&amp;P 500 Returns</a></div>
-            <div class="card-meta"><span class="pill pill-venue">Causal Inference</span></div>
-            <p class="card-desc">
-              Double Machine Learning for ATE/CATE estimation of momentum on next-day returns —
-              orthogonalizing out confounders to isolate what causally drives an outcome.
-            </p>
-            <div class="card-links">
-              <a href="projects/causal-finance.html">Project page</a>
-            </div>
-          </div>
-        </article>
-
+      <div class="pub-details">
+        <div class="pub-title"><a href="papers/rectifiedhr.html">RectifiedHR: High-Resolution Diffusion via Energy Profiling</a></div>
+        <div class="pub-authors"><strong>Ankit Sanjyal</strong></div>
+        <div class="pub-venue"><span class="venue-name">arXiv</span>, 2025.</div>
+        <div class="pub-links">
+          <a href="https://arxiv.org/abs/2507.09441" target="_blank">arXiv</a>
+          <span class="separator">/</span>
+          <a href="https://github.com/ANKITSANJYAL/RectifiedHR" target="_blank">code</a>
+        </div>
       </div>
-      <a class="see-all" href="projects.html">See all projects →</a>
-    </section>
+    </div>
 
-    <!-- WRITING -->
-    <section id="writing">
-      <h2 class="section-title">Writing</h2>
-      <ul class="writing-list">
-        <li>
-          <div class="writing-title">
-            <a href="blog/necessity-protects-cot-monitoring.html">Necessity Protects Chain-of-Thought Monitoring by Prevention, Not Disclosure</a>
-            <span class="pill pill-status">LessWrong</span>
-          </div>
-          <div class="writing-meta">
-            July 2026 · Cue-injection results across three model families, and why the necessity arm is
-            structurally the wrong place to measure faithfulness.
-          </div>
-        </li>
-        <li>
-          <div class="writing-title">
-            <a href="blog/cot-faithfulness.html">When Is Chain-of-Thought Honest? Testing Faithfulness Under Necessity vs. Propensity</a>
-            <span class="pill pill-muted">Design note</span>
-          </div>
-          <div class="writing-meta">
-            June 2026 · The pre-registration-style note written before results — motivation, the
-            necessity/propensity distinction, and what would have counted as an alarming outcome.
-          </div>
-        </li>
-      </ul>
-      <a class="see-all" href="blog/index.html">All writing →</a>
-    </section>
+    <div class="pub-row">
+      <div class="pub-image">
+        <img src="assets/images/local-style-diffusion.png" alt="Local Style Diffusion">
+      </div>
+      <div class="pub-details">
+        <div class="pub-title"><a href="papers/local-style-diffusion.html">Local Prompt Adaptation for Style-Consistent Generation</a></div>
+        <div class="pub-authors"><strong>Ankit Sanjyal</strong></div>
+        <div class="pub-venue"><span class="venue-name">arXiv</span>, 2025.</div>
+        <div class="pub-links">
+          <a href="https://arxiv.org/abs/2507.20094" target="_blank">arXiv</a>
+          <span class="separator">/</span>
+          <a href="https://github.com/ANKITSANJYAL/local-style-diffusion" target="_blank">code</a>
+        </div>
+      </div>
+    </div>
 
-  </main>
-</div>
+    <div class="pub-row">
+      <div class="pub-image">
+        <img src="assets/images/rendered_comparison.png" alt="NeRF Few-Shot">
+      </div>
+      <div class="pub-details">
+        <div class="pub-title"><a href="papers/nerf-few-shot.html">NeRF Few-Shot Limitations Analysis</a></div>
+        <div class="pub-authors"><strong>Ankit Sanjyal</strong></div>
+        <div class="pub-venue"><span class="venue-name">arXiv</span>, 2025.</div>
+        <div class="pub-links">
+          <a href="https://arxiv.org/abs/2506.18208" target="_blank">arXiv</a>
+          <span class="separator">/</span>
+          <a href="https://github.com/ANKITSANJYAL/nerf-few-shot-limitations" target="_blank">code</a>
+        </div>
+      </div>
+    </div>
 
-<!-- FOOTER -->
-<div id="footer">
-  <p>&copy; <span id="year"></span> Ankit Sanjyal</p>
-  <p>
-    <a href="https://github.com/ANKITSANJYAL" target="_blank">GitHub</a> ·
-    <a href="https://linkedin.com/in/ankit-sanjyal" target="_blank">LinkedIn</a> ·
-    <a href="mailto:asanjyal82@gmail.com">Email</a>
-  </p>
+  </div>
+
+  <!-- PROJECTS -->
+  <div id="projects">
+    <h2 class="section-heading">Selected Projects</h2>
+    <ul class="project-list">
+
+      <li>
+        <div class="project-name"><a href="projects/cot-faithfulness.html">CoT Faithfulness Under Necessity vs. Propensity</a></div>
+        <div class="project-desc">An empirical test of the chain-of-thought monitoring bet. Misleading "authority" cues were injected into 1,700 problems per model across Qwen3-4B, DeepSeek-R1-Distill-8B, and Gemma-3-4B, and every trace where the cue flipped the answer was scored — by LLM judge and by hand — for whether the reasoning admitted it. Where reasoning is computationally necessary (GSM8K), capture is near-zero (0.0–2.2%); where it is optional (MMLU, CommonsenseQA), cues land up to 41% of the time, and one model disclosed the cue once in 489 captured traces. Conclusion: necessity protects monitoring by <em>prevention</em>, not disclosure. Five-week BlueDot Impact project; published on LessWrong.</div>
+        <div class="project-links">
+          <a href="https://www.lesswrong.com/posts/4EvWpvFvHzmPvuiF5/necessity-protects-chain-of-thought-monitoring-by-prevention" target="_blank">LessWrong</a>
+          <a href="blog/necessity-protects-cot-monitoring.html">Write-up</a>
+          <a href="https://github.com/ANKITSANJYAL/Cot_faithfulness" target="_blank">GitHub</a>
+        </div>
+      </li>
+
+      <li>
+        <div class="project-name"><a href="projects/diffusion-detective.html">Diffusion Detective: Interpretability Tooling for a Generative Model</a></div>
+        <div class="project-desc">A research toolkit for peering inside a generative AI model as it draws: it shows what the model "focuses on" at each step, lets you nudge its behavior by adding a concept vector mid-generation (94% steering success rate), and writes a plain-English explanation of what changed and why. The same three operations - extract internals, intervene causally, explain in natural language are the core primitives of LLM mechanistic interpretability (activation steering, patchscopes).</div>
+        <div class="project-links">
+          <a href="https://github.com/ANKITSANJYAL/Diffusion-Detective" target="_blank">GitHub</a>
+        </div>
+      </li>
+
+      <li>
+        <div class="project-name"><a href="projects/affect-diff.html">Affect-Diff: Causal-Diffusion Bridge for Interpretable Emotion Recognition</a></div>
+        <div class="project-desc">An AI model that doesn't just predict emotion, it tells you <em>which part</em> of a person's communication (words, tone, or face) causally drove that prediction. A NOTEARS-learned causal graph re-weights modalities, a β-VAE compresses them to a shared latent space, and a stop-gradiented 1D DDPM prior structures it for generation; counterfactual sampling then makes attributions explicit. Result: 18% relative improvement over the strongest baseline on CMU-MOSEI, with non-trivial performance on minority emotions where all baselines fail entirely.</div>
+        <div class="project-links">
+          <a href="https://arxiv.org/abs/2605.08252" target="_blank">arXiv</a>
+          <a href="papers/affect-diff.html">Paper page</a>
+          <a href="https://github.com/ANKITSANJYAL/Multimodal-Emotion-Recognition" target="_blank">GitHub</a>
+        </div>
+      </li>
+
+      <li>
+        <div class="project-name"><a href="projects/causal-finance.html">Causal Factor Discovery in S&amp;P 500 Returns</a></div>
+        <div class="project-desc">Causal-inference toolkit: Double Machine Learning (DML) for ATE/CATE estimation of momentum on next-day returns. The same counterfactual machinery now central to reasoning-model interpretability, orthogonalizing out confounders to isolate which factors causally drive an outcome.</div>
+        <div class="project-links">
+          <a href="https://github.com/ANKITSANJYAL/Causal-Factor-Discovery-in-S-P-500-Returns-" target="_blank">GitHub</a>
+        </div>
+      </li>
+
+      <li>
+        <div class="project-name"><a href="projects/nopropagation.html">No-Propagation Diffusion Transformers</a></div>
+        <div class="project-desc">From-scratch reproduction and extension of a recent Oxford paper (NoPropDT, arXiv:2503.24322). Demonstrates the empirical reproduction skill that interpretability research runs on rebuilding an architecture layer by layer to understand it mechanically. (~99% MNIST, ~76% CIFAR-10 without backpropagation.)</div>
+        <div class="project-links">
+          <a href="https://github.com/ANKITSANJYAL/NoPropagation" target="_blank">GitHub</a>
+        </div>
+      </li>
+
+      <li class="project-group-label">Autonomous Tool-Using Systems
+        <span style="font-weight:400; text-transform:none; font-size:0.82rem; color:#aaa; letter-spacing:0;">
+          — the same read-reason-act pattern underlying autonomous interpretability investigator agents
+        </span>
+      </li>
+
+      <li>
+        <div class="project-name"><a href="projects/maestro.html">MAESTRO: AI Text-to-Video Lecture System</a></div>
+        <div class="project-desc">Autonomous pipeline (OpenAI script synthesis + PlayHT TTS + FFmpeg rendering) that generates educational video lectures from text and answers student questions via RAG. Demonstrates end-to-end multi-agent orchestration, same architecture pattern underlying autonomous interpretability investigators. Live at Fordham University.</div>
+        <div class="project-links">
+          <a href="https://github.com/Fordham-EDM-Lab/MAESTRO" target="_blank">GitHub</a>
+          <a href="https://erdos.dsm.fordham.edu/" target="_blank">Live</a>
+        </div>
+      </li>
+
+      <li>
+        <div class="project-name"><a href="projects/automatedbi.html">AutomatedBI: Agentic BI Dashboard Generator</a></div>
+        <div class="project-desc">CrewAI multi-agent system (4 specialized agents) + Gemini: reads raw data, reasons with domain-expert and KPI-strategist agents, and produces an interactive dashboard. An instance of the general read-input / reason-with-tools / produce-result pattern that underlies autonomous interpretability agents. 80% reduction in manual reporting time.</div>
+        <div class="project-links">
+          <a href="https://github.com/ANKITSANJYAL/AutomatedBI" target="_blank">GitHub</a>
+          <a href="https://drive.google.com/file/d/1EnY2wfSkUXcyAJEg5-wLtURVdGLqiEO4/view?usp=sharing" target="_blank">Demo</a>
+        </div>
+      </li>
+
+      <li>
+        <div class="project-name"><a href="projects/h-kfx.html">H-KFX: Autonomous Bug-Fixing Agent</a></div>
+        <div class="project-desc">GPT-4o + MCP + MongoDB Atlas RAG agent that closes Jira tickets end-to-end: reads the ticket, retrieves context, generates and validates a fix, and opens the PR , 60–90 second ticket-to-PR cycle. A working instance of the autonomous investigator architecture: the same scaffold needed for agents that probe why a model behaved a certain way. MUG Hackathon 2025.</div>
+        <div class="project-links">
+          <a href="https://github.com/ANKITSANJYAL/MUGHackthon" target="_blank">GitHub</a>
+          <a href="https://www.youtube.com/watch?v=YB1gHWcOpz0&t=4s" target="_blank">Demo</a>
+        </div>
+      </li>
+
+      <li>
+        <div class="project-name"><a href="projects/ramsnavigator.html">RamsNavigator: AI Campus Navigation</a></div>
+        <div class="project-desc">Hybrid Neo4j (Dijkstra routing) + MongoDB + GPT-4o-mini natural language parsing for indoor campus navigation. React + Cytoscape.js interactive graph map.</div>
+        <div class="project-links">
+          <a href="https://github.com/ANKITSANJYAL/RamsNavigator" target="_blank">GitHub</a>
+        </div>
+      </li>
+
+    </ul>
+  </div>
+
+  <!-- WRITING -->
+  <div id="writing">
+    <h2 class="section-heading">Writing</h2>
+    <p style="color:#555; font-size:0.95rem; margin-bottom:14px;">
+      The AI safety field runs on public write-ups. I plan to post research notes and
+      Alignment-Forum-style essays here as my interpretability work develops.
+    </p>
+    <ul class="writing-list">
+      <li>
+        <div class="writing-title">
+          <a href="blog/necessity-protects-cot-monitoring.html">Necessity Protects Chain-of-Thought Monitoring by Prevention, Not Disclosure</a>
+          <span style="font-size:0.78rem;color:#1b5e20;background:#e8f5e9;border:1px solid #66bb6a;border-radius:10px;padding:1px 8px;font-weight:700;vertical-align:middle;margin-left:6px;">LessWrong</span>
+        </div>
+        <div style="font-size:0.88rem;color:#666;margin-top:3px;">
+          July 2026 &nbsp;·&nbsp; Cue-injection experiments across three model families: when reasoning is
+          computationally necessary a misleading cue almost never flips the answer (0.0–2.2% capture), but
+          when reasoning is optional cues land up to 41% of the time — and in the worst case the model
+          disclosed the cue once in 489 captured traces.
+          &nbsp;<a href="https://www.lesswrong.com/posts/4EvWpvFvHzmPvuiF5/necessity-protects-chain-of-thought-monitoring-by-prevention" target="_blank">LessWrong</a> ·
+          <a href="https://github.com/ANKITSANJYAL/Cot_faithfulness" target="_blank">code</a> ·
+          <a href="projects/cot-faithfulness.html">project page</a>
+        </div>
+      </li>
+      <li>
+        <div class="writing-title">
+          <a href="blog/cot-faithfulness.html">When Is Chain-of-Thought Honest? Testing Faithfulness Under Necessity vs. Propensity</a>
+          <span style="font-size:0.78rem;color:#666;background:#f0f0f0;border:1px solid #ccc;border-radius:10px;padding:1px 8px;font-weight:700;vertical-align:middle;margin-left:6px;">Results In</span>
+        </div>
+        <div style="font-size:0.88rem;color:#666;margin-top:3px;">June 2026 &nbsp;·&nbsp; The design note written before results — motivation, the necessity/propensity distinction, and what would count as an alarming outcome. <a href="blog/necessity-protects-cot-monitoring.html">See the results write-up →</a></div>
+      </li>
+      <li>
+        <div class="writing-title">
+          From diffusion cross-attention steering to LLM residual-stream steering:
+          what transfers and what doesn't
+          <span class="placeholder">[coming soon]</span>
+        </div>
+        <div class="writing-stub">Draft in progress</div>
+      </li>
+      <li>
+        <div class="writing-title">
+          <span class="placeholder">[ANKIT: add posts here as you publish them — Alignment Forum, LessWrong, etc.]</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <div id="experience">
+    <h2 class="section-heading">Experience</h2>
+    <table class="exp-table">
+      <tr>
+        <td class="exp-date">Aug 2025 &ndash; May 2026</td>
+        <td>
+          <div class="exp-role">Teaching Assistant</div>
+          <div class="exp-org">Fordham University, New York, NY</div>
+          <div class="exp-desc">Graduate courses: <em>Data Mining</em> (Fall 2025) and <em>Machine Learning for Finance</em> (Spring 2026). Weekly office hours, 1:1 research mentoring, and guest lectures.</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="exp-date">Aug 2024 &ndash; May 2026</td>
+        <td>
+          <div class="exp-role">Graduate Research Assistant</div>
+          <div class="exp-org">Fordham University, Educational Data Mining Lab, New York, NY</div>
+          <div class="exp-desc">Led the MAESTRO project; explored few-shot 2D-to-3D reconstruction on medical imaging data (OASIS dataset) using efficient neural representations.</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="exp-date">Jan 2023 &ndash; Jul 2024</td>
+        <td>
+          <div class="exp-role">Associate Data Consultant</div>
+          <div class="exp-org"><a href="https://www.decisionfoundry.com/" target="_blank">Decision Foundry</a>, Bangalore, India</div>
+          <div class="exp-desc">Designed ETL workflows (DBT, Tableau Prep), optimized SQL on Amazon Redshift (40% faster retrieval on 1 TB+ datasets), delivered 25+ Tableau / Salesforce CRMA dashboards.</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="exp-date">Jan 2022 &ndash; Jul 2023</td>
+        <td>
+          <div class="exp-role">Undergraduate Research Assistant</div>
+          <div class="exp-org">Jain University, Bangalore, India</div>
+          <div class="exp-desc">Deep learning pipelines for medical imaging; published work on toxic language detection and multiclass skin lesion classification (85% validation accuracy).</div>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- EDUCATION -->
+  <div id="education">
+    <h2 class="section-heading">Education &amp; Training</h2>
+    <table class="edu-table">
+      <tr>
+        <td class="edu-date">2024 &ndash; May 2026</td>
+        <td>
+          <div class="edu-degree">M.S. Data Science</div>
+          <div class="edu-institution"><a href="https://www.fordham.edu/" target="_blank">Fordham University</a>, New York, NY</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="edu-date">May 2026</td>
+        <td>
+          <div class="edu-degree">Technical AI Safety Course (Completed)</div>
+          <div class="edu-institution"><a href="https://aisafetyfundamentals.com/" target="_blank">BlueDot Impact</a></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="edu-date">2019 &ndash; 2023</td>
+        <td>
+          <div class="edu-degree">B.Tech Computer Science</div>
+          <div class="edu-institution"><a href="https://www.jainuniversity.ac.in/" target="_blank">Jain University</a>, Bangalore, India</div>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- FOOTER -->
+  <div id="footer">
+    <p>
+      &copy; <span id="year"></span> Ankit Sanjyal &nbsp;&middot;&nbsp;
+      Template inspired by
+      <a href="https://jonbarron.info/" target="_blank">Jon Barron</a> &amp;
+      <a href="https://keshik6.github.io/" target="_blank">Keshigeyan Chandrasegaran</a>
+    </p>
+  </div>
+
 </div>
 
 <script>
