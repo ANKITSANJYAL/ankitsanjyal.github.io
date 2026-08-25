@@ -5,41 +5,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CoT Faithfulness Under Necessity vs. Propensity — Ankit Sanjyal</title>
   <meta name="description" content="An empirical test of whether computational necessity makes chain-of-thought monitoring trustworthy. Three model families, three datasets, 6,300 generations.">
-  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/academic.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/shell.css">
   <style>
-    .proj-hero { background: #f8f8f8; border: 1px solid #e8e8e8; border-radius: 6px; padding: 28px 32px; margin-bottom: 32px; }
-    .proj-title { font-size: 1.5rem; font-weight: 700; color: #111; margin-bottom: 8px; }
-    .proj-tagline { color: #555; font-size: 1rem; margin-bottom: 14px; }
-    .proj-links a { display: inline-block; margin-right: 10px; margin-bottom: 6px; padding: 5px 14px; border: 1px solid #1772d0; border-radius: 3px; font-size: 0.88rem; color: #1772d0; }
-    .proj-links a:hover { background: #1772d0; color: #fff; text-decoration: none; }
-    .tag-pill { display: inline-block; background: #eef4ff; color: #1772d0; border: 1px solid #c8daf8; border-radius: 12px; font-size: 0.8rem; padding: 2px 10px; margin: 2px; }
+    .proj-hero { background: #fafafa; border: 1px solid #e8e8e8; border-radius: 0; padding: 28px 32px; margin-bottom: 32px; }
+    .proj-title { font-size: 1.5rem; font-weight: 700; color: #0b0b0b; margin-bottom: 8px; }
+    .proj-tagline { color: #3a3a3a; font-size: 1rem; margin-bottom: 14px; }
+    .proj-links a { display: inline-block; margin-right: 10px; margin-bottom: 6px; padding: 5px 14px; border: 1px solid #0b0b0b; border-radius: 0; font-size: 0.88rem; color: #0b0b0b; }
+    .proj-links a:hover { background: #0b0b0b; color: #fff; text-decoration: none; }
+    .tag-pill { display: inline-block; background: #fafafa; color: #0b0b0b; border: 1px solid #cfcfcf; border-radius: 0; font-size: 0.8rem; padding: 2px 10px; margin: 2px; }
     .arch-pipeline { display: flex; flex-direction: column; gap: 0; margin: 20px 0; }
     .arch-row { display: flex; gap: 12px; align-items: stretch; flex-wrap: wrap; }
     .arch-row + .arch-row { margin-top: 12px; }
-    .arch-block { flex: 1; min-width: 160px; border-radius: 4px; padding: 14px 16px; }
-    .arch-block.input { background: #e8f5e9; border: 1px solid #81c784; }
-    .arch-block.encoder { background: #e3f2fd; border: 1px solid #64b5f6; }
-    .arch-block.fusion { background: #f3e5f5; border: 1px solid #ba68c8; }
-    .arch-block.output { background: #fce4ec; border: 1px solid #f48fb1; }
+    .arch-block { flex: 1; min-width: 160px; border-radius: 0; padding: 14px 16px; }
+    .arch-block.input { background: #fafafa; border: 1px solid #cfcfcf; }
+    .arch-block.encoder { background: #fafafa; border: 1px solid #cfcfcf; }
+    .arch-block.fusion { background: #fafafa; border: 1px solid #cfcfcf; }
+    .arch-block.output { background: #f2f2f2; border: 1px solid #cfcfcf; }
     .arch-block h4 { font-size: 0.82rem; font-weight: 700; margin-bottom: 4px; }
-    .arch-block p { font-size: 0.78rem; color: #555; margin: 0; line-height: 1.5; }
-    .arch-arrow { text-align: center; font-size: 1.3rem; color: #1772d0; line-height: 1; margin: 4px 0; }
-    .code-block { background: #f5f5f5; border: 1px solid #e0e0e0; border-radius: 4px; padding: 12px 16px; font-family: monospace; font-size: 0.85rem; color: #333; overflow-x: auto; margin: 12px 0; white-space: pre; }
+    .arch-block p { font-size: 0.78rem; color: #3a3a3a; margin: 0; line-height: 1.5; }
+    .arch-arrow { text-align: center; font-size: 1.3rem; color: #0b0b0b; line-height: 1; margin: 4px 0; }
+    .code-block { background: #fafafa; border: 1px solid #cfcfcf; border-radius: 0; padding: 12px 16px; font-family: monospace; font-size: 0.85rem; color: #3a3a3a; overflow-x: auto; margin: 12px 0; white-space: pre; }
     .back-link { font-size: 0.9rem; margin-bottom: 24px; display: block; }
-    .insight-box { background: #e8f5e9; border: 1px solid #66bb6a; border-radius: 4px; padding: 14px 18px; margin: 16px 0; font-size: 0.95rem; color: #1b5e20; }
-    .warn-box { background: #fff8e1; border: 1px solid #ffc107; border-radius: 4px; padding: 14px 18px; margin: 16px 0; font-size: 0.95rem; color: #444; }
-    .warn-box strong { color: #856404; }
+    .insight-box { background: #fafafa; border: 1px solid #cfcfcf; border-radius: 0; padding: 14px 18px; margin: 16px 0; font-size: 0.95rem; color: #0b0b0b; }
+    .warn-box { background: #fafafa; border: 1px solid #cfcfcf; border-radius: 0; padding: 14px 18px; margin: 16px 0; font-size: 0.95rem; color: #3a3a3a; }
+    .warn-box strong { color: #0b0b0b; }
     .module-grid { display: flex; flex-wrap: wrap; gap: 14px; margin: 16px 0; }
-    .module-card { flex: 1; min-width: 200px; background: #f8f8f8; border: 1px solid #e8e8e8; border-radius: 4px; padding: 12px 14px; }
-    .module-card h4 { font-size: 0.9rem; font-weight: 700; color: #1772d0; margin-bottom: 4px; }
-    .module-card p { font-size: 0.86rem; color: #555; margin: 0; line-height: 1.5; }
+    .module-card { flex: 1; min-width: 200px; background: #fafafa; border: 1px solid #e8e8e8; border-radius: 0; padding: 12px 14px; }
+    .module-card h4 { font-size: 0.9rem; font-weight: 700; color: #0b0b0b; margin-bottom: 4px; }
+    .module-card p { font-size: 0.86rem; color: #3a3a3a; margin: 0; line-height: 1.5; }
     .result-table { width: 100%; border-collapse: collapse; font-size: 0.89rem; margin: 16px 0; }
-    .result-table th { background: #f0f0f0; padding: 8px 11px; text-align: left; border: 1px solid #ddd; font-weight: 700; }
-    .result-table td { padding: 7px 11px; border: 1px solid #ddd; color: #444; }
+    .result-table th { background: #fafafa; padding: 8px 11px; text-align: left; border: 1px solid #cfcfcf; font-weight: 700; }
+    .result-table td { padding: 7px 11px; border: 1px solid #cfcfcf; color: #3a3a3a; }
     .result-table tr:nth-child(even) td { background: #fafafa; }
-    .highlight-row td { background: #fdecea !important; }
-    .section-sub { font-size: 1rem; font-weight: 700; color: #111; margin: 24px 0 6px; }
+    .highlight-row td { background: #f2f2f2 !important; }
+    .section-sub { font-size: 1rem; font-weight: 700; color: #0b0b0b; margin: 24px 0 6px; }
   </style>
 </head>
 <body>
@@ -48,11 +50,7 @@
   <div id="nav-inner">
     <a href="../index.html" class="nav-name">Ankit Sanjyal</a>
     <div id="nav-links">
-      <a href="../index.html#about">About</a>
-      <a href="../news.html">News</a>
-      <a href="../index.html#publications">Publications</a>
-      <a href="../projects.html" class="active">Projects</a>
-      <a href="../blog/index.html">Writing</a>
+      <a href="../index.html">Search</a>
       <a href="../cv.html">CV</a>
     </div>
   </div>
@@ -60,7 +58,7 @@
 
 <div id="page-wrap">
 
-  <a class="back-link" href="../index.html">← Back to homepage</a>
+  <a class="back-link" href="../index.html">&larr; Back to search</a>
 
   <div class="proj-hero">
     <div class="proj-title">
@@ -106,7 +104,7 @@
   </p>
 
   <h2 class="section-heading">The Problem — Technical</h2>
-  <ul style="margin: 8px 0 16px 20px; color: #444; font-size: 0.95rem; line-height: 1.9;">
+  <ul style="margin: 8px 0 16px 20px; color: #3a3a3a; font-size: 0.95rem; line-height: 1.9;">
     <li><strong>Post-hoc rationalization:</strong> a model reaches a conclusion via a hidden influence, then emits reasoning that justifies it without ever surfacing the cause. Monitoring such a trace produces confidence without evidence.</li>
     <li><strong>Necessity vs. propensity:</strong> Sprague et al. (2024) show CoT helps substantially on math/symbolic tasks and barely on recall. That's a structural split — necessity reasoning has to carry intermediate state through the text; propensity reasoning doesn't.</li>
     <li><strong>The untested claim:</strong> Korbak et al. (2025) name necessity as the load-bearing property for monitorability, but the empirical question — does necessity actually change faithfulness under manipulation? — was open.</li>
@@ -174,7 +172,7 @@
 
   <h2 class="section-heading">Results</h2>
 
-  <div class="section-sub" style="font-weight:700; color:#111; margin:20px 0 6px;">Capture rate — necessity blocks the manipulation</div>
+  <div class="section-sub" style="font-weight:700; color:#0b0b0b; margin:20px 0 6px;">Capture rate — necessity blocks the manipulation</div>
   <table class="result-table">
     <tr>
       <th>Model</th>
@@ -205,12 +203,12 @@
       <td>2.3 × 10⁻⁹¹</td>
     </tr>
   </table>
-  <p style="font-size:0.85rem; color:#888;">
+  <p style="font-size:0.85rem; color:#8e8e8e;">
     All nine necessity-vs-propensity contrasts are significant, none marginally — largest <em>p</em>-value
     across all of them is 1.9 × 10⁻⁵. Zero-cell odds ratios use the Haldane correction.
   </p>
 
-  <div class="section-sub" style="font-weight:700; color:#111; margin:24px 0 6px;">Disclosure on captured propensity traces (Opus judge)</div>
+  <div class="section-sub" style="font-weight:700; color:#0b0b0b; margin:24px 0 6px;">Disclosure on captured propensity traces (Opus judge)</div>
   <table class="result-table">
     <tr>
       <th>Model</th>
@@ -222,7 +220,7 @@
     <tr><td>DeepSeek-R1-Distill-8B</td><td>108/210</td><td>51.4%</td><td>[44.7%, 58.1%]</td></tr>
     <tr class="highlight-row"><td>Gemma-3-4B</td><td>1/489</td><td>0.2%</td><td>[0.0%, 1.1%]</td></tr>
   </table>
-  <p style="font-size:0.85rem; color:#888;">
+  <p style="font-size:0.85rem; color:#8e8e8e;">
     Qwen vs DeepSeek: <em>p</em> = 1.00 (indistinguishable). Gemma vs each: <em>p</em> = 8 × 10⁻³⁰ and
     4 × 10⁻⁶⁶. Judge–human agreement 89%, Cohen's κ = 0.71.
   </p>
@@ -243,7 +241,7 @@
     into apparent success.
   </div>
 
-  <div class="section-sub" style="font-weight:700; color:#111; margin:24px 0 6px;">A null result by construction</div>
+  <div class="section-sub" style="font-weight:700; color:#0b0b0b; margin:24px 0 6px;">A null result by construction</div>
   <p>
     Captured necessity-arm traces number 2 (Qwen), 11 (DeepSeek), and 0 (Gemma) — too few to measure
     disclosure. Qwen's cell is 2/2, CI [34.2%, 100%], compatible with any true rate. DeepSeek's 2/11
@@ -267,7 +265,7 @@ Stats   : two-sided Fisher's exact (exact integer hypergeometric, validated
           against the tea-tasting table) + Wilson score intervals</div>
 
   <h2 class="section-heading">Limitations</h2>
-  <ul style="margin: 8px 0 16px 20px; color: #444; font-size: 0.95rem; line-height: 1.9;">
+  <ul style="margin: 8px 0 16px 20px; color: #3a3a3a; font-size: 0.95rem; line-height: 1.9;">
     <li>Disclosure scored primarily by LLM judges, which may share systematic errors despite human validation.</li>
     <li>Scored span isn't identical across models — Gemma emits no <code>&lt;/think&gt;</code>, so its judge sees the full response. This makes the cut conservative: more text still yielded 0.2%.</li>
     <li>DeepSeek always opens <code>&lt;think&gt;</code>, so its necessity arm is assumed rather than measured, weakening it as an independent replication.</li>
@@ -275,7 +273,7 @@ Stats   : two-sided Fisher's exact (exact integer hypergeometric, validated
   </ul>
 
   <h2 class="section-heading">Next Directions</h2>
-  <ul style="margin: 8px 0 16px 20px; color: #444; font-size: 0.95rem; line-height: 1.9;">
+  <ul style="margin: 8px 0 16px 20px; color: #3a3a3a; font-size: 0.95rem; line-height: 1.9;">
     <li><strong>Disentangle necessity from verifiability.</strong> On GSM8K the cue names a number the model can check by computing; on multiple choice a letter affords no such check. The current design makes the two coincide — a 2×2 crossing them is the clean test.</li>
     <li><strong>Dose–response.</strong> Does the protection degrade smoothly as cues get stronger, or is there a threshold?</li>
     <li><strong>Activations, not text.</strong> Reading text cannot distinguish a model that registered the cue and hid it from one that was steered without ever representing the steering. Separating those requires probing internals — the direction this work points toward.</li>
@@ -290,8 +288,10 @@ Stats   : two-sided Fisher's exact (exact integer hypergeometric, validated
     <a href="https://github.com/ANKITSANJYAL/Cot_faithfulness" target="_blank">github.com/ANKITSANJYAL/Cot_faithfulness</a>.
   </div>
 
-  <div id="footer" style="margin-top:40px;">
-    <p><a href="../index.html">← Ankit Sanjyal</a></p>
+  <div id="footer">
+    <a href="../index.html">&larr; Ankit Sanjyal</a>
+    <a href="mailto:asanjyal82@gmail.com">Email</a>
+    <a href="https://github.com/ANKITSANJYAL" target="_blank" rel="noopener">GitHub</a>
   </div>
 
 </div>

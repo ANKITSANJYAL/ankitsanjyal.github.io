@@ -1,0 +1,260 @@
+/* ============================================================
+   ankitsanjyal.github.io — one stylesheet, black and white only
+   Faces: Instrument Sans (everything) + JetBrains Mono (labels)
+   ============================================================ */
+
+*,*::before,*::after{box-sizing:border-box}
+
+:root{
+  --paper:#ffffff;
+  --sunk:#fafafa;
+  --ink:#0b0b0b;
+  --body:#3a3a3a;
+  --mute:#8e8e8e;
+  --rule:#e8e8e8;
+  --line:#cfcfcf;
+
+  --ui:"Instrument Sans",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--ui);font-size:15px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
+a:hover{border-bottom-color:var(--ink)}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+p{margin:0 0 16px;color:var(--body)}
+p:last-child{margin-bottom:0}
+strong{color:var(--ink);font-weight:600}
+hr{border:0;border-top:1px solid var(--rule);margin:34px 0}
+
+/* Figures stay monochrome with the rest of the site; hovering
+   restores the original colours, which some charts need to be read. */
+img{max-width:100%;height:auto;filter:grayscale(1) contrast(1.03);transition:filter .25s}
+img:hover{filter:none}
+
+.mono{font-family:var(--mono)}
+.lbl{
+  font-family:var(--mono);font-size:10px;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--mute);
+}
+
+/* ============================================================
+   1 — the shell (homepage)
+   ============================================================ */
+.shell{min-height:100vh;display:flex;flex-direction:column}
+.stage{
+  flex:1;display:flex;flex-direction:column;justify-content:center;
+  width:100%;max-width:680px;margin:0 auto;padding:56px 24px 32px;
+}
+.id h1{font-size:clamp(26px,4vw,34px);font-weight:600;letter-spacing:-.035em;margin:0;line-height:1.05}
+.id .role{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin:11px 0 0}
+.id .bio{font-size:16px;line-height:1.62;color:var(--body);margin:22px 0 0;max-width:52ch}
+
+/* the one control */
+.ask{margin-top:32px;border:1px solid var(--ink);display:flex;align-items:center;transition:box-shadow .18s}
+.ask:focus-within{box-shadow:0 0 0 3px rgba(0,0,0,.08)}
+.ask .pfx{font-family:var(--mono);font-size:13px;color:var(--mute);padding:0 4px 0 14px;user-select:none}
+#q{flex:1;min-width:0;border:0;outline:0;background:none;font:inherit;font-size:15px;color:inherit;padding:14px 8px}
+#q::placeholder{color:var(--mute)}
+.ask .kbd{font-family:var(--mono);font-size:10px;color:var(--mute);border:1px solid var(--rule);padding:3px 6px;margin-right:10px;white-space:nowrap}
+
+.jump{display:flex;gap:6px;flex-wrap:wrap;margin-top:14px}
+.jump button{
+  appearance:none;border:1px solid var(--rule);background:none;cursor:pointer;color:var(--mute);
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;padding:6px 10px;transition:.15s;
+}
+.jump button:hover{border-color:var(--ink);color:var(--ink)}
+.jump button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+
+/* results */
+.out{margin-top:26px}
+.out.is-idle{margin-top:0}
+.results{border-top:1px solid var(--rule)}
+.results.is-empty{border-top:0}
+.hit{
+  display:block;padding:16px 12px;margin:0;border:0;border-bottom:1px solid var(--rule);
+  text-decoration:none;color:inherit;background:none;cursor:pointer;
+  transition:background .14s,color .14s,padding-left .14s;
+}
+/* Every entry ships in the HTML so the page works without JS and stays
+   crawlable; the shell hides them until asked, with no flash of content. */
+html.js .hit{display:none}
+html.js .hit.is-shown{display:block}
+.hit:hover,.hit.sel{background:var(--ink);color:var(--paper);padding-left:18px;border-bottom-color:var(--ink)}
+.hit .top{display:flex;align-items:baseline;gap:12px;justify-content:space-between}
+.hit .t{font-size:14.5px;font-weight:600;line-height:1.35;letter-spacing:-.012em}
+.hit .cat{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);white-space:nowrap}
+.hit:hover .cat,.hit.sel .cat{color:var(--paper);opacity:.65}
+.hit .sum{font-size:13px;line-height:1.55;color:var(--body);margin:7px 0 0;max-width:60ch}
+.hit:hover .sum,.hit.sel .sum{color:var(--paper);opacity:.82}
+.hit .dest{font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--mute);margin:9px 0 0;display:block}
+.hit:hover .dest,.hit.sel .dest{color:var(--paper);opacity:.75}
+.hit mark{background:none;color:inherit;text-decoration:underline;text-underline-offset:2px}
+.void{padding:20px 12px;font-family:var(--mono);font-size:12px;color:var(--mute)}
+.void.is-hidden{display:none}
+
+.shell-foot{
+  width:100%;max-width:680px;margin:0 auto;padding:20px 24px 30px;
+  display:flex;gap:16px;flex-wrap:wrap;align-items:baseline;
+  font-family:var(--mono);font-size:10.5px;color:var(--mute);
+}
+.shell-foot a{color:var(--mute);border-bottom:1px solid var(--rule)}
+.shell-foot a:hover{color:var(--ink);border-bottom-color:var(--ink)}
+.shell-foot .sp{margin-left:auto}
+
+/* ============================================================
+   2 — subpage chrome
+   ============================================================ */
+#site-nav{position:sticky;top:0;z-index:30;background:var(--paper);border-bottom:1px solid var(--rule)}
+#nav-inner{
+  max-width:760px;margin:0 auto;padding:13px 24px;
+  display:flex;align-items:baseline;gap:16px;
+}
+.nav-name{font-size:14px;font-weight:600;letter-spacing:-.02em;border:0}
+.nav-name:hover{border:0;opacity:.6}
+#nav-links{margin-left:auto;display:flex;gap:16px;align-items:baseline}
+#nav-links a{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);border:0}
+#nav-links a:hover,#nav-links a.active{color:var(--ink);border:0}
+
+#page-wrap{max-width:760px;margin:0 auto;padding:40px 24px 80px}
+
+.back-link{
+  display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--mute);border:0;margin-bottom:30px;
+}
+.back-link:hover{color:var(--ink);border:0}
+
+#footer{
+  border-top:1px solid var(--rule);margin-top:64px;padding:22px 0 0;
+  display:flex;gap:16px;flex-wrap:wrap;align-items:baseline;
+  font-family:var(--mono);font-size:10.5px;color:var(--mute);
+}
+#footer a{color:var(--mute);border-bottom:1px solid var(--rule)}
+#footer a:hover{color:var(--ink);border-bottom-color:var(--ink)}
+
+/* ============================================================
+   3 — shared content components
+   ============================================================ */
+h1,h2,h3,h4{color:var(--ink);letter-spacing:-.025em;text-wrap:balance}
+.section-title{font-size:24px;font-weight:600;margin:0 0 22px;line-height:1.15}
+.section-heading{
+  font-size:15px;font-weight:600;margin:38px 0 14px;padding-bottom:7px;
+  border-bottom:1px solid var(--ink);display:block;
+}
+.section-sub{font-size:14px;font-weight:600;color:var(--ink);margin:26px 0 9px}
+.section-note{font-size:13px;color:var(--mute);margin:0 0 18px}
+
+/* pills — all one colour, separated by weight and border */
+.tag-pill,.pill{
+  display:inline-block;font-family:var(--mono);font-size:9.5px;letter-spacing:.11em;
+  text-transform:uppercase;padding:4px 9px;margin:0 5px 5px 0;
+  border:1px solid var(--line);color:var(--mute);background:none;
+}
+.pill-venue{border-color:var(--ink);color:var(--ink)}
+.pill-honor{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.pill-status,.pill-muted{border-style:dashed}
+
+.abstract-box,.callout,.insight-box,.finding-box,.result-box,.warn-box,.statement-box,.quote-block{
+  border:0;border-left:2px solid var(--ink);border-radius:0;background:var(--sunk);
+  padding:15px 18px;margin:22px 0;font-size:14px;line-height:1.68;color:var(--body);
+}
+.abstract-box strong,.callout strong,.insight-box strong,.finding-box strong,
+.result-box strong,.warn-box strong{color:var(--ink)}
+
+.result-table,.exp-table,.edu-table{
+  width:100%;border-collapse:collapse;font-size:13px;margin:18px 0;
+  font-variant-numeric:tabular-nums;
+}
+.result-table th{
+  background:var(--ink);color:var(--paper);padding:8px 12px;text-align:left;
+  border:1px solid var(--ink);font-weight:600;
+  font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+}
+.result-table td{padding:8px 12px;border:1px solid var(--rule);color:var(--body)}
+.result-table tr:nth-child(even) td{background:var(--sunk)}
+.result-table .highlight-row td{background:var(--paper) !important;font-weight:600;color:var(--ink);box-shadow:inset 2px 0 0 var(--ink)}
+.result-table .worse-row td{background:var(--sunk) !important;color:var(--mute)}
+
+.exp-table td,.edu-table td{border:0;border-top:1px solid var(--rule);padding:15px 0;vertical-align:top}
+.exp-table tr:last-child td,.edu-table tr:last-child td{border-bottom:1px solid var(--rule)}
+.exp-table .exp-date,.edu-table .edu-date{
+  width:150px;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;
+  color:var(--mute);text-transform:uppercase;white-space:nowrap;padding-right:20px;
+}
+.exp-table .exp-role,.edu-table .edu-degree{font-size:15px;font-weight:600;color:var(--ink);display:block}
+.exp-table .exp-org,.edu-table .edu-institution{font-size:13.5px;color:var(--body);display:block;margin-top:2px}
+.exp-table .exp-desc{font-size:13px;color:var(--body);display:block;margin-top:8px;line-height:1.6}
+
+pre,.code-block{
+  background:var(--sunk);border:1px solid var(--rule);border-radius:0;
+  padding:14px 16px;overflow-x:auto;font-family:var(--mono);font-size:12px;
+  line-height:1.6;color:var(--ink);margin:18px 0;
+}
+code{font-family:var(--mono);font-size:.9em}
+
+.teaser-img{display:block;width:100%;max-width:100%;border:1px solid var(--rule);border-radius:0;margin:18px 0}
+
+.interest-list{margin:0;padding:0;list-style:none}
+.interest-list li{padding:12px 0;border-bottom:1px solid var(--rule);font-size:14px;color:var(--body)}
+.interest-list li:last-child{border-bottom:0}
+
+.see-all,.statement-link{
+  display:inline-block;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--mute);border:0;
+}
+.see-all:hover,.statement-link:hover{color:var(--ink);border:0}
+
+/* a solid primary action, used for "read the write-up" style links */
+.go{
+  display:inline-block;background:var(--ink);color:var(--paper);border:1px solid var(--ink);
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;
+  padding:9px 14px;margin:0 6px 6px 0;
+}
+.go:hover{background:var(--paper);color:var(--ink);border-color:var(--ink)}
+.go-quiet{background:none;color:var(--ink);border-color:var(--line)}
+.go-quiet:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+
+/* ============================================================
+   4 — narrow screens
+   ============================================================ */
+@media (max-width:640px){
+  .stage{padding:40px 20px 24px;justify-content:flex-start}
+  .id .bio{font-size:15px}
+  .ask .kbd{display:none}
+  #nav-inner,#page-wrap{padding-left:20px;padding-right:20px}
+  #nav-links{gap:12px}
+  .exp-table td,.edu-table td{display:block}
+  .exp-table .exp-date,.edu-table .edu-date{width:auto;padding:0 0 6px}
+  .exp-table tr td:not(.exp-date),.edu-table tr td:not(.edu-date){border-top:0;padding-top:0}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none !important;animation:none !important}}
+
+/* ============================================================
+   5 — sitewide overrides
+   Each detail page still ships its own older rules for pills and
+   link buttons, and those load after this file. The extra `body`
+   raises specificity just enough that these two components look
+   identical on every page.
+   ============================================================ */
+body .tag-pill,body .post-tag,body .pill{
+  display:inline-block;font-family:var(--mono);font-size:9.5px;letter-spacing:.11em;
+  text-transform:uppercase;font-weight:400;padding:4px 9px;margin:0 5px 5px 0;
+  border:1px solid var(--line);border-radius:0;color:var(--mute);background:none;
+}
+body .pill-venue{border-color:var(--ink);color:var(--ink)}
+body .pill-honor{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+body .pill-status,body .pill-muted{border-style:dashed}
+
+body .paper-links a,body .proj-links a,body .post-links a{
+  display:inline-block;background:none;color:var(--ink);border:1px solid var(--line);
+  border-radius:0;font-family:var(--mono);font-size:10.5px;letter-spacing:.11em;
+  text-transform:uppercase;padding:9px 14px;margin:0 6px 6px 0;
+}
+body .paper-links a:hover,body .proj-links a:hover,body .post-links a:hover{
+  background:var(--ink);color:var(--paper);border-color:var(--ink);
+}

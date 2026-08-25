@@ -4,25 +4,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RectifiedHR: Ankit Sanjyal</title>
-  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/academic.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/shell.css">
   <style>
-    .paper-hero { background: #f8f8f8; border: 1px solid #e8e8e8; border-radius: 6px; padding: 28px 32px; margin-bottom: 32px; }
-    .paper-title { font-size: 1.5rem; font-weight: 700; color: #111; margin-bottom: 10px; line-height: 1.35; }
-    .paper-authors { color: #555; margin-bottom: 6px; }
-    .paper-venue { color: #888; font-style: italic; margin-bottom: 16px; }
-    .paper-links a { display: inline-block; margin-right: 10px; margin-bottom: 6px; padding: 5px 14px; border: 1px solid #1772d0; border-radius: 3px; font-size: 0.88rem; color: #1772d0; }
-    .paper-links a:hover { background: #1772d0; color: #fff; text-decoration: none; }
-    .abstract-box { background: #fff; border-left: 3px solid #1772d0; padding: 16px 20px; margin: 24px 0; font-size: 0.95rem; color: #444; line-height: 1.7; }
-    .section-sub { font-size: 1.1rem; font-weight: 700; color: #111; margin: 28px 0 10px; }
+    .paper-hero { background: #fafafa; border: 1px solid #e8e8e8; border-radius: 0; padding: 28px 32px; margin-bottom: 32px; }
+    .paper-title { font-size: 1.5rem; font-weight: 700; color: #0b0b0b; margin-bottom: 10px; line-height: 1.35; }
+    .paper-authors { color: #3a3a3a; margin-bottom: 6px; }
+    .paper-venue { color: #8e8e8e; font-style: italic; margin-bottom: 16px; }
+    .paper-links a { display: inline-block; margin-right: 10px; margin-bottom: 6px; padding: 5px 14px; border: 1px solid #0b0b0b; border-radius: 0; font-size: 0.88rem; color: #0b0b0b; }
+    .paper-links a:hover { background: #0b0b0b; color: #fff; text-decoration: none; }
+    .abstract-box { background: #fff; border-left: 3px solid #0b0b0b; padding: 16px 20px; margin: 24px 0; font-size: 0.95rem; color: #3a3a3a; line-height: 1.7; }
+    .section-sub { font-size: 1.1rem; font-weight: 700; color: #0b0b0b; margin: 28px 0 10px; }
     .result-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; margin: 16px 0; }
-    .result-table th { background: #f0f0f0; padding: 8px 12px; text-align: left; border: 1px solid #ddd; font-weight: 700; }
-    .result-table td { padding: 7px 12px; border: 1px solid #ddd; color: #444; }
+    .result-table th { background: #fafafa; padding: 8px 12px; text-align: left; border: 1px solid #cfcfcf; font-weight: 700; }
+    .result-table td { padding: 7px 12px; border: 1px solid #cfcfcf; color: #3a3a3a; }
     .result-table tr:nth-child(even) td { background: #fafafa; }
-    .highlight-row td { background: #fff8e1 !important; font-weight: 700; }
+    .highlight-row td { background: #fafafa !important; font-weight: 700; }
     .back-link { font-size: 0.9rem; margin-bottom: 24px; display: block; }
-    .teaser-img { width: 100%; max-width: 700px; border-radius: 4px; border: 1px solid #e8e8e8; display: block; margin: 16px auto; }
-    .tag-pill { display: inline-block; background: #eef4ff; color: #1772d0; border: 1px solid #c8daf8; border-radius: 12px; font-size: 0.8rem; padding: 2px 10px; margin: 2px; }
+    .teaser-img { width: 100%; max-width: 700px; border-radius: 0; border: 1px solid #e8e8e8; display: block; margin: 16px auto; }
+    .tag-pill { display: inline-block; background: #fafafa; color: #0b0b0b; border: 1px solid #cfcfcf; border-radius: 0; font-size: 0.8rem; padding: 2px 10px; margin: 2px; }
   </style>
 </head>
 <body>
@@ -30,11 +32,7 @@
   <div id="nav-inner">
     <a href="../index.html" class="nav-name">Ankit Sanjyal</a>
     <div id="nav-links">
-      <a href="../index.html#about">About</a>
-      <a href="../news.html">News</a>
-      <a href="../index.html#publications">Publications</a>
-      <a href="../projects.html">Projects</a>
-      <a href="../blog/index.html">Writing</a>
+      <a href="../index.html">Search</a>
       <a href="../cv.html">CV</a>
     </div>
   </div>
@@ -42,7 +40,7 @@
 
 <div id="page-wrap">
 
-  <a class="back-link" href="../index.html">← Back to homepage</a>
+  <a class="back-link" href="../index.html">&larr; Back to search</a>
 
   <div class="paper-hero">
     <div class="paper-title">RectifiedHR: High-Resolution Diffusion via Energy Profiling and Adaptive Guidance Scheduling</div>
@@ -103,7 +101,7 @@
     and tapering off as details solidify: best matches the natural energy dynamics of the denoising process.
     We evaluate four schedule families:
   </p>
-  <ul style="margin: 8px 0 16px 20px; color: #444; font-size: 0.95rem; line-height: 1.8;">
+  <ul style="margin: 8px 0 16px 20px; color: #3a3a3a; font-size: 0.95rem; line-height: 1.8;">
     <li><strong>Constant</strong>: baseline, fixed w throughout</li>
     <li><strong>Linear-decreasing</strong>: w anneals from w_max to w_min (best performer)</li>
     <li><strong>Linear-increasing</strong>: w ramps up over timesteps</li>
@@ -149,12 +147,12 @@
       <td>Low</td>
     </tr>
   </table>
-  <p style="font-size:0.85rem; color:#888;">
+  <p style="font-size:0.85rem; color:#8e8e8e;">
     Stability score = 1 − normalized variance of latent energy across steps. Higher is better.
   </p>
 
   <h2 class="section-heading">Key Takeaways</h2>
-  <ul style="margin: 8px 0 16px 20px; color: #444; font-size: 0.95rem; line-height: 1.9;">
+  <ul style="margin: 8px 0 16px 20px; color: #3a3a3a; font-size: 0.95rem; line-height: 1.9;">
     <li>Fixed CFG is a suboptimal heuristic: the energy landscape is highly non-uniform across timesteps.</li>
     <li>Linear-decreasing schedules naturally align guidance with the coarse→fine denoising progression.</li>
     <li>The energy profiling framework is model-agnostic and can diagnose any diffusion pipeline.</li>
@@ -171,15 +169,17 @@
   </p>
 
   <h2 class="section-heading">Citation</h2>
-  <pre style="background:#f5f5f5; border:1px solid #e0e0e0; border-radius:4px; padding:14px; font-size:0.83rem; overflow-x:auto; color:#333;">@article{sanjyal2025rectifiedhr,
+  <pre style="background:#fafafa; border:1px solid #cfcfcf; border-radius: 0; padding:14px; font-size:0.83rem; overflow-x:auto; color:#3a3a3a;">@article{sanjyal2025rectifiedhr,
   title     = {RectifiedHR: High-Resolution Diffusion via Energy Profiling and Adaptive Guidance Scheduling},
   author    = {Sanjyal, Ankit},
   journal   = {arXiv preprint arXiv:2507.09441},
   year      = {2025}
 }</pre>
 
-  <div id="footer" style="margin-top:40px;">
-    <p><a href="../index.html">← Ankit Sanjyal</a></p>
+  <div id="footer">
+    <a href="../index.html">&larr; Ankit Sanjyal</a>
+    <a href="mailto:asanjyal82@gmail.com">Email</a>
+    <a href="https://github.com/ANKITSANJYAL" target="_blank" rel="noopener">GitHub</a>
   </div>
 
 </div>

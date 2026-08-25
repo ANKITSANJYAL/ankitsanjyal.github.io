@@ -4,23 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Causal Factor Discovery: Ankit Sanjyal</title>
-  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/academic.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/shell.css">
   <style>
-    .proj-hero { background: #f8f8f8; border: 1px solid #e8e8e8; border-radius: 6px; padding: 28px 32px; margin-bottom: 32px; }
-    .proj-title { font-size: 1.5rem; font-weight: 700; color: #111; margin-bottom: 8px; }
-    .proj-tagline { color: #555; font-size: 1rem; margin-bottom: 14px; }
-    .proj-links a { display: inline-block; margin-right: 10px; margin-bottom: 6px; padding: 5px 14px; border: 1px solid #1772d0; border-radius: 3px; font-size: 0.88rem; color: #1772d0; }
-    .proj-links a:hover { background: #1772d0; color: #fff; text-decoration: none; }
-    .tag-pill { display: inline-block; background: #eef4ff; color: #1772d0; border: 1px solid #c8daf8; border-radius: 12px; font-size: 0.8rem; padding: 2px 10px; margin: 2px; }
+    .proj-hero { background: #fafafa; border: 1px solid #e8e8e8; border-radius: 0; padding: 28px 32px; margin-bottom: 32px; }
+    .proj-title { font-size: 1.5rem; font-weight: 700; color: #0b0b0b; margin-bottom: 8px; }
+    .proj-tagline { color: #3a3a3a; font-size: 1rem; margin-bottom: 14px; }
+    .proj-links a { display: inline-block; margin-right: 10px; margin-bottom: 6px; padding: 5px 14px; border: 1px solid #0b0b0b; border-radius: 0; font-size: 0.88rem; color: #0b0b0b; }
+    .proj-links a:hover { background: #0b0b0b; color: #fff; text-decoration: none; }
+    .tag-pill { display: inline-block; background: #fafafa; color: #0b0b0b; border: 1px solid #cfcfcf; border-radius: 0; font-size: 0.8rem; padding: 2px 10px; margin: 2px; }
     .result-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; margin: 16px 0; }
-    .result-table th { background: #f0f0f0; padding: 8px 12px; text-align: left; border: 1px solid #ddd; font-weight: 700; }
-    .result-table td { padding: 7px 12px; border: 1px solid #ddd; color: #444; }
+    .result-table th { background: #fafafa; padding: 8px 12px; text-align: left; border: 1px solid #cfcfcf; font-weight: 700; }
+    .result-table td { padding: 7px 12px; border: 1px solid #cfcfcf; color: #3a3a3a; }
     .result-table tr:nth-child(even) td { background: #fafafa; }
     .back-link { font-size: 0.9rem; margin-bottom: 24px; display: block; }
-    .teaser-img { width: 100%; max-width: 700px; border-radius: 4px; border: 1px solid #e8e8e8; display: block; margin: 16px auto; }
-    .insight-box { background: #fff8e1; border: 1px solid #ffc107; border-radius: 4px; padding: 14px 18px; margin: 16px 0; font-size: 0.95rem; color: #444; }
-    .insight-box strong { color: #856404; }
+    .teaser-img { width: 100%; max-width: 700px; border-radius: 0; border: 1px solid #e8e8e8; display: block; margin: 16px auto; }
+    .insight-box { background: #fafafa; border: 1px solid #cfcfcf; border-radius: 0; padding: 14px 18px; margin: 16px 0; font-size: 0.95rem; color: #3a3a3a; }
+    .insight-box strong { color: #0b0b0b; }
   </style>
 </head>
 <body>
@@ -28,11 +30,7 @@
   <div id="nav-inner">
     <a href="../index.html" class="nav-name">Ankit Sanjyal</a>
     <div id="nav-links">
-      <a href="../index.html#about">About</a>
-      <a href="../news.html">News</a>
-      <a href="../index.html#publications">Publications</a>
-      <a href="../projects.html" class="active">Projects</a>
-      <a href="../blog/index.html">Writing</a>
+      <a href="../index.html">Search</a>
       <a href="../cv.html">CV</a>
     </div>
   </div>
@@ -40,7 +38,7 @@
 
 <div id="page-wrap">
 
-  <a class="back-link" href="../index.html">← Back to homepage</a>
+  <a class="back-link" href="../index.html">&larr; Back to search</a>
 
   <div class="proj-hero">
     <div class="proj-title">Causal Factor Discovery in S&amp;P 500 Returns</div>
@@ -83,7 +81,7 @@
     DML (Chernozhukov et al., 2018) estimates causal effects in the presence of high-dimensional confounders
     using a two-stage approach:
   </p>
-  <ol style="margin: 8px 0 16px 20px; color: #444; font-size: 0.95rem; line-height: 1.9;">
+  <ol style="margin: 8px 0 16px 20px; color: #3a3a3a; font-size: 0.95rem; line-height: 1.9;">
     <li><strong>Residualize the treatment:</strong> Fit a ML model to predict the treatment (3-day momentum) from all confounders. Compute residuals.</li>
     <li><strong>Residualize the outcome:</strong> Fit a ML model to predict the outcome (next-day return) from all confounders. Compute residuals.</li>
     <li><strong>Causal estimate:</strong> Regress outcome residuals on treatment residuals. The coefficient is the Average Treatment Effect (ATE): the causal effect of momentum on return.</li>
@@ -94,7 +92,7 @@
   </p>
 
   <h2 class="section-heading">Features Used</h2>
-  <ul style="margin: 8px 0 16px 20px; color: #444; font-size: 0.95rem; line-height: 1.9;">
+  <ul style="margin: 8px 0 16px 20px; color: #3a3a3a; font-size: 0.95rem; line-height: 1.9;">
     <li><strong>Return</strong>: daily percentage return</li>
     <li><strong>Momentum_3</strong>: 3-day return difference (treatment variable)</li>
     <li><strong>Volatility_3</strong>: 3-day rolling standard deviation (confounder)</li>
@@ -153,14 +151,16 @@
   </p>
 
   <h2 class="section-heading">References</h2>
-  <ul style="margin: 8px 0 16px 20px; color: #444; font-size: 0.92rem; line-height: 1.9;">
+  <ul style="margin: 8px 0 16px 20px; color: #3a3a3a; font-size: 0.92rem; line-height: 1.9;">
     <li>Chernozhukov et al. (2018). <em>Double Machine Learning for Treatment and Structural Parameters.</em> The Econometrics Journal.</li>
     <li>Gu, Kelly &amp; Xiu (2020). <em>Empirical Asset Pricing via Machine Learning.</em> Review of Financial Studies.</li>
     <li>Athey &amp; Imbens (2015). <em>Causal Inference for Statistics, Social and Biomedical Sciences.</em></li>
   </ul>
 
-  <div id="footer" style="margin-top:40px;">
-    <p><a href="../index.html">← Ankit Sanjyal</a></p>
+  <div id="footer">
+    <a href="../index.html">&larr; Ankit Sanjyal</a>
+    <a href="mailto:asanjyal82@gmail.com">Email</a>
+    <a href="https://github.com/ANKITSANJYAL" target="_blank" rel="noopener">GitHub</a>
   </div>
 
 </div>

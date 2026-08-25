@@ -5,31 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Necessity Protects CoT Monitoring by Prevention, Not Disclosure — Ankit Sanjyal</title>
   <meta name="description" content="When reasoning is computationally necessary, misleading cues almost never flip a model's answer. When it is optional, cues land up to 41% of the time — and the chain of thought may never mention them.">
-  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/academic.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/shell.css">
   <style>
     .post-header { margin-bottom: 36px; padding-bottom: 24px; border-bottom: 1px solid #e8e8e8; }
-    .post-title { font-size: 1.75rem; font-weight: 700; color: #111; line-height: 1.3; margin-bottom: 12px; }
-    .post-meta { font-size: 0.88rem; color: #999; margin-bottom: 10px; }
-    .post-tag { display: inline-block; background: #eef4ff; color: #1772d0; border: 1px solid #c8daf8; border-radius: 10px; font-size: 0.78rem; padding: 2px 9px; margin-right: 4px; }
-    .post-body { font-size: 1rem; line-height: 1.8; color: #333; max-width: 680px; }
+    .post-title { font-size: 1.75rem; font-weight: 700; color: #0b0b0b; line-height: 1.3; margin-bottom: 12px; }
+    .post-meta { font-size: 0.88rem; color: #8e8e8e; margin-bottom: 10px; }
+    .post-tag { display: inline-block; background: #fafafa; color: #0b0b0b; border: 1px solid #cfcfcf; border-radius: 0; font-size: 0.78rem; padding: 2px 9px; margin-right: 4px; }
+    .post-body { font-size: 1rem; line-height: 1.8; color: #3a3a3a; max-width: 680px; }
     .post-body p { margin-bottom: 1.2em; }
-    .post-body h2 { font-size: 1.2rem; font-weight: 700; color: #111; margin: 2em 0 0.6em; border: none; padding: 0; }
-    .post-body h3 { font-size: 1rem; font-weight: 700; color: #333; margin: 1.5em 0 0.4em; }
+    .post-body h2 { font-size: 1.2rem; font-weight: 700; color: #0b0b0b; margin: 2em 0 0.6em; border: none; padding: 0; }
+    .post-body h3 { font-size: 1rem; font-weight: 700; color: #3a3a3a; margin: 1.5em 0 0.4em; }
     .post-body ul, .post-body ol { margin: 0.4em 0 1em 1.4em; }
     .post-body li { margin-bottom: 0.4em; }
-    .post-body strong { color: #111; }
-    .callout { background: #fff8e1; border-left: 3px solid #ffc107; padding: 14px 18px; margin: 1.6em 0; border-radius: 0 4px 4px 0; font-size: 0.95rem; color: #444; }
-    .callout strong { color: #856404; }
-    .result-box { background: #e8f5e9; border: 1px solid #66bb6a; border-radius: 4px; padding: 16px 20px; margin: 1.6em 0; font-size: 0.95rem; color: #1b5e20; line-height: 1.7; }
-    .quote-block { background: #f8f8f8; border-left: 3px solid #ccc; padding: 14px 18px; margin: 1.6em 0; font-size: 0.93rem; color: #444; font-style: italic; }
+    .post-body strong { color: #0b0b0b; }
+    .callout { background: #fafafa; border-left: 3px solid #cfcfcf; padding: 14px 18px; margin: 1.6em 0; border-radius: 0; font-size: 0.95rem; color: #3a3a3a; }
+    .callout strong { color: #0b0b0b; }
+    .result-box { background: #fafafa; border: 1px solid #cfcfcf; border-radius: 0; padding: 16px 20px; margin: 1.6em 0; font-size: 0.95rem; color: #0b0b0b; line-height: 1.7; }
+    .quote-block { background: #fafafa; border-left: 3px solid #cfcfcf; padding: 14px 18px; margin: 1.6em 0; font-size: 0.93rem; color: #3a3a3a; font-style: italic; }
     .result-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin: 16px 0; }
-    .result-table th { background: #f0f0f0; padding: 8px 10px; text-align: left; border: 1px solid #ddd; font-weight: 700; }
-    .result-table td { padding: 7px 10px; border: 1px solid #ddd; color: #444; }
+    .result-table th { background: #fafafa; padding: 8px 10px; text-align: left; border: 1px solid #cfcfcf; font-weight: 700; }
+    .result-table td { padding: 7px 10px; border: 1px solid #cfcfcf; color: #3a3a3a; }
     .result-table tr:nth-child(even) td { background: #fafafa; }
-    .post-links a { display: inline-block; margin-right: 8px; margin-bottom: 6px; padding: 5px 14px; border: 1px solid #1772d0; border-radius: 3px; font-size: 0.88rem; color: #1772d0; }
-    .post-links a:hover { background: #1772d0; color: #fff; text-decoration: none; }
-    .ref { font-size: 0.88rem; color: #888; }
+    .post-links a { display: inline-block; margin-right: 8px; margin-bottom: 6px; padding: 5px 14px; border: 1px solid #0b0b0b; border-radius: 0; font-size: 0.88rem; color: #0b0b0b; }
+    .post-links a:hover { background: #0b0b0b; color: #fff; text-decoration: none; }
+    .ref { font-size: 0.88rem; color: #8e8e8e; }
     hr.section-break { border: none; border-top: 1px solid #e8e8e8; margin: 2em 0; }
     .back-link { font-size: 0.9rem; margin-bottom: 24px; display: block; }
   </style>
@@ -40,11 +42,7 @@
   <div id="nav-inner">
     <a href="../index.html" class="nav-name">Ankit Sanjyal</a>
     <div id="nav-links">
-      <a href="../index.html#about">About</a>
-      <a href="../news.html">News</a>
-      <a href="../index.html#publications">Publications</a>
-      <a href="../projects.html">Projects</a>
-      <a href="index.html" class="active">Writing</a>
+      <a href="../index.html">Search</a>
       <a href="../cv.html">CV</a>
     </div>
   </div>
@@ -52,7 +50,7 @@
 
 <div id="page-wrap">
 
-  <a class="back-link" href="../index.html#writing">← Writing</a>
+  <a class="back-link" href="../index.html">&larr; Back to search</a>
 
   <div class="post-header">
     <div class="post-title">Necessity Protects Chain-of-Thought Monitoring<br>by Prevention, Not Disclosure</div>
@@ -345,7 +343,7 @@
       Korbak et al. (2025). <em>Chain of Thought Monitorability.</em> Multi-lab position paper.
     </p>
 
-    <p class="ref" style="margin-top:1.2em; color:#aaa;">
+    <p class="ref" style="margin-top:1.2em; color:#8e8e8e;">
       <em>If you're working on related questions — especially the verifiability confound or
       activation-level probes for silent capture — I'd like to hear from you:
       <a href="mailto:asanjyal82@gmail.com">asanjyal82@gmail.com</a>.</em>
@@ -353,8 +351,10 @@
 
   </div>
 
-  <div id="footer" style="margin-top:48px;">
-    <p><a href="../index.html">← Ankit Sanjyal</a></p>
+  <div id="footer">
+    <a href="../index.html">&larr; Ankit Sanjyal</a>
+    <a href="mailto:asanjyal82@gmail.com">Email</a>
+    <a href="https://github.com/ANKITSANJYAL" target="_blank" rel="noopener">GitHub</a>
   </div>
 
 </div>
