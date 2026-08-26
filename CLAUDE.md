@@ -18,10 +18,10 @@ and adding one would break the whole premise.
 | `assets/css/shell.css` | The only stylesheet. Every page loads it and nothing else |
 | `cv.html` | Experience, Education & Training, Teaching |
 | `papers/*.html` | 4 paper write-ups |
-| `projects/*.html` | 9 project write-ups |
+| `projects/*.html` | 10 project write-ups |
 | `blog/*.html` | 2 posts |
 
-17 pages total. There is no `news.html`, no `projects.html`, no `blog/index.html` — search
+18 pages total. There is no `news.html`, no `projects.html`, no `blog/index.html` — search
 replaced all three, and every item they listed is an entry on the homepage.
 
 ## How the homepage works
@@ -80,7 +80,7 @@ change is needed; the script reads whatever is in the DOM.
 
 - Keep every detail page. The design work is about navigation, never about deleting
   written content.
-- Nav is identical on all 16 subpages: name on the left, `Search` and `CV` on the right.
+- Nav is identical on all 17 subpages: name on the left, `Search` and `CV` on the right.
 - Back-link wording is `← Back to search` everywhere.
 
 ## History

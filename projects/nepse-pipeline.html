@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEPSE Data Pipeline: Ankit Sanjyal</title>
+  <meta name="description" content="Live and historical Nepal Stock Exchange market data landed in DuckDB and Parquet, with validation at every layer boundary and every API constraint measured rather than assumed.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/shell.css">
+  <style>
+    .proj-hero { background: #fafafa; border: 1px solid #e8e8e8; border-radius: 0; padding: 28px 32px; margin-bottom: 32px; }
+    .proj-title { font-size: 1.5rem; font-weight: 700; color: #0b0b0b; margin-bottom: 8px; }
+    .proj-tagline { color: #3a3a3a; font-size: 1rem; margin-bottom: 14px; }
+    .proj-links a { display: inline-block; margin-right: 10px; margin-bottom: 6px; padding: 5px 14px; border: 1px solid #0b0b0b; border-radius: 0; font-size: 0.88rem; color: #0b0b0b; }
+    .proj-links a:hover { background: #0b0b0b; color: #fff; text-decoration: none; }
+    .tag-pill { display: inline-block; background: #fafafa; color: #0b0b0b; border: 1px solid #cfcfcf; border-radius: 0; font-size: 0.8rem; padding: 2px 10px; margin: 2px; }
+    .result-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; margin: 16px 0; }
+    .result-table th { background: #fafafa; padding: 8px 12px; text-align: left; border: 1px solid #cfcfcf; font-weight: 700; }
+    .result-table td { padding: 7px 12px; border: 1px solid #cfcfcf; color: #3a3a3a; }
+    .result-table tr:nth-child(even) td { background: #fafafa; }
+    .back-link { font-size: 0.9rem; margin-bottom: 24px; display: block; }
+    .insight-box { background: #fafafa; border: 1px solid #cfcfcf; border-radius: 0; padding: 14px 18px; margin: 16px 0; font-size: 0.95rem; color: #3a3a3a; }
+    .insight-box strong { color: #0b0b0b; }
+    .code-block { white-space: pre; }
+    .metric-row { display: flex; flex-wrap: wrap; gap: 0; margin: 18px 0; border: 1px solid #cfcfcf; }
+    .metric-card { flex: 1 1 150px; padding: 16px 18px; border-right: 1px solid #cfcfcf; }
+    .metric-card:last-child { border-right: 0; }
+    .metric-num { font-size: 1.35rem; font-weight: 700; color: #0b0b0b; line-height: 1.1; font-variant-numeric: tabular-nums; }
+    .metric-label { font-family: "JetBrains Mono", monospace; font-size: 0.62rem; letter-spacing: 0.11em; text-transform: uppercase; color: #8e8e8e; margin-top: 7px; }
+  </style>
+</head>
+<body>
+<nav id="site-nav">
+  <div id="nav-inner">
+    <a href="../index.html" class="nav-name">Ankit Sanjyal</a>
+    <div id="nav-links">
+      <a href="../index.html">Search</a>
+      <a href="../cv.html">CV</a>
+    </div>
+  </div>
+</nav>
+
+<div id="page-wrap">
+
+  <a class="back-link" href="../index.html">&larr; Back to search</a>
+
+  <div class="proj-hero">
+    <div class="proj-title">NEPSE Data Pipeline</div>
+    <div class="proj-tagline">Live and historical market data from the Nepal Stock Exchange, landed in DuckDB and Parquet with validation at every layer boundary. Every constraint below was <em>measured against the live API</em>, not taken from documentation &mdash; because for one of these datasets, a day you miss is gone permanently.</div>
+    <div>
+      <span class="tag-pill">Data Engineering</span>
+      <span class="tag-pill">DuckDB</span>
+      <span class="tag-pill">Parquet</span>
+      <span class="tag-pill">Pydantic</span>
+      <span class="tag-pill">GitHub Actions</span>
+      <span class="tag-pill">Hugging Face</span>
+      <span class="tag-pill">Python</span>
+    </div>
+    <div class="proj-links" style="margin-top:14px;">
+      <a href="https://github.com/ANKITSANJYAL/nepse-pipeline" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://huggingface.co/datasets/AnkitSanjyal/nepse-market-data" target="_blank" rel="noopener">Dataset</a>
+      <a href="https://github.com/ANKITSANJYAL/nepse-pipeline/tree/main/notebooks" target="_blank" rel="noopener">Notebooks</a>
+    </div>
+  </div>
+
+  <div class="metric-row">
+    <div class="metric-card"><div class="metric-num">42,709</div><div class="metric-label">contracts / day</div></div>
+    <div class="metric-card"><div class="metric-num">516,620</div><div class="metric-label">deep-history rows</div></div>
+    <div class="metric-card"><div class="metric-num">1995&ndash;2026</div><div class="metric-label">daily series range</div></div>
+    <div class="metric-card"><div class="metric-num">100.00%</div><div class="metric-label">volume reconciled</div></div>
+  </div>
+
+  <h2 class="section-heading">The Constraint That Shaped Everything</h2>
+  <p>
+    NEPSE's floorsheet &mdash; the record of every executed contract &mdash; is the only dataset here with
+    <strong>no second chance</strong>. The API serves the current session and nothing else: it ignores the
+    <code>businessDate</code> parameter entirely, and the per-company route is nginx-403'd. A day the poller
+    misses is not recoverable from NEPSE, from a vendor, or from anywhere.
+  </p>
+  <p>
+    It is also the most valuable table in the warehouse. A normal session is <strong>42,709 contracts</strong>,
+    each carrying a microsecond <code>tradeTime</code> and <em>both</em> the buyer and seller broker IDs.
+    Most exchanges never expose broker identity at all.
+  </p>
+
+  <div class="insight-box">
+    <strong>Why that changes the architecture.</strong> Because the data cannot be re-fetched, raw responses
+    are written to bronze <em>before</em> anything is parsed &mdash; if the parser is wrong, the bytes are
+    still on disk and silver can be rebuilt. The same reasoning is why the capture agent runs with
+    <code>KeepAlive</code>, and why a failed run is never allowed to look like an empty one.
+  </div>
+
+  <h2 class="section-heading">Layers</h2>
+  <div class="code-block">bronze/   raw gzipped JSON, one file per response, immutable
+          -> data/bronze/{dataset}/date=YYYY-MM-DD/{epoch_ms}-p{page}.json.gz
+silver/   validated, typed, deduplicated Parquet, one file per table per day
+gold/     bars_1m, broker_flow_daily, daily_stats</div>
+  <p>
+    DuckDB is the working warehouse; Parquet is the durable export. At roughly 12 GB a year the whole thing
+    fits on one machine, so Spark or Kafka here would be cost with no benefit. Making Parquet the source of
+    truth is also what lets the pipeline run on a CI runner that is destroyed minutes later &mdash; a warehouse
+    rebuilt from Parquet alone reproduced all five tables exactly, floorsheet turnover included, to the paisa.
+  </p>
+
+  <h2 class="section-heading">What the API Actually Does</h2>
+  <p>
+    Every row below was measured against the live endpoint. Several are load-bearing design constraints
+    rather than trivia &mdash; the ones about pagination and the trading week are silent data-loss bugs if
+    you assume the documented behaviour.
+  </p>
+  <table class="result-table">
+    <tr><th>Measured fact</th><th>Consequence</th></tr>
+    <tr><td>No streaming feed exists; the site polls REST, and the backend refreshes about every 24s.</td><td>&ldquo;Live&rdquo; means polling. Faster than ~20s buys nothing.</td></tr>
+    <tr><td>A browser <code>User-Agent</code> is mandatory. Without one the connection completes TLS and then hangs forever.</td><td>No 403 and no error &mdash; every client must set it or die silently.</td></tr>
+    <tr><td>Auth is a WASM-derived token: the server returns 5 salts, NEPSE's own <code>css.wasm</code> turns them into character offsets, TTL is 45 seconds.</td><td>Isolated behind one token source so the rest of the code never sees it.</td></tr>
+    <tr><td><code>sort=contractId,desc</code> is not honoured across pages. Page 10 was observed starting at one id and ending above it.</td><td>A watermark &ldquo;stop at a known id&rdquo; would <strong>silently skip trades</strong>. Not used.</td></tr>
+    <tr><td>Pages intermittently return a bare <code>[]</code>, then yield 500 rows on retry.</td><td>Treated as transient, never as end-of-data.</td></tr>
+    <tr><td>All history endpoints clamp to a rolling 365 days, server-side, even given an explicit older start date.</td><td>A hard floor on backfill &mdash; and the reason for a second source.</td></tr>
+    <tr><td>The intraday index series is wiped a few hours after close: 610 points at 19:30 NPT, zero by 20:25.</td><td>Must be captured during or right after the session.</td></tr>
+    <tr><td>NEPSE traded Sunday&ndash;Thursday until about 2026-04-06, then Monday&ndash;Friday.</td><td>A <code>weekday() &lt; 5</code> weekend filter silently drops ~33 real trading days.</td></tr>
+  </table>
+
+  <h2 class="section-heading">Validation</h2>
+  <p>Bad data fails loudly. It is never dropped and never let through.</p>
+  <ul style="margin: 8px 0 16px 20px; color: #3a3a3a; font-size: 0.95rem; line-height: 1.9;">
+    <li><strong>Pydantic contracts with <code>extra="forbid"</code></strong> &mdash; a <em>new</em> upstream field raises, so schema drift surfaces immediately instead of as a column of nulls months later.</li>
+    <li><strong>Row-level tripwires</strong> &mdash; <code>qty &times; rate == amount</code> within one rupee, positive prices, <code>trade_time</code> matching <code>business_date</code>, <code>high &gt;= low</code>.</li>
+    <li><strong>Drift detection</strong> &mdash; more than 10% of rows failing on a page raises rather than writing the survivors.</li>
+    <li><strong>Quarantine</strong> &mdash; rejected rows are written out with the reason attached, not discarded.</li>
+    <li><strong>Flag, don't drop</strong> &mdash; some debentures legitimately report a close outside the day's traded range. Those rows are kept and flagged: dropping them would lose real securities, accepting them silently would hide a real anomaly.</li>
+    <li><strong>Completeness gate</strong> &mdash; a session is only published once the row count matches upstream's <code>totalElements</code>.</li>
+    <li><strong>Reconciliation</strong> &mdash; gold must conserve floorsheet volume and turnover exactly, or the build raises.</li>
+  </ul>
+
+  <h2 class="section-heading">Deep History, and How Far to Trust It</h2>
+  <p>
+    NEPSE's 365-day floor is hard, so a second source (ShareSansar) supplies the daily series much further
+    back. It is landed in a separate table, tagged with its origin, and <em>never</em> merged into the NEPSE
+    tables &mdash; <strong>516,620 rows</strong> across <strong>653 symbols</strong>, from 1995-07-20 to
+    2026-08-19, in a single 10.3 MB Parquet file.
+  </p>
+  <p>
+    The wider universe is the point. A symbol list drawn from the rolling window alone is survivorship-biased:
+    <strong>175 symbols exist only in the second source</strong> &mdash; delisted mutual funds, converted
+    promoter shares, long-suspended names &mdash; and would otherwise be invisible.
+  </p>
+  <p>
+    The 225-day overlap is the only place a second source can be checked against an authoritative one:
+  </p>
+  <table class="result-table">
+    <tr><th>Check</th><th>Result</th></tr>
+    <tr><td>Overlapping rows</td><td>75,671 &mdash; every NEPSE row has a match</td></tr>
+    <tr><td>Volume exact</td><td><strong>75,671 / 75,671 &mdash; 100.00%</strong></td></tr>
+    <tr><td>Close exact</td><td>75,657 / 75,671 &mdash; 99.98%</td></tr>
+  </table>
+  <p>
+    Fourteen closes disagree: four are debentures already carrying the out-of-range flag, and the rest differ
+    by under 1% on a single session, which looks like a last-trade-versus-close convention rather than
+    corruption. Volume agreeing on every single row is the stronger signal &mdash; the two sources are
+    reporting the same trades. That earns confidence in the <em>mechanism</em>, not a guarantee about 1998.
+  </p>
+
+  <h2 class="section-heading">Three Worked Analyses</h2>
+  <p>
+    The notebooks are committed with their outputs, so the findings can be read without running anything.
+  </p>
+  <table class="result-table">
+    <tr><th>Notebook</th><th>Finding</th></tr>
+    <tr>
+      <td><a href="https://github.com/ANKITSANJYAL/nepse-pipeline/blob/main/notebooks/01_broker_network.ipynb" target="_blank" rel="noopener">Who is actually trading this stock?</a></td>
+      <td>Large broker positions repeat direction <strong>71.8%</strong> of the time next session &mdash; with no next-day price edge detectable yet.</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/ANKITSANJYAL/nepse-pipeline/blob/main/notebooks/02_corporate_actions.ipynb" target="_blank" rel="noopener">The corporate actions trap</a></td>
+      <td>NEPSE's ~10% circuit limit doubles as a corporate-action detector; <strong>747 candidates</strong> recovered from prices alone.</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/ANKITSANJYAL/nepse-pipeline/blob/main/notebooks/03_survivorship.ipynb" target="_blank" rel="noopener">The symbols that disappeared</a></td>
+      <td><strong>36%</strong> of NEPSE symbols are delisted; survivorship bias measured at <strong>+0.74 pts/year</strong>.</td>
+    </tr>
+  </table>
+
+  <h2 class="section-heading">Hosted Capture</h2>
+  <p>
+    Capture runs on GitHub Actions and publishes to Hugging Face, both free at this scale. The job runs
+    <em>after</em> close rather than as a live poller: NEPSE keeps serving the current session's floorsheet
+    for hours afterwards &mdash; measured complete at +2h and again at +5.5h, wiped by +5.9h &mdash; so one
+    short run captures the same contracts a four-hour poller would at a twentieth of the compute. The
+    intraday index sets the deadline, since it disappears about 4h after close.
+  </p>
+  <p>
+    The workflow fires twice because scheduled GitHub jobs are routinely delayed and occasionally dropped.
+    Every write is an upsert, so the second run is a no-op when the first succeeded.
+  </p>
+  <div class="code-block">import duckdb
+duckdb.sql("SELECT * FROM 'hf://datasets/AnkitSanjyal/nepse-market-data/floorsheet/**/*.parquet'")</div>
+
+  <h2 class="section-heading">Known Gaps</h2>
+  <p>Stated plainly, because a dataset is only usable if you know where it stops being trustworthy.</p>
+  <ul style="margin: 8px 0 16px 20px; color: #3a3a3a; font-size: 0.95rem; line-height: 1.9;">
+    <li><strong>Corporate actions are not adjusted.</strong> Bonus shares and rights issues are common on NEPSE and leave fake gaps in any price series. An adjustment table is required before this data is fit for modelling.</li>
+    <li><strong>History beyond 365 days is second-source</strong>, tagged as such, and trustworthy only as far as the reconciliation above justifies.</li>
+    <li><strong>Intraday index history before today cannot be recovered</strong> &mdash; the same capture-or-lose-it property as floorsheet.</li>
+    <li><strong>Market depth and the order book are not collected.</strong> One request per symbol, deliberately deferred.</li>
+    <li><strong>The WASM token will break</strong> when NEPSE rotates the module. The failure is loud (401s); a browser-driven fallback is the intended remedy and is not built yet.</li>
+  </ul>
+
+  <div id="footer">
+    <a href="../index.html">&larr; Ankit Sanjyal</a>
+    <a href="mailto:asanjyal82@gmail.com">Email</a>
+    <a href="https://github.com/ANKITSANJYAL" target="_blank" rel="noopener">GitHub</a>
+  </div>
+
+</div>
+</body>
+</html>
