@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Concept 2 — Ledger</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+
+:root{
+  --paper:#fbfbfa;
+  --ink:#101114;
+  --body:#40444a;
+  --mute:#8b8f95;
+  --rule:#e6e5e2;
+  --line:#cfcecb;
+  --serif:"EB Garamond",Georgia,serif;
+  --ui:"Instrument Sans",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--ui);font-size:15px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+/* the only texture on the page — a fixed paper grain, no motion */
+body::before{
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.30;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+}
+.wrap{position:relative;z-index:1}
+
+a{color:inherit;text-decoration:none;border-bottom:1px solid var(--line)}
+a:hover{border-bottom-color:var(--ink)}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+
+/* ---------- corner chrome, minimal ---------- */
+.c{position:fixed;font-family:var(--serif);font-size:12.5px;color:var(--mute);z-index:30}
+.c-tl{top:22px;left:26px}
+.c-br{bottom:22px;right:26px}
+.c-br a{border-bottom-color:transparent;color:var(--mute)}
+.c-br a:hover{color:var(--ink);border-bottom-color:currentColor}
+
+/* ---------- layout: sticky index rail + one document ---------- */
+.page{max-width:1100px;margin:0 auto;padding:0 30px}
+.masthead{padding:120px 0 0}
+.masthead h1{font-family:var(--serif);font-weight:500;font-size:clamp(34px,5vw,52px);line-height:1.04;margin:0;letter-spacing:-.012em}
+.masthead .tag{font-family:var(--serif);font-size:clamp(16px,2vw,19px);color:var(--body);margin:8px 0 0}
+.masthead .meta{font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--mute);margin:26px 0 0}
+.masthead .bio{font-family:var(--serif);font-size:19px;line-height:1.6;color:var(--ink);max-width:56ch;margin:30px 0 0}
+.masthead .bio b{font-weight:600}
+.masthead .links{display:flex;flex-wrap:wrap;gap:20px;margin:26px 0 0;font-size:13px}
+.masthead .links a{color:var(--body)}
+
+.cols{display:grid;grid-template-columns:1fr;gap:0;margin-top:96px}
+@media (min-width:940px){ .cols{grid-template-columns:158px 1fr;gap:58px} }
+
+.rail{display:none}
+@media (min-width:940px){
+  .rail{display:block;position:sticky;top:120px;height:max-content}
+}
+.rail .lbl{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);margin-bottom:14px}
+.rail a{display:block;font-family:var(--serif);font-size:14px;color:var(--mute);border:0;padding:5px 0}
+.rail a:hover{color:var(--ink)}
+.rail a.on{color:var(--ink)}
+.rail a.on::before{content:"—  ";color:var(--line)}
+
+/* ---------- sections ---------- */
+section{padding:0 0 92px;scroll-margin-top:110px}
+.shead{display:flex;align-items:baseline;justify-content:space-between;gap:20px;
+  border-bottom:1px solid var(--ink);padding-bottom:9px;margin-bottom:32px}
+.shead h2{font-family:var(--serif);font-weight:500;font-size:25px;margin:0}
+.shead .n{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+
+.item{padding:0 0 24px;margin-bottom:24px;border-bottom:1px solid var(--rule)}
+.item:last-child{border-bottom:0;margin-bottom:0;padding-bottom:0}
+.ihead{display:flex;justify-content:space-between;align-items:baseline;gap:20px}
+.ihead h3{font-family:var(--serif);font-weight:500;font-size:20px;line-height:1.25;margin:0}
+.ihead .when{font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--mute);white-space:nowrap;text-transform:uppercase}
+.tldr{font-size:14px;color:var(--body);margin:8px 0 11px;max-width:70ch}
+.acts{display:flex;flex-wrap:wrap;align-items:center;gap:20px;font-size:12.5px;color:var(--body)}
+.acts button{font:inherit;background:none;border:0;border-bottom:1px solid var(--line);padding:0;cursor:pointer;color:inherit}
+.acts button:hover{border-bottom-color:var(--ink)}
+.acts .venue{margin-left:auto;font-family:var(--serif);font-style:italic;color:var(--mute)}
+.more{display:none;font-size:13.5px;color:var(--body);margin-top:14px;max-width:74ch;
+  border-left:1px solid var(--line);padding-left:16px}
+.more.on{display:block}
+
+/* cv rows */
+.cv{width:100%;border-collapse:collapse}
+.cv td{vertical-align:top;padding:0 0 22px;border:0}
+.cv .d{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--mute);width:180px;padding-top:5px;white-space:nowrap}
+.cv .r{font-family:var(--serif);font-size:18px;font-weight:500}
+.cv .o{font-family:var(--serif);font-size:15px;color:var(--body)}
+.cv .x{font-size:13px;color:var(--body);margin-top:5px;max-width:62ch}
+@media (max-width:620px){ .cv td,.cv .d{display:block;width:auto;padding-bottom:6px} .cv tr td:last-child{padding-bottom:24px} }
+
+.foot{border-top:1px solid var(--ink);padding:24px 0 70px;display:flex;flex-wrap:wrap;gap:24px;
+  font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+.foot a{border:0;color:var(--mute)}
+.foot a:hover{color:var(--ink)}
+
+/* search overlay */
+.scrim{position:fixed;inset:0;background:rgba(16,17,20,.26);z-index:40;display:none}
+.scrim.on{display:block}
+.finder{position:fixed;inset:0;z-index:50;display:none;padding:12vh 20px 20px;justify-content:center}
+.finder.on{display:flex}
+.fbox{width:100%;max-width:620px;max-height:70vh;display:flex;flex-direction:column;
+  background:var(--paper);border:1px solid var(--ink)}
+.fbox input{font-family:var(--ui);font-size:16px;color:var(--ink);background:none;border:0;
+  border-bottom:1px solid var(--rule);padding:16px 20px;width:100%;outline:none}
+.fres{overflow-y:auto}
+.fres a{display:block;padding:11px 20px;border:0;border-left:2px solid transparent}
+.fres a:hover,.fres a.sel{background:#f2f1ee;border-left-color:var(--ink)}
+.fres .ft{font-family:var(--serif);font-size:15px}
+.fres .fc{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.fhint{padding:9px 20px;border-top:1px solid var(--rule);font-family:var(--mono);font-size:10px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--mute);display:flex;justify-content:space-between}
+.fempty{padding:18px 20px;font-size:13px;color:var(--mute)}
+
+@media (max-width:939px){ .c-tl{display:none} .masthead{padding-top:76px} .cols{margin-top:64px} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="c c-tl" id="clock">00:00:00</div>
+<div class="c c-br"><a href="#" id="openFind">search &nearr;</a></div>
+
+<div class="page">
+
+  <header class="masthead">
+    <h1>Ankit Sanjyal</h1>
+    <p class="tag">what the model says, and what it actually did</p>
+    <p class="meta">Interpretability &amp; AI Safety &nbsp;·&nbsp; New York</p>
+    <p class="bio">I work on whether a model&rsquo;s stated reasoning is a reliable window into the
+      computation that <b>actually produced it</b> &mdash; and what breaks when one model becomes many
+      talking to each other. M.S. Data Science at Fordham, May 2026. Open to interpretability and
+      safety work: fellowships, research roles, collaborators.</p>
+    <p class="links">
+      <a href="mailto:asanjyal82@gmail.com">email</a>
+      <a href="https://github.com/ANKITSANJYAL" target="_blank" rel="noopener">github</a>
+      <a href="https://linkedin.com/in/ankit-sanjyal" target="_blank" rel="noopener">linkedin</a>
+      <a href="#">google scholar</a>
+      <a href="#">cv &nearr;</a>
+    </p>
+  </header>
+
+  <div class="cols">
+
+    <aside class="rail">
+      <div class="lbl">Contents</div>
+      <a href="#research" class="on">Research</a>
+      <a href="#projects">Projects</a>
+      <a href="#writing">Writing</a>
+      <a href="#experience">Experience</a>
+      <a href="#teaching">Teaching</a>
+    </aside>
+
+    <div class="body">
+
+      <section id="research">
+        <div class="shead"><h2>Research</h2><span class="n">5 entries</span></div>
+
+        <article class="item">
+          <div class="ihead"><h3>Multimodal Emotion Recognition via Causal-Diffusion Bridge</h3><span class="when">2025 · Preprint</span></div>
+          <p class="tldr">A causal graph re-weights text, audio and video; counterfactual sampling makes attribution explicit, so the model reports which modality drove each prediction.</p>
+          <div class="acts"><button data-more>read abstract</button><a href="#">paper &nearr;</a><a href="#">write-up &rarr;</a><span class="venue">CMU-MOSEI</span></div>
+          <div class="more">A NOTEARS causal graph re-weights the text, audio and video channels, a &beta;-VAE compresses them, and a stop-gradiented 1D DDPM prior structures the latent space. Counterfactual sampling over that graph makes attribution explicit &mdash; an 18% relative improvement on CMU-MOSEI, and the only system with non-trivial performance on the minority emotions where every baseline fails.</div>
+        </article>
+
+        <article class="item">
+          <div class="ihead"><h3>RectifiedHR: High-Resolution Diffusion via Energy Profiling</h3><span class="when">2025 · Preprint</span></div>
+          <p class="tldr">Profiles latent energy dynamics during sampling and schedules classifier-free guidance from that signal. Training-free high-resolution generation.</p>
+          <div class="acts"><button data-more>read abstract</button><a href="#">paper &nearr;</a><a href="#">write-up &rarr;</a><span class="venue">SDXL</span></div>
+          <div class="more">No fine-tuning and no extra parameters &mdash; just a better-behaved guidance schedule derived from the energy of the latent as the model samples.</div>
+        </article>
+
+        <article class="item">
+          <div class="ihead"><h3>Local Prompt Adaptation for Style-Consistent Generation</h3><span class="when">2025 · Preprint</span></div>
+          <p class="tldr">Splits a prompt into content and style tokens and routes them to different cross-attention layers of SDXL, so style applies locally instead of smearing across the image.</p>
+          <div class="acts"><button data-more>read abstract</button><a href="#">paper &nearr;</a><a href="#">write-up &rarr;</a><span class="venue">Training-free</span></div>
+          <div class="more">It needs no training, and it holds style consistent across multi-object scenes where a single global prompt drifts.</div>
+        </article>
+
+        <article class="item">
+          <div class="ihead"><h3>NeRF Few-Shot Limitations Analysis</h3><span class="when">2024 · Preprint</span></div>
+          <p class="tldr">Does reusing DINO features rescue NeRF from a handful of views? Only inside a narrow band &mdash; the paper is about locating that boundary honestly rather than claiming a win.</p>
+          <div class="acts"><a href="#">paper &nearr;</a><a href="#">write-up &rarr;</a><span class="venue">OASIS</span></div>
+        </article>
+
+        <article class="item">
+          <div class="ihead"><h3>Research statement</h3><span class="when">Current</span></div>
+          <p class="tldr">The two halves of the question: when externalized computation is a reliable window into the actual decision process, and what survives when the system stops being one model and becomes many.</p>
+          <div class="acts"><a href="#">google doc &nearr;</a><span class="venue">Statement</span></div>
+        </article>
+      </section>
+
+      <section id="projects">
+        <div class="shead"><h2>Projects</h2><span class="n">9 entries</span></div>
+
+        <article class="item">
+          <div class="ihead"><h3>CoT Faithfulness Under Necessity vs. Propensity</h3><span class="when">2026 · BlueDot capstone</span></div>
+          <p class="tldr">1,700 cue-injected problems per model across three families, every trace scored by judge and by hand. In the worst case a model disclosed the cue once in 489 captured traces.</p>
+          <div class="acts"><button data-more>read more</button><a href="#">write-up &rarr;</a><a href="#">lesswrong &nearr;</a><span class="venue">Qwen · DeepSeek · Gemma</span></div>
+          <div class="more">Capture is near-zero (0.0&ndash;2.2%) where reasoning is computationally necessary and reaches 41% where it is optional. The necessity arm protects monitoring by prevention, not by disclosure.</div>
+        </article>
+
+        <article class="item">
+          <div class="ihead"><h3>Diffusion Detective</h3><span class="when">2025 · Tooling</span></div>
+          <p class="tldr">Surfaces what a generative model attends to at each denoising step, then steers it with an injected concept vector &mdash; 94% steering success &mdash; and writes a plain-English account of what changed.</p>
+          <div class="acts"><button data-more>read more</button><a href="#">write-up &rarr;</a><span class="venue">Interpretability</span></div>
+          <div class="more">Extract, intervene, explain &mdash; the core primitives behind activation steering and patchscopes, closed into one loop.</div>
+        </article>
+
+        <article class="item">
+          <div class="ihead"><h3>NEPSE Data Pipeline</h3><span class="when">2026 · Data engineering</span></div>
+          <p class="tldr">Nepal Stock Exchange floorsheet data &mdash; 42,709 contracts a day, served only for the current session &mdash; landed in DuckDB and Parquet with validation at every layer boundary.</p>
+          <div class="acts"><button data-more>read more</button><a href="#">write-up &rarr;</a><a href="#">github &nearr;</a><span class="venue">DuckDB · Parquet</span></div>
+          <div class="more">Three committed notebooks work the data: large broker positions repeat direction 71.8% of the time, 747 corporate actions recovered from prices alone, and survivorship bias measured at +0.74 points a year. A day the capture misses is gone permanently &mdash; which is the whole reason it exists.</div>
+        </article>
+
+        <article class="item">
+          <div class="ihead"><h3>MAESTRO: AI Text-to-Video Lecture System</h3><span class="when">2025 · Fordham EDM Lab</span></div>
+          <p class="tldr">Script synthesis, text-to-speech and FFmpeg rendering turn written material into educational lectures, with RAG answering student questions over them. Running live for the university.</p>
+          <div class="acts"><a href="#">write-up &rarr;</a><span class="venue">Led the project</span></div>
+        </article>
+
+        <article class="item">
+          <div class="ihead"><h3>No-Propagation Diffusion Transformers</h3><span class="when">2025 · Reproduction</span></div>
+          <p class="tldr">A from-scratch reproduction and extension of NoPropDT, rebuilt layer by layer. ~99% on MNIST and 76% on CIFAR-10, without backpropagation.</p>
+          <div class="acts"><a href="#">write-up &rarr;</a><span class="venue">arXiv:2503.24322</span></div>
+        </article>
+
+        <article class="item">
+          <div class="ihead"><h3>H-KFX: Autonomous Bug-Fixing Agent</h3><span class="when">2025 · Won MUG Hackathon</span></div>
+          <p class="tldr">Reads a Jira ticket, retrieves the relevant context, generates and validates a fix, and opens the pull request. Ticket to PR in 60&ndash;90 seconds.</p>
+          <div class="acts"><a href="#">write-up &rarr;</a><span class="venue">MCP · RAG</span></div>
+        </article>
+
+        <article class="item">
+          <div class="ihead"><h3>Causal Factor Discovery in S&amp;P 500 Returns</h3><span class="when">2025</span></div>
+          <p class="tldr">Double Machine Learning for ATE and CATE estimation of momentum on next-day returns. Orthogonalizing the confounders is what separates drivers from fellow travellers.</p>
+          <div class="acts"><a href="#">write-up &rarr;</a><span class="venue">DML</span></div>
+        </article>
+
+        <article class="item">
+          <div class="ihead"><h3>AutomatedBI &amp; RamsNavigator</h3><span class="when">2024&ndash;2025</span></div>
+          <p class="tldr">A CrewAI system of four agents that reads raw data and produces an interactive dashboard (~80% less manual reporting), and indoor campus navigation on Neo4j with an LLM front end.</p>
+          <div class="acts"><a href="#">write-ups &rarr;</a><span class="venue">Agents · Graphs</span></div>
+        </article>
+      </section>
+
+      <section id="writing">
+        <div class="shead"><h2>Writing</h2><span class="n">2 entries</span></div>
+        <article class="item">
+          <div class="ihead"><h3>Necessity Protects CoT Monitoring by Prevention, Not Disclosure</h3><span class="when">2026 · LessWrong</span></div>
+          <p class="tldr">Cue-injection results across three model families, and the argument that the necessity arm is structurally the wrong place to measure faithfulness.</p>
+          <div class="acts"><a href="#">read &rarr;</a><span class="venue">Results</span></div>
+        </article>
+        <article class="item">
+          <div class="ihead"><h3>When Is Chain-of-Thought Honest?</h3><span class="when">2025 · Design note</span></div>
+          <p class="tldr">Written before any results were in: motivation, the necessity/propensity distinction, the experimental design, and what would have counted as an alarming outcome. Kept exactly as written.</p>
+          <div class="acts"><a href="#">read &rarr;</a><span class="venue">Pre-registration</span></div>
+        </article>
+      </section>
+
+      <section id="experience">
+        <div class="shead"><h2>Experience</h2><span class="n">4 roles</span></div>
+        <table class="cv">
+          <tr><td class="d">Aug 2025 &ndash; May 2026</td><td>
+            <div class="r">Teaching Assistant</div><div class="o">Fordham University, New York</div>
+            <div class="x">Graduate <em>Data Mining</em> and <em>Machine Learning for Finance</em>. Weekly office hours, 1:1 research mentoring, guest lectures.</div></td></tr>
+          <tr><td class="d">Aug 2024 &ndash; May 2026</td><td>
+            <div class="r">Graduate Research Assistant</div><div class="o">Fordham Educational Data Mining Lab</div>
+            <div class="x">Led MAESTRO; explored few-shot 2D-to-3D reconstruction on medical imaging (OASIS) using efficient neural representations.</div></td></tr>
+          <tr><td class="d">Jan 2023 &ndash; Jul 2024</td><td>
+            <div class="r">Associate Data Consultant</div><div class="o">Decision Foundry, Bangalore</div>
+            <div class="x">ETL workflows in DBT and Tableau Prep, Redshift SQL 40% faster on 1&nbsp;TB+ datasets, 25+ Tableau / Salesforce CRMA dashboards delivered.</div></td></tr>
+          <tr><td class="d">Jan 2022 &ndash; Jul 2023</td><td>
+            <div class="r">Undergraduate Research Assistant</div><div class="o">Jain University, Bangalore</div>
+            <div class="x">Deep learning pipelines for medical imaging; published on toxic language detection and multiclass skin lesion classification.</div></td></tr>
+        </table>
+      </section>
+
+      <section id="teaching">
+        <div class="shead"><h2>Education &amp; Teaching</h2><span class="n">Fordham</span></div>
+        <table class="cv">
+          <tr><td class="d">2024 &ndash; May 2026</td><td><div class="r">M.S. Data Science</div><div class="o">Fordham University, New York</div></td></tr>
+          <tr><td class="d">May 2026</td><td><div class="r">Technical AI Safety Course</div><div class="o">BlueDot Impact</div>
+            <div class="x">Capstone: <a href="#">CoT Faithfulness Under Necessity vs. Propensity</a>, published on LessWrong.</div></td></tr>
+          <tr><td class="d">2019 &ndash; 2023</td><td><div class="r">B.Tech Computer Science</div><div class="o">Jain University, Bangalore</div></td></tr>
+          <tr><td class="d">Spring 2026 / Fall 2025</td><td><div class="r">Teaching Assistant, graduate sections</div><div class="o">Machine Learning for Finance &nbsp;·&nbsp; Data Mining</div></td></tr>
+        </table>
+      </section>
+
+      <div class="foot">
+        <a href="mailto:asanjyal82@gmail.com">asanjyal82@gmail.com</a>
+        <a href="https://github.com/ANKITSANJYAL" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://linkedin.com/in/ankit-sanjyal" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="#">CV</a>
+        <span>M.S. Data Science, Fordham</span>
+      </div>
+
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="scrim" id="scrim"></div>
+<div class="finder" id="finder" role="dialog" aria-modal="true" aria-label="Search">
+  <div class="fbox">
+    <input id="q" type="search" autocomplete="off" spellcheck="false" placeholder="Ask for anything — research, projects, teaching, writing…">
+    <div class="fres" id="fres"></div>
+    <div class="fhint"><span id="fcount"></span><span>esc to close</span></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var clk=document.getElementById('clock');
+  function tick(){ clk.textContent=new Date().toLocaleTimeString('en-US',{hour12:false}); }
+  tick(); setInterval(tick,1000);
+
+  /* inline expand */
+  document.addEventListener('click',function(e){
+    var b=e.target.closest('[data-more]'); if(!b) return;
+    var m=b.closest('.item').querySelector('.more');
+    var on=m.classList.toggle('on');
+    b.textContent = on ? 'hide' : (b.dataset.label||'read more');
+  });
+  [].forEach.call(document.querySelectorAll('[data-more]'),function(b){ b.dataset.label=b.textContent; });
+
+  /* scrollspy for the rail */
+  var links=[].slice.call(document.querySelectorAll('.rail a'));
+  var secs=links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(en){
+      if(!en.isIntersecting) return;
+      links.forEach(function(a,i){ a.classList.toggle('on', secs[i]===en.target); });
+    });
+  },{rootMargin:'-110px 0px -70% 0px'});
+  secs.forEach(function(s){ if(s) io.observe(s); });
+
+  /* search */
+  var ENTRIES=[].map.call(document.querySelectorAll('.item'),function(it){
+    return {title:it.querySelector('h3').textContent,
+            cat:it.closest('section').id,
+            hay:it.textContent.toLowerCase(),
+            href:'#'+it.closest('section').id};
+  });
+  var scrim=document.getElementById('scrim'), finder=document.getElementById('finder'),
+      q=document.getElementById('q'), fres=document.getElementById('fres'), fcount=document.getElementById('fcount');
+  var sel=-1, shown=[];
+  function draw(){
+    var t=q.value.trim().toLowerCase();
+    shown = t ? ENTRIES.filter(function(e){return e.hay.indexOf(t)>-1;}) : ENTRIES;
+    sel=-1;
+    fres.innerHTML = shown.length
+      ? shown.map(function(e){return '<a href="'+e.href+'"><div class="ft">'+e.title+'</div><div class="fc">'+e.cat+'</div></a>';}).join('')
+      : '<div class="fempty">nothing for &ldquo;'+q.value.trim()+'&rdquo; — try interpretability, diffusion, agents, teaching</div>';
+    fcount.textContent=shown.length+(shown.length===1?' entry':' entries');
+  }
+  function openF(){ scrim.classList.add('on'); finder.classList.add('on'); q.value=''; draw(); q.focus(); }
+  function closeF(){ scrim.classList.remove('on'); finder.classList.remove('on'); }
+  document.getElementById('openFind').addEventListener('click',function(e){e.preventDefault();openF();});
+  scrim.addEventListener('click',closeF);
+  fres.addEventListener('click',closeF);
+  q.addEventListener('input',draw);
+  addEventListener('keydown',function(e){
+    if(e.key==='Escape'){closeF();return;}
+    if(e.key==='/'&&document.activeElement!==q){e.preventDefault();openF();return;}
+    if(!finder.classList.contains('on'))return;
+    var as=fres.querySelectorAll('a'); if(!as.length)return;
+    if(e.key==='ArrowDown'||e.key==='ArrowUp'){
+      e.preventDefault();
+      if(sel>=0) as[sel].classList.remove('sel');
+      sel=(sel+(e.key==='ArrowDown'?1:-1)+as.length)%as.length;
+      as[sel].classList.add('sel'); as[sel].scrollIntoView({block:'nearest'});
+    }
+    if(e.key==='Enter'&&sel>=0){ as[sel].click(); }
+  });
+})();
+</script>
+</body>
+</html>

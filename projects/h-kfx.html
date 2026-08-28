@@ -6,7 +6,7 @@
   <title>H-KFX: Ankit Sanjyal</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/shell.css">
   <style>
     .proj-hero { background: #fafafa; border: 1px solid #e8e8e8; border-radius: 0; padding: 28px 32px; margin-bottom: 32px; }
@@ -32,19 +32,22 @@
   <div id="nav-inner">
     <a href="../index.html" class="nav-name">Ankit Sanjyal</a>
     <div id="nav-links">
-      <a href="../index.html">Search</a>
-      <a href="../cv.html">CV</a>
+      <a href="../index.html">Home</a>
+      <a href="../index.html#research">Research</a>
+      <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#writing">Writing</a>
+      <a href="https://docs.google.com/document/d/1iLOd3weF8ErrZbXsRrUp5AjiW-H7to-MsZ9Qjo1kETg/edit?usp=sharing" target="_blank" rel="noopener">CV &nearr;</a>
     </div>
   </div>
 </nav>
 
 <div id="page-wrap">
 
-  <a class="back-link" href="../index.html">&larr; Back to search</a>
+  <a class="back-link" href="../index.html#projects">&larr; Back</a>
 
   <div class="proj-hero">
     <div class="proj-title">H-KFX: Hybrid Knowledge Fixer: Autonomous Bug-Fixing Agent</div>
-    <div class="proj-tagline">A fully autonomous tool-using agent: reads a task description, retrieves context (RAG), reasons, generates and validates a solution, and acts — 60–90s ticket-to-PR. A working instance of the autonomous investigator architecture that underlies agents for automating interpretability.</div>
+    <div class="proj-tagline">A fully autonomous tool-using agent: reads a task description, retrieves context (RAG), reasons, generates and validates a solution, and acts, 60–90s ticket-to-PR. A working instance of the autonomous investigator architecture that underlies agents for automating interpretability.</div>
     <div>
       <span class="tag-pill">GPT-4o</span>
       <span class="tag-pill">MCP</span>
@@ -145,8 +148,8 @@
 
   <h2 class="section-heading">Relevance to Automating Interpretability</h2>
   <p>
-    The architecture of H-KFX — <em>read a task description → retrieve relevant context → reason →
-    use tools → validate the output → report</em> — is the same scaffold needed for an autonomous
+    The architecture of H-KFX, <em>read a task description → retrieve relevant context → reason →
+    use tools → validate the output → report</em>, is the same scaffold needed for an autonomous
     interpretability investigator agent. Such an agent would: read a model behavior anomaly,
     retrieve prior circuit analyses, use interpretability tools (activation patching, probing) to
     investigate, validate a mechanistic hypothesis, and produce an explanation.
@@ -170,5 +173,13 @@
   </div>
 
 </div>
+<div class="reader-clock" id="reader-clock"></div>
+<script>
+(function(){
+  var c = document.getElementById('reader-clock');
+  function tick(){ c.textContent = new Date().toLocaleTimeString('en-US', {hour12:false}); }
+  tick(); setInterval(tick, 1000);
+})();
+</script>
 </body>
 </html>

@@ -6,7 +6,7 @@
   <title>NoPropagation: Ankit Sanjyal</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/shell.css">
   <style>
     .proj-hero { background: #fafafa; border: 1px solid #e8e8e8; border-radius: 0; padding: 28px 32px; margin-bottom: 32px; }
@@ -31,19 +31,22 @@
   <div id="nav-inner">
     <a href="../index.html" class="nav-name">Ankit Sanjyal</a>
     <div id="nav-links">
-      <a href="../index.html">Search</a>
-      <a href="../cv.html">CV</a>
+      <a href="../index.html">Home</a>
+      <a href="../index.html#research">Research</a>
+      <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#writing">Writing</a>
+      <a href="https://docs.google.com/document/d/1iLOd3weF8ErrZbXsRrUp5AjiW-H7to-MsZ9Qjo1kETg/edit?usp=sharing" target="_blank" rel="noopener">CV &nearr;</a>
     </div>
   </div>
 </nav>
 
 <div id="page-wrap">
 
-  <a class="back-link" href="../index.html">&larr; Back to search</a>
+  <a class="back-link" href="../index.html#projects">&larr; Back</a>
 
   <div class="proj-hero">
     <div class="proj-title">No-Propagation Diffusion Transformers (NoPropDT)</div>
-    <div class="proj-tagline">From-scratch reproduction and extension of a recent Oxford paper. Demonstrates the empirical reproduction skill that interpretability research runs on — rebuilding an architecture layer by layer to understand it mechanically. (~99% MNIST, ~76% CIFAR-10 without backpropagation.)</div>
+    <div class="proj-tagline">From-scratch reproduction and extension of a recent Oxford paper. Demonstrates the empirical reproduction skill that interpretability research runs on, rebuilding an architecture layer by layer to understand it mechanically. (~99% MNIST, ~76% CIFAR-10 without backpropagation.)</div>
     <div>
       <span class="tag-pill">PyTorch</span>
       <span class="tag-pill">Diffusion</span>
@@ -62,7 +65,7 @@
   <img src="../assets/images/MnistNoProp.png" alt="NoPropDT accuracy on MNIST" class="teaser-img">
 
   <div class="insight-box">
-    ✅ <strong>Result:</strong> ~99% validation accuracy on MNIST by epoch 7 and ~76% on CIFAR-10 by epoch 50 —
+    ✅ <strong>Result:</strong> ~99% validation accuracy on MNIST by epoch 7 and ~76% on CIFAR-10 by epoch 50 , 
     achieved without a single gradient flowing backward through the network.
   </div>
 
@@ -78,7 +81,7 @@
   </ul>
   <p>
     NoPropDT (from researchers at the University of Oxford) replaces backprop with a stack of
-    <em>local denoising blocks</em>. Each block learns to denoise a class embedding toward the correct label —
+    <em>local denoising blocks</em>. Each block learns to denoise a class embedding toward the correct label , 
     no global gradient, no backward pass through the whole network.
   </p>
 
@@ -144,8 +147,8 @@ main.py
   <p>
     <strong>Relevance to interpretability research:</strong> Interpretability work depends heavily on the
     ability to reproduce and extend existing architectures precisely enough to probe their internals.
-    The skill being practiced here — reading a paper, reconstructing it layer by layer, verifying that
-    your numbers match, then extending it — is exactly the empirical reproduction skill that
+    The skill being practiced here, reading a paper, reconstructing it layer by layer, verifying that
+    your numbers match, then extending it, is exactly the empirical reproduction skill that
     mechanistic interpretability research runs on.
   </p>
   <p>
@@ -159,5 +162,13 @@ main.py
   </div>
 
 </div>
+<div class="reader-clock" id="reader-clock"></div>
+<script>
+(function(){
+  var c = document.getElementById('reader-clock');
+  function tick(){ c.textContent = new Date().toLocaleTimeString('en-US', {hour12:false}); }
+  tick(); setInterval(tick, 1000);
+})();
+</script>
 </body>
 </html>

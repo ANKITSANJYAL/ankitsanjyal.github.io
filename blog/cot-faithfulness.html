@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>When Is Chain-of-Thought Honest? — Ankit Sanjyal</title>
-  <meta name="description" content="Testing whether language models are more honest in their chain-of-thought when reasoning is necessary vs. optional — and what it means for AI safety monitoring.">
+  <title>When Is Chain-of-Thought Honest? · Ankit Sanjyal</title>
+  <meta name="description" content="Testing whether language models are more honest in their chain-of-thought when reasoning is necessary vs. optional, and what it means for AI safety monitoring.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/shell.css">
   <style>
     .post-header { margin-bottom: 36px; padding-bottom: 24px; border-bottom: 1px solid #e8e8e8; }
@@ -38,21 +38,24 @@
   <div id="nav-inner">
     <a href="../index.html" class="nav-name">Ankit Sanjyal</a>
     <div id="nav-links">
-      <a href="../index.html">Search</a>
-      <a href="../cv.html">CV</a>
+      <a href="../index.html">Home</a>
+      <a href="../index.html#research">Research</a>
+      <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#writing">Writing</a>
+      <a href="https://docs.google.com/document/d/1iLOd3weF8ErrZbXsRrUp5AjiW-H7to-MsZ9Qjo1kETg/edit?usp=sharing" target="_blank" rel="noopener">CV &nearr;</a>
     </div>
   </div>
 </nav>
 
 <div id="page-wrap">
 
-  <a class="back-link" href="../index.html">&larr; Back to search</a>
+  <a class="back-link" href="../index.html#writing">&larr; Back</a>
 
   <div class="post-header">
     <div class="post-title">When Is Chain-of-Thought Honest?<br>Testing Faithfulness Under Necessity vs. Propensity</div>
     <div class="post-meta">
       June 2026 &nbsp;·&nbsp; Ankit Sanjyal &nbsp;·&nbsp;
-      <span class="status-badge" style="background:#fafafa;color:#3a3a3a;border-color:#cfcfcf;">Design note — results published</span>
+      <span class="status-badge" style="background:#fafafa;color:#3a3a3a;border-color:#cfcfcf;">Design note, results published</span>
     </div>
     <div style="margin-top:8px;">
       <span class="post-tag">CoT Faithfulness</span>
@@ -69,7 +72,7 @@
       <a href="necessity-protects-cot-monitoring.html">Necessity Protects Chain-of-Thought Monitoring by
       Prevention, Not Disclosure</a>, also published on
       <a href="https://www.lesswrong.com/posts/4EvWpvFvHzmPvuiF5/necessity-protects-chain-of-thought-monitoring-by-prevention" target="_blank">LessWrong</a>.
-      The post below is the design note written before results — kept as written.
+      The post below is the design note written before results, kept as written.
     </div>
 
     <p>
@@ -265,7 +268,7 @@
 
     <p class="ref" style="margin-top:1.2em; color:#8e8e8e;">
       <em>This project is ongoing. I'll update this post or publish a follow-up when results are in.
-      If you're working on related questions, I'd genuinely like to hear from you —
+      If you're working on related questions, I'd genuinely like to hear from you , 
       <a href="mailto:asanjyal82@gmail.com">asanjyal82@gmail.com</a>.</em>
     </p>
 
@@ -278,5 +281,13 @@
   </div>
 
 </div>
+<div class="reader-clock" id="reader-clock"></div>
+<script>
+(function(){
+  var c = document.getElementById('reader-clock');
+  function tick(){ c.textContent = new Date().toLocaleTimeString('en-US', {hour12:false}); }
+  tick(); setInterval(tick, 1000);
+})();
+</script>
 </body>
 </html>

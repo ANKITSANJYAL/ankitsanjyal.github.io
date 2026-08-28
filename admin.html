@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Thoughts editor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/shell.css">
+<style>
+  body{background:#fbfaf8;color:#101216}
+  .wrap{max-width:860px;margin:0 auto;padding:44px 30px 90px}
+  h1{font-family:var(--serif);font-weight:500;font-size:30px;margin:0 0 4px}
+  .sub{font-family:var(--serif);font-size:15px;color:#5a5f68;margin:0 0 34px}
+
+  .panel{border:1px solid #e6e4df;background:#fff;padding:26px 28px;margin-bottom:20px}
+  .panel.narrow{max-width:460px}
+  label{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.15em;
+        text-transform:uppercase;color:#7c818a;margin:0 0 6px}
+  input[type=text],input[type=email],select{
+    width:100%;font-family:var(--ui);font-size:14px;color:#101216;background:#fbfaf8;
+    border:1px solid #e6e4df;padding:9px 11px;outline:none}
+  input:focus,select:focus{border-color:#101216}
+  #code{font-family:var(--mono);font-size:22px;letter-spacing:.42em;text-align:center;padding:12px}
+  .field{margin-bottom:18px}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .hint{font-size:12px;color:#7c818a;margin:6px 0 0;line-height:1.55}
+
+  button.act{font-family:var(--ui);font-size:13px;border:1px solid #101216;background:none;
+    color:#101216;padding:8px 18px;cursor:pointer}
+  button.act:hover{background:#101216;color:#fbfaf8}
+  button.act[disabled]{opacity:.4;cursor:default}
+  button.act[disabled]:hover{background:none;color:#101216}
+  button.ghost{border-color:#cfcdc7;color:#5a5f68}
+  button.link{border:0;background:none;color:#5a5f68;font-size:12.5px;padding:0;cursor:pointer;
+    text-decoration:underline;text-underline-offset:3px}
+  button.link:hover{color:#101216;background:none}
+  .bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:22px}
+  .bar .spacer{margin-left:auto}
+
+  .tools{display:flex;flex-wrap:wrap;gap:4px;border:1px solid #e6e4df;border-bottom:0;
+    padding:7px 8px;background:#f4f2ee}
+  .tools button{font-family:var(--ui);font-size:12px;min-width:30px;height:28px;padding:0 9px;
+    border:1px solid transparent;background:none;cursor:pointer;color:#3c4048}
+  .tools button:hover{background:#fff;border-color:#e6e4df}
+  .tools button.on{background:#101216;color:#fbfaf8}
+  .tools .sep{width:1px;background:#e6e4df;margin:2px 5px}
+  .tools b{font-weight:700}
+  .tools i{font-style:italic}
+
+  #body{border:1px solid #e6e4df;background:#fff;padding:20px 22px;min-height:340px;
+    font-family:var(--ui);font-size:14.5px;line-height:1.75;color:#33342f;outline:none}
+  #body:focus{border-color:#101216}
+  #body p{margin:0 0 13px}
+  #body h3{font-family:var(--serif);font-weight:500;font-size:19px;margin:22px 0 8px}
+  #body blockquote{margin:0 0 13px;padding-left:15px;border-left:2px solid #cfcdc7;color:#5a5f68}
+  #body ul,#body ol{margin:0 0 13px;padding-left:20px}
+  #body a{color:#101216}
+  #body:empty::before{content:attr(data-placeholder);color:#9aa0a8}
+
+  .list{border:1px solid #e6e4df;background:#fff}
+  .list .item{display:flex;align-items:baseline;gap:12px;padding:11px 16px;
+    border-bottom:1px solid #f0eeea;cursor:pointer}
+  .list .item:last-child{border-bottom:0}
+  .list .item:hover{background:#f4f2ee}
+  .list .item .d{font-family:var(--mono);font-size:10px;color:#7c818a;white-space:nowrap}
+  .list .item .t{font-family:var(--serif);font-size:16px}
+  .list .item .g{margin-left:auto;font-family:var(--mono);font-size:9px;letter-spacing:.12em;
+    text-transform:uppercase;color:#9aa0a8}
+  .list .empty{padding:16px;font-family:var(--serif);font-style:italic;color:#7c818a}
+
+  .say{font-size:13px;padding:11px 14px;margin:16px 0 0;border-left:2px solid #101216;background:#f4f2ee}
+  .say.bad{border-left-color:#8a1f1f;color:#8a1f1f}
+  .say.good{border-left-color:#1f6b3a}
+  .say[hidden]{display:none}
+
+  .hide{display:none}
+  .preview{background:#fffdf6;border-radius:16px;padding:28px 32px;margin-top:18px}
+  .preview h2{font-family:var(--serif);font-weight:500;font-size:22px;margin:0 0 3px}
+  .preview .date{font-family:var(--serif);font-style:italic;font-size:12.5px;color:#7a7a72;margin:0 0 18px}
+  .preview .txt{font-size:13.5px;line-height:1.72;color:#33342f}
+  .preview .txt p{margin:0 0 13px}
+  .preview .txt h3{font-family:var(--serif);font-weight:500;font-size:18px;margin:20px 0 8px}
+  .preview .txt blockquote{margin:0 0 13px;padding-left:15px;border-left:2px solid #cfcdc7;color:#5a5f68}
+  .preview .sig{font-family:var(--serif);font-style:italic;font-size:13px;color:#7a7a72;
+    text-align:right;margin-top:20px}
+  .setup{font-size:13px;line-height:1.7;color:#3c4048}
+  .setup code{font-family:var(--mono);font-size:12px;background:#f4f2ee;padding:1px 5px}
+  @media (max-width:620px){ .two{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+
+<nav id="site-nav">
+  <div id="nav-inner">
+    <a href="index.html" class="nav-name">Ankit Sanjyal</a>
+    <div id="nav-links">
+      <a href="index.html#thoughts">Thoughts</a>
+      <a href="#" id="signout" class="hide">Sign out</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <!-- ============ NOT CONFIGURED YET ============ -->
+  <section id="unset" class="hide">
+    <h1>Thoughts editor</h1>
+    <p class="sub">One setting missing.</p>
+    <div class="panel setup">
+      <p>Deploy the Worker in <code>worker/</code>, then put its URL in the
+      <code>AUTH</code> constant at the top of the script in <code>admin.html</code>.
+      The steps are in <code>worker/README.md</code>.</p>
+    </div>
+  </section>
+
+  <!-- ============ SIGN IN ============ -->
+  <section id="lock" class="hide">
+    <h1>Thoughts editor</h1>
+    <p class="sub">Writes to the thoughts section, and nothing else.</p>
+
+    <div class="panel narrow" id="step-email">
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" autocomplete="email" spellcheck="false" placeholder="you@example.com">
+        <p class="hint">A six-digit code is sent to the one address allowed to edit. It lasts ten minutes.</p>
+      </div>
+      <div class="bar"><button class="act" id="send">Send me a code</button></div>
+      <p class="say" id="lock-say" hidden></p>
+    </div>
+
+    <div class="panel narrow hide" id="step-code">
+      <div class="field">
+        <label for="code">Code</label>
+        <input type="text" id="code" inputmode="numeric" autocomplete="one-time-code"
+               maxlength="6" spellcheck="false" placeholder="000000">
+        <p class="hint" id="sent-to"></p>
+      </div>
+      <div class="bar">
+        <button class="act" id="verify">Sign in</button>
+        <span class="spacer"></span>
+        <button class="link" id="again">Start again</button>
+      </div>
+      <p class="say" id="code-say" hidden></p>
+    </div>
+  </section>
+
+  <!-- ============ EDITOR ============ -->
+  <section id="app" class="hide">
+    <h1>Thoughts</h1>
+    <p class="sub" id="who"></p>
+
+    <div class="panel">
+      <div class="bar" style="margin:0 0 16px">
+        <strong style="font-family:var(--serif);font-size:18px;font-weight:500">Published</strong>
+        <span class="spacer"></span>
+        <button class="act" id="new">Write a new one</button>
+      </div>
+      <div class="list" id="list"></div>
+    </div>
+
+    <div class="panel hide" id="editor">
+      <div class="two">
+        <div class="field">
+          <label for="group">Section</label>
+          <select id="group">
+            <option value="essays">Essay</option>
+            <option value="reading">Reading note</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="date">Date shown in the list</label>
+          <input type="text" id="date" placeholder="2026" spellcheck="false">
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="title">Title</label>
+        <input type="text" id="title" placeholder="What I keep coming back to">
+      </div>
+
+      <div class="field">
+        <label for="meta">Line under the title, inside the popup</label>
+        <input type="text" id="meta" placeholder="essay &middot; august 2026">
+      </div>
+
+      <div class="field">
+        <label for="tags">Filter keywords</label>
+        <input type="text" id="tags" placeholder="life writing research policy" spellcheck="false">
+        <p class="hint">Space separated. These never appear on the page, they only feed the thoughts filter.</p>
+      </div>
+
+      <div class="field">
+        <label>Body</label>
+        <div class="tools" id="tools">
+          <button type="button" data-cmd="bold" title="Bold, Cmd B"><b>B</b></button>
+          <button type="button" data-cmd="italic" title="Italic, Cmd I"><i>I</i></button>
+          <span class="sep"></span>
+          <button type="button" data-block="p" title="Paragraph">&para;</button>
+          <button type="button" data-block="h3" title="Subheading">H</button>
+          <button type="button" data-block="blockquote" title="Quote">&ldquo;</button>
+          <button type="button" data-cmd="insertUnorderedList" title="Bullets">&bull;</button>
+          <span class="sep"></span>
+          <button type="button" data-link="1" title="Link">link</button>
+          <button type="button" data-cmd="unlink" title="Remove link">unlink</button>
+        </div>
+        <div id="body" contenteditable="true" data-placeholder="Start writing."></div>
+        <p class="hint">Bold, italic, subheadings, quotes, bullets and links are kept. Anything else is
+        dropped when you save, so pasting from a document will not drag styling into the site.
+        Cmd S saves.</p>
+      </div>
+
+      <div class="bar">
+        <button class="act" id="save">Save and publish</button>
+        <button class="act ghost" id="preview-btn">Preview</button>
+        <span class="spacer"></span>
+        <button class="act ghost" id="delete" hidden>Delete</button>
+        <button class="act ghost" id="cancel">Close</button>
+      </div>
+      <p class="say" id="say" hidden></p>
+
+      <div id="preview" class="hide">
+        <div class="preview">
+          <h2 id="pv-title"></h2>
+          <p class="date" id="pv-date"></p>
+          <div class="txt" id="pv-body"></div>
+          <p class="sig">Ankit</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  /* The deployed Worker. Everything this page does goes through it, and it is
+     the only party holding anything that can write to the repository. */
+  var AUTH = 'https://thoughts-auth.sanjyalankit.workers.dev';
+
+  var $ = function (id) { return document.getElementById(id); };
+  var session = null, notes = [], editing = null, pendingEmail = '';
+
+  function say(el, msg, kind) {
+    el.textContent = msg || '';
+    el.className = 'say' + (kind ? ' ' + kind : '');
+    el.hidden = !msg;
+  }
+  function show(id) {
+    ['unset', 'lock', 'app'].forEach(function (s) {
+      $(s).classList.toggle('hide', s !== id);
+    });
+  }
+
+  /* ------------------------------------------------------------ transport */
+
+  function call(path, opts) {
+    opts = opts || {};
+    var headers = { 'content-type': 'application/json' };
+    if (session) headers.authorization = 'Bearer ' + session.token;
+    return fetch(AUTH.replace(/\/+$/, '') + path, {
+      method: opts.method || 'GET',
+      headers: headers,
+      body: opts.body ? JSON.stringify(opts.body) : undefined
+    }).then(function (r) {
+      return r.json().catch(function () { return {}; }).then(function (j) {
+        if (r.status === 401 && session) { signOut(true); }
+        if (!r.ok) throw new Error(j.error || ('Request failed, ' + r.status));
+        return j;
+      });
+    });
+  }
+
+  function saveSession(s) {
+    session = s;
+    try { sessionStorage.setItem('thoughts_session', JSON.stringify(s)); } catch (e) {}
+  }
+  function loadSession() {
+    try {
+      var raw = sessionStorage.getItem('thoughts_session');
+      if (!raw) return null;
+      var s = JSON.parse(raw);
+      if (!s || !s.token || s.exp * 1000 < Date.now()) return null;
+      return s;
+    } catch (e) { return null; }
+  }
+  function signOut(expired) {
+    session = null;
+    try { sessionStorage.removeItem('thoughts_session'); } catch (e) {}
+    show('lock');
+    $('step-code').classList.add('hide');
+    $('step-email').classList.remove('hide');
+    $('signout').classList.add('hide');
+    if (expired) say($('lock-say'), 'That session expired. Sign in again.', 'bad');
+  }
+
+  /* ---------------------------------------------------------------- sign in */
+
+  $('send').addEventListener('click', function () {
+    var email = $('email').value.trim();
+    if (!email || email.indexOf('@') < 0) return say($('lock-say'), 'Enter your email address.', 'bad');
+    var btn = this;
+    btn.disabled = true;
+    say($('lock-say'), 'Sending.');
+    call('/auth/request', { method: 'POST', body: { email: email } })
+      .then(function (j) {
+        pendingEmail = email;
+        say($('lock-say'), '');
+        $('sent-to').textContent = j.message || 'If that address can sign in, a code is on its way.';
+        $('step-email').classList.add('hide');
+        $('step-code').classList.remove('hide');
+        $('code').focus();
+      })
+      .catch(function (e) { say($('lock-say'), e.message, 'bad'); })
+      .then(function () { btn.disabled = false; });
+  });
+
+  $('verify').addEventListener('click', function () {
+    var code = $('code').value.trim();
+    if (!/^\d{6}$/.test(code)) return say($('code-say'), 'The code is six digits.', 'bad');
+    var btn = this;
+    btn.disabled = true;
+    say($('code-say'), 'Checking.');
+    call('/auth/verify', { method: 'POST', body: { email: pendingEmail, code: code } })
+      .then(function (j) {
+        saveSession({ token: j.token, exp: j.exp });
+        say($('code-say'), '');
+        $('code').value = '';
+        start();
+      })
+      .catch(function (e) { say($('code-say'), e.message, 'bad'); })
+      .then(function () { btn.disabled = false; });
+  });
+
+  $('again').addEventListener('click', function () {
+    $('step-code').classList.add('hide');
+    $('step-email').classList.remove('hide');
+    say($('code-say'), '');
+    say($('lock-say'), '');
+    $('email').focus();
+  });
+
+  $('email').addEventListener('keydown', function (e) { if (e.key === 'Enter') $('send').click(); });
+  $('code').addEventListener('keydown', function (e) { if (e.key === 'Enter') $('verify').click(); });
+  $('signout').addEventListener('click', function (e) { e.preventDefault(); signOut(false); });
+
+  /* ------------------------------------------------------------- the list */
+
+  function esc(t) {
+    return String(t == null ? '' : t)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  function drawList() {
+    var el = $('list');
+    if (!notes.length) { el.innerHTML = '<div class="empty">Nothing published yet.</div>'; return; }
+    el.innerHTML = notes.map(function (n, i) {
+      return '<div class="item" data-i="' + i + '">' +
+             '<span class="d">' + esc(n.date) + '</span>' +
+             '<span class="t">' + esc(n.title) + '</span>' +
+             '<span class="g">' + (n.group === 'essays' ? 'essay' : 'reading') + '</span></div>';
+    }).join('');
+  }
+
+  function refresh() {
+    return call('/thoughts').then(function (j) { notes = j.notes || []; drawList(); });
+  }
+
+  function start() {
+    show('app');
+    $('signout').classList.remove('hide');
+    $('who').textContent = 'Signed in. This page writes to the thoughts section only.';
+    refresh().catch(function (e) { say($('say'), e.message, 'bad'); });
+  }
+
+  /* ------------------------------------------------------------- the form */
+
+  function openNote(n) {
+    editing = n;
+    $('editor').classList.remove('hide');
+    $('preview').classList.add('hide');
+    $('group').value = n ? n.group : 'essays';
+    $('date').value  = n ? n.date  : String(new Date().getFullYear());
+    $('title').value = n ? n.title : '';
+    $('meta').value  = n ? n.meta  : '';
+    $('tags').value  = n ? n.tags  : '';
+    $('body').innerHTML = n ? n.body : '';
+    $('delete').hidden = !n;
+    say($('say'), '');
+    $('title').focus();
+    $('editor').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  $('list').addEventListener('click', function (e) {
+    var it = e.target.closest('.item');
+    if (it) openNote(notes[+it.dataset.i]);
+  });
+  $('new').addEventListener('click', function () { openNote(null); });
+  $('cancel').addEventListener('click', function () {
+    $('editor').classList.add('hide');
+    editing = null;
+  });
+
+  /* -------------------------------------------------------- the rich text */
+
+  $('tools').addEventListener('mousedown', function (e) { e.preventDefault(); });
+  $('tools').addEventListener('click', function (e) {
+    var b = e.target.closest('button');
+    if (!b) return;
+    $('body').focus();
+    if (b.dataset.cmd) {
+      document.execCommand(b.dataset.cmd, false, null);
+    } else if (b.dataset.block) {
+      document.execCommand('formatBlock', false, b.dataset.block);
+    } else if (b.dataset.link) {
+      var url = window.prompt('Link to');
+      if (url) document.execCommand('createLink', false, url.trim());
+    }
+    syncTools();
+  });
+
+  function syncTools() {
+    [].forEach.call($('tools').querySelectorAll('button[data-cmd]'), function (b) {
+      var on = false;
+      try { on = document.queryCommandState(b.dataset.cmd); } catch (e) {}
+      b.classList.toggle('on', !!on);
+    });
+  }
+  document.addEventListener('selectionchange', function () {
+    if (document.activeElement === $('body')) syncTools();
+  });
+
+  $('body').addEventListener('keydown', function (e) {
+    if (!(e.metaKey || e.ctrlKey)) return;
+    var k = e.key.toLowerCase();
+    if (k === 'b' || k === 'i') { e.preventDefault(); document.execCommand(k === 'b' ? 'bold' : 'italic'); syncTools(); }
+    if (k === 's') { e.preventDefault(); $('save').click(); }
+  });
+
+  /* Paste arrives as plain text, so a Google Doc cannot bring its styling in. */
+  $('body').addEventListener('paste', function (e) {
+    e.preventDefault();
+    var t = (e.clipboardData || window.clipboardData).getData('text/plain');
+    document.execCommand('insertText', false, t);
+  });
+
+  /* ------------------------------------------------------------ tidy markup
+     The Worker validates and refuses anything outside the whitelist, so this
+     is here to make sure what we send conforms, not as the security boundary. */
+
+  var KEEP = { P: 1, STRONG: 1, EM: 1, A: 1, BLOCKQUOTE: 1, UL: 1, OL: 1, LI: 1, H3: 1, BR: 1 };
+  var RENAME = { B: 'strong', I: 'em', DIV: 'p', H1: 'h3', H2: 'h3', H4: 'h3', U: 'em' };
+
+  function tidy(host) {
+    var box = document.createElement('div');
+    box.innerHTML = host.innerHTML;
+
+    (function walk(node) {
+      [].slice.call(node.childNodes).forEach(function (el) {
+        if (el.nodeType === 3) return;
+        if (el.nodeType !== 1) { el.remove(); return; }
+        walk(el);
+
+        var tag = el.tagName;
+        if (RENAME[tag]) {
+          var swap = document.createElement(RENAME[tag]);
+          if (tag === 'A') swap.setAttribute('href', el.getAttribute('href') || '');
+          while (el.firstChild) swap.appendChild(el.firstChild);
+          el.replaceWith(swap);
+          el = swap;
+          tag = el.tagName;
+        }
+        if (!KEEP[tag]) {
+          var frag = document.createDocumentFragment();
+          while (el.firstChild) frag.appendChild(el.firstChild);
+          el.replaceWith(frag);
+          return;
+        }
+        [].slice.call(el.attributes).forEach(function (a) {
+          var allowed = tag === 'A' && (a.name === 'href' || a.name === 'target' || a.name === 'rel');
+          if (!allowed) el.removeAttribute(a.name);
+        });
+        if (tag === 'A') {
+          var h = (el.getAttribute('href') || '').trim();
+          if (!/^(https?:\/\/|mailto:|#|\/|[a-z0-9._-]+\.html)/i.test(h)) {
+            var keep = document.createDocumentFragment();
+            while (el.firstChild) keep.appendChild(el.firstChild);
+            el.replaceWith(keep);
+            return;
+          }
+          el.setAttribute('href', h);
+          if (/^https?:/i.test(h)) { el.setAttribute('target', '_blank'); el.setAttribute('rel', 'noopener'); }
+        }
+      });
+    })(box);
+
+    /* loose text at the top level becomes a paragraph of its own */
+    [].slice.call(box.childNodes).forEach(function (n) {
+      if (n.nodeType !== 3) return;
+      if (!n.textContent.trim()) { n.remove(); return; }
+      var p = document.createElement('p');
+      n.replaceWith(p);
+      p.appendChild(n);
+    });
+
+    return [].slice.call(box.children)
+      .filter(function (el) { return el.textContent.trim() || el.tagName === 'BR'; })
+      .map(function (el) { return el.outerHTML; })
+      .join('\n');
+  }
+
+  /* ------------------------------------------------------------ save, drop */
+
+  $('preview-btn').addEventListener('click', function () {
+    $('pv-title').textContent = $('title').value.trim() || '(untitled)';
+    $('pv-date').textContent = $('meta').value.trim();
+    $('pv-body').innerHTML = tidy($('body'));
+    $('preview').classList.remove('hide');
+    $('preview').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+
+  $('save').addEventListener('click', function () {
+    var title = $('title').value.trim(), body = tidy($('body'));
+    if (!title) return say($('say'), 'It needs a title.', 'bad');
+    if (!body)  return say($('say'), 'It needs a body.', 'bad');
+
+    var btn = this;
+    btn.disabled = true;
+    say($('say'), 'Saving.');
+
+    var note = {
+      group: $('group').value,
+      date:  $('date').value.trim(),
+      title: title,
+      meta:  $('meta').value.trim(),
+      tags:  $('tags').value.trim().toLowerCase(),
+      body:  body,
+      id:    editing ? editing.id : ''
+    };
+
+    call('/thoughts', { method: 'PUT', body: { action: 'save', note: note } })
+      .then(function (j) {
+        notes = j.notes || [];
+        drawList();
+        editing = notes.filter(function (n) { return n.title === title; })[0] || null;
+        $('delete').hidden = !editing;
+        say($('say'), 'Published. It goes live in about a minute, once GitHub Pages rebuilds.', 'good');
+      })
+      .catch(function (e) { say($('say'), 'Did not save. ' + e.message, 'bad'); })
+      .then(function () { btn.disabled = false; });
+  });
+
+  $('delete').addEventListener('click', function () {
+    if (!editing) return;
+    if (!window.confirm('Delete "' + editing.title + '" permanently?')) return;
+    var btn = this;
+    btn.disabled = true;
+    say($('say'), 'Deleting.');
+    call('/thoughts', { method: 'PUT', body: { action: 'delete', id: editing.id } })
+      .then(function (j) {
+        notes = j.notes || [];
+        drawList();
+        $('editor').classList.add('hide');
+        editing = null;
+        say($('say'), '');
+      })
+      .catch(function (e) { say($('say'), 'Did not delete. ' + e.message, 'bad'); })
+      .then(function () { btn.disabled = false; });
+  });
+
+  /* ------------------------------------------------------------------ boot */
+
+  if (!AUTH) { show('unset'); return; }
+  var existing = loadSession();
+  if (existing) { session = existing; start(); }
+  else { show('lock'); $('email').focus(); }
+})();
+</script>
+</body>
+</html>

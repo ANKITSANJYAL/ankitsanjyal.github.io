@@ -6,7 +6,7 @@
   <title>Local Prompt Adaptation: Ankit Sanjyal</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/shell.css">
   <style>
     .paper-hero { background: #fafafa; border: 1px solid #e8e8e8; border-radius: 0; padding: 28px 32px; margin-bottom: 32px; }
@@ -36,15 +36,18 @@
   <div id="nav-inner">
     <a href="../index.html" class="nav-name">Ankit Sanjyal</a>
     <div id="nav-links">
-      <a href="../index.html">Search</a>
-      <a href="../cv.html">CV</a>
+      <a href="../index.html">Home</a>
+      <a href="../index.html#research">Research</a>
+      <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#writing">Writing</a>
+      <a href="https://docs.google.com/document/d/1iLOd3weF8ErrZbXsRrUp5AjiW-H7to-MsZ9Qjo1kETg/edit?usp=sharing" target="_blank" rel="noopener">CV &nearr;</a>
     </div>
   </div>
 </nav>
 
 <div id="page-wrap">
 
-  <a class="back-link" href="../index.html">&larr; Back to search</a>
+  <a class="back-link" href="../index.html#research">&larr; Back</a>
 
   <div class="paper-hero">
     <div class="paper-title">Local Prompt Adaptation for Style-Consistent Multi-Object Generation in Diffusion Models</div>
@@ -124,13 +127,13 @@
       <td>SDXL (vanilla)</td>
       <td>0.2841</td>
       <td>0.2203</td>
-      <td>—</td>
+      <td>&ndash;</td>
     </tr>
     <tr>
       <td>SD1.5 (vanilla)</td>
       <td>0.2748</td>
       <td>0.2184</td>
-      <td>—</td>
+      <td>&ndash;</td>
     </tr>
     <tr>
       <td>SDXL + CFG tuning</td>
@@ -160,7 +163,7 @@
 
   <h2 class="section-heading">Transferable Skills</h2>
   <p>
-    LPA works by <strong>analyzing and surgically modifying cross-attention patterns</strong> — deciding which
+    LPA works by <strong>analyzing and surgically modifying cross-attention patterns</strong>, deciding which
     tokens attend to which layers at which timesteps. This is precisely the skill that interpretability research
     applies to language models: reading cross-attention to understand what the model is doing, then intervening
     on specific attention edges to test causal hypotheses. The injection-window ablation here (6 parsers × 4
@@ -183,5 +186,13 @@
   </div>
 
 </div>
+<div class="reader-clock" id="reader-clock"></div>
+<script>
+(function(){
+  var c = document.getElementById('reader-clock');
+  function tick(){ c.textContent = new Date().toLocaleTimeString('en-US', {hour12:false}); }
+  tick(); setInterval(tick, 1000);
+})();
+</script>
 </body>
 </html>

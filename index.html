@@ -4,294 +4,1002 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ankit Sanjyal</title>
-<meta name="description" content="Ankit Sanjyal — interpretability and AI safety researcher. Chain-of-thought faithfulness, model internals, and multi-agent monitorability.">
+<meta name="description" content="Ankit Sanjyal, interpretability and AI safety researcher. Chain-of-thought faithfulness, model internals, and multi-agent monitorability.">
 <meta property="og:title" content="Ankit Sanjyal">
 <meta property="og:description" content="Interpretability and AI safety researcher. Chain-of-thought faithfulness, model internals, and multi-agent monitorability.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/shell.css">
-<script>document.documentElement.className = 'js';</script>
 </head>
-<body class="shell">
+<body class="shell" data-mood="slate">
+
+<div class="bg"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="blob b4"></div></div>
+<div class="grain"></div>
+<div class="rain" id="rain"></div>
+
+<div class="chrome c-tl" id="clock">00:00:00</div>
+<div class="chrome c-tr"><button id="mood">Slate</button></div>
+<div class="chrome c-bl">in new york</div>
+<div class="chrome c-br"><button data-open="reading">what i&rsquo;m reading &nearr;</button></div>
+
+<header class="mark">
+  <h1>Ankit Sanjyal</h1>
+  <p>Jack of all trades</p>
+</header>
+
+<nav class="shell-nav" id="nav">
+  <button data-view="about" aria-current="true">about</button>
+  <button data-view="research">research</button>
+  <button data-view="projects">projects</button>
+  <button data-view="writing">writing</button>
+  <button data-view="thoughts">thoughts</button>
+  <button data-view="experience">experience</button>
+  <a href="https://docs.google.com/document/d/1iLOd3weF8ErrZbXsRrUp5AjiW-H7to-MsZ9Qjo1kETg/edit?usp=sharing" target="_blank" rel="noopener">cv &nearr;</a>
+</nav>
 
 <main class="stage">
-  <div class="id">
-    <h1>Ankit Sanjyal</h1><h3>Jack of all trades</h3>
-    <p class="role">Interpretability &amp; AI Safety &middot; New York</p>
-    <p class="bio">I work on whether a model&rsquo;s stated reasoning is a reliable window into the
-    computation that actually produced it &mdash; and what breaks when one model becomes many talking
-    to each other. M.S. Data Science, Fordham.</p>
-  </div>
 
-  <div class="ask">
-    <span class="pfx">&rsaquo;</span>
-    <input id="q" type="search" autocomplete="off" spellcheck="false"
-           placeholder="Ask for anything &mdash; research, projects, teaching, writing&hellip;"
-           aria-label="Search this site" aria-controls="results">
-    <span class="kbd" id="kbd">esc to clear</span>
-  </div>
+  <!-- ==================== ABOUT ==================== -->
+  <section class="view on" id="v-about">
+    <div class="about">
+      <figure class="portrait">
+        <div class="frame">
+          <canvas id="dither" width="250" height="250" aria-label="Portrait of Ankit Sanjyal"></canvas>
+          <img id="portrait-fallback" src="assets/images/profile.JPG" alt="Ankit Sanjyal" style="display:none">
+        </div>
+        <figcaption>the trace is not the computation</figcaption>
+      </figure>
 
-  <div class="jump">
-    <button data-q="research" aria-pressed="false">research</button>
-    <button data-q="project" aria-pressed="false">projects</button>
-    <button data-q="teaching" aria-pressed="false">teaching</button>
-    <button data-q="writing" aria-pressed="false">writing</button>
-    <button data-q="contact" aria-pressed="false">contact</button>
-  </div>
+      <div style="flex:1;min-width:0">
+        <div class="card prose">
+          <p>I work on whether a model&rsquo;s stated reasoning is a reliable window into the computation
+          that <b>actually produced it</b>, and what breaks when one model becomes many talking to each other.</p>
+          <p>Right now that means <b>chain-of-thought faithfulness</b>: injecting misleading cues into
+          thousands of problems and measuring, trace by trace, whether the reasoning ever admits them.
+          Capture is near zero where reasoning is <b>computationally necessary</b> and reaches 41% where
+          it is optional.</p>
+          <p>M.S. Data Science at <b>Fordham</b>, May 2026. Before that, two years of data infrastructure
+          in Bangalore, which is where I learned that most of research is plumbing.</p>
+          <p>I am open to collaboration, mentorship, and fellowship or research roles in interpretability
+          and AI safety.</p>
+        </div>
+        <div class="links">
+          <a href="mailto:asanjyal82@gmail.com">email &nearr;</a>
+          <a href="https://github.com/ANKITSANJYAL" target="_blank" rel="noopener">github &nearr;</a>
+          <a href="https://linkedin.com/in/ankit-sanjyal" target="_blank" rel="noopener">linkedin &nearr;</a>
+          <a href="https://docs.google.com/document/d/1xhv7jW235QPCo-AbFjMcOLMQA-ElxxYzHf6HNmd3XEY/edit?usp=sharing" target="_blank" rel="noopener">research statement &nearr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <div class="out" id="out">
-    <div class="results" id="results" role="list">
+  <!-- ==================== RESEARCH ==================== -->
+  <section class="view" id="v-research">
+    <div class="filter">
+      <span class="fq">&rsaquo;</span>
+      <input type="search" class="fi" data-filter="research" autocomplete="off" spellcheck="false"
+             placeholder="filter by keyword, try diffusion or multimodal" aria-label="Filter research">
+      <span class="fn" aria-live="polite"></span>
+    </div>
+    <div class="chips">
+        <button data-chip="diffusion">diffusion</button>
+        <button data-chip="interpretability">interpretability</button>
+        <button data-chip="multimodal">multimodal</button>
+        <button data-chip="computer-vision">computer vision</button>
+        <button data-chip="training-free">training free</button>
+    </div>
+    <div class="rows">
 
-      <a class="hit" role="listitem" href="papers/affect-diff.html"
-         data-cat="research" data-k="affect-diff causal diffusion bridge emotion recognition multimodal mosei notears vae ddpm attribution arxiv preprint">
-        <span class="top"><span class="t">Multimodal Emotion Recognition via Causal-Diffusion Bridge</span><span class="cat">Research</span></span>
-        <span class="sum">A NOTEARS causal graph re-weights the text, audio and video channels, a &beta;-VAE compresses them, and a stop-gradiented 1D DDPM prior structures the latent space. Counterfactual sampling over that graph makes attribution explicit, so the model reports which modality drove each prediction &mdash; an 18% relative improvement on CMU-MOSEI, and the only system with non-trivial performance on the minority emotions where every baseline fails.</span>
-        <span class="dest">Write-up &rarr;</span>
-      </a>
+      <article class="row" data-k="causal-interpretability notears diffusion multimodal class-imbalance cmu-mosei vae ddpm emotion pytorch">
+        <div class="rhead">
+          <h3><a href="papers/affect-diff.html">Multimodal Emotion Recognition via Causal-Diffusion Bridge</a></h3>
+          <span class="when">May 2026</span>
+        </div>
+        <p class="sum"><a href="papers/affect-diff.html">A NOTEARS causal graph re-weights the text, audio and video
+        channels, a &beta;-VAE compresses them, and a stop-gradiented 1D DDPM prior structures the latent space.
+        Counterfactual sampling over that graph makes attribution explicit, so the model reports which modality
+        drove each prediction: an 18% relative improvement on CMU-MOSEI, and the only system with non-trivial
+        performance on the minority emotions where every baseline fails.</a></p>
+        <div class="acts">
+          <button data-abs>abstract</button>
+          <a href="https://arxiv.org/abs/2605.08252" target="_blank" rel="noopener">arXiv &nearr;</a>
+          <a href="https://github.com/ANKITSANJYAL/Multimodal-Emotion-Recognition" target="_blank" rel="noopener">code &nearr;</a>
+          <span class="venue">arXiv:2605.08252</span>
+        </div>
+        <div class="abs" data-title="Multimodal Emotion Recognition via Causal-Diffusion Bridge (Affect-Diff)" data-date="arXiv preprint 2605.08252 · cs.LG, cs.AI · May 2026">
+          <p>We address extreme class imbalance in emotion recognition on CMU-MOSEI, where Happy represents 65.9%
+          of samples while three Ekman categories comprise under 7%. The Affect-Diff framework combines three
+          mechanisms: a NOTEARS-learned causal graph for modality re-weighting, a &beta;-VAE bottleneck for latent
+          compression, and a stop-gradiented 1D DDPM prior for latent space structuring. Testing on 3,292 aligned
+          samples achieved 0.384 validation balanced accuracy, representing an 18% relative improvement over the
+          strongest baseline, while baselines failed entirely on minority emotions.</p>
+          <p class="go"><a href="papers/affect-diff.html">Full write-up</a><a href="projects/affect-diff.html">Project notes</a><a href="https://arxiv.org/pdf/2605.08252" target="_blank" rel="noopener">PDF &nearr;</a></p>
+        </div>
+      </article>
 
-      <a class="hit" role="listitem" href="papers/rectifiedhr.html"
-         data-cat="research" data-k="rectifiedhr high resolution diffusion energy profiling guidance classifier-free cfg training-free arxiv preprint sdxl">
-        <span class="top"><span class="t">RectifiedHR: High-Resolution Diffusion via Energy Profiling</span><span class="cat">Research</span></span>
-        <span class="sum">Profiles the energy dynamics of the latent as a diffusion model samples, and uses that signal to schedule classifier-free guidance adaptively. The result is training-free high-resolution generation &mdash; no fine-tuning and no extra parameters, just a better-behaved guidance schedule.</span>
-        <span class="dest">Write-up &rarr;</span>
-      </a>
+      <article class="row" data-k="diffusion high-resolution classifier-free-guidance cfg computer-vision sdxl training-free energy sampling">
+        <div class="rhead">
+          <h3><a href="papers/rectifiedhr.html">RectifiedHR: High-Resolution Diffusion via Energy Profiling</a></h3>
+          <span class="when">Jul 2025</span>
+        </div>
+        <p class="sum"><a href="papers/rectifiedhr.html">Profiles the energy dynamics of the latent as a diffusion
+        model samples, then uses that signal to schedule classifier-free guidance adaptively. The result is
+        training-free high-resolution generation with no fine-tuning and no extra parameters, just a
+        better-behaved guidance schedule.</a></p>
+        <div class="acts">
+          <button data-abs>abstract</button>
+          <a href="https://arxiv.org/abs/2507.09441" target="_blank" rel="noopener">arXiv &nearr;</a>
+          <a href="https://github.com/ANKITSANJYAL/RectifiedHR" target="_blank" rel="noopener">code &nearr;</a>
+          <span class="venue">arXiv:2507.09441</span>
+        </div>
+        <div class="abs" data-title="RectifiedHR: High-Resolution Diffusion via Energy Profiling and Adaptive Guidance Scheduling" data-date="arXiv preprint 2507.09441 · cs.GR, cs.CV · July 2025, v2 December 2025">
+          <p>High-resolution image synthesis with diffusion models often suffers from energy instabilities and
+          guidance artifacts that degrade visual quality. We analyze the latent energy landscape during sampling
+          and propose adaptive classifier-free guidance (CFG) schedules that maintain stable energy trajectories.
+          Our approach introduces energy-aware scheduling strategies that modulate guidance strength over time,
+          achieving superior stability scores (0.9998) and consistency metrics (0.9873) compared to fixed-guidance
+          approaches. We demonstrate that DPM++ 2M with linear-decreasing CFG scheduling yields optimal
+          performance, providing sharper, more faithful images while reducing artifacts. Our energy profiling
+          framework serves as a powerful diagnostic tool for understanding and improving diffusion model behavior.</p>
+          <p class="go"><a href="papers/rectifiedhr.html">Full write-up</a><a href="https://arxiv.org/pdf/2507.09441" target="_blank" rel="noopener">PDF &nearr;</a></p>
+        </div>
+      </article>
 
-      <a class="hit" role="listitem" href="papers/local-style-diffusion.html"
-         data-cat="research" data-k="local prompt adaptation style consistent generation sdxl cross-attention token routing training-free arxiv preprint">
-        <span class="top"><span class="t">Local Prompt Adaptation for Style-Consistent Generation</span><span class="cat">Research</span></span>
-        <span class="sum">Splits a prompt into content and style tokens and routes them to different cross-attention layers of SDXL, so style is applied locally instead of smeared across the whole image. It needs no training, and it holds style consistent across multi-object scenes where a single global prompt drifts.</span>
-        <span class="dest">Write-up &rarr;</span>
-      </a>
+      <article class="row" data-k="diffusion style-consistency attention-control cross-attention training-free sdxl prompt multi-object">
+        <div class="rhead">
+          <h3><a href="papers/local-style-diffusion.html">Local Prompt Adaptation for Style-Consistent Generation</a></h3>
+          <span class="when">Jul 2025</span>
+        </div>
+        <p class="sum"><a href="papers/local-style-diffusion.html">Splits a prompt into content and style tokens and
+        routes them to different cross-attention layers of SDXL, so style is applied locally instead of smeared
+        across the whole image. It needs no training, and it holds style consistent across multi-object scenes
+        where a single global prompt drifts.</a></p>
+        <div class="acts">
+          <button data-abs>abstract</button>
+          <a href="https://arxiv.org/abs/2507.20094" target="_blank" rel="noopener">arXiv &nearr;</a>
+          <a href="https://github.com/ANKITSANJYAL/local-style-diffusion" target="_blank" rel="noopener">code &nearr;</a>
+          <span class="venue">arXiv:2507.20094</span>
+        </div>
+        <div class="abs" data-title="Local Prompt Adaptation for Style-Consistent Multi-Object Generation in Diffusion Models" data-date="arXiv preprint 2507.20094 · cs.CV, cs.AI · July 2025, v2 August 2025">
+          <p>Diffusion models produce high-quality visuals from natural language prompts. However, when prompts
+          involve multiple objects alongside global or local style instructions, outputs often drift in style and
+          lose spatial coherence. We present Local Prompt Adaptation (LPA), a lightweight, training-free method
+          that splits the prompt into content and style tokens, then injects them selectively into the U-Net&rsquo;s
+          attention layers at chosen timesteps. By conditioning object tokens early and style tokens later in the
+          denoising process, LPA improves both layout control and stylistic uniformity without additional training
+          cost. On the T2I benchmark, LPA improves CLIP-prompt alignment over vanilla SDXL by +0.41% and over
+          SD1.5 by +0.34%, with no diversity loss.</p>
+          <p class="go"><a href="papers/local-style-diffusion.html">Full write-up</a><a href="https://arxiv.org/pdf/2507.20094" target="_blank" rel="noopener">PDF &nearr;</a></p>
+        </div>
+      </article>
 
-      <a class="hit" role="listitem" href="papers/nerf-few-shot.html"
-         data-cat="research" data-k="nerf few-shot limitations dino features 3d reconstruction novel view synthesis arxiv preprint oasis">
-        <span class="top"><span class="t">NeRF Few-Shot Limitations Analysis</span><span class="cat">Research</span></span>
-        <span class="sum">A systematic study of whether reusing DINO features actually rescues NeRF when only a handful of views are available. It helps inside a narrow band of conditions and stops helping outside it, and the paper is mostly about locating that boundary honestly rather than claiming a win.</span>
-        <span class="dest">Write-up &rarr;</span>
-      </a>
+      <article class="row" data-k="nerf neural-radiance-fields dino few-shot 3d-reconstruction lora negative-results computer-vision oasis">
+        <div class="rhead">
+          <h3><a href="papers/nerf-few-shot.html">NeRF Few-Shot Limitations Analysis</a></h3>
+          <span class="when">Jun 2025</span>
+        </div>
+        <p class="sum"><a href="papers/nerf-few-shot.html">A systematic study of whether reusing DINO features
+        actually rescues NeRF when only a handful of views are available. Every DINO variant came in below the
+        plain baseline, and the paper is mostly about locating that boundary honestly rather than claiming
+        a win.</a></p>
+        <div class="acts">
+          <button data-abs>abstract</button>
+          <a href="https://arxiv.org/abs/2506.18208" target="_blank" rel="noopener">arXiv &nearr;</a>
+          <a href="https://github.com/ANKITSANJYAL/nerf-few-shot-limitations" target="_blank" rel="noopener">code &nearr;</a>
+          <span class="venue">arXiv:2506.18208</span>
+        </div>
+        <div class="abs" data-title="Limitations of NeRF with Pre-trained Vision Features for Few-Shot 3D Reconstruction" data-date="arXiv preprint 2506.18208 · cs.CV · June 2025">
+          <p>Neural Radiance Fields (NeRF) have revolutionized 3D scene reconstruction from sparse image
+          collections. Recent work has explored integrating pre-trained vision features, particularly from DINO,
+          to enhance few-shot reconstruction capabilities. However, the effectiveness of such approaches remains
+          unclear, especially in extreme few-shot scenarios. We present a systematic evaluation of DINO-enhanced
+          NeRF models, comparing baseline NeRF, frozen DINO features, LoRA fine-tuned features, and multi-scale
+          feature fusion. Surprisingly, all DINO variants perform worse than the baseline NeRF, achieving PSNR
+          values around 12.9 to 13.0 compared to the baseline&rsquo;s 14.71. This counterintuitive result suggests
+          that pre-trained vision features may not be beneficial for few-shot 3D reconstruction and may even
+          introduce harmful biases.</p>
+          <p class="go"><a href="papers/nerf-few-shot.html">Full write-up</a><a href="https://arxiv.org/pdf/2506.18208" target="_blank" rel="noopener">PDF &nearr;</a></p>
+        </div>
+      </article>
 
-      <a class="hit" role="listitem" href="https://docs.google.com/document/d/1xhv7jW235QPCo-AbFjMcOLMQA-ElxxYzHf6HNmd3XEY/edit?usp=sharing" target="_blank" rel="noopener"
-         data-cat="research" data-k="research statement agenda interests mechanistic interpretability monitorability multi-agent safety fellowship">
-        <span class="top"><span class="t">Research statement</span><span class="cat">Research</span></span>
-        <span class="sum">Lays out the two halves of the question I work on: when a system&rsquo;s externalized computation is a reliable window into its actual decision process, and what survives when the system stops being one model and becomes many. Covers reasoning-model interpretability, internals-based monitoring, automating interpretability, latent reasoning, and multi-agent monitorability.</span>
-        <span class="dest">Google Doc &nearr;</span>
-      </a>
-
-      <a class="hit" role="listitem" href="projects/cot-faithfulness.html"
-         data-cat="project" data-k="cot faithfulness chain of thought necessity propensity cue injection monitoring qwen deepseek gemma bluedot ai safety">
-        <span class="top"><span class="t">CoT Faithfulness Under Necessity vs. Propensity</span><span class="cat">Project</span></span>
-        <span class="sum">Misleading authority cues injected into 1,700 problems per model across Qwen3-4B, DeepSeek-R1-Distill-8B and Gemma-3-4B, with every captured trace scored &mdash; by LLM judge and by hand &mdash; for whether the reasoning admitted the cue. Capture is near-zero (0.0&ndash;2.2%) where reasoning is computationally necessary and reaches 41% where it is optional; in the worst case a model disclosed the cue once in 489 captured traces.</span>
-        <span class="dest">Write-up &rarr;</span>
-      </a>
-
-      <a class="hit" role="listitem" href="projects/diffusion-detective.html"
-         data-cat="project" data-k="diffusion detective interpretability tooling activation steering concept vector patchscopes attention denoising explain">
-        <span class="top"><span class="t">Diffusion Detective</span><span class="cat">Project</span></span>
-        <span class="sum">Interpretability tooling that surfaces what a generative model attends to at each denoising step, then steers it by injecting a concept vector mid-generation with a 94% steering success rate. It closes the loop by writing a plain-English explanation of what changed &mdash; extract, intervene, explain, the core primitives behind activation steering and patchscopes.</span>
-        <span class="dest">Write-up &rarr;</span>
-      </a>
-
-      <a class="hit" role="listitem" href="projects/causal-finance.html"
-         data-cat="project" data-k="causal factor discovery s&p 500 returns double machine learning dml ate cate momentum confounders finance">
-        <span class="top"><span class="t">Causal Factor Discovery in S&amp;P 500 Returns</span><span class="cat">Project</span></span>
-        <span class="sum">Double Machine Learning for ATE and CATE estimation of momentum on next-day returns. Orthogonalizing out the confounders is what separates factors that genuinely drive the outcome from factors that merely move alongside it.</span>
-        <span class="dest">Write-up &rarr;</span>
-      </a>
-
-      <a class="hit" role="listitem" href="projects/nopropagation.html"
-         data-cat="project" data-k="no-propagation diffusion transformers nopropdt reproduction backpropagation mnist cifar from scratch">
-        <span class="top"><span class="t">No-Propagation Diffusion Transformers</span><span class="cat">Project</span></span>
-        <span class="sum">A from-scratch reproduction and extension of NoPropDT (arXiv:2503.24322), rebuilt layer by layer to understand the architecture mechanically rather than by reading about it. It reaches roughly 99% on MNIST and 76% on CIFAR-10 without backpropagation.</span>
-        <span class="dest">Write-up &rarr;</span>
-      </a>
-
-      <a class="hit" role="listitem" href="projects/nepse-pipeline.html"
-         data-cat="project" data-k="nepse nepal stock exchange market data pipeline etl data engineering duckdb parquet pydantic validation huggingface dataset github actions floorsheet broker network survivorship bias corporate actions finance warehouse bronze silver gold">
-        <span class="top"><span class="t">NEPSE Data Pipeline</span><span class="cat">Project</span></span>
-        <span class="sum">Live and historical Nepal Stock Exchange data landed in DuckDB and Parquet with validation at every layer boundary, and every API constraint measured against the live endpoint rather than taken from documentation. The floorsheet is the reason it exists: 42,709 contracts a day carrying microsecond timestamps and both broker IDs, served only for the current session, so a day the capture misses is gone permanently. Three committed notebooks work the data &mdash; large broker positions repeat direction 71.8% of the time, 747 corporate actions recovered from prices alone, and survivorship bias measured at +0.74 points a year.</span>
-        <span class="dest">Write-up &rarr;</span>
-      </a>
-
-      <a class="hit" role="listitem" href="projects/maestro.html"
-         data-cat="project" data-k="maestro text to video lecture multi-agent rag tts ffmpeg fordham educational data mining lab">
-        <span class="top"><span class="t">MAESTRO: AI Text-to-Video Lecture System</span><span class="cat">Project</span></span>
-        <span class="sum">An autonomous pipeline &mdash; script synthesis, text-to-speech, and FFmpeg rendering &mdash; that turns written material into educational video lectures and answers student questions over it via RAG. Built and led at the Fordham Educational Data Mining Lab, and running live for the university.</span>
-        <span class="dest">Write-up &rarr;</span>
-      </a>
-
-      <a class="hit" role="listitem" href="projects/automatedbi.html"
-         data-cat="project" data-k="automatedbi agentic business intelligence dashboard crewai multi-agent kpi reporting">
-        <span class="top"><span class="t">AutomatedBI: Agentic BI Dashboard Generator</span><span class="cat">Project</span></span>
-        <span class="sum">A CrewAI system of four specialised agents that reads raw data, reasons over it with domain-expert and KPI-strategist agents, and produces an interactive dashboard. In testing it cut manual reporting time by around 80%.</span>
-        <span class="dest">Write-up &rarr;</span>
-      </a>
-
-      <a class="hit" role="listitem" href="projects/h-kfx.html"
-         data-cat="project" data-k="h-kfx autonomous bug fixing agent mcp rag jira ticket pull request hackathon mug 2025">
-        <span class="top"><span class="t">H-KFX: Autonomous Bug-Fixing Agent</span><span class="cat">Project</span></span>
-        <span class="sum">An MCP and RAG agent that closes a Jira ticket end to end: it reads the ticket, retrieves the relevant context, generates and validates a fix, and opens the pull request. The full ticket-to-PR cycle runs in 60 to 90 seconds, and it won the MUG Hackathon 2025.</span>
-        <span class="dest">Write-up &rarr;</span>
-      </a>
-
-      <a class="hit" role="listitem" href="projects/ramsnavigator.html"
-         data-cat="project" data-k="ramsnavigator campus navigation neo4j dijkstra mongodb llm natural language react cytoscape graph">
-        <span class="top"><span class="t">RamsNavigator: AI Campus Navigation</span><span class="cat">Project</span></span>
-        <span class="sum">Indoor campus navigation built on Neo4j for Dijkstra routing, MongoDB for metadata, and an LLM front end that parses natural-language directions requests. The interactive map is a React and Cytoscape.js graph.</span>
-        <span class="dest">Write-up &rarr;</span>
-      </a>
-
-      <a class="hit" role="listitem" href="cv.html"
-         data-cat="teaching" data-k="machine learning for finance teaching assistant ta graduate fordham spring 2026 course">
-        <span class="top"><span class="t">Machine Learning for Finance &mdash; Fordham</span><span class="cat">Teaching</span></span>
-        <span class="sum">Teaching Assistant for the graduate section, Spring 2026. Weekly office hours, one-to-one research mentoring, and guest lectures on the modelling side of the course.</span>
-        <span class="dest">CV &rarr;</span>
-      </a>
-
-      <a class="hit" role="listitem" href="cv.html"
-         data-cat="teaching" data-k="data mining teaching assistant ta graduate fordham fall 2025 course">
-        <span class="top"><span class="t">Data Mining &mdash; Fordham</span><span class="cat">Teaching</span></span>
-        <span class="sum">Teaching Assistant for the graduate section, Fall 2025. Ran weekly office hours and supported students through the term&rsquo;s project work.</span>
-        <span class="dest">CV &rarr;</span>
-      </a>
-
-      <a class="hit" role="listitem" href="cv.html"
-         data-cat="teaching" data-k="graduate research assistant educational data mining lab fordham oasis medical imaging mentoring experience">
-        <span class="top"><span class="t">Graduate Research Assistant &mdash; Educational Data Mining Lab</span><span class="cat">Teaching</span></span>
-        <span class="sum">Two years at Fordham&rsquo;s Educational Data Mining Lab, where I led the MAESTRO project. I also explored few-shot 2D-to-3D reconstruction on medical imaging data using efficient neural representations.</span>
-        <span class="dest">CV &rarr;</span>
-      </a>
-
-      <a class="hit" role="listitem" href="blog/necessity-protects-cot-monitoring.html"
-         data-cat="writing" data-k="necessity protects chain of thought monitoring prevention disclosure lesswrong post essay faithfulness">
-        <span class="top"><span class="t">Necessity Protects CoT Monitoring by Prevention, Not Disclosure</span><span class="cat">Writing</span></span>
-        <span class="sum">Cue-injection results across three model families, and the argument that the necessity arm is structurally the wrong place to measure faithfulness. When reasoning is computationally necessary a misleading cue almost never flips the answer; when it is optional, cues land often and are almost never disclosed.</span>
-        <span class="dest">Read &rarr;</span>
-      </a>
-
-      <a class="hit" role="listitem" href="blog/cot-faithfulness.html"
-         data-cat="writing" data-k="when is chain of thought honest design note pre-registration necessity propensity faithfulness testing">
-        <span class="top"><span class="t">When Is Chain-of-Thought Honest?</span><span class="cat">Writing</span></span>
-        <span class="sum">The design note written before any results were in: motivation, the necessity/propensity distinction, the experimental design, and what would have counted as an alarming outcome. Superseded by the results post above, and kept exactly as written.</span>
-        <span class="dest">Read &rarr;</span>
-      </a>
-
-      <a class="hit" role="listitem" href="mailto:asanjyal82@gmail.com"
-         data-cat="contact" data-k="contact email reach out hire collaborate fellowship mentorship research role">
-        <span class="top"><span class="t">Email &mdash; asanjyal82@gmail.com</span><span class="cat">Contact</span></span>
-        <span class="sum">The fastest way to reach me, and the one I actually check. I am open to collaboration, mentorship, and fellowship or research roles in interpretability and AI safety.</span>
-        <span class="dest">Compose &nearr;</span>
-      </a>
-
-      <a class="hit" role="listitem" href="cv.html"
-         data-cat="contact" data-k="cv resume curriculum vitae experience education teaching github linkedin links elsewhere">
-        <span class="top"><span class="t">CV, and everywhere else I am</span><span class="cat">Contact</span></span>
-        <span class="sum">The CV covers experience, education and training, and teaching in one page, with a link to the full document. GitHub and LinkedIn are the other two places to find me.</span>
-        <span class="dest">CV &rarr;</span>
-      </a>
+      <article class="row" data-k="interpretability ai-safety monitorability multi-agent latent-reasoning agenda statement">
+        <div class="rhead">
+          <h3><a href="https://docs.google.com/document/d/1xhv7jW235QPCo-AbFjMcOLMQA-ElxxYzHf6HNmd3XEY/edit?usp=sharing" target="_blank" rel="noopener">Research statement</a></h3>
+          <span class="when">current</span>
+        </div>
+        <p class="sum"><a href="https://docs.google.com/document/d/1xhv7jW235QPCo-AbFjMcOLMQA-ElxxYzHf6HNmd3XEY/edit?usp=sharing" target="_blank" rel="noopener">Lays out the two halves of the question I work on: when a
+        system&rsquo;s externalized computation is a reliable window into its actual decision process, and what
+        survives when the system stops being one model and becomes many. Covers reasoning-model interpretability,
+        internals-based monitoring, automating interpretability, latent reasoning, and multi-agent
+        monitorability.</a></p>
+        <div class="acts">
+          <a href="https://docs.google.com/document/d/1xhv7jW235QPCo-AbFjMcOLMQA-ElxxYzHf6HNmd3XEY/edit?usp=sharing" target="_blank" rel="noopener">google doc &nearr;</a>
+          <span class="venue">Statement</span>
+        </div>
+      </article>
 
     </div>
-    <p class="void is-hidden" id="void"></p>
-  </div>
+    <p class="void" hidden></p>
+  </section>
+
+  <!-- ==================== PROJECTS ==================== -->
+  <section class="view" id="v-projects">
+    <div class="filter">
+      <span class="fq">&rsaquo;</span>
+      <input type="search" class="fi" data-filter="projects" autocomplete="off" spellcheck="false"
+             placeholder="filter by keyword, try etl or agents or interpretability" aria-label="Filter projects">
+      <span class="fn" aria-live="polite"></span>
+    </div>
+    <div class="chips">
+        <button data-chip="agents">agents</button>
+        <button data-chip="rag">rag</button>
+        <button data-chip="etl">etl</button>
+        <button data-chip="interpretability">interpretability</button>
+        <button data-chip="pytorch">pytorch</button>
+        <button data-chip="finance">finance</button>
+        <button data-chip="react">react</button>
+    </div>
+    <div class="rows">
+
+      <article class="row" data-k="rag retrieval agents agentic evaluation evals benchmark data-engineering etl pipeline ingest warehouse postgres pgvector langgraph vllm xbrl sec edgar finance financial filings bm25 rerank long-context inference-optimisation fp8 speculative-decoding python sql assertions">
+        <div class="rhead">
+          <h3><a href="projects/filing-agent.html">filing-agent: Eval-First Research Over SEC Filings</a></h3>
+          <span class="when">2026</span>
+        </div>
+        <p class="sum"><a href="projects/filing-agent.html">A research agent over SEC filings where every numeric
+        claim is verified against EDGAR&rsquo;s structured XBRL data and every claim cites the exact filing section
+        it came from. Filings are unusual in that the same facts exist as prose and as machine-readable XBRL, so
+        the numeric slice of the benchmark can be graded by exact match with no LLM judge in the loop. The data
+        layer and a 72-question frozen eval set are built and measured; retrieval, the agent and the ablation are
+        specified and still to come.</a></p>
+        <div class="acts">
+          <button data-abs>abstract</button>
+          <a href="https://github.com/ANKITSANJYAL/filing-agent" target="_blank" rel="noopener">code &nearr;</a>
+          <a href="https://github.com/ANKITSANJYAL/filing-agent/blob/main/DECISIONS.md" target="_blank" rel="noopener">decisions &nearr;</a>
+          <span class="venue">In progress</span>
+        </div>
+        <div class="abs" data-title="filing-agent: Eval-First Research Over SEC Filings" data-date="2026 · in progress, data layer and tier-1 evals measured">
+          <p>The hard part of evaluating a retrieval system is that you usually cannot grade it without another
+          model, and an LLM judge inherits the failure modes of the thing it is judging. SEC filings break that
+          circularity: a 10-K states its revenue in prose and tags the same figure in XBRL, so an answer can be
+          checked against a structured fact rather than against an opinion.</p>
+          <p>Built and measured so far: 64 filings across eight cross-sector tickers, 231 MB of markup reduced to
+          17.0 MB of text with iXBRL machine metadata stripped, 9,449 chunks whose table rows are structurally
+          unsplittable, 2,010 resolved XBRL facts, 72 frozen questions graded by exact match, and 127 passing
+          tests.</p>
+          <p>The corpus produced five silent disagreements that a naive pipeline would have shipped as correct.
+          A ticker resolved to a successor entity with no filing history. JPMorgan&rsquo;s recent-filings window is
+          capped in documents rather than years, hiding all of FY2024. A third of NVIDIA&rsquo;s extracted text was
+          inline-XBRL metadata. Item headings frequently do not contain their own content. And no single revenue
+          concept covers all eight companies. The house pattern that came out of it: correctness assertions say
+          nothing about completeness, so every ingest boundary asserts both.</p>
+          <p class="go"><a href="projects/filing-agent.html">Full write-up</a><a href="https://github.com/ANKITSANJYAL/filing-agent/blob/main/TRACKER.md" target="_blank" rel="noopener">Progress tracker &nearr;</a></p>
+        </div>
+      </article>
+
+      <article class="row" data-k="ai-safety alignment interpretability cot chain-of-thought monitoring faithfulness cue-injection llm-judge statistics fisher wilson vllm qwen deepseek gemma evaluation evals python">
+        <div class="rhead">
+          <h3><a href="projects/cot-faithfulness.html">CoT Faithfulness Under Necessity vs. Propensity</a></h3>
+          <span class="when">2026</span>
+        </div>
+        <p class="sum"><a href="projects/cot-faithfulness.html">Misleading authority cues injected into 1,700
+        problems per model across Qwen3-4B, DeepSeek-R1-Distill-8B and Gemma-3-4B, with every captured trace
+        scored twice, by LLM judge and by hand, for whether the reasoning admitted the cue. Capture is near zero
+        (0.0 to 2.2%) where reasoning is computationally necessary and reaches 41% where it is optional; in the
+        worst case a model disclosed the cue once in 489 captured traces.</a></p>
+        <div class="acts">
+          <button data-abs>abstract</button>
+          <a href="https://github.com/ANKITSANJYAL/Cot_faithfulness" target="_blank" rel="noopener">code &nearr;</a>
+          <a href="https://www.lesswrong.com/posts/4EvWpvFvHzmPvuiF5/necessity-protects-chain-of-thought-monitoring-by-prevention" target="_blank" rel="noopener">lesswrong &nearr;</a>
+          <span class="venue">BlueDot capstone</span>
+        </div>
+        <div class="abs" data-title="CoT Faithfulness Under Necessity vs. Propensity" data-date="BlueDot Impact capstone · 2026">
+          <p>An empirical test of the chain-of-thought monitoring bet: does making reasoning computationally
+          necessary make the reasoning trace trustworthy? Misleading cues were injected into 1,700 problems per
+          model across three model families, then every captured trace was scored for whether the reasoning
+          admitted the cue.</p>
+          <p>Necessity drives capture to near zero (0.0 to 2.2%) while optional reasoning is hijacked up to 41% of
+          the time. But where capture does happen, disclosure is vanishingly rare: one model disclosed it once in
+          489 traces. The protection comes from prevention, not from honesty.</p>
+          <p class="go"><a href="projects/cot-faithfulness.html">Full write-up</a><a href="blog/necessity-protects-cot-monitoring.html">Results post</a><a href="https://bluedot.org/courses/technical-ai-safety" target="_blank" rel="noopener">Course &nearr;</a></p>
+        </div>
+      </article>
+
+      <article class="row" data-k="interpretability activation-steering causal causal-steering concept-vector patchscopes stable-diffusion pytorch fastapi react clip gpt-4o tooling explainability python javascript">
+        <div class="rhead">
+          <h3><a href="projects/diffusion-detective.html">Diffusion Detective</a></h3>
+          <span class="when">2025</span>
+        </div>
+        <p class="sum"><a href="projects/diffusion-detective.html">Interpretability tooling that surfaces what a
+        generative model attends to at each denoising step, then steers it by injecting a concept vector
+        mid-generation with a 94% steering success rate. It closes the loop by writing a plain-English explanation
+        of what changed: extract, intervene, explain, the core primitives behind activation steering and
+        patchscopes.</a></p>
+        <div class="acts">
+          <button data-abs>abstract</button>
+          <a href="https://github.com/ANKITSANJYAL/Diffusion-Detective" target="_blank" rel="noopener">code &nearr;</a>
+          <span class="venue">Interpretability tooling</span>
+        </div>
+        <div class="abs" data-title="Diffusion Detective: Interpretability Tooling for a Generative Model" data-date="2025">
+          <p>Real-time extraction of internal representations (cross-attention), causal steering of behaviour via
+          representation-space interventions with a 94% success rate, and automated natural-language explanation
+          of what each intervention did.</p>
+          <p>Mechanically this is a precursor to LLM activation steering and patchscopes-style self-explanation:
+          the same three primitives, applied to a model whose intermediate states you can actually look at.</p>
+          <p class="go"><a href="projects/diffusion-detective.html">Full write-up</a></p>
+        </div>
+      </article>
+
+      <article class="row" data-k="data-engineering etl pipeline ingest warehouse duckdb parquet pydantic github-actions ci validation hugging-face finance financial market stock sql python">
+        <div class="rhead">
+          <h3><a href="projects/nepse-pipeline.html">NEPSE Data Pipeline</a></h3>
+          <span class="when">2026</span>
+        </div>
+        <p class="sum"><a href="projects/nepse-pipeline.html">Live and historical Nepal Stock Exchange data landed
+        in DuckDB and Parquet with validation at every layer boundary, and every API constraint measured against
+        the live endpoint rather than taken from documentation. The floorsheet is the reason it exists: 42,709
+        contracts a day carrying microsecond timestamps and both broker IDs, served only for the current session,
+        so a day the capture misses is gone permanently.</a></p>
+        <div class="acts">
+          <button data-abs>abstract</button>
+          <a href="https://github.com/ANKITSANJYAL/nepse-pipeline" target="_blank" rel="noopener">code &nearr;</a>
+          <a href="https://huggingface.co/datasets/AnkitSanjyal/nepse-market-data" target="_blank" rel="noopener">dataset &nearr;</a>
+          <span class="venue">Data engineering</span>
+        </div>
+        <div class="abs" data-title="NEPSE Data Pipeline" data-date="2026 · DuckDB, Parquet, Pydantic, GitHub Actions">
+          <p>Live and historical market data from the Nepal Stock Exchange, landed in DuckDB and Parquet with
+          validation at every layer boundary. Every constraint was measured against the live API rather than taken
+          from documentation, because for one of these datasets a day you miss is gone permanently.</p>
+          <p>Three committed notebooks work the data: large broker positions repeat direction 71.8% of the time,
+          747 corporate actions were recovered from prices alone, and survivorship bias measured at +0.74 points
+          a year.</p>
+          <p class="go"><a href="projects/nepse-pipeline.html">Full write-up</a><a href="https://github.com/ANKITSANJYAL/nepse-pipeline/tree/main/notebooks" target="_blank" rel="noopener">Notebooks &nearr;</a></p>
+        </div>
+      </article>
+
+      <article class="row" data-k="multi-agent agents agentic orchestration langchain openai tts text-to-speech ffmpeg flask mongodb rag education video python">
+        <div class="rhead">
+          <h3><a href="projects/maestro.html">MAESTRO: AI Text-to-Video Lecture System</a></h3>
+          <span class="when">2025</span>
+        </div>
+        <p class="sum"><a href="projects/maestro.html">An autonomous pipeline of script synthesis, text-to-speech
+        and FFmpeg rendering that turns written material into educational video lectures, then answers student
+        questions over it via RAG. Built and led at the Fordham Educational Data Mining Lab, and running live for
+        the university.</a></p>
+        <div class="acts">
+          <button data-abs>abstract</button>
+          <a href="https://github.com/Fordham-EDM-Lab/MAESTRO" target="_blank" rel="noopener">code &nearr;</a>
+          <a href="https://erdos.dsm.fordham.edu/" target="_blank" rel="noopener">live &nearr;</a>
+          <span class="venue">Fordham EDM Lab</span>
+        </div>
+        <div class="abs" data-title="MAESTRO: AI Text-to-Video Lecture System" data-date="2025 · Fordham Educational Data Mining Lab">
+          <p>An autonomous multi-agent pipeline running script synthesis, neural voice, slides, video and a RAG
+          question-answering bot, generating educational lectures end to end.</p>
+          <p>It demonstrates the multi-agent orchestration pattern that also underlies autonomous interpretability
+          investigator agents: several narrow specialists, one shared artefact, and a verification step between
+          each hand-off.</p>
+          <p class="go"><a href="projects/maestro.html">Full write-up</a></p>
+        </div>
+      </article>
+
+      <article class="row" data-k="pytorch diffusion transformers backprop-free reproduction mnist cifar-10 training python">
+        <div class="rhead">
+          <h3><a href="projects/nopropagation.html">No-Propagation Diffusion Transformers</a></h3>
+          <span class="when">2025</span>
+        </div>
+        <p class="sum"><a href="projects/nopropagation.html">A from-scratch reproduction and extension of NoPropDT
+        (arXiv:2503.24322), rebuilt layer by layer to understand the architecture mechanically rather than by
+        reading about it. It reaches roughly 99% on MNIST and 76% on CIFAR-10 without backpropagation.</a></p>
+        <div class="acts">
+          <button data-abs>abstract</button>
+          <a href="https://github.com/ANKITSANJYAL/NoPropagation" target="_blank" rel="noopener">code &nearr;</a>
+          <a href="https://arxiv.org/pdf/2503.24322" target="_blank" rel="noopener">paper &nearr;</a>
+          <span class="venue">Reproduction</span>
+        </div>
+        <div class="abs" data-title="No-Propagation Diffusion Transformers (NoPropDT)" data-date="2025 · reproduction of arXiv:2503.24322">
+          <p>A from-scratch reproduction and extension of a recent Oxford paper, rebuilt layer by layer so that the
+          architecture is understood mechanically rather than by description.</p>
+          <p>It reaches roughly 99% on MNIST and 76% on CIFAR-10 without backpropagation. The point of the exercise
+          is the empirical reproduction skill that interpretability research runs on.</p>
+          <p class="go"><a href="projects/nopropagation.html">Full write-up</a></p>
+        </div>
+      </article>
+
+      <article class="row" data-k="agents agentic autonomous mcp rag gpt-4o mongodb jira github-api tavily automation devops python typescript">
+        <div class="rhead">
+          <h3><a href="projects/h-kfx.html">H-KFX: Autonomous Bug-Fixing Agent</a></h3>
+          <span class="when">2025</span>
+        </div>
+        <p class="sum"><a href="projects/h-kfx.html">An MCP and RAG agent that closes a Jira ticket end to end: it
+        reads the ticket, retrieves the relevant context, generates and validates a fix, and opens the pull
+        request. The full ticket-to-PR cycle runs in 60 to 90 seconds, and it won the MUG Hackathon 2025.</a></p>
+        <div class="acts">
+          <button data-abs>abstract</button>
+          <a href="https://github.com/ANKITSANJYAL/MUGHackthon" target="_blank" rel="noopener">code &nearr;</a>
+          <a href="https://www.youtube.com/watch?v=YB1gHWcOpz0&t=4s" target="_blank" rel="noopener">demo &nearr;</a>
+          <span class="venue">Won MUG Hackathon 2025</span>
+        </div>
+        <div class="abs" data-title="H-KFX: Hybrid Knowledge Fixer" data-date="2025 · winner, MUG Hackathon">
+          <p>A fully autonomous tool-using agent: it reads a task description, retrieves context through RAG,
+          reasons, generates and validates a solution, and then acts. Ticket to pull request in 60 to 90 seconds.</p>
+          <p>A working instance of the autonomous investigator architecture that underlies agents for automating
+          interpretability.</p>
+          <p class="go"><a href="projects/h-kfx.html">Full write-up</a></p>
+        </div>
+      </article>
+
+      <article class="row" data-k="causal-inference double-machine-learning dml ate cate lstm random-forest yfinance finance financial market returns statistics python">
+        <div class="rhead">
+          <h3><a href="projects/causal-finance.html">Causal Factor Discovery in S&amp;P 500 Returns</a></h3>
+          <span class="when">2025</span>
+        </div>
+        <p class="sum"><a href="projects/causal-finance.html">Double Machine Learning for ATE and CATE estimation
+        of momentum on next-day returns. Orthogonalizing out the confounders is what separates factors that
+        genuinely drive the outcome from factors that merely move alongside it.</a></p>
+        <div class="acts">
+          <button data-abs>abstract</button>
+          <a href="https://github.com/ANKITSANJYAL/Causal-Factor-Discovery-in-S-P-500-Returns-" target="_blank" rel="noopener">code &nearr;</a>
+          <span class="venue">Causal inference</span>
+        </div>
+        <div class="abs" data-title="Causal Factor Discovery in S&amp;P 500 Returns" data-date="2025">
+          <p>A causal-inference toolkit using Double Machine Learning to estimate whether momentum actually causes
+          next-day returns, rather than merely correlating with them.</p>
+          <p>The same counterfactual machinery, orthogonalizing out confounders to isolate a causal effect, is now
+          central to reasoning-model interpretability.</p>
+          <p class="go"><a href="projects/causal-finance.html">Full write-up</a></p>
+        </div>
+      </article>
+
+      <article class="row" data-k="multi-agent agents agentic crewai gemini flask react postgresql docker dashboards business-intelligence bi reporting python javascript">
+        <div class="rhead">
+          <h3><a href="projects/automatedbi.html">AutomatedBI: Agentic BI Dashboard Generator</a></h3>
+          <span class="when">2025</span>
+        </div>
+        <p class="sum"><a href="projects/automatedbi.html">A CrewAI system of four specialised agents that reads
+        raw data, reasons over it with domain-expert and KPI-strategist agents, and produces an interactive
+        dashboard. In testing it cut manual reporting time by around 80%.</a></p>
+        <div class="acts">
+          <button data-abs>abstract</button>
+          <a href="https://github.com/ANKITSANJYAL/AutomatedBI" target="_blank" rel="noopener">code &nearr;</a>
+          <a href="https://drive.google.com/file/d/14qR91S5oXuK8-uSUE_KsVBuFnQd_dMFO/view?usp=sharing" target="_blank" rel="noopener">demo &nearr;</a>
+          <span class="venue">Multi-agent</span>
+        </div>
+        <div class="abs" data-title="AutomatedBI: AI-Powered Business Intelligence Dashboard Generator" data-date="2025 · CrewAI">
+          <p>A multi-agent pipeline that reads input, reasons with specialist agents, and produces a result,
+          transforming raw data into interactive dashboards.</p>
+          <p>An instance of the autonomous tool-using architecture that underlies interpretability investigator
+          agents, applied to a problem where the ground truth is easy to check.</p>
+          <p class="go"><a href="projects/automatedbi.html">Full write-up</a></p>
+        </div>
+      </article>
+
+      <article class="row" data-k="neo4j mongodb graph database dijkstra routing openai react cytoscape node express javascript llm navigation">
+        <div class="rhead">
+          <h3><a href="projects/ramsnavigator.html">RamsNavigator: AI Campus Navigation</a></h3>
+          <span class="when">2024</span>
+        </div>
+        <p class="sum"><a href="projects/ramsnavigator.html">Indoor campus navigation built on Neo4j for Dijkstra
+        routing, MongoDB for metadata, and an LLM front end that parses natural-language directions requests. The
+        interactive map is a React and Cytoscape.js graph.</a></p>
+        <div class="acts">
+          <button data-abs>abstract</button>
+          <a href="https://github.com/ANKITSANJYAL/RamsNavigator" target="_blank" rel="noopener">code &nearr;</a>
+          <span class="venue">Graphs and routing</span>
+        </div>
+        <div class="abs" data-title="RamsNavigator: AI-Powered Indoor Campus Navigation" data-date="2024">
+          <p>Ask &ldquo;take me to the library but get coffee first&rdquo; in plain English, and the system finds
+          the optimal route through Fordham&rsquo;s campus using a graph database and an LLM to parse the request.</p>
+          <p class="go"><a href="projects/ramsnavigator.html">Full write-up</a></p>
+        </div>
+      </article>
+
+    </div>
+    <p class="void" hidden></p>
+  </section>
+
+  <!-- ==================== WRITING ==================== -->
+  <section class="view" id="v-writing">
+    <h2 class="grouphead">Notes on faithfulness</h2>
+    <div class="rows">
+
+      <article class="row" data-k="ai-safety interpretability cot chain-of-thought faithfulness monitoring lesswrong results">
+        <div class="rhead">
+          <h3><a href="blog/necessity-protects-cot-monitoring.html">Necessity Protects CoT Monitoring by Prevention, Not Disclosure</a></h3>
+          <span class="when">Jul 2026</span>
+        </div>
+        <p class="sum"><a href="blog/necessity-protects-cot-monitoring.html">Cue-injection results across three
+        model families, and the argument that the necessity arm is structurally the wrong place to measure
+        faithfulness. When reasoning is computationally necessary a misleading cue almost never flips the answer;
+        when it is optional, cues land often and are almost never disclosed.</a></p>
+        <div class="acts">
+          <button data-abs>summary</button>
+          <a href="https://www.lesswrong.com/posts/4EvWpvFvHzmPvuiF5/necessity-protects-chain-of-thought-monitoring-by-prevention" target="_blank" rel="noopener">lesswrong &nearr;</a>
+          <span class="venue">Results post</span>
+        </div>
+        <div class="abs" data-title="Necessity Protects CoT Monitoring by Prevention, Not Disclosure" data-date="July 2026 · published on LessWrong">
+          <p>Misleading authority cues, injected into 1,700 problems per model across Qwen3-4B,
+          DeepSeek-R1-Distill-8B and Gemma-3-4B. Every captured trace was scored twice, by an LLM judge and by
+          hand, for whether the reasoning admitted the cue.</p>
+          <p>Capture is near zero (0.0 to 2.2%) where reasoning is computationally necessary, and reaches 41%
+          where reasoning is optional. In the worst case, a model disclosed the cue once in 489 captured traces.</p>
+          <p>The claim is not that faithfulness is high in the necessity arm. It is that the necessity arm is
+          structurally the wrong place to measure it: the cue never lands, so there is nothing to disclose.
+          Monitoring is protected by prevention, not by honesty.</p>
+          <p class="go"><a href="blog/necessity-protects-cot-monitoring.html">Read the post</a><a href="projects/cot-faithfulness.html">Project write-up</a></p>
+        </div>
+      </article>
+
+      <article class="row" data-k="ai-safety cot chain-of-thought faithfulness design-note pre-registration methodology">
+        <div class="rhead">
+          <h3><a href="blog/cot-faithfulness.html">When Is Chain-of-Thought Honest?</a></h3>
+          <span class="when">Jun 2026</span>
+        </div>
+        <p class="sum"><a href="blog/cot-faithfulness.html">The design note written before any results were in:
+        motivation, the necessity and propensity distinction, the experimental design, and what would have counted
+        as an alarming outcome. Superseded by the results post above, and kept exactly as written.</a></p>
+        <div class="acts">
+          <button data-abs>summary</button>
+          <span class="venue">Design note</span>
+        </div>
+        <div class="abs" data-title="When Is Chain-of-Thought Honest?" data-date="June 2026 · design note, written before results">
+          <p>The motivation, the necessity and propensity distinction, the experimental design, and, importantly,
+          what would have counted as an alarming outcome.</p>
+          <p>Superseded by the results post, and kept exactly as written. A pre-registration you quietly edit
+          afterwards is not one.</p>
+          <p class="go"><a href="blog/cot-faithfulness.html">Read the note</a></p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ==================== THOUGHTS ==================== -->
+  <section class="view" id="v-thoughts">
+    <div class="filter">
+      <span class="fq">&rsaquo;</span>
+      <input type="search" class="fi" data-filter="thoughts" autocomplete="off" spellcheck="false"
+             placeholder="filter, try faithfulness or data or life" aria-label="Filter thoughts">
+      <span class="fn" aria-live="polite"></span>
+    </div>
+
+    <p class="editslot" id="edit-slot"></p>
+
+    <h2 class="grouphead">Essays</h2>
+    <div class="tlist">
+<!-- THOUGHTS:ESSAYS:START -->
+<!-- THOUGHTS:ESSAYS:END -->
+    </div>
+    <p class="seed" id="essays-empty">Longer pieces, on whatever is holding my attention: research,
+    policy, and the parts of life that are not either. The first one is being written.</p>
+
+    <h2 class="grouphead">Reading notes</h2>
+    <div class="tlist">
+<!-- THOUGHTS:READING:START -->
+      <article class="tnote" data-k="cot chain-of-thought faithfulness interpretability ai-safety turpin bias reading" data-id="language-models-don-t-always-say-what-they-think-seed">
+        <button class="tt" data-abs><span class="d">2026</span><span class="tl">Language Models Don’t Always Say What They Think &nearr;</span></button>
+        <div class="abs" data-title="Language Models Don’t Always Say What They Think" data-date="Turpin, Michael, Perez and Bowman · reading note">
+          <p>The paper that made chain-of-thought faithfulness a measurable problem rather than a worry.
+          The authors add a biasing feature to the context, for instance always placing the correct answer
+          in the same position, or having the user casually suggest an answer, and then check two things:
+          whether the model&rsquo;s prediction moves, and whether the written reasoning ever mentions the
+          thing that moved it.</p>
+          <p>The prediction moves substantially. The reasoning almost never mentions why. Instead the model
+          constructs a plausible argument for the answer the bias pushed it toward, which is the worst
+          possible failure mode for anyone hoping to monitor a model by reading what it writes: the trace
+          is not silent, it is confidently wrong about its own cause.</p>
+          <p>This is the direct ancestor of the necessity and propensity split I ended up testing. Turpin
+          shows that cues land and go undisclosed; the open question it left me with was whether that holds
+          when the reasoning is doing real work rather than decorating an answer the model already had.</p>
+        </div>
+      </article>
+
+
+      <article class="tnote" data-k="cot chain-of-thought faithfulness reasoning models monitoring reinforcement-learning anthropic reading ai-safety" data-id="reasoning-models-don-t-always-say-what-they-thin-seed">
+        <button class="tt" data-abs><span class="d">2026</span><span class="tl">Reasoning Models Don’t Always Say What They Think &nearr;</span></button>
+        <div class="abs" data-title="Reasoning Models Don’t Always Say What They Think" data-date="Chen et al., Anthropic · reading note">
+          <p>The follow-up question: reasoning models are trained to think at length before answering, so
+          does the longer trace become more honest? The authors plant hints of several kinds, some benign
+          and some not, and measure how often the model acknowledges a hint that demonstrably changed its
+          answer.</p>
+          <p>It acknowledges them a minority of the time, and the rate does not climb to anywhere near
+          reliable. Outcome-based reinforcement learning improves faithfulness early and then flattens well
+          short of what a monitoring story would need.</p>
+          <p>What I take from it is a scoping result rather than a verdict. It says that reading the trace
+          is not sufficient on its own, which is not the same as saying it is worthless. That gap is where
+          the interesting work is.</p>
+        </div>
+      </article>
+
+
+      <article class="tnote" data-k="sparse-autoencoder sae superposition features interpretability mechanistic anthropic reading" data-id="towards-monosemanticity-seed">
+        <button class="tt" data-abs><span class="d">2026</span><span class="tl">Towards Monosemanticity &nearr;</span></button>
+        <div class="abs" data-title="Towards Monosemanticity" data-date="Bricken et al., Anthropic · reading note">
+          <p>Individual neurons in a language model are mostly polysemantic: one neuron fires for several
+          unrelated things, because the model is packing more features into the space than it has dimensions
+          for. This paper trains a sparse autoencoder on the activations of a one-layer transformer and
+          recovers features that are far more interpretable than the neurons themselves.</p>
+          <p>The part worth sitting with is not the technique, it is the framing. Superposition says the
+          unit of explanation was never the neuron, and that a lot of earlier interpretability work was
+          reading the wrong object carefully. Choosing the right basis did more than any amount of
+          additional care in the old one.</p>
+          <p>It is also the cleanest example I know of interpretability producing something you can act on
+          rather than only something you can describe.</p>
+        </div>
+      </article>
+<!-- THOUGHTS:READING:END -->
+    </div>
+    <p class="void" hidden></p>
+  </section>
+
+  <!-- ==================== EXPERIENCE ==================== -->
+  <section class="view" id="v-experience">
+    <h2 class="grouphead">Experience</h2>
+    <div class="grid">
+      <div class="tile">
+        <span class="when">Aug 2025 &ndash; May 2026 | New York</span>
+        <h3>Teaching Assistant</h3>
+        <p class="org"><a href="https://www.fordham.edu/" target="_blank" rel="noopener">Fordham University &nearr;</a></p>
+        <p class="x">Graduate <em>Data Mining</em> (Fall 2025) and <em>Machine Learning for Finance</em> (Spring 2026).
+        Weekly office hours, one-to-one research mentoring, and guest lectures on the modelling side of the course.</p>
+      </div>
+      <div class="tile">
+        <span class="when">Aug 2024 &ndash; May 2026 | New York</span>
+        <h3>Graduate Research Assistant</h3>
+        <p class="org"><a href="https://erdos.dsm.fordham.edu/" target="_blank" rel="noopener">Fordham EDM Lab &nearr;</a></p>
+        <p class="x">Led the MAESTRO project. Explored few-shot 2D-to-3D reconstruction on medical imaging data
+        (OASIS) using efficient neural representations.</p>
+      </div>
+      <div class="tile">
+        <span class="when">Jan 2023 &ndash; Jul 2024 | Bangalore</span>
+        <h3>Associate Data Consultant</h3>
+        <p class="org"><a href="https://www.decisionfoundry.com/" target="_blank" rel="noopener">Decision Foundry &nearr;</a></p>
+        <p class="x">Designed ETL workflows in DBT and Tableau Prep, optimised SQL on Amazon Redshift for 40%
+        faster retrieval on 1&nbsp;TB+ datasets, and delivered 25+ Tableau and Salesforce CRMA dashboards.</p>
+      </div>
+      <div class="tile">
+        <span class="when">Jan 2022 &ndash; Jul 2023 | Bangalore</span>
+        <h3>Undergraduate Research Assistant</h3>
+        <p class="org"><a href="https://www.jainuniversity.ac.in/" target="_blank" rel="noopener">Jain University &nearr;</a></p>
+        <p class="x">Deep learning pipelines for medical imaging. Published work on toxic language detection and
+        multiclass skin lesion classification at 85% validation accuracy.</p>
+      </div>
+    </div>
+
+    <h2 class="grouphead">Education &amp; training</h2>
+    <div class="grid">
+      <div class="tile">
+        <span class="when">2024 &ndash; May 2026</span>
+        <h3>M.S. Data Science</h3>
+        <p class="org"><a href="https://www.fordham.edu/" target="_blank" rel="noopener">Fordham University &nearr;</a></p>
+        <p class="x">New York, NY.</p>
+      </div>
+      <div class="tile">
+        <span class="when">May 2026</span>
+        <h3>Technical AI Safety</h3>
+        <p class="org"><a href="https://bluedot.org/courses/technical-ai-safety" target="_blank" rel="noopener">BlueDot Impact &nearr;</a></p>
+        <p class="x">Capstone: <a href="projects/cot-faithfulness.html" style="color:inherit;text-decoration:underline;text-underline-offset:3px">CoT Faithfulness Under Necessity vs. Propensity</a>,
+        published on LessWrong.</p>
+      </div>
+      <div class="tile">
+        <span class="when">2019 &ndash; 2023</span>
+        <h3>B.Tech Computer Science</h3>
+        <p class="org"><a href="https://www.jainuniversity.ac.in/" target="_blank" rel="noopener">Jain University &nearr;</a></p>
+        <p class="x">Bangalore, India.</p>
+      </div>
+      <div class="tile quiet">
+        <span class="when">also</span>
+        <h3 style="text-align:right">elsewhere</h3>
+        <p class="x" style="text-align:right;margin-top:10px">
+          <a href="https://docs.google.com/document/d/1iLOd3weF8ErrZbXsRrUp5AjiW-H7to-MsZ9Qjo1kETg/edit?usp=sharing" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px">full cv &nearr;</a><br>
+          <a href="https://docs.google.com/document/d/1xhv7jW235QPCo-AbFjMcOLMQA-ElxxYzHf6HNmd3XEY/edit?usp=sharing" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px">research statement &nearr;</a><br>
+          <a href="https://github.com/ANKITSANJYAL" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px">github &nearr;</a><br>
+          <a href="https://linkedin.com/in/ankit-sanjyal" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px">linkedin &nearr;</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
 </main>
 
-<footer class="shell-foot">
-  <a href="mailto:asanjyal82@gmail.com">asanjyal82@gmail.com</a>
-  <a href="https://github.com/ANKITSANJYAL" target="_blank" rel="noopener">GitHub</a>
-  <a href="https://linkedin.com/in/ankit-sanjyal" target="_blank" rel="noopener">LinkedIn</a>
-  <a href="cv.html">CV</a>
-  <span class="sp">M.S. Data Science, Fordham</span>
-</footer>
+<!-- one shared sheet, filled from whichever .abs was asked for -->
+<dialog id="sheet-dialog">
+  <div class="sheet">
+    <button class="close" id="sheet-close">return</button>
+    <h2 id="sheet-title"></h2>
+    <p class="date" id="sheet-date"></p>
+    <div class="txt" id="sheet-body"></div>
+  </div>
+</dialog>
+
+<dialog id="m-reading">
+  <div class="sheet">
+    <button class="close" onclick="this.closest('dialog').close()">return</button>
+    <h2>What I&rsquo;m reading</h2>
+    <p class="date">papers, mostly</p>
+    <ul>
+      <li><span>Language Models Don&rsquo;t Always Say What They Think</span><span>Turpin et al.</span></li>
+      <li><span>Reasoning Models Don&rsquo;t Always Say What They Think</span><span>Chen et al.</span></li>
+      <li><span>Towards Monosemanticity</span><span>Anthropic</span></li>
+      <li><span>The Geometry of Truth</span><span>Marks &amp; Tegmark</span></li>
+      <li><span>Alignment Faking in Large Language Models</span><span>Greenblatt et al.</span></li>
+    </ul>
+    <p class="go"><a href="#thoughts" onclick="this.closest('dialog').close()">Reading notes in thoughts</a></p>
+    <p class="sig">recommendations very welcome</p>
+  </div>
+</dialog>
 
 <script>
 (function(){
-  const q       = document.getElementById('q');
-  const results = document.getElementById('results');
-  const voidEl  = document.getElementById('void');
-  const kbd     = document.getElementById('kbd');
-  const chips   = [...document.querySelectorAll('.jump button')];
-  const KEYS    = {r:'research', p:'project', t:'teaching', w:'writing', c:'contact'};
+  "use strict";
 
-  const hits = [...results.querySelectorAll('.hit')].map(el => ({
-    el,
-    title: el.querySelector('.t').textContent,
-    hay: (el.dataset.cat + ' ' + el.dataset.k + ' ' +
-          el.querySelector('.t').textContent + ' ' +
-          el.querySelector('.sum').textContent).toLowerCase()
-  }));
+  /* ---- corner clock ---- */
+  var clk = document.getElementById('clock');
+  function tick(){ clk.textContent = new Date().toLocaleTimeString('en-US', {hour12:false}); }
+  tick(); setInterval(tick, 1000);
 
-  let shown = [], sel = -1;
-
-  const escHTML = s => s.replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
-
-  function highlight(h, term){
-    const t = h.title;
-    if(!term){ h.el.querySelector('.t').textContent = t; return; }
-    const i = t.toLowerCase().indexOf(term);
-    h.el.querySelector('.t').innerHTML = i < 0 ? escHTML(t)
-      : escHTML(t.slice(0,i)) + '<mark>' + escHTML(t.slice(i,i+term.length)) + '</mark>' + escHTML(t.slice(i+term.length));
-  }
-
-  function render(raw){
-    const term = raw.trim().toLowerCase();
-    sel = -1;
-    // A bare section name filters by section; anything else is free text,
-    // so "research" lists the research and "reasoning" searches for it.
-    const cats = new Set(Object.values(KEYS));
-    shown = !term ? []
-          : cats.has(term) ? hits.filter(h => h.el.dataset.cat === term)
-          : hits.filter(h => h.hay.includes(term));
-
-    hits.forEach(h => {
-      const on = shown.includes(h);
-      h.el.classList.toggle('is-shown', on);
-      h.el.classList.remove('sel');
-      if(on) highlight(h, term);
-    });
-
-    results.classList.toggle('is-empty', shown.length === 0);
-    const none = term && shown.length === 0;
-    voidEl.classList.toggle('is-hidden', !none);
-    if(none) voidEl.textContent = 'nothing for “' + raw.trim() + '” — try interpretability, diffusion, agents, teaching';
-    const hint = term ? (shown.length + (shown.length === 1 ? ' result' : ' results'))
-                      : (document.activeElement === q ? '' : 'press / to search');
-    kbd.textContent = hint;
-    kbd.hidden = !hint;
-
-    chips.forEach(c => c.setAttribute('aria-pressed', String(c.dataset.q === term)));
-  }
-
-  function move(step){
-    if(!shown.length) return;
-    if(sel >= 0) shown[sel].el.classList.remove('sel');
-    sel = (sel + step + shown.length) % shown.length;
-    shown[sel].el.classList.add('sel');
-    shown[sel].el.scrollIntoView({block:'nearest'});
-  }
-
-  q.addEventListener('input', () => render(q.value));
-  q.addEventListener('focus', () => render(q.value));
-  q.addEventListener('blur',  () => render(q.value));
-
-  chips.forEach(c => c.addEventListener('click', () => {
-    const next = c.getAttribute('aria-pressed') === 'true' ? '' : c.dataset.q;
-    q.value = next; render(next); q.focus();
-  }));
-
-  addEventListener('keydown', e => {
-    if(e.key === 'Escape'){ q.value = ''; render(''); q.blur(); return; }
-    if(e.key === '/' && document.activeElement !== q){ e.preventDefault(); q.focus(); return; }
-    if(e.key === 'ArrowDown'){ e.preventDefault(); move(1); return; }
-    if(e.key === 'ArrowUp'){ e.preventDefault(); move(-1); return; }
-    if(e.key === 'Enter' && sel >= 0){ shown[sel].el.click(); return; }
-    if(document.activeElement !== q && !e.metaKey && !e.ctrlKey && !e.altKey && KEYS[e.key]){
-      e.preventDefault(); q.value = KEYS[e.key]; render(q.value); q.focus();
-    }
+  /* ---- mood ---- */
+  var MOODS = ['slate','warm','ink'],
+      NAMES = {slate:'Slate', warm:'Warm', ink:'Ink'},
+      mi = 0,
+      moodBtn = document.getElementById('mood');
+  moodBtn.addEventListener('click', function(){
+    mi = (mi + 1) % MOODS.length;
+    document.body.dataset.mood = MOODS[mi];
+    moodBtn.textContent = NAMES[MOODS[mi]];
+    drops(MOODS[mi]);
   });
 
-  render('');
-  q.focus({preventScroll:true});
+  /* ---- rain: deterministic, so it never differs between loads ---- */
+  var rain = document.getElementById('rain');
+  function rnd(i){ var t = 10000 * Math.sin(42 + i); return t - Math.floor(t); }
+  function drops(mood){
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches){ rain.innerHTML = ''; return; }
+    var n = mood === 'warm' ? 0 : (mood === 'ink' ? 260 : 130), html = '', i;
+    for (i = 0; i < n; i++){
+      html += '<div class="drop" style="left:' + (100 * rnd(i)).toFixed(2) + '%;animation:fall '
+            + (0.55 + 0.55 * rnd(i + 2000)).toFixed(2) + 's linear '
+            + (-2 * rnd(i + 1000)).toFixed(2) + 's infinite"></div>';
+    }
+    rain.innerHTML = html;
+  }
+  drops('slate');
+
+  /* the placeholder line retires itself the moment a first essay lands */
+  (function(){
+    var box = document.getElementById('essays-empty'),
+        list = document.querySelector('#v-thoughts .tlist');
+    if (box && list && list.querySelector('.tnote')) box.hidden = true;
+  })();
+
+  /* The edit link appears only while a signed-in session is open in this tab.
+     Visitors never see it, and it is a convenience rather than a gate: the
+     editor asks for an emailed code no matter how it is reached. */
+  (function(){
+    var live = false;
+    try {
+      var s = JSON.parse(sessionStorage.getItem('thoughts_session') || 'null');
+      live = !!(s && s.exp * 1000 > Date.now());
+    } catch (e) {}
+    if (!live) return;
+    var slot = document.getElementById('edit-slot');
+    if (slot) slot.innerHTML = '<a href="admin.html">edit thoughts &nearr;</a>';
+  })();
+
+  /* ---- views, addressable by hash so every section is linkable ---- */
+  var nav = document.getElementById('nav'),
+      buttons = [].slice.call(nav.querySelectorAll('button[data-view]'));
+
+  function show(name, push){
+    var found = false;
+    buttons.forEach(function(b){
+      var on = b.dataset.view === name;
+      if (on) found = true;
+      b.setAttribute('aria-current', on ? 'true' : 'false');
+    });
+    if (!found) return show('about', push);
+    [].forEach.call(document.querySelectorAll('.view'), function(v){
+      v.classList.remove('on');
+      if (v.id === 'v-' + name) v.classList.add('on');
+    });
+    document.querySelector('.stage').scrollTop = 0;
+    var inp = document.querySelector('#v-' + name + ' input.fi');
+    if (inp && inp.value){ inp.value = ''; runFilter(name, ''); }
+    if (push) history.replaceState(null, '', name === 'about' ? location.pathname : '#' + name);
+  }
+
+  nav.addEventListener('click', function(e){
+    var b = e.target.closest('button[data-view]');
+    if (!b) return;
+    show(b.dataset.view, true);
+  });
+  window.addEventListener('hashchange', function(){ show(location.hash.slice(1) || 'about', false); });
+  if (location.hash) show(location.hash.slice(1), false);
+
+  /* ---- keyword filter -------------------------------------------------
+     Matching is AND across whitespace-separated tokens. Each token is a
+     substring match over the row's whole text plus its data-k keywords,
+     widened by a small alias table so that the word a visitor reaches for
+     finds the word the write-up actually uses. Plurals fold both ways. */
+  var ALIAS = {
+    etl:        ['pipeline','ingest','warehouse','data-engineering'],
+    pipeline:   ['etl','ingest','data-engineering'],
+    warehouse:  ['duckdb','parquet','postgres','etl'],
+    db:         ['postgres','mongodb','neo4j','duckdb','pgvector','sql','database'],
+    database:   ['postgres','mongodb','neo4j','duckdb','pgvector','sql'],
+    sql:        ['postgres','duckdb','postgresql'],
+    llm:        ['gpt','openai','qwen','deepseek','gemma','language','vllm'],
+    agent:      ['agents','agentic','multi-agent','mcp','crewai','langgraph','langchain'],
+    rag:        ['retrieval','langchain','pgvector'],
+    retrieval:  ['rag','bm25','rerank','pgvector'],
+    eval:       ['evaluation','evals','benchmark'],
+    evals:      ['evaluation','benchmark'],
+    ml:         ['pytorch','training','model','learning'],
+    vision:     ['computer-vision','diffusion','nerf','clip','sdxl'],
+    nlp:        ['language','llm','gpt'],
+    frontend:   ['react','javascript','cytoscape','flask'],
+    devops:     ['docker','github-actions','ci','vllm'],
+    infra:      ['docker','github-actions','ci','postgres'],
+    cloud:      ['docker','github-actions','hugging-face'],
+    safety:     ['ai-safety','alignment','monitoring','faithfulness'],
+    interp:     ['interpretability','steering','patchscopes'],
+    finance:    ['financial','market','stock','returns','filings','yfinance','edgar'],
+    stats:      ['statistics','fisher','wilson'],
+    statistics: ['fisher','wilson'],
+    causal:     ['causal-inference','causal-interpretability','notears','dml']
+  };
+
+  function variants(tok){
+    var out = [tok], i, extra = ALIAS[tok] || [];
+    for (i = 0; i < extra.length; i++) out.push(extra[i]);
+    if (tok.length > 3 && tok.charAt(tok.length - 1) === 's') out.push(tok.slice(0, -1));
+    else if (tok.length > 2) out.push(tok + 's');
+    return out;
+  }
+
+  function haystack(row){
+    if (!row._hay){
+      /* Curated keywords, title, summary and venue only. The abstract is
+         deliberately excluded: several write-ups mention a field in passing
+         and matching on that turns a filter into a dragnet. */
+      var t = row.querySelector('.rhead h3, .tt .tl'),
+          m = row.querySelector('.sum'),
+          v = row.querySelector('.venue');
+      row._hay = ((row.dataset.k || '') + ' ' +
+                  (t ? t.textContent : '') + ' ' +
+                  (m ? m.textContent : '') + ' ' +
+                  (v ? v.textContent : '')).toLowerCase().replace(/\s+/g, ' ');
+    }
+    return row._hay;
+  }
+
+  function runFilter(view, q){
+    var sec  = document.getElementById('v-' + view);
+    if (!sec) return;
+    var rows = [].slice.call(sec.querySelectorAll('.row, .tnote')),
+        cnt  = sec.querySelector('.fn'),
+        vd   = sec.querySelector('.void'),
+        toks = q.toLowerCase().split(/\s+/).filter(Boolean),
+        shown = 0;
+
+    rows.forEach(function(row){
+      var hay = haystack(row);
+      var ok = toks.every(function(t){
+        return variants(t).some(function(v){ return hay.indexOf(v) > -1; });
+      });
+      row.classList.toggle('hide', !ok);
+      if (ok) shown++;
+    });
+
+    cnt.textContent = !toks.length ? '' : shown + (shown === 1 ? ' match' : ' matches');
+    if (toks.length && !shown){
+      vd.textContent = 'nothing for “' + q.trim() + '”. try etl, agents, diffusion, causal, finance';
+      vd.hidden = false;
+    } else {
+      vd.hidden = true;
+    }
+
+    [].forEach.call(sec.querySelectorAll('.chips button'), function(b){
+      b.setAttribute('aria-pressed', b.dataset.chip === q.trim().toLowerCase() ? 'true' : 'false');
+    });
+  }
+
+  [].forEach.call(document.querySelectorAll('input.fi'), function(inp){
+    inp.addEventListener('input', function(){ runFilter(inp.dataset.filter, inp.value); });
+  });
+
+  document.addEventListener('click', function(e){
+    var b = e.target.closest('.chips button');
+    if (!b) return;
+    var sec = b.closest('.view'),
+        inp = sec.querySelector('input.fi'),
+        next = b.getAttribute('aria-pressed') === 'true' ? '' : b.dataset.chip;
+    inp.value = next;
+    runFilter(inp.dataset.filter, next);
+    inp.focus();
+  });
+
+  /* "/" focuses the filter in whichever view is open */
+  document.addEventListener('keydown', function(e){
+    if (e.key !== '/' || e.metaKey || e.ctrlKey || e.altKey) return;
+    var t = e.target.tagName;
+    if (t === 'INPUT' || t === 'TEXTAREA') return;
+    var inp = document.querySelector('.view.on input.fi');
+    if (!inp) return;
+    e.preventDefault();
+    inp.focus();
+    inp.select();
+  });
+
+  /* ---- abstracts open in the shared sheet ---- */
+  var dlg   = document.getElementById('sheet-dialog'),
+      dTtl  = document.getElementById('sheet-title'),
+      dDate = document.getElementById('sheet-date'),
+      dBody = document.getElementById('sheet-body');
+
+  document.addEventListener('click', function(e){
+    var b = e.target.closest('[data-abs]');
+    if (!b) return;
+    var host = b.closest('.row, .tnote');
+    if (!host) return;
+    var src = host.querySelector('.abs');
+    if (!src) return;
+    dTtl.innerHTML  = src.dataset.title || '';
+    dDate.textContent = src.dataset.date || '';
+    dBody.innerHTML = src.innerHTML;
+    if (host.classList.contains('tnote') && !/class="sig"/.test(src.innerHTML)){
+      dBody.insertAdjacentHTML('beforeend', '<p class="sig">Ankit</p>');
+    }
+    dlg.showModal();
+  });
+  document.getElementById('sheet-close').addEventListener('click', function(){ dlg.close(); });
+
+  /* ---- static modals ---- */
+  document.addEventListener('click', function(e){
+    var t = e.target.closest('[data-open]');
+    if (!t) return;
+    e.preventDefault();
+    var d = document.getElementById('m-' + t.dataset.open);
+    if (d) d.showModal();
+  });
+  document.addEventListener('click', function(e){
+    if (e.target.tagName === 'DIALOG') e.target.close();
+  });
+
+  /* ---- ordered-dither the portrait on a canvas ---- */
+  var BAYER = [
+    [ 0,32, 8,40, 2,34,10,42],[48,16,56,24,50,18,58,26],
+    [12,44, 4,36,14,46, 6,38],[60,28,52,20,62,30,54,22],
+    [ 3,35,11,43, 1,33, 9,41],[51,19,59,27,49,17,57,25],
+    [15,47, 7,39,13,45, 5,37],[63,31,55,23,61,29,53,21]
+  ];
+  var cv = document.getElementById('dither'),
+      fb = document.getElementById('portrait-fallback'),
+      src = new Image();
+  src.crossOrigin = 'anonymous';
+  src.onload = function(){
+    try {
+      var w = cv.width, h = cv.height, ctx = cv.getContext('2d'),
+          s = Math.min(src.width, src.height);
+      ctx.drawImage(src, (src.width - s) / 2, (src.height - s) / 2, s, s, 0, 0, w, h);
+      var d = ctx.getImageData(0, 0, w, h), p = d.data, x, y, i, lum, on;
+      for (y = 0; y < h; y++) for (x = 0; x < w; x++){
+        i = (y * w + x) * 4;
+        lum = 0.299 * p[i] + 0.587 * p[i+1] + 0.114 * p[i+2];
+        on  = lum > (BAYER[y & 7][x & 7] + 0.5) / 64 * 255;
+        p[i]   = on ? 255 : 60;
+        p[i+1] = on ? 255 : 78;
+        p[i+2] = on ? 255 : 112;
+        p[i+3] = on ? 255 : 190;
+      }
+      ctx.putImageData(d, 0, 0);
+    } catch (err) {
+      cv.style.display = 'none'; fb.style.display = 'block';
+    }
+  };
+  src.onerror = function(){ cv.style.display = 'none'; fb.style.display = 'block'; };
+  src.src = 'assets/images/profile.JPG';
 })();
 </script>
 </body>

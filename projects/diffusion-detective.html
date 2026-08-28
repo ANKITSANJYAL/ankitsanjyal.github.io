@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Diffusion Detective — Interpretability Tooling: Ankit Sanjyal</title>
+  <title>Diffusion Detective · Interpretability Tooling: Ankit Sanjyal</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/shell.css">
   <style>
     .proj-hero { background: #fafafa; border: 1px solid #e8e8e8; border-radius: 0; padding: 28px 32px; margin-bottom: 32px; }
@@ -33,19 +33,22 @@
   <div id="nav-inner">
     <a href="../index.html" class="nav-name">Ankit Sanjyal</a>
     <div id="nav-links">
-      <a href="../index.html">Search</a>
-      <a href="../cv.html">CV</a>
+      <a href="../index.html">Home</a>
+      <a href="../index.html#research">Research</a>
+      <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#writing">Writing</a>
+      <a href="https://docs.google.com/document/d/1iLOd3weF8ErrZbXsRrUp5AjiW-H7to-MsZ9Qjo1kETg/edit?usp=sharing" target="_blank" rel="noopener">CV &nearr;</a>
     </div>
   </div>
 </nav>
 
 <div id="page-wrap">
 
-  <a class="back-link" href="../index.html">&larr; Back to search</a>
+  <a class="back-link" href="../index.html#projects">&larr; Back</a>
 
   <div class="proj-hero">
     <div class="proj-title">Diffusion Detective: Interpretability Tooling for a Generative Model</div>
-    <div class="proj-tagline">Real-time extraction of internal representations (cross-attention), causal steering of behavior via representation-space interventions (94% success), and automated natural-language explanation of what each intervention did — mechanically a precursor to LLM activation steering and patchscopes-style self-explanation.</div>
+    <div class="proj-tagline">Real-time extraction of internal representations (cross-attention), causal steering of behavior via representation-space interventions (94% success), and automated natural-language explanation of what each intervention did, mechanically a precursor to LLM activation steering and patchscopes-style self-explanation.</div>
     <div>
       <span class="tag-pill">Stable Diffusion 2.1</span>
       <span class="tag-pill">PyTorch</span>
@@ -126,7 +129,7 @@ latents_t = latents_t + steering_vector * strength
   </p>
   <ul style="margin: 8px 0 16px 20px; color: #3a3a3a; font-size: 0.95rem; line-height: 1.9;">
     <li><strong>Cross-attention extraction</strong> is the diffusion analogue of <em>activation patching</em> and
-      <em>attention head analysis</em> in transformer interpretability — hooking into internal representations
+      <em>attention head analysis</em> in transformer interpretability, hooking into internal representations
       at runtime to see what the model is "looking at."</li>
     <li><strong>CLIP-space steering vectors</strong> (adding/subtracting concept embeddings in the latent space
       during generation) are the direct precursor to <em>activation steering</em> in residual-stream LLMs:
@@ -136,7 +139,7 @@ latents_t = latents_t + steering_vector * strength
   </ul>
   <p>
     Standard diffusion models are black boxes. Diffusion Detective is a working prototype of an interpretability
-    toolkit for such a system — and the transferable skill is exactly the pipeline that LLM interpretability
+    toolkit for such a system, and the transferable skill is exactly the pipeline that LLM interpretability
     research builds on: hook into internals → intervene causally → explain in natural language.
   </p>
 
@@ -147,5 +150,13 @@ latents_t = latents_t + steering_vector * strength
   </div>
 
 </div>
+<div class="reader-clock" id="reader-clock"></div>
+<script>
+(function(){
+  var c = document.getElementById('reader-clock');
+  function tick(){ c.textContent = new Date().toLocaleTimeString('en-US', {hour12:false}); }
+  tick(); setInterval(tick, 1000);
+})();
+</script>
 </body>
 </html>

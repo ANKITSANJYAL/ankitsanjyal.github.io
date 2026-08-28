@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Affect-Diff — Causal-Diffusion Bridge: Ankit Sanjyal</title>
+  <title>Affect-Diff · Causal-Diffusion Bridge: Ankit Sanjyal</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/shell.css">
   <style>
     .proj-hero { background: #fafafa; border: 1px solid #e8e8e8; border-radius: 0; padding: 28px 32px; margin-bottom: 32px; }
@@ -43,15 +43,18 @@
   <div id="nav-inner">
     <a href="../index.html" class="nav-name">Ankit Sanjyal</a>
     <div id="nav-links">
-      <a href="../index.html">Search</a>
-      <a href="../cv.html">CV</a>
+      <a href="../index.html">Home</a>
+      <a href="../index.html#research">Research</a>
+      <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#writing">Writing</a>
+      <a href="https://docs.google.com/document/d/1iLOd3weF8ErrZbXsRrUp5AjiW-H7to-MsZ9Qjo1kETg/edit?usp=sharing" target="_blank" rel="noopener">CV &nearr;</a>
     </div>
   </div>
 </nav>
 
 <div id="page-wrap">
 
-  <a class="back-link" href="../index.html">&larr; Back to search</a>
+  <a class="back-link" href="../index.html#projects">&larr; Back</a>
 
   <div class="proj-hero">
     <div class="proj-title">
@@ -59,7 +62,7 @@
     </div>
     <div class="proj-tagline">
       An AI model that identifies not just <em>what</em> emotion a person expresses but
-      <em>which part</em> of their communication caused that prediction — words, tone of voice, or
+      <em>which part</em> of their communication caused that prediction, words, tone of voice, or
       facial expression. Uses a NOTEARS-learned causal graph + β-VAE + stop-gradiented 1D DDPM prior.
       Result: 18% relative improvement over the strongest baseline; first system to achieve
       non-trivial performance on minority emotion classes where all baselines fail entirely.
@@ -82,7 +85,7 @@
     </div>
   </div>
 
-  <h2 class="section-heading">The Problem — Plain English</h2>
+  <h2 class="section-heading">The Problem, Plain English</h2>
   <p>
     Imagine a system that listens to someone speak and predicts their emotion. Standard AI models just output
     a label: "happy," "sad," "angry." They can't tell you <em>why</em> they made that call, or whether it
@@ -93,12 +96,12 @@
   <p>
     Affect-Diff solves both problems simultaneously. A NOTEARS-learned causal graph explicitly models which
     modality (text / audio / video) drives each prediction. A generative diffusion prior structures the latent
-    space so the model maintains meaningful representations of minority classes — not just "default to Happy."
+    space so the model maintains meaningful representations of minority classes, not just "default to Happy."
   </p>
 
-  <h2 class="section-heading">The Problem — Technical</h2>
+  <h2 class="section-heading">The Problem, Technical</h2>
   <ul style="margin: 8px 0 16px 20px; color: #3a3a3a; font-size: 0.95rem; line-height: 1.9;">
-    <li><strong>Class imbalance:</strong> CMU-MOSEI has extreme label skew — Happy at 65.9%, three Ekman categories under 7%. Standard classifiers collapse to majority-class prediction.</li>
+    <li><strong>Class imbalance:</strong> CMU-MOSEI has extreme label skew, Happy at 65.9%, three Ekman categories under 7%. Standard classifiers collapse to majority-class prediction.</li>
     <li><strong>Modality attribution:</strong> Fused multimodal models don't expose which modality drove a prediction. That's an interpretability gap.</li>
     <li><strong>Counterfactual reasoning:</strong> What would the model have predicted if only the audio changed? Generative models let you ask this; discriminative classifiers don't.</li>
   </ul>
@@ -158,7 +161,7 @@
     </div>
     <div class="module-card">
       <h4>1D Diffusion U-Net (Stop-Gradient)</h4>
-      <p>Custom UNet1D with ResnetBlock1D stacks operating on the temporal latent sequence. Uses a <em>stop-gradient</em> on the DDPM prior during classifier training — the diffusion model structures the latent space without interfering with the classification gradient. Conditions on timestep, label, and causal influence projection.</p>
+      <p>Custom UNet1D with ResnetBlock1D stacks operating on the temporal latent sequence. Uses a <em>stop-gradient</em> on the DDPM prior during classifier training, the diffusion model structures the latent space without interfering with the classification gradient. Conditions on timestep, label, and causal influence projection.</p>
     </div>
     <div class="module-card">
       <h4>Classifier-Free Guidance</h4>
@@ -205,11 +208,11 @@ modules/
     <strong>Results:</strong> 0.384 validation balanced accuracy on CMU-MOSEI (3,292 aligned samples);
     <strong>18% relative improvement</strong> over the strongest baseline.
     Critically, Affect-Diff is the only system to achieve non-trivial performance on minority emotion
-    classes — the categories where all baselines fail entirely. That's where the NOTEARS causal graph
+    classes, the categories where all baselines fail entirely. That's where the NOTEARS causal graph
     and diffusion prior earn their keep.
     <br><br>
-    <strong>Interpretability angle:</strong> The core question — <em>which input feature causally drove
-    this output?</em> — is the same question mechanistic interpretability asks about language model
+    <strong>Interpretability angle:</strong> The core question, <em>which input feature causally drove
+    this output?</em>, is the same question mechanistic interpretability asks about language model
     internals. Counterfactual sampling (run the model under a different causal condition, measure the
     delta) is a generative analogue of causal scrubbing and activation patching. The techniques
     transfer directly: causal graphs over modalities → causal graphs over attention heads and MLP layers.
@@ -233,5 +236,13 @@ modules/
   </div>
 
 </div>
+<div class="reader-clock" id="reader-clock"></div>
+<script>
+(function(){
+  var c = document.getElementById('reader-clock');
+  function tick(){ c.textContent = new Date().toLocaleTimeString('en-US', {hour12:false}); }
+  tick(); setInterval(tick, 1000);
+})();
+</script>
 </body>
 </html>

@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Concept 3 — Subconscious</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+
+:root{
+  --ink:#22262e; --body:#3d434e; --mute:#767d8a;
+  --card:rgba(255,255,255,.34); --hair:rgba(255,255,255,.42);
+  --fall:#f7fbff;
+  --g1:#cfd6e2; --g2:#dde4ef; --g3:#b9c4d6; --g4:#c7cede;
+  --serif:"EB Garamond",Georgia,serif;
+  --ui:"Instrument Sans",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif;
+}
+[data-mood="warm"]{ --ink:#26221d; --body:#463f36; --mute:#847a6d;
+  --g1:#e6ddd3; --g2:#efe7dd; --g3:#d8cec2; --g4:#ded6ce; --card:rgba(255,255,255,.38); }
+[data-mood="ink"]{ --ink:#eef0f3; --body:#c2c7d0; --mute:#7c838f;
+  --card:rgba(255,255,255,.07); --hair:rgba(255,255,255,.14); --fall:#ffffff;
+  --g1:#252a34; --g2:#2e3440; --g3:#171a21; --g4:#1f232b; }
+
+html,body{height:100%}
+body{
+  margin:0;background:var(--g3);color:var(--ink);
+  font-family:var(--ui);font-size:15px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;overflow:hidden;
+  transition:color 700ms ease, background 1200ms ease;
+}
+
+/* ---- mesh gradient: four blurred blobs, CSS only ---- */
+.bg{position:fixed;inset:0;z-index:-3;overflow:hidden;background:var(--g3);transition:background 1200ms ease}
+.blob{position:absolute;border-radius:50%;filter:blur(80px);transition:background 1200ms ease}
+.b1{width:66vw;height:66vw;left:-12vw;top:-18vw;background:var(--g1);animation:d1 36s ease-in-out infinite alternate}
+.b2{width:56vw;height:56vw;right:-10vw;top:-4vw;background:var(--g2);animation:d2 44s ease-in-out infinite alternate}
+.b3{width:70vw;height:70vw;left:8vw;bottom:-30vw;background:var(--g4);animation:d3 50s ease-in-out infinite alternate}
+.b4{width:44vw;height:44vw;right:2vw;bottom:-12vw;background:var(--g1);animation:d4 41s ease-in-out infinite alternate}
+@keyframes d1{to{transform:translate3d(10vw,8vh,0) scale(1.18)}}
+@keyframes d2{to{transform:translate3d(-12vw,11vh,0) scale(.84)}}
+@keyframes d3{to{transform:translate3d(8vw,-10vh,0) scale(1.12)}}
+@keyframes d4{to{transform:translate3d(-9vw,-7vh,0) scale(1.22)}}
+
+/* ---- dither grain ---- */
+.grain{position:fixed;inset:0;z-index:-2;pointer-events:none;opacity:.34;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='150' height='150' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* ---- falling rain ---- */
+.rain{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.drop{position:absolute;width:1px;height:62px;background:linear-gradient(to bottom,transparent,var(--fall));opacity:.30}
+@keyframes fall{0%{transform:translateY(-120px);opacity:0}12%{opacity:.30}88%{opacity:.30}100%{transform:translateY(102vh);opacity:0}}
+@media (max-width:899px){ .rain{display:none} }
+
+/* ---- persistent frame ---- */
+.chrome{position:fixed;font-family:var(--serif);font-size:13px;color:var(--body);z-index:20}
+.c-tl{top:28px;left:38px}
+.c-tr{top:28px;right:38px}
+.c-bl{bottom:26px;left:38px}
+.c-br{bottom:26px;right:38px;text-align:right}
+.chrome button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;
+  border-bottom:1px solid transparent;transition:color 1200ms ease}
+.chrome button:hover{border-bottom-color:currentColor}
+
+.mark{position:fixed;top:98px;right:38px;text-align:right;z-index:20}
+.mark h1{font-family:var(--serif);font-weight:500;font-size:clamp(28px,3.6vw,40px);line-height:1.08;margin:0}
+.mark p{font-family:var(--serif);font-size:15px;color:var(--body);margin:5px 0 0}
+
+nav{position:fixed;top:116px;left:38px;display:flex;flex-direction:column;gap:10px;z-index:20}
+nav button{font:inherit;font-size:13.5px;background:none;border:0;padding:0;cursor:pointer;
+  color:var(--body);text-align:left;width:max-content;text-decoration:none}
+nav button:hover{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+nav button[aria-current="true"]{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+
+main{position:fixed;left:26px;right:26px;top:236px;bottom:74px;overflow-y:auto;scrollbar-width:none;z-index:10}
+main::-webkit-scrollbar{display:none}
+@media (min-width:900px){ main{left:190px;right:130px;top:246px} }
+
+.view{display:none}
+.view.on{display:block;animation:pix 700ms steps(12) both}
+@keyframes pix{from{opacity:0}to{opacity:1}}
+
+/* ---- about ---- */
+.about{display:flex;gap:52px;align-items:flex-start}
+.portrait{flex-shrink:0;display:none}
+@media (min-width:900px){ .portrait{display:block} }
+.portrait .frame{width:250px;height:250px;border-radius:16px;overflow:hidden;background:rgba(80,100,140,.35)}
+.portrait canvas,.portrait img{width:100%;height:100%;object-fit:cover;display:block}
+.portrait img{filter:grayscale(1) contrast(1.25)}
+.portrait figcaption{font-family:var(--serif);font-style:italic;font-size:12.5px;color:var(--body);
+  text-align:center;margin-top:10px;max-width:250px}
+
+.card{background:var(--card);border-radius:16px;padding:34px 38px;max-width:600px;
+  backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
+.card.prose{font-family:var(--serif);font-size:17px;line-height:1.64}
+.card.prose p{margin:0 0 16px}
+.card.prose p:last-child{margin-bottom:0}
+.card.prose b{font-weight:600}
+.links{display:flex;gap:24px;margin:16px 0 0 8px;font-size:12.5px}
+.links a,.links button{color:var(--body);text-decoration:underline;text-underline-offset:3px;
+  background:none;border:0;padding:0;font:inherit;cursor:pointer}
+.links a:hover,.links button:hover{opacity:.65}
+
+/* ---- rows ---- */
+.rows{max-width:790px;padding-bottom:10px}
+.row{margin-bottom:30px}
+.rhead{display:flex;justify-content:space-between;align-items:baseline;gap:18px}
+.rhead h3{font-family:var(--serif);font-weight:500;font-size:19px;margin:0;line-height:1.25}
+.rhead .when{font-family:var(--serif);font-size:12.5px;color:var(--mute);white-space:nowrap}
+.tldr{font-size:13.5px;color:var(--body);margin:6px 0 9px;max-width:68ch}
+.acts{display:flex;flex-wrap:wrap;align-items:center;gap:18px;font-size:12.5px;color:var(--body)}
+.acts button,.acts a{font:inherit;background:none;border:0;padding:0;cursor:pointer;color:inherit;
+  text-decoration:underline;text-underline-offset:3px}
+.acts button:hover,.acts a:hover{opacity:.65}
+.acts .venue{margin-left:auto;font-family:var(--serif);font-style:italic;color:var(--mute);text-decoration:none}
+.more{display:none;font-size:13px;color:var(--body);margin-top:11px;max-width:72ch}
+.more.on{display:block}
+
+/* ---- tiles ---- */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(258px,1fr));gap:18px;max-width:900px;padding-bottom:10px}
+.tile{background:var(--card);border-radius:16px;padding:24px;backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
+.tile .when{display:block;font-family:var(--serif);font-size:12.5px;color:var(--body);text-align:right;margin-bottom:16px}
+.tile h3{font-family:var(--serif);font-weight:500;font-size:17px;margin:0}
+.tile .org{font-family:var(--serif);font-size:15px;color:var(--body);margin:0 0 10px;
+  text-decoration:underline;text-underline-offset:3px}
+.tile p.x{font-size:12.5px;color:var(--body);margin:0;line-height:1.55}
+
+.grouphead{font-family:var(--serif);font-size:22px;font-weight:500;margin:0 0 18px}
+.list{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:6px 34px;max-width:860px;margin-bottom:38px}
+.list button{font:inherit;background:none;border:0;padding:5px 0;text-align:left;cursor:pointer;color:var(--ink);font-size:13.5px}
+.list .d{font-family:var(--serif);font-size:12px;color:var(--mute);margin-right:9px}
+.list .tt{text-decoration:underline;text-underline-offset:3px}
+.list button:hover{opacity:.65}
+
+/* ---- modal ---- */
+dialog{border:0;padding:0;background:transparent;max-width:none;max-height:none;width:100%;height:100%}
+dialog::backdrop{background:rgba(14,16,20,.30);backdrop-filter:blur(2px)}
+.sheet{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:min(700px,calc(100vw - 36px));max-height:84vh;overflow-y:auto;color:#1a1c20;
+  background:#fffdf6;border-radius:16px;box-shadow:0 24px 60px rgba(10,12,16,.28);padding:32px 36px}
+.sheet h2{font-family:var(--serif);font-weight:500;font-size:23px;margin:0 0 4px}
+.sheet .date{font-family:var(--serif);font-style:italic;font-size:12.5px;color:#7a7a72;margin:0 0 20px}
+.sheet .close{position:absolute;top:32px;right:36px;font-family:var(--serif);font-size:13px;
+  background:none;border:0;cursor:pointer;color:#5c5c55}
+.sheet .close:hover{text-decoration:underline}
+.sheet .txt{font-size:13.5px;line-height:1.72;color:#33342f}
+.sheet .txt p{margin:0 0 13px}
+.sheet ul{list-style:none;margin:0;padding:0}
+.sheet li{display:grid;grid-template-columns:1fr auto;gap:14px;padding:7px 0;
+  border-bottom:1px solid rgba(0,0,0,.07);font-size:13.5px}
+.sheet li:last-child{border-bottom:0}
+.sheet .sig{font-family:var(--serif);font-style:italic;font-size:13px;color:#7a7a72;text-align:right;margin-top:22px}
+
+@media (max-width:899px){
+  body{overflow:auto}
+  .mark{position:static;text-align:left;padding:70px 24px 0}
+  nav{position:static;flex-direction:row;flex-wrap:wrap;gap:18px;padding:18px 24px 0}
+  main{position:static;padding:24px 24px 90px;overflow:visible}
+  .c-tl,.c-bl{display:none}
+  .card{padding:26px 24px}
+}
+@media (prefers-reduced-motion:reduce){
+  .blob{animation:none} .drop{display:none} .view.on{animation:none}
+}
+</style>
+</head>
+<body data-mood="slate">
+
+<div class="bg"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="blob b4"></div></div>
+<div class="grain"></div>
+<div class="rain" id="rain"></div>
+
+<div class="chrome c-tl" id="clock">00:00:00</div>
+<div class="chrome c-tr"><button id="mood">Slate</button></div>
+<div class="chrome c-bl">in new york</div>
+<div class="chrome c-br"><button data-open="reading">what i&rsquo;m reading &nearr;</button></div>
+
+<header class="mark">
+  <h1>Ankit Sanjyal</h1>
+  <p>what the model says, and what it actually did</p>
+</header>
+
+<nav id="nav">
+  <button data-view="about" aria-current="true">about</button>
+  <button data-view="research">research</button>
+  <button data-view="projects">projects</button>
+  <button data-view="writing">writing</button>
+  <button data-view="cv">cv</button>
+</nav>
+
+<main>
+
+  <section class="view on" id="v-about">
+    <div class="about">
+      <figure class="portrait" style="margin:0">
+        <div class="frame">
+          <canvas id="dither" width="250" height="250" aria-label="Portrait"></canvas>
+          <img id="fallback" src="../assets/images/profile.JPG" alt="Ankit Sanjyal" style="display:none">
+        </div>
+        <figcaption>the trace is not the computation</figcaption>
+      </figure>
+
+      <div style="flex:1">
+        <div class="card prose">
+          <p>I work on whether a model&rsquo;s stated reasoning is a reliable window into the computation
+          that <b>actually produced it</b> &mdash; and what breaks when one model becomes many talking to each other.</p>
+          <p>Right now that means <b>chain-of-thought faithfulness</b>: injecting misleading cues into thousands
+          of problems and measuring, trace by trace, whether the reasoning ever admits them. Capture is near zero
+          where reasoning is <b>computationally necessary</b> and reaches 41% where it is optional.</p>
+          <p>M.S. Data Science at <b>Fordham</b>, May 2026. Before that, two years of data infrastructure in
+          Bangalore, which is where I learned that most of research is plumbing.</p>
+          <p>Looking for interpretability and safety work &mdash; fellowships, research roles, collaborators.</p>
+        </div>
+        <div class="links">
+          <a href="mailto:asanjyal82@gmail.com">email &nearr;</a>
+          <a href="https://github.com/ANKITSANJYAL" target="_blank" rel="noopener">github &nearr;</a>
+          <a href="https://linkedin.com/in/ankit-sanjyal" target="_blank" rel="noopener">linkedin &nearr;</a>
+          <a href="#">cv &nearr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="view" id="v-research">
+    <div class="rows">
+      <article class="row">
+        <div class="rhead"><h3>Multimodal Emotion Recognition via Causal-Diffusion Bridge</h3><span class="when">2025</span></div>
+        <p class="tldr">A causal graph re-weights text, audio and video; counterfactual sampling makes attribution explicit, so the model reports which modality drove each prediction.</p>
+        <div class="acts"><button data-more>view abstract</button><a href="#">paper &nearr;</a><span class="venue">Preprint</span></div>
+        <div class="more">A NOTEARS causal graph re-weights the text, audio and video channels, a &beta;-VAE compresses them, and a stop-gradiented 1D DDPM prior structures the latent space. An 18% relative improvement on CMU-MOSEI, and the only system with non-trivial performance on the minority emotions where every baseline fails.</div>
+      </article>
+      <article class="row">
+        <div class="rhead"><h3>RectifiedHR: High-Resolution Diffusion via Energy Profiling</h3><span class="when">2025</span></div>
+        <p class="tldr">Profiles latent energy dynamics during sampling and schedules classifier-free guidance from that signal. Training-free high-resolution generation.</p>
+        <div class="acts"><button data-more>view abstract</button><a href="#">paper &nearr;</a><span class="venue">Preprint</span></div>
+        <div class="more">No fine-tuning and no extra parameters &mdash; just a better-behaved guidance schedule.</div>
+      </article>
+      <article class="row">
+        <div class="rhead"><h3>Local Prompt Adaptation for Style-Consistent Generation</h3><span class="when">2025</span></div>
+        <p class="tldr">Splits a prompt into content and style tokens and routes them to different cross-attention layers of SDXL, so style applies locally instead of smearing.</p>
+        <div class="acts"><button data-more>view abstract</button><a href="#">paper &nearr;</a><span class="venue">Preprint</span></div>
+        <div class="more">It holds style consistent across multi-object scenes where a single global prompt drifts, and needs no training.</div>
+      </article>
+      <article class="row">
+        <div class="rhead"><h3>NeRF Few-Shot Limitations Analysis</h3><span class="when">2024</span></div>
+        <p class="tldr">Does reusing DINO features rescue NeRF from a handful of views? Only inside a narrow band &mdash; the paper is about locating that boundary honestly.</p>
+        <div class="acts"><a href="#">paper &nearr;</a><span class="venue">Preprint</span></div>
+      </article>
+      <article class="row">
+        <div class="rhead"><h3>Research statement</h3><span class="when">current</span></div>
+        <p class="tldr">When externalized computation is a reliable window into the actual decision process, and what survives when one model becomes many.</p>
+        <div class="acts"><a href="#">google doc &nearr;</a><span class="venue">Statement</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="view" id="v-projects">
+    <div class="grid">
+      <div class="tile">
+        <span class="when">2026 | BlueDot capstone</span>
+        <h3>CoT Faithfulness</h3>
+        <p class="org">Necessity vs. Propensity &nearr;</p>
+        <p class="x">1,700 cue-injected problems per model across three families. In the worst case a model disclosed the cue once in 489 captured traces.</p>
+      </div>
+      <div class="tile">
+        <span class="when">2025 | Tooling</span>
+        <h3>Diffusion Detective</h3>
+        <p class="org">Interpretability &nearr;</p>
+        <p class="x">Surfaces what a model attends to at each denoising step, then steers it with a concept vector — 94% success — and explains what changed.</p>
+      </div>
+      <div class="tile">
+        <span class="when">2026 | Data engineering</span>
+        <h3>NEPSE Pipeline</h3>
+        <p class="org">DuckDB · Parquet &nearr;</p>
+        <p class="x">42,709 floorsheet contracts a day, served only for the current session. Validated at every layer boundary — a missed day is gone permanently.</p>
+      </div>
+      <div class="tile">
+        <span class="when">2025 | Fordham EDM Lab</span>
+        <h3>MAESTRO</h3>
+        <p class="org">Text-to-video lectures &nearr;</p>
+        <p class="x">Script synthesis, TTS and FFmpeg rendering, with RAG over the material. Running live for the university.</p>
+      </div>
+      <div class="tile">
+        <span class="when">2025 | Won MUG Hackathon</span>
+        <h3>H-KFX</h3>
+        <p class="org">MCP · RAG &nearr;</p>
+        <p class="x">Jira ticket in, validated pull request out, in 60–90 seconds.</p>
+      </div>
+      <div class="tile" style="background:rgba(255,255,255,.16)">
+        <span class="when">and more</span>
+        <h3 style="text-align:right">other work</h3>
+        <p class="x" style="text-align:right;margin-top:10px">
+          <button class="lnk" data-open="more" style="background:none;border:0;padding:0;font:inherit;color:inherit;cursor:pointer;text-decoration:underline;text-underline-offset:3px">four more projects &nearr;</button><br>
+          <span style="color:var(--mute)">NoProp · Causal Finance · AutomatedBI · RamsNavigator</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="view" id="v-writing">
+    <h2 class="grouphead">Notes on faithfulness</h2>
+    <div class="list">
+      <button data-open="post1"><span class="d">2026</span><span class="tt">Necessity Protects CoT Monitoring &nearr;</span></button>
+      <button data-open="post2"><span class="d">2025</span><span class="tt">When Is Chain-of-Thought Honest? &nearr;</span></button>
+    </div>
+    <h2 class="grouphead">Field notes</h2>
+    <div class="list">
+      <button data-open="post3"><span class="d">2026</span><span class="tt">What a floorsheet taught me about data &nearr;</span></button>
+      <button data-open="post3"><span class="d">2025</span><span class="tt">Most of research is plumbing &nearr;</span></button>
+    </div>
+  </section>
+
+  <section class="view" id="v-cv">
+    <div class="grid">
+      <div class="tile"><span class="when">Aug 2025 – May 2026 | NYC</span><h3>Teaching Assistant</h3>
+        <p class="org">Fordham University &nearr;</p>
+        <p class="x">Graduate <em>Data Mining</em> and <em>Machine Learning for Finance</em>. Office hours, 1:1 mentoring, guest lectures.</p></div>
+      <div class="tile"><span class="when">Aug 2024 – May 2026 | NYC</span><h3>Graduate Research Assistant</h3>
+        <p class="org">Fordham EDM Lab &nearr;</p>
+        <p class="x">Led MAESTRO. Few-shot 2D-to-3D reconstruction on medical imaging with efficient neural representations.</p></div>
+      <div class="tile"><span class="when">Jan 2023 – Jul 2024 | Bangalore</span><h3>Associate Data Consultant</h3>
+        <p class="org">Decision Foundry &nearr;</p>
+        <p class="x">ETL in DBT and Tableau Prep, Redshift SQL 40% faster on 1 TB+ datasets, 25+ dashboards.</p></div>
+      <div class="tile"><span class="when">Jan 2022 – Jul 2023 | Bangalore</span><h3>Undergraduate RA</h3>
+        <p class="org">Jain University &nearr;</p>
+        <p class="x">Deep learning for medical imaging; published on toxic language detection and skin lesion classification.</p></div>
+      <div class="tile"><span class="when">2024 – 2026</span><h3>M.S. Data Science</h3>
+        <p class="org">Fordham University &nearr;</p><p class="x">New York, NY.</p></div>
+      <div class="tile" style="background:rgba(255,255,255,.16)">
+        <span class="when">also</span><h3 style="text-align:right">elsewhere</h3>
+        <p class="x" style="text-align:right;margin-top:10px">
+          <button data-open="training" style="background:none;border:0;padding:0;font:inherit;color:inherit;cursor:pointer;text-decoration:underline;text-underline-offset:3px">technical AI safety, BlueDot &nearr;</button><br>
+          <span style="color:var(--mute)">full CV · google scholar</span></p></div>
+    </div>
+  </section>
+
+</main>
+
+<dialog id="m-reading"><div class="sheet">
+  <button class="close" onclick="this.closest('dialog').close()">return</button>
+  <h2>What I&rsquo;m reading</h2><p class="date">papers, mostly</p>
+  <ul>
+    <li><span>Language Models Don&rsquo;t Always Say What They Think</span><span>Turpin et al.</span></li>
+    <li><span>Towards Monosemanticity</span><span>Anthropic</span></li>
+    <li><span>The Geometry of Truth</span><span>Marks &amp; Tegmark</span></li>
+    <li><span>Reasoning Models Don&rsquo;t Always Say What They Think</span><span>Chen et al.</span></li>
+    <li><span>Alignment Faking in Large Language Models</span><span>Greenblatt et al.</span></li>
+  </ul>
+  <p class="sig">recommendations very welcome</p>
+</div></dialog>
+
+<dialog id="m-post1"><div class="sheet">
+  <button class="close" onclick="this.closest('dialog').close()">return</button>
+  <h2>Necessity Protects CoT Monitoring by Prevention, Not Disclosure</h2><p class="date">2026 · LessWrong</p>
+  <div class="txt">
+    <p>Misleading authority cues, injected into 1,700 problems per model across Qwen3-4B, DeepSeek-R1-Distill-8B and Gemma-3-4B. Every captured trace was scored twice — by an LLM judge and by hand — for whether the reasoning admitted the cue.</p>
+    <p>Capture is near-zero (0.0–2.2%) where reasoning is computationally necessary, and reaches 41% where reasoning is optional. In the worst case, a model disclosed the cue once in 489 captured traces.</p>
+    <p>The claim is not that faithfulness is high in the necessity arm. It is that the necessity arm is structurally the wrong place to measure it: the cue never lands, so there is nothing to disclose. Monitoring is protected by prevention, not by honesty.</p>
+  </div>
+  <p class="sig">Ankit</p>
+</div></dialog>
+
+<dialog id="m-post2"><div class="sheet">
+  <button class="close" onclick="this.closest('dialog').close()">return</button>
+  <h2>When Is Chain-of-Thought Honest?</h2><p class="date">2025 · Design note</p>
+  <div class="txt">
+    <p>Written before any results were in: the motivation, the necessity/propensity distinction, the experimental design, and — importantly — what would have counted as an alarming outcome.</p>
+    <p>Superseded by the results post, and kept exactly as written. A pre-registration you quietly edit afterwards isn&rsquo;t one.</p>
+  </div>
+  <p class="sig">Ankit</p>
+</div></dialog>
+
+<dialog id="m-post3"><div class="sheet">
+  <button class="close" onclick="this.closest('dialog').close()">return</button>
+  <h2>Field note</h2><p class="date">placeholder</p>
+  <div class="txt"><p>This is where a shorter, more personal piece would live — the equivalent of his <em>thoughts</em> page. Opens in place, no navigation, cream paper.</p></div>
+  <p class="sig">Ankit</p>
+</div></dialog>
+
+<dialog id="m-more"><div class="sheet">
+  <button class="close" onclick="this.closest('dialog').close()">return</button>
+  <h2>Other projects</h2><p class="date">2024 – 2026</p>
+  <ul>
+    <li><span>No-Propagation Diffusion Transformers</span><span>~99% MNIST, no backprop</span></li>
+    <li><span>Causal Factor Discovery in S&amp;P 500 Returns</span><span>DML, ATE + CATE</span></li>
+    <li><span>AutomatedBI</span><span>CrewAI, −80% reporting time</span></li>
+    <li><span>RamsNavigator</span><span>Neo4j + LLM routing</span></li>
+  </ul>
+  <p class="sig">each has a full write-up</p>
+</div></dialog>
+
+<dialog id="m-training"><div class="sheet">
+  <button class="close" onclick="this.closest('dialog').close()">return</button>
+  <h2>Technical AI Safety — BlueDot Impact</h2><p class="date">May 2026</p>
+  <div class="txt"><p>Capstone: <em>CoT Faithfulness Under Necessity vs. Propensity</em>, published on LessWrong. The course is where the necessity/propensity framing came from.</p></div>
+</div></dialog>
+
+<script>
+(function(){
+  /* clock */
+  var clk=document.getElementById('clock');
+  function tick(){ clk.textContent=new Date().toLocaleTimeString('en-US',{hour12:false}); }
+  tick(); setInterval(tick,1000);
+
+  /* mood cycle */
+  var moods=['slate','warm','ink'], names={slate:'Slate',warm:'Warm',ink:'Ink'}, mi=0;
+  document.getElementById('mood').addEventListener('click',function(){
+    mi=(mi+1)%3; document.body.dataset.mood=moods[mi]; this.textContent=names[moods[mi]];
+    drops(moods[mi]);
+  });
+
+  /* rain — deterministic, like his sin(42+i) trick */
+  var rain=document.getElementById('rain');
+  function rnd(i){ var t=10000*Math.sin(42+i); return t-Math.floor(t); }
+  function drops(mood){
+    if(matchMedia('(prefers-reduced-motion: reduce)').matches){ rain.innerHTML=''; return; }
+    var n = mood==='warm' ? 0 : (mood==='ink' ? 260 : 130), html='';
+    for(var i=0;i<n;i++){
+      html+='<div class="drop" style="left:'+(100*rnd(i)).toFixed(2)+'%;animation:fall '
+           +(0.55+0.55*rnd(i+2000)).toFixed(2)+'s linear '+(-2*rnd(i+1000)).toFixed(2)+'s infinite"></div>';
+    }
+    rain.innerHTML=html;
+  }
+  drops('slate');
+
+  /* views */
+  var nav=document.getElementById('nav');
+  nav.addEventListener('click',function(e){
+    var b=e.target.closest('button[data-view]'); if(!b) return;
+    [].forEach.call(nav.children,function(x){x.setAttribute('aria-current',x===b);});
+    [].forEach.call(document.querySelectorAll('.view'),function(v){
+      v.classList.remove('on');
+      if(v.id==='v-'+b.dataset.view) v.classList.add('on');
+    });
+  });
+
+  /* inline expand */
+  document.addEventListener('click',function(e){
+    var b=e.target.closest('[data-more]'); if(!b) return;
+    var m=b.closest('.row').querySelector('.more');
+    b.textContent = m.classList.toggle('on') ? 'hide abstract' : 'view abstract';
+  });
+
+  /* modals */
+  document.addEventListener('click',function(e){
+    var t=e.target.closest('[data-open]'); if(!t) return;
+    e.preventDefault();
+    var d=document.getElementById('m-'+t.dataset.open); if(d) d.showModal();
+  });
+  document.addEventListener('click',function(e){
+    if(e.target.tagName==='DIALOG') e.target.close();
+  });
+
+  /* ordered-dither the portrait — the "his" signature move, in ~25 lines of canvas */
+  var BAYER=[[0,32,8,40,2,34,10,42],[48,16,56,24,50,18,58,26],[12,44,4,36,14,46,6,38],
+             [60,28,52,20,62,30,54,22],[3,35,11,43,1,33,9,41],[51,19,59,27,49,17,57,25],
+             [15,47,7,39,13,45,5,37],[63,31,55,23,61,29,53,21]];
+  var cv=document.getElementById('dither'), img=document.getElementById('fallback');
+  var src=new Image(); src.crossOrigin='anonymous';
+  src.onload=function(){
+    try{
+      var w=cv.width,h=cv.height,ctx=cv.getContext('2d');
+      var s=Math.min(src.width,src.height);
+      ctx.drawImage(src,(src.width-s)/2,(src.height-s)/2,s,s,0,0,w,h);
+      var d=ctx.getImageData(0,0,w,h), p=d.data;
+      for(var y=0;y<h;y++) for(var x=0;x<w;x++){
+        var i=(y*w+x)*4;
+        var lum=(0.299*p[i]+0.587*p[i+1]+0.114*p[i+2]);
+        var thr=(BAYER[y&7][x&7]+0.5)/64*255;
+        var on = lum>thr;
+        p[i]   = on?255:60;
+        p[i+1] = on?255:78;
+        p[i+2] = on?255:112;
+        p[i+3] = on?255:190;
+      }
+      ctx.putImageData(d,0,0);
+    }catch(err){ cv.style.display='none'; img.style.display='block'; }
+  };
+  src.onerror=function(){ cv.style.display='none'; img.style.display='block'; };
+  src.src='../assets/images/profile.JPG';
+})();
+</script>
+</body>
+</html>

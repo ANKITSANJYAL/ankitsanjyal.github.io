@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design concepts — pick one</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500&family=Instrument+Sans:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:#fbfbfa;color:#101114;font-family:"Instrument Sans",sans-serif;font-size:15px;line-height:1.65}
+.p{max-width:940px;margin:0 auto;padding:80px 30px 100px}
+h1{font-family:"EB Garamond",serif;font-weight:500;font-size:40px;margin:0 0 6px}
+.sub{font-family:"EB Garamond",serif;font-size:18px;color:#40444a;margin:0 0 54px}
+.c{display:block;text-decoration:none;color:inherit;border:1px solid #e6e5e2;padding:26px 28px;margin-bottom:16px;transition:border-color .18s}
+.c:hover{border-color:#101114}
+.ch{display:flex;justify-content:space-between;align-items:baseline;gap:16px}
+.ch h2{font-family:"EB Garamond",serif;font-weight:500;font-size:24px;margin:0}
+.ch .n{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#8b8f95}
+.c p{color:#40444a;margin:9px 0 0;max-width:70ch;font-size:14px}
+.tags{margin:14px 0 0;font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#8b8f95}
+.note{border-top:1px solid #101114;margin-top:44px;padding-top:20px;font-size:13.5px;color:#40444a}
+kbd{font-family:"JetBrains Mono",monospace;font-size:11px;border:1px solid #cfcecb;padding:1px 4px}
+code{font-family:"JetBrains Mono",monospace;font-size:12px}
+</style>
+</head>
+<body>
+<div class="p">
+  <h1>Three directions</h1>
+  <p class="sub">Same content, same two typefaces, three different amounts of atmosphere. All static HTML, no build step, GitHub Pages ready.</p>
+
+  <a class="c" href="01-graphite.html">
+    <div class="ch"><h2>1 &nbsp;&middot;&nbsp; Graphite</h2><span class="n">his structure, your palette</span></div>
+    <p>His full fixed-frame system &mdash; corner clock, mood toggle, persistent nav, content region that swaps in place &mdash; rendered strictly in black, white and grey. Square corners kept. Animated greyscale mesh behind glass cards. Your search box survives as a <kbd>/</kbd> overlay.</p>
+    <p class="tags">animated &middot; monochrome &middot; fixed frame &middot; modals &middot; search preserved</p>
+  </a>
+
+  <a class="c" href="02-ledger.html">
+    <div class="ch"><h2>2 &nbsp;&middot;&nbsp; Ledger</h2><span class="n">your restraint, his voice</span></div>
+    <p>One scrolling document with a sticky index rail. No animation at all, no glass, no motion &mdash; just paper grain, EB Garamond for the prose and JetBrains Mono for the data. Everything on one page, everything indexable, depth via inline expansion.</p>
+    <p class="tags">static &middot; monochrome &middot; one document &middot; scrollspy &middot; search preserved</p>
+  </a>
+
+  <a class="c" href="03-subconscious.html">
+    <div class="ch"><h2>3 &nbsp;&middot;&nbsp; Subconscious</h2><span class="n">closest to his</span></div>
+    <p>The full homage: animated mesh gradient, falling rain, three moods, rounded glass cards, cream-paper modals, and your portrait ordered-dithered on a canvas. This is the one that breaks your no-accent rule &mdash; deliberately, so you can see what it costs and what it buys.</p>
+    <p class="tags">animated &middot; tinted &middot; rounded &middot; dithered portrait &middot; modals</p>
+  </a>
+
+  <p class="note">Every concept ships real HTML in the document &mdash; nothing is injected by JS &mdash; so all three keep the crawlability his site gave up. Concept 3 needs to be served over HTTP for the canvas dither (a local server, not <code>file://</code>), otherwise it falls back to a greyscale photo.</p>
+</div>
+</body>
+</html>

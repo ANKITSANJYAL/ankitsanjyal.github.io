@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CV — Ankit Sanjyal</title>
-  <meta name="description" content="Experience, education, and teaching — Ankit Sanjyal, AI safety and interpretability researcher.">
+  <title>CV · Ankit Sanjyal</title>
+  <meta name="description" content="Experience, education, and teaching. Ankit Sanjyal, AI safety and interpretability researcher.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/shell.css">
 </head>
 <body>
@@ -16,15 +16,18 @@
   <div id="nav-inner">
     <a href="index.html" class="nav-name">Ankit Sanjyal</a>
     <div id="nav-links">
-      <a href="index.html">Search</a>
-      <a href="cv.html">CV</a>
+      <a href="index.html">Home</a>
+      <a href="index.html#research">Research</a>
+      <a href="index.html#projects">Projects</a>
+      <a href="index.html#writing">Writing</a>
+      <a href="https://docs.google.com/document/d/1iLOd3weF8ErrZbXsRrUp5AjiW-H7to-MsZ9Qjo1kETg/edit?usp=sharing" target="_blank" rel="noopener">CV &nearr;</a>
     </div>
   </div>
 </nav>
 
 <div id="page-wrap">
 
-  <a class="back-link" href="index.html">&larr; Back to search</a>
+  <a class="back-link" href="index.html#experience">&larr; Back</a>
 
   <h2 class="section-title">CV</h2>
   <p class="section-note">
@@ -32,7 +35,7 @@
     <a href="https://docs.google.com/document/d/1iLOd3weF8ErrZbXsRrUp5AjiW-H7to-MsZ9Qjo1kETg/edit?usp=sharing" target="_blank">CV (Google Doc) →</a>
     &nbsp;·&nbsp;
     <a href="https://docs.google.com/document/d/1xhv7jW235QPCo-AbFjMcOLMQA-ElxxYzHf6HNmd3XEY/edit?usp=sharing" target="_blank">Research statement →</a>
-    &nbsp;·&nbsp; Publications and projects are on the <a href="index.html">homepage</a> &mdash; search there.
+    &nbsp;·&nbsp; Publications and projects are on the <a href="index.html">homepage</a>, search there.
   </p>
 
   <h2 class="section-heading">Experience</h2>
@@ -103,14 +106,14 @@
       <td class="exp-date">Spring 2026</td>
       <td>
         <div class="exp-role">Machine Learning for Finance</div>
-        <div class="exp-org">Fordham University — Teaching Assistant (graduate)</div>
+        <div class="exp-org">Fordham University, Teaching Assistant (graduate)</div>
       </td>
     </tr>
     <tr>
       <td class="exp-date">Fall 2025</td>
       <td>
         <div class="exp-role">Data Mining</div>
-        <div class="exp-org">Fordham University — Teaching Assistant (graduate)</div>
+        <div class="exp-org">Fordham University, Teaching Assistant (graduate)</div>
       </td>
     </tr>
   </table>
@@ -123,6 +126,13 @@
     <a href="https://github.com/ANKITSANJYAL" target="_blank" rel="noopener">GitHub</a>
   </div>
 
-<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<div class="reader-clock" id="reader-clock"></div>
+<script>
+(function(){
+  var c = document.getElementById('reader-clock');
+  function tick(){ c.textContent = new Date().toLocaleTimeString('en-US', {hour12:false}); }
+  tick(); setInterval(tick, 1000);
+})();
+</script>
 </body>
 </html>

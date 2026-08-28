@@ -1,0 +1,26 @@
+name = "thoughts-auth"
+main = "src/index.js"
+compatibility_date = "2026-08-01"
+
+# Plain settings. These are not secret and can live in the repo.
+[vars]
+GITHUB_REPO    = "ANKITSANJYAL/ankitsanjyal.github.io"
+GITHUB_BRANCH  = "master"
+# Comma separated. The second entry is the local preview server, and is the
+# only reason a localhost page can talk to this Worker. Drop it if you ever
+# want the editor to work from the live site alone.
+ALLOWED_ORIGIN = "https://ankitsanjyal.github.io,http://localhost:8899"
+MAIL_FROM      = "Thoughts <onboarding@resend.dev>"
+
+# Holds pending one-time codes and the per-address rate counter.
+# Create it once, then paste the id it prints here:
+#   npx wrangler kv namespace create OTP_KV
+[[kv_namespaces]]
+binding = "OTP_KV"
+id      = "bfec6c60b5c3475596d1c351ce2eb8f1"
+
+# Secrets are never written here. Set each one with:
+#   npx wrangler secret put ALLOWED_EMAIL
+#   npx wrangler secret put SESSION_SECRET
+#   npx wrangler secret put GITHUB_TOKEN
+#   npx wrangler secret put RESEND_API_KEY
