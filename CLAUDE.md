@@ -110,7 +110,7 @@ Nothing about it is a separate mechanism.
 ## Publishing a thought from the site
 
 `admin.html` is an unlisted, `noindex` editor: sign in with a code mailed to
-`ALLOWED_EMAIL`, write in a small rich-text box, save, and the thought is live once
+`ALLOWED_EMAIL` (the Resend account address, not the public contact one), write in a small rich-text box, save, and the thought is live once
 Pages rebuilds. It is the only part of the site that writes to the repository.
 
 **The static site cannot do this alone**, and that is not a limitation to design

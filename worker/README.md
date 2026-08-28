@@ -21,8 +21,19 @@ Sign up at [resend.com](https://resend.com) and create an API key. On the free t
 the shared `onboarding@resend.dev` sender can only deliver to **the address you
 signed up with**, which is exactly the constraint we want: the one recipient is you.
 
-If you later want mail from your own domain, verify it in Resend and change
-`MAIL_FROM` in `wrangler.toml`.
+> **This bit them once.** `ALLOWED_EMAIL` must be the address the **Resend account**
+> was created with, not whichever address the site lists as public contact. They are
+> different here on purpose: the site publishes `asanjyal82@`, while sign-in uses
+> `asanjyal56@`, because that is the Resend account. Set the wrong one and every
+> request returns the same cheerful "a code is on its way" and no mail ever arrives,
+> because the generic reply is deliberately indistinguishable.
+>
+> To tell them apart without an inbox: request a code and watch the status. `200`
+> means either "not the allowed address, nothing sent" or "sent". `502` means the
+> address matched and the mail provider refused, with its reason in the body.
+
+If you later want mail from your own domain, or want sign-in and public contact to be
+the same address, verify the domain in Resend and change `MAIL_FROM` in `wrangler.toml`.
 
 ### 2. A GitHub token
 
