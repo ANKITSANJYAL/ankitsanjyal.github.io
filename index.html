@@ -577,25 +577,6 @@
     <h2 class="grouphead">Reading notes</h2>
     <div class="tlist">
 <!-- THOUGHTS:READING:START -->
-      <article class="tnote" data-k="cot chain-of-thought faithfulness interpretability ai-safety turpin bias reading" data-id="language-models-don-t-always-say-what-they-think-seed">
-        <button class="tt" data-abs><span class="d">2026</span><span class="tl">Language Models Don’t Always Say What They Think &nearr;</span></button>
-        <div class="abs" data-title="Language Models Don’t Always Say What They Think" data-date="Turpin, Michael, Perez and Bowman · reading note">
-          <p>The paper that made chain-of-thought faithfulness a measurable problem rather than a worry.
-          The authors add a biasing feature to the context, for instance always placing the correct answer
-          in the same position, or having the user casually suggest an answer, and then check two things:
-          whether the model&rsquo;s prediction moves, and whether the written reasoning ever mentions the
-          thing that moved it.</p>
-          <p>The prediction moves substantially. The reasoning almost never mentions why. Instead the model
-          constructs a plausible argument for the answer the bias pushed it toward, which is the worst
-          possible failure mode for anyone hoping to monitor a model by reading what it writes: the trace
-          is not silent, it is confidently wrong about its own cause.</p>
-          <p>This is the direct ancestor of the necessity and propensity split I ended up testing. Turpin
-          shows that cues land and go undisclosed; the open question it left me with was whether that holds
-          when the reasoning is doing real work rather than decorating an answer the model already had.</p>
-        </div>
-      </article>
-
-
       <article class="tnote" data-k="cot chain-of-thought faithfulness reasoning models monitoring reinforcement-learning anthropic reading ai-safety" data-id="reasoning-models-don-t-always-say-what-they-thin-seed">
         <button class="tt" data-abs><span class="d">2026</span><span class="tl">Reasoning Models Don’t Always Say What They Think &nearr;</span></button>
         <div class="abs" data-title="Reasoning Models Don’t Always Say What They Think" data-date="Chen et al., Anthropic · reading note">
