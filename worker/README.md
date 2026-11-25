@@ -55,7 +55,7 @@ npx wrangler login
 npx wrangler kv namespace create OTP_KV
 # paste the printed id into wrangler.toml, replacing PASTE_THE_ID_WRANGLER_PRINTS
 
-npx wrangler secret put ALLOWED_EMAIL     # asanjyal82@gmail.com
+npx wrangler secret put ALLOWED_EMAIL     # the Resend account address, see step 1
 npx wrangler secret put SESSION_SECRET    # see below
 npx wrangler secret put GITHUB_TOKEN      # the token from step 2
 npx wrangler secret put RESEND_API_KEY    # the key from step 1

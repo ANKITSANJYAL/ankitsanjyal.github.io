@@ -27,13 +27,18 @@ There is no build step. It is static HTML on GitHub Pages, and it must stay that
 | `blog/*.html` | 2 posts |
 | `admin.html` | Unlisted, noindex. The thoughts editor. Talks only to the Worker |
 | `worker/` | The one server: email code sign-in, and the only writer to the repo |
-| `design-concepts/` | Throwaway prototypes for the redesign. Safe to delete |
 
 ## How the homepage works
 
 Six views live in the DOM at once as `<section class="view" id="v-NAME">`; the nav
 toggles `.on`. **Nothing is injected by JS.** Views are addressable by hash
 (`index.html#projects`), which is what every detail page's back-link targets.
+A hash may also carry a filter, `index.html#projects?q=data-engineering`, which opens
+the view already filtered. Each role-specific CV links to one of these.
+
+Nav order is about, projects, experience, research, writing, thoughts. The site is
+positioned for industry roles (ML, AI and data engineering, data science) in Kathmandu,
+so engineering work leads and research follows.
 
 ### An entry
 
@@ -78,6 +83,10 @@ The abstract is deliberately **not** in the haystack. Several write-ups mention 
 in passing (`MAESTRO` says the word "interpretability"), and including abstracts turned
 the filter into a dragnet that returned ten of sixteen rows for a specific query.
 
+Every project row carries at least one role tag in `data-k`: `data-engineering`,
+`ml-engineering`, `ai-engineering`, `data-science`. The first four project chips are
+those roles, and the About view links to each. A new project needs its role tags.
+
 `data-k` is the curated half and the one to extend. It holds the vocabulary a visitor
 would reach for that does not appear in the prose: stack names, adjacent fields, tools.
 An `ALIAS` table in the shell script widens common words onto what the corpus actually
@@ -98,13 +107,14 @@ Nothing about it is a separate mechanism.
 
 ### The frame
 
-- Corner chrome: live 24-hour clock top-left, mood toggle top-right, `in new york`
+- Corner chrome: live 24-hour clock top-left, mood toggle top-right, `in kathmandu`
   bottom-left, `what i'm reading` bottom-right.
 - Moods are `slate` (default), `warm`, `ink`, set as `data-mood` on `<body>`. Each
   redefines the same tokens; nothing else changes.
 - The rain uses `sin(42 + i)` rather than `Math.random()`, so it is identical on every
   load. `warm` has no rain, `ink` has twice as much.
-- The portrait is ordered-dithered on a canvas with an 8x8 Bayer matrix, and falls back
+- The portrait is ordered-dithered on a canvas with an 8x8 Bayer matrix. Its dark dots
+  take the `--dither` token (an `r,g,b` triple per mood), so it follows the palette. It falls back
   to a greyscale `<img>` if the canvas is tainted (which is what happens over `file://`).
 
 ## Publishing a thought from the site
@@ -152,8 +162,8 @@ threat model are in `worker/README.md`.
 ## Writing rules
 
 - **No em dashes anywhere on the site.** Use a comma, a colon, or a full stop. This is
-  checked: `grep -rn --include='*.html' --include='*.css' -- '—' .` should only ever
-  match inside `design-concepts/`.
+  checked: `grep -rn --include='*.html' --include='*.css' -- '—' .` should return
+  nothing.
 - Chrome and nav are lowercase. Headings and prose are sentence case.
 
 ## Styling rules
@@ -178,7 +188,7 @@ threat model are in `worker/README.md`.
 
 - Keep every detail page. The design work is about navigation, never about deleting
   written content.
-- Nav is identical on all 17 subpages: name on the left, then Home, Research, Projects,
+- Nav is identical on all 17 subpages: name on the left, then Home, Projects, Research,
   Writing, and CV (which opens the Google Doc in a new tab).
 - Back-link wording is `← Back` everywhere, and it targets the view the page belongs to.
 

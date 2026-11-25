@@ -19,6 +19,7 @@
   --hair:rgba(255,255,255,.42);
   --fall:#f7fbff;
   --g1:#cfd6e2; --g2:#dde4ef; --g3:#b9c4d6; --g4:#c7cede;
+  --dither:60,78,112;   /* portrait dots, as r,g,b so JS and rgba() can both use it */
 
   /* reader tokens, always light */
   --paper:#fbfaf8;
@@ -35,11 +36,13 @@
   --ink:#26221d; --body:#463f36; --mute:#847a6d;
   --card:rgba(255,255,255,.38);
   --g1:#e6ddd3; --g2:#efe7dd; --g3:#d8cec2; --g4:#ded6ce;
+  --dither:112,92,72;
 }
 [data-mood="ink"]{
   --ink:#eef0f3; --body:#c2c7d0; --mute:#7c838f;
   --card:rgba(255,255,255,.07); --hair:rgba(255,255,255,.14); --fall:#ffffff;
   --g1:#252a34; --g2:#2e3440; --g3:#171a21; --g4:#1f232b;
+  --dither:22,26,34;
 }
 
 html{-webkit-text-size-adjust:100%}
@@ -127,7 +130,7 @@ body.shell{
 .about{display:flex;gap:52px;align-items:flex-start}
 .portrait{flex-shrink:0;display:none;margin:0}
 @media (min-width:900px){.portrait{display:block}}
-.portrait .frame{width:250px;height:250px;border-radius:16px;overflow:hidden;background:rgba(80,100,140,.35)}
+.portrait .frame{width:250px;height:250px;border-radius:16px;overflow:hidden;background:rgba(var(--dither),.35)}
 .portrait canvas,.portrait img{width:100%;height:100%;object-fit:cover;display:block}
 .portrait img{filter:grayscale(1) contrast(1.25)}
 .portrait figcaption{
@@ -151,6 +154,8 @@ body.shell{
   background:none;border:0;padding:0;font:inherit;cursor:pointer;
 }
 .links a:hover,.links button:hover{opacity:.65}
+.links.roles{margin-top:10px;gap:18px}
+.links.roles span{font-family:var(--serif);font-style:italic;color:var(--mute)}
 
 /* --- entry rows --- */
 .rows{max-width:800px;padding-bottom:12px}
@@ -403,3 +408,51 @@ body .abstract-box{
   background:#fff;border:0;border-left:2px solid #101216;border-radius:0;
   padding:16px 22px;margin:24px 0;font-size:14px;color:#3c4048;line-height:1.72;
 }
+
+/* The rest of what the detail pages used to style for themselves. Each page
+   still carries an inline <style> from the black-and-white era (square
+   corners, #fafafa, weight 700); these win it back with body specificity so
+   every page reads as one reader. Layout properties (flex, widths, margins)
+   are left to the page; only colour, corners, weight and face are reclaimed. */
+body .back-link{display:inline-block;font-family:var(--serif);font-size:14px;margin-bottom:30px}
+body .section-sub{font-family:var(--serif);font-weight:500;font-size:19px;color:#101216}
+body .paper-authors{color:#3c4048}
+body .paper-venue,body .post-meta,body .ref{font-family:var(--serif);font-style:italic;color:#7c818a}
+
+body .teaser-img{border:1px solid var(--rule);border-radius:12px}
+
+body .result-table{border-collapse:collapse}
+body .result-table th{background:var(--sunk);border:1px solid var(--rule);font-weight:600;color:#101216}
+body .result-table td{border:1px solid var(--rule);color:#3c4048}
+body .result-table tr:nth-child(even) td{background:#fff}
+body .highlight-row td{background:var(--sunk) !important;font-weight:600;color:#101216}
+body .worse-row td{background:transparent !important;color:#7c818a}
+
+body .insight-box,body .warn-box,body .result-box,
+body .module-card,body .feature-item,body .arch-block{
+  background:var(--sunk);border:1px solid var(--rule);border-radius:12px;color:#3c4048;
+}
+body .arch-block.output{background:#fff}
+body .insight-box strong,body .warn-box strong,body .result-box strong,body .callout strong{color:#101216}
+body .module-card h4,body .feature-item h4,body .arch-block h4{font-weight:600;color:#101216}
+body .module-card p,body .feature-item p,body .arch-block p{color:#3c4048}
+body .arch-arrow{color:#7c818a}
+body .callout,body .status-note{
+  background:#fff;border:0;border-left:2px solid #101216;border-radius:0;color:#3c4048;
+}
+
+body .code-block{
+  background:var(--sunk);border:1px solid var(--rule);border-radius:12px;
+  font-family:var(--mono);color:#3c4048;
+}
+
+body .metric-row{border-color:var(--rule);border-radius:12px;overflow:hidden}
+body .metric-card{border-color:var(--rule);border-radius:12px}
+body .metric-num{font-family:var(--serif);font-weight:500;color:#101216;font-variant-numeric:tabular-nums}
+body .metric-label{font-family:var(--mono);color:#7c818a}
+
+body .post-tag,body .wip-badge{
+  background:var(--sunk);color:#3c4048;border:1px solid var(--rule);border-radius:999px;
+  font-family:var(--mono);font-size:10px;letter-spacing:.06em;font-weight:400;
+}
+body .step-num{background:#101216;color:var(--paper);border-radius:50%;font-family:var(--serif);font-weight:500}

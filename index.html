@@ -4,10 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ankit Sanjyal</title>
-<meta name="description" content="Ankit Sanjyal, interpretability and AI safety researcher. Chain-of-thought faithfulness, model internals, and multi-agent monitorability.">
+<meta name="description" content="Ankit Sanjyal, ML and data engineer in Kathmandu. Data pipelines, LLM and RAG systems, and machine learning that is measured before it ships.">
 <meta property="og:title" content="Ankit Sanjyal">
-<meta property="og:description" content="Interpretability and AI safety researcher. Chain-of-thought faithfulness, model internals, and multi-agent monitorability.">
+<meta property="og:description" content="ML and data engineer in Kathmandu. Data pipelines, LLM and RAG systems, and machine learning that is measured before it ships.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://ankitsanjyal.github.io/">
+<meta property="og:image" content="https://ankitsanjyal.github.io/assets/images/profile.JPG">
+<meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -21,21 +24,21 @@
 
 <div class="chrome c-tl" id="clock">00:00:00</div>
 <div class="chrome c-tr"><button id="mood">Slate</button></div>
-<div class="chrome c-bl">in new york</div>
+<div class="chrome c-bl">in kathmandu</div>
 <div class="chrome c-br"><button data-open="reading">what i&rsquo;m reading &nearr;</button></div>
 
 <header class="mark">
   <h1>Ankit Sanjyal</h1>
-  <p>Jack of all trades</p>
+  <p>ML and data engineer</p>
 </header>
 
 <nav class="shell-nav" id="nav">
   <button data-view="about" aria-current="true">about</button>
-  <button data-view="research">research</button>
   <button data-view="projects">projects</button>
+  <button data-view="experience">experience</button>
+  <button data-view="research">research</button>
   <button data-view="writing">writing</button>
   <button data-view="thoughts">thoughts</button>
-  <button data-view="experience">experience</button>
   <a href="https://docs.google.com/document/d/1iLOd3weF8ErrZbXsRrUp5AjiW-H7to-MsZ9Qjo1kETg/edit?usp=sharing" target="_blank" rel="noopener">cv &nearr;</a>
 </nav>
 
@@ -49,27 +52,36 @@
           <canvas id="dither" width="250" height="250" aria-label="Portrait of Ankit Sanjyal"></canvas>
           <img id="portrait-fallback" src="assets/images/profile.JPG" alt="Ankit Sanjyal" style="display:none">
         </div>
-        <figcaption>the trace is not the computation</figcaption>
+        <figcaption>measure it before you ship it</figcaption>
       </figure>
 
       <div style="flex:1;min-width:0">
         <div class="card prose">
-          <p>I work on whether a model&rsquo;s stated reasoning is a reliable window into the computation
-          that <b>actually produced it</b>, and what breaks when one model becomes many talking to each other.</p>
-          <p>Right now that means <b>chain-of-thought faithfulness</b>: injecting misleading cues into
-          thousands of problems and measuring, trace by trace, whether the reasoning ever admits them.
-          Capture is near zero where reasoning is <b>computationally necessary</b> and reaches 41% where
-          it is optional.</p>
-          <p>M.S. Data Science at <b>Fordham</b>, May 2026. Before that, two years of data infrastructure
-          in Bangalore, which is where I learned that most of research is plumbing.</p>
-          <p>I am open to collaboration, mentorship, and fellowship or research roles in interpretability
-          and AI safety.</p>
+          <p>I build <b>data pipelines</b>, <b>LLM and RAG systems</b>, and <b>machine learning models</b>,
+          and I measure whether they work before I call them done.</p>
+          <p>Right now that means a pipeline that lands every <b>NEPSE</b> trading session in DuckDB and
+          publishes it to Hugging Face on a schedule, and an SEC filings agent whose numeric answers are
+          checked against structured data rather than against another model&rsquo;s opinion. Before that I
+          led <b>MAESTRO</b>, a lecture generation system that runs in production at Fordham.</p>
+          <p>Before graduate school I spent a year and a half as a data consultant in Bangalore: dbt
+          pipelines, SQL tuning on Redshift over terabyte-scale tables, and 25+ client dashboards. That is
+          where I learned that most of the job is plumbing, and that the plumbing is where the bugs live.</p>
+          <p>M.S. Data Science from <b>Fordham</b>, May 2026, with four arXiv preprints along the way. I am
+          back in <b>Kathmandu</b> and looking for ML engineering, AI engineering, data science and data
+          engineering roles.</p>
         </div>
         <div class="links">
           <a href="mailto:asanjyal82@gmail.com">email &nearr;</a>
           <a href="https://github.com/ANKITSANJYAL" target="_blank" rel="noopener">github &nearr;</a>
           <a href="https://linkedin.com/in/ankit-sanjyal" target="_blank" rel="noopener">linkedin &nearr;</a>
-          <a href="https://docs.google.com/document/d/1xhv7jW235QPCo-AbFjMcOLMQA-ElxxYzHf6HNmd3XEY/edit?usp=sharing" target="_blank" rel="noopener">research statement &nearr;</a>
+          <a href="https://huggingface.co/AnkitSanjyal" target="_blank" rel="noopener">hugging face &nearr;</a>
+        </div>
+        <div class="links roles">
+          <span>work by role</span>
+          <a href="#projects?q=data-engineering">data engineering</a>
+          <a href="#projects?q=ml-engineering">ml engineering</a>
+          <a href="#projects?q=ai-engineering">ai engineering</a>
+          <a href="#projects?q=data-science">data science</a>
         </div>
       </div>
     </div>
@@ -229,21 +241,58 @@
     <div class="filter">
       <span class="fq">&rsaquo;</span>
       <input type="search" class="fi" data-filter="projects" autocomplete="off" spellcheck="false"
-             placeholder="filter by keyword, try etl or agents or interpretability" aria-label="Filter projects">
+             placeholder="filter by keyword, try spark or rag or pytorch" aria-label="Filter projects">
       <span class="fn" aria-live="polite"></span>
     </div>
+    <!-- The first four chips are roles. Every row carries one or more of
+         data-engineering, ml-engineering, ai-engineering, data-science in its
+         data-k, and index.html#projects?q=data-engineering opens this view
+         pre-filtered, which is what each CV links to. -->
     <div class="chips">
-        <button data-chip="agents">agents</button>
+        <button data-chip="data-engineering">data engineering</button>
+        <button data-chip="ml-engineering">ml engineering</button>
+        <button data-chip="ai-engineering">ai engineering</button>
+        <button data-chip="data-science">data science</button>
         <button data-chip="rag">rag</button>
-        <button data-chip="etl">etl</button>
-        <button data-chip="interpretability">interpretability</button>
-        <button data-chip="pytorch">pytorch</button>
+        <button data-chip="agents">agents</button>
         <button data-chip="finance">finance</button>
-        <button data-chip="react">react</button>
     </div>
     <div class="rows">
 
-      <article class="row" data-k="rag retrieval agents agentic evaluation evals benchmark data-engineering etl pipeline ingest warehouse postgres pgvector langgraph vllm xbrl sec edgar finance financial filings bm25 rerank long-context inference-optimisation fp8 speculative-decoding python sql assertions">
+      <article class="row" data-k="data-engineering data-science etl pipeline ingest warehouse duckdb parquet pydantic github-actions ci cron scheduling validation hugging-face dataset finance financial market stock nepse nepal sql python">
+        <div class="rhead">
+          <h3><a href="projects/nepse-pipeline.html">NEPSE Data Pipeline</a></h3>
+          <span class="when">2026</span>
+        </div>
+        <p class="sum"><a href="projects/nepse-pipeline.html">Every Nepal Stock Exchange trading session is captured
+        after the close by a scheduled GitHub Actions job, validated at each layer boundary, landed in DuckDB and
+        Parquet, and published as a public Hugging Face dataset. The floorsheet is the reason it exists: about 42,700
+        contracts a day with microsecond timestamps and both broker IDs, served only for the current session, so a
+        missed day is gone permanently. The published set holds 330,978 floorsheet contracts and 93,859 daily price
+        rows so far.</a></p>
+        <div class="acts">
+          <button data-abs>abstract</button>
+          <a href="https://github.com/ANKITSANJYAL/nepse-pipeline" target="_blank" rel="noopener">code &nearr;</a>
+          <a href="https://huggingface.co/datasets/AnkitSanjyal/nepse-market-data" target="_blank" rel="noopener">dataset &nearr;</a>
+          <span class="venue">Data engineering</span>
+        </div>
+        <div class="abs" data-title="NEPSE Data Pipeline" data-date="2026 · DuckDB, Parquet, Pydantic, GitHub Actions, Hugging Face">
+          <p>Live and historical market data from the Nepal Stock Exchange, landed in DuckDB and Parquet with
+          validation at every layer boundary. Every constraint was measured against the live API rather than taken
+          from documentation: how long the floorsheet stays up after the close, when the intraday index disappears,
+          and that NEPSE moved from a Sunday to Thursday week to Monday to Friday in 2026, which a naive weekday
+          filter would have silently dropped.</p>
+          <p>A scheduled job runs after each close, rebuilds the warehouse from the published Parquet, captures the
+          session, upserts it, and pushes it to Hugging Face, with a second safety-net run and a single auto-updated
+          issue when capture fails.</p>
+          <p>Three committed notebooks work the data: large broker positions repeat direction 71.8% of the time,
+          747 corporate actions were recovered from prices alone, and survivorship bias measured at +0.74 points
+          a year.</p>
+          <p class="go"><a href="projects/nepse-pipeline.html">Full write-up</a><a href="https://huggingface.co/datasets/AnkitSanjyal/nepse-market-data" target="_blank" rel="noopener">Dataset &nearr;</a><a href="https://github.com/ANKITSANJYAL/nepse-pipeline/tree/main/notebooks" target="_blank" rel="noopener">Notebooks &nearr;</a></p>
+        </div>
+      </article>
+
+      <article class="row" data-k="ai-engineering data-engineering rag retrieval agents agentic evaluation evals benchmark etl pipeline ingest warehouse postgres pgvector langgraph vllm xbrl sec edgar finance financial filings bm25 rerank hybrid-search long-context inference-optimisation fp8 speculative-decoding python sql assertions testing pytest">
         <div class="rhead">
           <h3><a href="projects/filing-agent.html">filing-agent: Eval-First Research Over SEC Filings</a></h3>
           <span class="when">2026</span>
@@ -252,8 +301,8 @@
         claim is verified against EDGAR&rsquo;s structured XBRL data and every claim cites the exact filing section
         it came from. Filings are unusual in that the same facts exist as prose and as machine-readable XBRL, so
         the numeric slice of the benchmark can be graded by exact match with no LLM judge in the loop. The data
-        layer and a 72-question frozen eval set are built and measured; retrieval, the agent and the ablation are
-        specified and still to come.</a></p>
+        layer, 127 tests and a 72-question frozen eval set are built and measured; hybrid retrieval, the agent and
+        the ablation are specified and still to come.</a></p>
         <div class="acts">
           <button data-abs>abstract</button>
           <a href="https://github.com/ANKITSANJYAL/filing-agent" target="_blank" rel="noopener">code &nearr;</a>
@@ -279,16 +328,95 @@
         </div>
       </article>
 
-      <article class="row" data-k="ai-safety alignment interpretability cot chain-of-thought monitoring faithfulness cue-injection llm-judge statistics fisher wilson vllm qwen deepseek gemma evaluation evals python">
+      <article class="row" data-k="ml-engineering ai-engineering fastapi nextjs next.js react typescript postgres postgresql sqlalchemy alembic migrations redis docker docker-compose nginx ci github-actions pytest testing roberta transformers ensemble calibration platt classifier ai-detection ats resume nlp stripe clerk saas backend api mcp python">
+        <div class="rhead">
+          <h3><a href="https://github.com/ANKITSANJYAL/AI-ATS-Detector" target="_blank" rel="noopener">DocGuard and CareerMatch: AI Text Detection and ATS Scoring</a></h3>
+          <span class="when">2026</span>
+        </div>
+        <p class="sum"><a href="https://github.com/ANKITSANJYAL/AI-ATS-Detector" target="_blank" rel="noopener">A full-stack
+        SaaS that flags AI-generated text sentence by sentence with a calibrated RoBERTa ensemble, and scores a resume
+        against a job description for ATS compatibility. The backend is async FastAPI over Postgres with Alembic
+        migrations and Redis for caching and rate limiting, behind Nginx in Docker Compose, with unit, integration
+        and contract tests running in CI.</a></p>
+        <div class="acts">
+          <button data-abs>abstract</button>
+          <a href="https://github.com/ANKITSANJYAL/AI-ATS-Detector" target="_blank" rel="noopener">code &nearr;</a>
+          <span class="venue">ML in production</span>
+        </div>
+        <div class="abs" data-title="DocGuard and CareerMatch: AI Text Detection and ATS Scoring" data-date="2026 · FastAPI, Next.js 14, PostgreSQL, Redis, Docker">
+          <p>Two products on one backend. Document Guard takes a PDF, DOCX or plain text upload and returns a
+          sentence-level breakdown of which parts read as AI-generated, from a multi-model RoBERTa ensemble whose
+          scores are Platt-calibrated so that a 0.8 means roughly what it says. Career Match takes a resume and a
+          job description and returns an ATS compatibility score, a keyword gap analysis and prioritised fixes.</p>
+          <p>The engineering is the point: async SQLAlchemy over PostgreSQL 16 with Alembic migrations, Redis for
+          caching and rate limiting, JWT auth, metered billing, an Nginx reverse proxy, everything in Docker Compose,
+          and a test suite covering the classifier, the scorer, the detection pipeline, the API and its contracts,
+          run on every push.</p>
+          <p class="go"><a href="https://github.com/ANKITSANJYAL/AI-ATS-Detector" target="_blank" rel="noopener">Code and architecture &nearr;</a></p>
+        </div>
+      </article>
+
+      <article class="row" data-k="ai-engineering multi-agent agents agentic orchestration production deployed langchain openai embeddings tts text-to-speech playht ffmpeg flask mongodb rag education video python">
+        <div class="rhead">
+          <h3><a href="projects/maestro.html">MAESTRO: AI Text-to-Video Lecture System</a></h3>
+          <span class="when">2025</span>
+        </div>
+        <p class="sum"><a href="projects/maestro.html">An autonomous pipeline of script synthesis, text-to-speech
+        and FFmpeg rendering that turns written material into educational video lectures, then answers student
+        questions over them with a RAG chatbot grounded in the transcript. Built and led at the Fordham Educational
+        Data Mining Lab, and running in production for Fordham courses.</a></p>
+        <div class="acts">
+          <button data-abs>abstract</button>
+          <a href="https://erdos.dsm.fordham.edu/" target="_blank" rel="noopener">live &nearr;</a>
+          <span class="venue">In production at Fordham</span>
+        </div>
+        <div class="abs" data-title="MAESTRO: AI Text-to-Video Lecture System" data-date="2025 · Fordham Educational Data Mining Lab">
+          <p>An instructor provides a topic or a document, and MAESTRO produces a complete lecture: a GPT-written
+          script the instructor can edit, PlayHT narration, slides matched to each script segment, an FFmpeg-assembled
+          video, and an embeddable chatbot that answers student questions from the lecture transcript.</p>
+          <p>Transcripts, embeddings and metadata live in MongoDB, which serves several concurrent courses and student
+          sessions. The platform is live and used in Fordham courses, and the question logs it produces feed back into
+          the lab&rsquo;s research on student engagement.</p>
+          <p class="go"><a href="projects/maestro.html">Full write-up</a><a href="https://erdos.dsm.fordham.edu/" target="_blank" rel="noopener">Live platform &nearr;</a></p>
+        </div>
+      </article>
+
+      <article class="row" data-k="ai-engineering agents agentic autonomous mcp rag vector-search gpt-4o mongodb jira github-api tavily webhook flask react automation devops testing python typescript">
+        <div class="rhead">
+          <h3><a href="projects/h-kfx.html">H-KFX: Autonomous Bug-Fixing Agent</a></h3>
+          <span class="when">2025</span>
+        </div>
+        <p class="sum"><a href="projects/h-kfx.html">An MCP and RAG agent that closes a Jira ticket end to end: it
+        reads the ticket, retrieves similar past fixes from a vector index, generates a fix, runs only the tests that
+        cover it, and opens the pull request once a developer approves. The full ticket-to-PR cycle runs in 60 to 90
+        seconds, and it won the MUG Hackathon 2025.</a></p>
+        <div class="acts">
+          <button data-abs>abstract</button>
+          <a href="https://github.com/ANKITSANJYAL/MUGHackthon" target="_blank" rel="noopener">code &nearr;</a>
+          <a href="https://www.youtube.com/watch?v=YB1gHWcOpz0&t=4s" target="_blank" rel="noopener">demo &nearr;</a>
+          <span class="venue">Won MUG Hackathon 2025</span>
+        </div>
+        <div class="abs" data-title="H-KFX: Hybrid Knowledge Fixer" data-date="2025 · winner, MUG Hackathon">
+          <p>A Jira webhook hands the ticket to a Flask backend. GPT-4o reads it alongside the source file, a MongoDB
+          Atlas vector search pulls similar historical fixes, and Tavily adds outside documentation. The agent writes
+          a fix, derives the minimal set of relevant tests and runs them in isolation, and retries up to three times
+          before escalating to a human.</p>
+          <p>A developer reviews the diff in a React front end and approves; the agent then merges the pull request
+          and closes the ticket. Ticket to PR in 60 to 90 seconds.</p>
+          <p class="go"><a href="projects/h-kfx.html">Full write-up</a></p>
+        </div>
+      </article>
+
+      <article class="row" data-k="data-science ai-engineering llm evaluation evals experiment experimental-design ai-safety alignment interpretability cot chain-of-thought monitoring faithfulness cue-injection llm-judge statistics hypothesis-testing fisher wilson vllm qwen deepseek gemma python">
         <div class="rhead">
           <h3><a href="projects/cot-faithfulness.html">CoT Faithfulness Under Necessity vs. Propensity</a></h3>
           <span class="when">2026</span>
         </div>
-        <p class="sum"><a href="projects/cot-faithfulness.html">Misleading authority cues injected into 1,700
-        problems per model across Qwen3-4B, DeepSeek-R1-Distill-8B and Gemma-3-4B, with every captured trace
-        scored twice, by LLM judge and by hand, for whether the reasoning admitted the cue. Capture is near zero
-        (0.0 to 2.2%) where reasoning is computationally necessary and reaches 41% where it is optional; in the
-        worst case a model disclosed the cue once in 489 captured traces.</a></p>
+        <p class="sum"><a href="projects/cot-faithfulness.html">A controlled LLM evaluation: misleading cues injected
+        into 1,700 problems per model across Qwen3-4B, DeepSeek-R1-Distill-8B and Gemma-3-4B, served on vLLM, with
+        every captured trace scored twice, by LLM judge and by hand. Capture is near zero (0.0 to 2.2%) where
+        reasoning is computationally necessary and reaches 41% where it is optional, and all nine contrasts hold
+        under Fisher&rsquo;s exact test.</a></p>
         <div class="acts">
           <button data-abs>abstract</button>
           <a href="https://github.com/ANKITSANJYAL/Cot_faithfulness" target="_blank" rel="noopener">code &nearr;</a>
@@ -300,182 +428,172 @@
           necessary make the reasoning trace trustworthy? Misleading cues were injected into 1,700 problems per
           model across three model families, then every captured trace was scored for whether the reasoning
           admitted the cue.</p>
-          <p>Necessity drives capture to near zero (0.0 to 2.2%) while optional reasoning is hijacked up to 41% of
-          the time. But where capture does happen, disclosure is vanishingly rare: one model disclosed it once in
-          489 traces. The protection comes from prevention, not from honesty.</p>
+          <p>The pipeline is deterministic end to end: seeded cue injection, CoT-on and CoT-suppressed runs to
+          measure necessity, three layers of scoring (string match, LLM judge, human validation), and the
+          statistics written from scratch, Fisher&rsquo;s exact test by exact hypergeometric and Wilson intervals.</p>
+          <p>Necessity drives capture to near zero while optional reasoning is hijacked up to 41% of the time, and
+          where capture does happen, disclosure is rare: one model disclosed the cue once in 489 traces.</p>
           <p class="go"><a href="projects/cot-faithfulness.html">Full write-up</a><a href="blog/necessity-protects-cot-monitoring.html">Results post</a><a href="https://bluedot.org/courses/technical-ai-safety" target="_blank" rel="noopener">Course &nearr;</a></p>
         </div>
       </article>
 
-      <article class="row" data-k="interpretability activation-steering causal causal-steering concept-vector patchscopes stable-diffusion pytorch fastapi react clip gpt-4o tooling explainability python javascript">
+      <article class="row" data-k="ml-engineering data-science pytorch pytorch-lightning lightning ddp distributed multi-gpu slurm hpc hydra wandb weights-and-biases training diffusion vae multimodal emotion class-imbalance causal notears python">
+        <div class="rhead">
+          <h3><a href="projects/affect-diff.html">Affect-Diff: Multi-GPU Training for Multimodal Emotion Recognition</a></h3>
+          <span class="when">2026</span>
+        </div>
+        <p class="sum"><a href="projects/affect-diff.html">The training system behind the Affect-Diff paper: a
+        PyTorch Lightning module trained with DDP across multiple GPUs on a SLURM cluster, configured through Hydra
+        and tracked in Weights &amp; Biases. The model fuses text, audio and video for emotion recognition on a
+        dataset where one class is 65.9% of samples, and lands an 18% relative improvement over the strongest
+        baseline.</a></p>
+        <div class="acts">
+          <button data-abs>abstract</button>
+          <a href="https://github.com/ANKITSANJYAL/Multimodal-Emotion-Recognition" target="_blank" rel="noopener">code &nearr;</a>
+          <a href="https://arxiv.org/abs/2605.08252" target="_blank" rel="noopener">arXiv &nearr;</a>
+          <span class="venue">Distributed training</span>
+        </div>
+        <div class="abs" data-title="Affect-Diff: Multi-GPU Training for Multimodal Emotion Recognition" data-date="2026 · PyTorch Lightning, DDP, SLURM, Hydra, W&amp;B">
+          <p>CMU-MOSEI is badly imbalanced: Happy is 65.9% of samples and three emotion categories are under 7%
+          combined. The model re-weights text, audio and video through a learned causal graph, compresses them
+          through a &beta;-VAE, and structures the latent space with a 1D diffusion prior.</p>
+          <p>The engineering around it is what made the experiments repeatable: a Lightning training module, DDP on
+          a multi-GPU SLURM cluster, every run configured in Hydra and logged to Weights &amp; Biases. It reaches
+          0.384 validation balanced accuracy, an 18% relative improvement over the strongest baseline, and is the
+          only system with non-trivial performance on the minority classes.</p>
+          <p class="go"><a href="projects/affect-diff.html">Project notes</a><a href="papers/affect-diff.html">Paper write-up</a></p>
+        </div>
+      </article>
+
+      <article class="row" data-k="ml-engineering interpretability activation-steering steering concept-vector stable-diffusion hugging-face diffusers pytorch fastapi react clip gpt-4o tooling explainability api python javascript">
         <div class="rhead">
           <h3><a href="projects/diffusion-detective.html">Diffusion Detective</a></h3>
           <span class="when">2025</span>
         </div>
-        <p class="sum"><a href="projects/diffusion-detective.html">Interpretability tooling that surfaces what a
-        generative model attends to at each denoising step, then steers it by injecting a concept vector
-        mid-generation with a 94% steering success rate. It closes the loop by writing a plain-English explanation
-        of what changed: extract, intervene, explain, the core primitives behind activation steering and
-        patchscopes.</a></p>
+        <p class="sum"><a href="projects/diffusion-detective.html">A custom Stable Diffusion pipeline, served from
+        FastAPI to a React front end, that records what the model attends to at every denoising step and steers the
+        image mid-generation by injecting a concept vector, with a 94% steering success rate. Attention capture adds
+        2.7% overhead, and GPT-4o-mini writes a plain-English account of what each intervention changed.</a></p>
         <div class="acts">
           <button data-abs>abstract</button>
           <a href="https://github.com/ANKITSANJYAL/Diffusion-Detective" target="_blank" rel="noopener">code &nearr;</a>
-          <span class="venue">Interpretability tooling</span>
+          <span class="venue">Model tooling</span>
         </div>
-        <div class="abs" data-title="Diffusion Detective: Interpretability Tooling for a Generative Model" data-date="2025">
-          <p>Real-time extraction of internal representations (cross-attention), causal steering of behaviour via
-          representation-space interventions with a 94% success rate, and automated natural-language explanation
-          of what each intervention did.</p>
-          <p>Mechanically this is a precursor to LLM activation steering and patchscopes-style self-explanation:
-          the same three primitives, applied to a model whose intermediate states you can actually look at.</p>
+        <div class="abs" data-title="Diffusion Detective: Inspecting and Steering a Generative Model" data-date="2025 · PyTorch, Hugging Face Diffusers, FastAPI, React">
+          <p>Extends Hugging Face&rsquo;s Stable Diffusion pipeline with hooks on the UNet&rsquo;s cross-attention
+          layers, so attention over every prompt token is captured exactly at every timestep, validated to sum to one
+          within 10<sup>&minus;6</sup>, for 2.7% extra compute.</p>
+          <p>Steering adds a CLIP embedding difference to the latents during the window where semantic attributes
+          form, and succeeds 94% of the time. A React front end shows the baseline and steered images side by side
+          with the attention heatmap and an explanation generated in about 250 ms.</p>
           <p class="go"><a href="projects/diffusion-detective.html">Full write-up</a></p>
         </div>
       </article>
 
-      <article class="row" data-k="data-engineering etl pipeline ingest warehouse duckdb parquet pydantic github-actions ci validation hugging-face finance financial market stock sql python">
+      <article class="row" data-k="data-engineering data-science spark pyspark hadoop hdfs distributed cluster big-data spark-ml spark-submit mapreduce classification logistic-regression random-forest nlp tf-idf healthcare python">
         <div class="rhead">
-          <h3><a href="projects/nepse-pipeline.html">NEPSE Data Pipeline</a></h3>
-          <span class="when">2026</span>
-        </div>
-        <p class="sum"><a href="projects/nepse-pipeline.html">Live and historical Nepal Stock Exchange data landed
-        in DuckDB and Parquet with validation at every layer boundary, and every API constraint measured against
-        the live endpoint rather than taken from documentation. The floorsheet is the reason it exists: 42,709
-        contracts a day carrying microsecond timestamps and both broker IDs, served only for the current session,
-        so a day the capture misses is gone permanently.</a></p>
-        <div class="acts">
-          <button data-abs>abstract</button>
-          <a href="https://github.com/ANKITSANJYAL/nepse-pipeline" target="_blank" rel="noopener">code &nearr;</a>
-          <a href="https://huggingface.co/datasets/AnkitSanjyal/nepse-market-data" target="_blank" rel="noopener">dataset &nearr;</a>
-          <span class="venue">Data engineering</span>
-        </div>
-        <div class="abs" data-title="NEPSE Data Pipeline" data-date="2026 · DuckDB, Parquet, Pydantic, GitHub Actions">
-          <p>Live and historical market data from the Nepal Stock Exchange, landed in DuckDB and Parquet with
-          validation at every layer boundary. Every constraint was measured against the live API rather than taken
-          from documentation, because for one of these datasets a day you miss is gone permanently.</p>
-          <p>Three committed notebooks work the data: large broker positions repeat direction 71.8% of the time,
-          747 corporate actions were recovered from prices alone, and survivorship bias measured at +0.74 points
-          a year.</p>
-          <p class="go"><a href="projects/nepse-pipeline.html">Full write-up</a><a href="https://github.com/ANKITSANJYAL/nepse-pipeline/tree/main/notebooks" target="_blank" rel="noopener">Notebooks &nearr;</a></p>
-        </div>
-      </article>
-
-      <article class="row" data-k="multi-agent agents agentic orchestration langchain openai tts text-to-speech ffmpeg flask mongodb rag education video python">
-        <div class="rhead">
-          <h3><a href="projects/maestro.html">MAESTRO: AI Text-to-Video Lecture System</a></h3>
+          <h3><a href="https://github.com/ANKITSANJYAL/Big-Data" target="_blank" rel="noopener">PySpark ML Pipelines on a Hadoop Cluster</a></h3>
           <span class="when">2025</span>
         </div>
-        <p class="sum"><a href="projects/maestro.html">An autonomous pipeline of script synthesis, text-to-speech
-        and FFmpeg rendering that turns written material into educational video lectures, then answers student
-        questions over it via RAG. Built and led at the Fordham Educational Data Mining Lab, and running live for
-        the university.</a></p>
+        <p class="sum"><a href="https://github.com/ANKITSANJYAL/Big-Data" target="_blank" rel="noopener">Four end-to-end
+        Spark ML pipelines submitted to a three-node Hadoop and Spark cluster: multi-label toxic comment
+        classification over TF-IDF features, heart disease prediction, and census income classification compared
+        across logistic regression, random forest and decision tree. Data is staged in HDFS and every job runs
+        through spark-submit, with the heart disease model reaching an AUC of about 0.90.</a></p>
         <div class="acts">
           <button data-abs>abstract</button>
-          <a href="https://github.com/Fordham-EDM-Lab/MAESTRO" target="_blank" rel="noopener">code &nearr;</a>
-          <a href="https://erdos.dsm.fordham.edu/" target="_blank" rel="noopener">live &nearr;</a>
-          <span class="venue">Fordham EDM Lab</span>
+          <a href="https://github.com/ANKITSANJYAL/Big-Data" target="_blank" rel="noopener">code &nearr;</a>
+          <span class="venue">Distributed data</span>
         </div>
-        <div class="abs" data-title="MAESTRO: AI Text-to-Video Lecture System" data-date="2025 · Fordham Educational Data Mining Lab">
-          <p>An autonomous multi-agent pipeline running script synthesis, neural voice, slides, video and a RAG
-          question-answering bot, generating educational lectures end to end.</p>
-          <p>It demonstrates the multi-agent orchestration pattern that also underlies autonomous interpretability
-          investigator agents: several narrow specialists, one shared artefact, and a verification step between
-          each hand-off.</p>
-          <p class="go"><a href="projects/maestro.html">Full write-up</a></p>
+        <div class="abs" data-title="PySpark ML Pipelines on a Hadoop Cluster" data-date="2025 · Apache Spark, PySpark ML, Hadoop HDFS">
+          <p>A one-master, two-worker Hadoop HDFS and Spark standalone cluster, with each job pushed to HDFS and
+          submitted with spark-submit. Four pipelines: a HashingTF and IDF featuriser feeding one logistic regression
+          per toxicity label; a heart disease classifier (AUC about 0.90, recall about 0.90); and census income
+          classification with string indexing and one-hot encoding, compared across three model families.</p>
+          <p>The tree comparison is the useful part: the decision tree matches the random forest on accuracy at
+          about 81% but falls to an AUC of 0.70 against the forest&rsquo;s 0.86, which is what overfitting looks like
+          when you measure the right thing.</p>
+          <p class="go"><a href="https://github.com/ANKITSANJYAL/Big-Data" target="_blank" rel="noopener">Code and report &nearr;</a></p>
         </div>
       </article>
 
-      <article class="row" data-k="pytorch diffusion transformers backprop-free reproduction mnist cifar-10 training python">
-        <div class="rhead">
-          <h3><a href="projects/nopropagation.html">No-Propagation Diffusion Transformers</a></h3>
-          <span class="when">2025</span>
-        </div>
-        <p class="sum"><a href="projects/nopropagation.html">A from-scratch reproduction and extension of NoPropDT
-        (arXiv:2503.24322), rebuilt layer by layer to understand the architecture mechanically rather than by
-        reading about it. It reaches roughly 99% on MNIST and 76% on CIFAR-10 without backpropagation.</a></p>
-        <div class="acts">
-          <button data-abs>abstract</button>
-          <a href="https://github.com/ANKITSANJYAL/NoPropagation" target="_blank" rel="noopener">code &nearr;</a>
-          <a href="https://arxiv.org/pdf/2503.24322" target="_blank" rel="noopener">paper &nearr;</a>
-          <span class="venue">Reproduction</span>
-        </div>
-        <div class="abs" data-title="No-Propagation Diffusion Transformers (NoPropDT)" data-date="2025 · reproduction of arXiv:2503.24322">
-          <p>A from-scratch reproduction and extension of a recent Oxford paper, rebuilt layer by layer so that the
-          architecture is understood mechanically rather than by description.</p>
-          <p>It reaches roughly 99% on MNIST and 76% on CIFAR-10 without backpropagation. The point of the exercise
-          is the empirical reproduction skill that interpretability research runs on.</p>
-          <p class="go"><a href="projects/nopropagation.html">Full write-up</a></p>
-        </div>
-      </article>
-
-      <article class="row" data-k="agents agentic autonomous mcp rag gpt-4o mongodb jira github-api tavily automation devops python typescript">
-        <div class="rhead">
-          <h3><a href="projects/h-kfx.html">H-KFX: Autonomous Bug-Fixing Agent</a></h3>
-          <span class="when">2025</span>
-        </div>
-        <p class="sum"><a href="projects/h-kfx.html">An MCP and RAG agent that closes a Jira ticket end to end: it
-        reads the ticket, retrieves the relevant context, generates and validates a fix, and opens the pull
-        request. The full ticket-to-PR cycle runs in 60 to 90 seconds, and it won the MUG Hackathon 2025.</a></p>
-        <div class="acts">
-          <button data-abs>abstract</button>
-          <a href="https://github.com/ANKITSANJYAL/MUGHackthon" target="_blank" rel="noopener">code &nearr;</a>
-          <a href="https://www.youtube.com/watch?v=YB1gHWcOpz0&t=4s" target="_blank" rel="noopener">demo &nearr;</a>
-          <span class="venue">Won MUG Hackathon 2025</span>
-        </div>
-        <div class="abs" data-title="H-KFX: Hybrid Knowledge Fixer" data-date="2025 · winner, MUG Hackathon">
-          <p>A fully autonomous tool-using agent: it reads a task description, retrieves context through RAG,
-          reasons, generates and validates a solution, and then acts. Ticket to pull request in 60 to 90 seconds.</p>
-          <p>A working instance of the autonomous investigator architecture that underlies agents for automating
-          interpretability.</p>
-          <p class="go"><a href="projects/h-kfx.html">Full write-up</a></p>
-        </div>
-      </article>
-
-      <article class="row" data-k="causal-inference double-machine-learning dml ate cate lstm random-forest yfinance finance financial market returns statistics python">
-        <div class="rhead">
-          <h3><a href="projects/causal-finance.html">Causal Factor Discovery in S&amp;P 500 Returns</a></h3>
-          <span class="when">2025</span>
-        </div>
-        <p class="sum"><a href="projects/causal-finance.html">Double Machine Learning for ATE and CATE estimation
-        of momentum on next-day returns. Orthogonalizing out the confounders is what separates factors that
-        genuinely drive the outcome from factors that merely move alongside it.</a></p>
-        <div class="acts">
-          <button data-abs>abstract</button>
-          <a href="https://github.com/ANKITSANJYAL/Causal-Factor-Discovery-in-S-P-500-Returns-" target="_blank" rel="noopener">code &nearr;</a>
-          <span class="venue">Causal inference</span>
-        </div>
-        <div class="abs" data-title="Causal Factor Discovery in S&amp;P 500 Returns" data-date="2025">
-          <p>A causal-inference toolkit using Double Machine Learning to estimate whether momentum actually causes
-          next-day returns, rather than merely correlating with them.</p>
-          <p>The same counterfactual machinery, orthogonalizing out confounders to isolate a causal effect, is now
-          central to reasoning-model interpretability.</p>
-          <p class="go"><a href="projects/causal-finance.html">Full write-up</a></p>
-        </div>
-      </article>
-
-      <article class="row" data-k="multi-agent agents agentic crewai gemini flask react postgresql docker dashboards business-intelligence bi reporting python javascript">
+      <article class="row" data-k="ai-engineering data-science multi-agent agents agentic crewai gemini flask react postgresql jsonb redis docker dashboards business-intelligence bi analytics kpi reporting python javascript">
         <div class="rhead">
           <h3><a href="projects/automatedbi.html">AutomatedBI: Agentic BI Dashboard Generator</a></h3>
           <span class="when">2025</span>
         </div>
-        <p class="sum"><a href="projects/automatedbi.html">A CrewAI system of four specialised agents that reads
-        raw data, reasons over it with domain-expert and KPI-strategist agents, and produces an interactive
-        dashboard. In testing it cut manual reporting time by around 80%.</a></p>
+        <p class="sum"><a href="projects/automatedbi.html">Upload a CSV or Excel file and four CrewAI agents profile
+        its quality, classify its business domain, choose the KPIs and lay out an interactive dashboard, with no
+        manual configuration. It runs on Flask, PostgreSQL and Redis in Docker, and in testing cut manual reporting
+        time by around 80%.</a></p>
         <div class="acts">
           <button data-abs>abstract</button>
           <a href="https://github.com/ANKITSANJYAL/AutomatedBI" target="_blank" rel="noopener">code &nearr;</a>
           <a href="https://drive.google.com/file/d/14qR91S5oXuK8-uSUE_KsVBuFnQd_dMFO/view?usp=sharing" target="_blank" rel="noopener">demo &nearr;</a>
           <span class="venue">Multi-agent</span>
         </div>
-        <div class="abs" data-title="AutomatedBI: AI-Powered Business Intelligence Dashboard Generator" data-date="2025 · CrewAI">
-          <p>A multi-agent pipeline that reads input, reasons with specialist agents, and produces a result,
-          transforming raw data into interactive dashboards.</p>
-          <p>An instance of the autonomous tool-using architecture that underlies interpretability investigator
-          agents, applied to a problem where the ground truth is easy to check.</p>
+        <div class="abs" data-title="AutomatedBI: AI-Powered Business Intelligence Dashboard Generator" data-date="2025 · CrewAI, Gemini, Flask, React, PostgreSQL">
+          <p>Four specialised agents work in sequence: a data quality agent, a domain expert that recognises sales,
+          finance, logistics, HR and other domains, a KPI strategist, and a dashboard designer. Progress streams to
+          the front end stage by stage.</p>
+          <p>It produces two views of the same upload: a data-readiness dashboard for analysts, covering missing
+          values, quality scores and preprocessing suggestions, and a business dashboard with domain KPIs and
+          generated insights for stakeholders. Datasets and results sit in PostgreSQL JSONB with Redis queueing
+          background work.</p>
           <p class="go"><a href="projects/automatedbi.html">Full write-up</a></p>
         </div>
       </article>
 
-      <article class="row" data-k="neo4j mongodb graph database dijkstra routing openai react cytoscape node express javascript llm navigation">
+      <article class="row" data-k="data-science causal-inference double-machine-learning dml ate cate econometrics lstm random-forest yfinance finance financial market returns statistics python">
+        <div class="rhead">
+          <h3><a href="projects/causal-finance.html">Causal Factor Discovery in S&amp;P 500 Returns</a></h3>
+          <span class="when">2025</span>
+        </div>
+        <p class="sum"><a href="projects/causal-finance.html">Double Machine Learning for ATE and CATE estimation
+        of momentum on next-day returns. Orthogonalizing out the confounders is what separates factors that
+        genuinely drive the outcome from factors that merely move alongside it, which is the difference between a
+        signal that survives a regime change and one that does not.</a></p>
+        <div class="acts">
+          <button data-abs>abstract</button>
+          <a href="https://github.com/ANKITSANJYAL/Causal-Factor-Discovery-in-S-P-500-Returns-" target="_blank" rel="noopener">code &nearr;</a>
+          <span class="venue">Causal inference</span>
+        </div>
+        <div class="abs" data-title="Causal Factor Discovery in S&amp;P 500 Returns" data-date="2025">
+          <p>Most machine learning in finance asks whether tomorrow&rsquo;s return can be predicted. This asks whether
+          three-day momentum actually causes it. Double Machine Learning residualises both the treatment and the
+          outcome against volatility, moving averages and volume, with cross-fitting to keep the estimate honest, and
+          estimates per-stock effects as well as the average.</p>
+          <p>LSTM and random forest baselines run alongside, to show how much of what a predictive model captures is
+          correlation with confounders rather than cause.</p>
+          <p class="go"><a href="projects/causal-finance.html">Full write-up</a></p>
+        </div>
+      </article>
+
+      <article class="row" data-k="ml-engineering pytorch diffusion transformers backprop-free reproduction paper-implementation mnist cifar-10 training python">
+        <div class="rhead">
+          <h3><a href="projects/nopropagation.html">No-Propagation Diffusion Transformers</a></h3>
+          <span class="when">2025</span>
+        </div>
+        <p class="sum"><a href="projects/nopropagation.html">A from-scratch PyTorch implementation of NoPropDT
+        (arXiv:2503.24322), which trains a network as a stack of local denoising blocks with no backpropagation
+        between them. It reaches roughly 99% on MNIST and 76% on CIFAR-10, and is the most-starred repository on my
+        GitHub.</a></p>
+        <div class="acts">
+          <button data-abs>abstract</button>
+          <a href="https://github.com/ANKITSANJYAL/NoPropagation" target="_blank" rel="noopener">code &nearr;</a>
+          <a href="https://arxiv.org/pdf/2503.24322" target="_blank" rel="noopener">paper &nearr;</a>
+          <span class="venue">Paper implementation</span>
+        </div>
+        <div class="abs" data-title="No-Propagation Diffusion Transformers (NoPropDT)" data-date="2025 · implementation of arXiv:2503.24322">
+          <p>Each block learns, with its own local loss, to denoise a noisy class embedding toward the correct label;
+          a final linear layer reads the result. No gradient crosses a block boundary.</p>
+          <p>Implemented from the paper and taken past it: roughly 99% on MNIST by epoch 7 and 76% on CIFAR-10
+          by epoch 50, with an ablation showing what the nonlinear decoder contributes on each.</p>
+          <p class="go"><a href="projects/nopropagation.html">Full write-up</a></p>
+        </div>
+      </article>
+
+      <article class="row" data-k="ai-engineering neo4j mongodb graph database dijkstra routing openai react cytoscape node express javascript llm navigation">
         <div class="rhead">
           <h3><a href="projects/ramsnavigator.html">RamsNavigator: AI Campus Navigation</a></h3>
           <span class="when">2024</span>
@@ -619,6 +737,8 @@
 <!-- THOUGHTS:READING:START -->
 <!-- THOUGHTS:READING:END -->
     </div>
+    <p class="seed" id="reading-empty">Short notes on papers and books as I read them. The next one is on
+    its way.</p>
     <p class="void" hidden></p>
   </section>
 
@@ -637,15 +757,18 @@
         <span class="when">Aug 2024 &ndash; May 2026 | New York</span>
         <h3>Graduate Research Assistant</h3>
         <p class="org"><a href="https://erdos.dsm.fordham.edu/" target="_blank" rel="noopener">Fordham EDM Lab &nearr;</a></p>
-        <p class="x">Led the MAESTRO project. Explored few-shot 2D-to-3D reconstruction on medical imaging data
-        (OASIS) using efficient neural representations.</p>
+        <p class="x">Led MAESTRO, a lecture generation system now in production for Fordham courses, from
+        pipeline design to deployment. Also explored few-shot 2D-to-3D reconstruction on medical imaging data
+        (OASIS).</p>
       </div>
       <div class="tile">
         <span class="when">Jan 2023 &ndash; Jul 2024 | Bangalore</span>
         <h3>Associate Data Consultant</h3>
         <p class="org"><a href="https://www.decisionfoundry.com/" target="_blank" rel="noopener">Decision Foundry &nearr;</a></p>
-        <p class="x">Designed ETL workflows in DBT and Tableau Prep, optimised SQL on Amazon Redshift for 40%
-        faster retrieval on 1&nbsp;TB+ datasets, and delivered 25+ Tableau and Salesforce CRMA dashboards.</p>
+        <p class="x">A year and a half of client data work. Built and maintained ETL workflows in dbt and
+        Tableau Prep feeding Amazon Redshift, tuned SQL on 1&nbsp;TB+ tables for 40% faster retrieval, and delivered
+        25+ Tableau and Salesforce CRMA dashboards to client teams.</p>
+        <p class="x" style="margin-top:8px"><a href="#projects?q=data-engineering" style="color:inherit;text-decoration:underline;text-underline-offset:3px">data engineering projects</a></p>
       </div>
       <div class="tile">
         <span class="when">Jan 2022 &ndash; Jul 2023 | Bangalore</span>
@@ -738,6 +861,7 @@
     document.body.dataset.mood = MOODS[mi];
     moodBtn.textContent = NAMES[MOODS[mi]];
     drops(MOODS[mi]);
+    paintPortrait();
   });
 
   /* ---- rain: deterministic, so it never differs between loads ---- */
@@ -755,12 +879,11 @@
   }
   drops('slate');
 
-  /* the placeholder line retires itself the moment a first essay lands */
-  (function(){
-    var box = document.getElementById('essays-empty'),
-        list = document.querySelector('#v-thoughts .tlist');
-    if (box && list && list.querySelector('.tnote')) box.hidden = true;
-  })();
+  /* each list's placeholder line retires itself the moment its first note lands */
+  [].forEach.call(document.querySelectorAll('#v-thoughts .tlist'), function(list){
+    var box = list.nextElementSibling;
+    if (box && box.classList.contains('seed') && list.querySelector('.tnote')) box.hidden = true;
+  });
 
   /* The edit link appears only while a signed-in session is open in this tab.
      Visitors never see it, and it is a convenience rather than a gate: the
@@ -803,8 +926,19 @@
     if (!b) return;
     show(b.dataset.view, true);
   });
-  window.addEventListener('hashchange', function(){ show(location.hash.slice(1) || 'about', false); });
-  if (location.hash) show(location.hash.slice(1), false);
+  /* A hash may carry a filter: #projects?q=data-engineering opens the view
+     already filtered. This is what each role-specific CV links to. */
+  function route(){
+    var h = location.hash.slice(1), i = h.indexOf('?'),
+        name = (i < 0 ? h : h.slice(0, i)) || 'about', q = '', m;
+    if (i > -1 && (m = /(?:^|&)q=([^&]*)/.exec(h.slice(i + 1)))){
+      try { q = decodeURIComponent(m[1].replace(/\+/g, ' ')); } catch (e) {}
+    }
+    show(name, false);
+    var inp = document.querySelector('#v-' + name + ' input.fi');
+    if (q && inp){ inp.value = q; runFilter(name, q); }
+  }
+  window.addEventListener('hashchange', route);
 
   /* ---- keyword filter -------------------------------------------------
      Matching is AND across whitespace-separated tokens. Each token is a
@@ -909,6 +1043,9 @@
     inp.focus();
   });
 
+  /* first route only now, once ALIAS and runFilter are both ready */
+  if (location.hash) route();
+
   /* "/" focuses the filter in whichever view is open */
   document.addEventListener('keydown', function(e){
     if (e.key !== '/' || e.metaKey || e.ctrlKey || e.altKey) return;
@@ -965,24 +1102,40 @@
   ];
   var cv = document.getElementById('dither'),
       fb = document.getElementById('portrait-fallback'),
-      src = new Image();
+      src = new Image(),
+      mask = null;   /* 1 where the dither is lit, computed once */
+
+  /* The dark dots take --dither, an "r,g,b" token redefined per mood,
+     so the portrait follows the palette like everything else does. */
+  function paintPortrait(){
+    if (!mask) return;
+    var w = cv.width, h = cv.height, ctx = cv.getContext('2d'),
+        d = ctx.createImageData(w, h), p = d.data, i, k,
+        rgb = getComputedStyle(document.body).getPropertyValue('--dither').split(',').map(Number);
+    for (k = 0; k < mask.length; k++){
+      i = k * 4;
+      p[i]   = mask[k] ? 255 : rgb[0];
+      p[i+1] = mask[k] ? 255 : rgb[1];
+      p[i+2] = mask[k] ? 255 : rgb[2];
+      p[i+3] = mask[k] ? 255 : 190;
+    }
+    ctx.putImageData(d, 0, 0);
+  }
+
   src.crossOrigin = 'anonymous';
   src.onload = function(){
     try {
       var w = cv.width, h = cv.height, ctx = cv.getContext('2d'),
           s = Math.min(src.width, src.height);
       ctx.drawImage(src, (src.width - s) / 2, (src.height - s) / 2, s, s, 0, 0, w, h);
-      var d = ctx.getImageData(0, 0, w, h), p = d.data, x, y, i, lum, on;
+      var p = ctx.getImageData(0, 0, w, h).data, x, y, i, lum;
+      mask = new Uint8Array(w * h);
       for (y = 0; y < h; y++) for (x = 0; x < w; x++){
         i = (y * w + x) * 4;
         lum = 0.299 * p[i] + 0.587 * p[i+1] + 0.114 * p[i+2];
-        on  = lum > (BAYER[y & 7][x & 7] + 0.5) / 64 * 255;
-        p[i]   = on ? 255 : 60;
-        p[i+1] = on ? 255 : 78;
-        p[i+2] = on ? 255 : 112;
-        p[i+3] = on ? 255 : 190;
+        mask[y * w + x] = lum > (BAYER[y & 7][x & 7] + 0.5) / 64 * 255 ? 1 : 0;
       }
-      ctx.putImageData(d, 0, 0);
+      paintPortrait();
     } catch (err) {
       cv.style.display = 'none'; fb.style.display = 'block';
     }
